@@ -1,0 +1,173 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present DesignMinds, a prototype that integrates a Vision-Language Model (VLM) with a context-enhanced Large Language Model (LLM) to support ideation in video-based design (VBD). The authors aim to enhance the flexibility and originality of ideation while increasing task engagement without negatively impacting user experience, technology acceptance, or usability.",
+    "evidence": "In this paper, we present DesignMinds, a prototype that integrates a state-of-the-art Vision-Language Model (VLM) with a context-enhanced Large Language Model (LLM) to support ideation in VBD."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of generating novel design ideas from videos, which is labor-intensive and heavily dependent on the practitioner's design experience and knowledge, particularly challenging for novice designers.",
+    "evidence": "Generating novel design ideas from videos is challenging for a large group of practitioners. It requires not only a significant investment of time and effort but also extensive design experience to generate a substantial number of related ideas for practice."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a GenAI-powered chatbot that features video understanding and design-context-based idea recommendations.",
+      "Integration of a state-of-the-art Vision-Language Model (VLM) with a context-enhanced Large Language Model (LLM) for video-based design ideation.",
+      "Implementation of a Retrieval-Augmented Generation (RAG) function to generate more design-grounded suggestions."
+    ],
+    "evidence": [
+      "We introduce a novel GenAI-powered chatbot that features video understanding and design-context-based idea recommendations to enhance the ideation capabilities of new VBD practitioners.",
+      "We prototyped DesignMinds that integrates a state-of-the-art (SOTA) VLM and LLM model with a context-injection technique.",
+      "To generate more design-grounded suggestions, we implemented a RAG function using a text embedding model text-embedding-ada-0023."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Tatar (1989) Using video-based observation to shape the design of a new technology. (Methodological precursors)\n- Ylirisku and Buur (2007) Studying what people do. (Experimental baselines)",
+    "evidence": "Tatar also emphasized the important role of using videos for ideation to pinpoint design solutions. Similarly, Ylirisku and Buur conceptualized the practice and highlighted that using videos for design ideation is instrumental for practitioners."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Video comprehension and idea reflection and refinement",
+        "input": "Videos and design knowledge repository",
+        "output": "Textual descriptions and design-grounded suggestions",
+        "evidence": "The development of our prototype followed the natural process of the idealization of VBD, consisting of two main parts: video comprehension and idea reflection and refinement."
+      },
+      {
+        "step": "Processing videos with VLM to generate textual descriptions",
+        "input": "Videos",
+        "output": "Comprehensive textual descriptions",
+        "evidence": "We adopted blip2-opt-6.7b1, a SOTA VLM, to interpret videos into textual descriptions."
+      },
+      {
+        "step": "Generating design suggestions using LLM with RAG function",
+        "input": "Textual descriptions and design knowledge repository",
+        "output": "Design-grounded suggestions",
+        "evidence": "These complete video descriptions then were processed by an LLM through GPT-4 API (gpt-4-0125-preview)."
+      }
+    ],
+    "tools": [
+      {
+        "name": "blip2-opt-6.7b1",
+        "description": "Used to interpret videos into textual descriptions",
+        "evidence": "We adopted blip2-opt-6.7b1, a SOTA VLM, to interpret videos into textual descriptions."
+      },
+      {
+        "name": "GPT-4 API",
+        "description": "Used to process video descriptions and generate design suggestions",
+        "evidence": "These complete video descriptions then were processed by an LLM through GPT-4 API (gpt-4-0125-preview)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Ego4D",
+        "data_description": "A large-scale video dataset frequently employed for benchmark and HCI research",
+        "usage": "Used for video tasks depicting contexts of cooking and construction",
+        "evidence": "These videos were sourced from Ego4D, a large-scale video dataset frequently employed for benchmark and HCI research."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Divergent Thinking",
+        "purpose": "Measures creativity during ideation",
+        "application": "Used to evaluate the quality of ideation in terms of fluency, flexibility, and originality",
+        "evidence": "To measure creativity during ideation, Divergent Thinking is a well-established method supported by both theory and practice in prior studies."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We investigate how our DesignMinds impacts the outcomes of divergent thinking by asking participants in two conditions (experimental group and control group) to generate creative ideas during the task."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We evaluate how our proposed DesignMinds influences ideation in VBD tasks with a between-subject study design."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a tool for enhancing design ideation using video-based design.",
+        "evidence": "Ideation is a critical component of video-based design (VBD), where videos serve as the primary medium for design exploration and inspiration."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The integration of AI models for design ideation spans multiple disciplines.",
+        "evidence": "With the recent surge in Generative AI (GenAI), technologies such as the Large Language Model (LLM) GPT-4 demonstrate significant potential to enhance creative tasks across various design domains."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "DesignMinds significantly enhances the flexibility and originality of ideation, while also increasing task engagement.",
+        "evidence": "Our results demonstrate that DesignMinds significantly enhances the flexibility and originality of ideation, while also increasing task engagement."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Traditional VBD methods",
+        "description": "Methods involving extensive video review and professional divergent thinking.",
+        "evidence": "Consolidating design problems and generating feasible solutions from videos using traditional VBD methods typically requires extensive video review and the application of professional divergent thinking."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Ego4D",
+        "data_description": "A large-scale video dataset frequently employed for benchmark and HCI research",
+        "usage": "Used for video tasks depicting contexts of cooking and construction",
+        "evidence": "These videos were sourced from Ego4D, a large-scale video dataset frequently employed for benchmark and HCI research."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Divergent Thinking",
+        "purpose": "Measures creativity during ideation",
+        "application": "Used to evaluate the quality of ideation in terms of fluency, flexibility, and originality",
+        "evidence": "To measure creativity during ideation, Divergent Thinking is a well-established method supported by both theory and practice in prior studies."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Ego4D",
+    "data_description": "A large-scale video dataset frequently employed for benchmark and HCI research",
+    "usage": "Used for video tasks depicting contexts of cooking and construction",
+    "evidence": "These videos were sourced from Ego4D, a large-scale video dataset frequently employed for benchmark and HCI research."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Transparency and Trust",
+        "description": "Participants expressed concerns around transparency and trust when using LLMs in creative processes.",
+        "evidence": "In informal post-experiment discussions, some participants expressed concerns around transparency and trust when using LLMs in creative processes."
+      },
+      {
+        "name": "Limited Use Case Testing",
+        "description": "DesignMinds was tested only in the contexts of cooking and construction, which may not generalize to other design tasks.",
+        "evidence": "While DesignMinds proved effective in assisting design ideation within the two specific contexts of cooking and construction, real-world applications involve a much wider diversity of design tasks."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhance Transparency",
+        "description": "Integrate more interpretable outputs, such as providing citation links to credible literature in answers.",
+        "evidence": "In the future work, we aim to further enhance DesignMinds’ transparency by integrating more interpretable outputs, such as providing citation links to credible literature in answers."
+      },
+      {
+        "name": "Broaden Use Case Testing",
+        "description": "Test DesignMinds across a broader range of VBD use cases.",
+        "evidence": "Another limitation is the need to test DesignMinds across a broader range of VBD use cases."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

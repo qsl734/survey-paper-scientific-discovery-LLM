@@ -1,0 +1,217 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a structured framework that models and discovers impactful knowledge combinations, particularly focusing on method combinations that can lead to scientific breakthroughs.",
+    "evidence": "Specifically, we investigate how knowledge units—especially those tied to methodological design—can be modeled and recombined to yield research breakthroughs."
+  },
+  "knowledge_gap": {
+    "answer": "Existing approaches fail to systematically identify and integrate fine-grained knowledge components, resulting in scientific discovery that remains at a macro-level of idea generation rather than precise matching of research problems and methods.",
+    "evidence": "Despite these advancements, existing approaches still exhibit several limitations: (1) the inability to systematically identify and integrate fine-grained knowledge components, resulting in scientific discovery that remains at a macro-level of idea generation rather than precise matching of research problems and methods."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a contrastive learning-based mechanism to identify distinguishing features of historically disruptive method combinations.",
+      "Proposal of a reasoning-guided Monte Carlo search algorithm leveraging LLMs for identifying promising knowledge recombinations.",
+      "Development of a disruptive index evaluation framework to quantitatively assess the potential disruptiveness of new scientific discoveries."
+    ],
+    "evidence": [
+      "First, we introduce a contrastive learning-based mechanism to identify distinguishing features of historically disruptive method combinations within problem-driven contexts.",
+      "Second, we propose a reasoning-guided Monte Carlo search algorithm that leverages the chain-of-thought capability of LLMs to identify promising knowledge recombinations for new problem statements.",
+      "A disruptive index evaluation framework that quantitatively assesses the potential disruptiveness of new scientific discoveries, improving upon traditional impact metrics."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Funk and Owen-Smith (2017) The Disruption Index inspired our evaluation framework. (Methodological precursors)",
+    "evidence": "The Disruptive Index (DI), proposed by Funk and Owen-Smith [11], captures whether a scientific discovery supersedes previous approaches rather than merely reinforcing the status quo."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Problem-Driven Method Exploration Module",
+        "input": "A new research problem Pnew",
+        "output": "Candidate problem-method pairs",
+        "evidence": "During the method exploration process, when a new research problem Pnew is proposed, the system embeds it into a semantic vector space."
+      },
+      {
+        "step": "Disruptive Index Prediction Model Methodology",
+        "input": "Problem-method pair (P, M) and task-specific prompt",
+        "output": "Disruption score y",
+        "evidence": "The prediction model Dϕ outputs a disruption score y based on S and I."
+      },
+      {
+        "step": "Dynamic Method Optimization Module",
+        "input": "Problem and current method configuration at iteration t",
+        "output": "Refined method combinations",
+        "evidence": "The optimization process follows a greedy algorithm, selecting adjustments in each iteration that locally maximize the disruptive index."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for generating research ideas and synthesizing existing knowledge.",
+        "evidence": "Large Language Models (LLMs) have demonstrated significant potential in scientific discovery, particularly in generating novel research ideas."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DBLP",
+        "data_description": "Records from 2011 to 2021 covering 14,533 publications from CCF-A conferences in the field of artificial intelligence.",
+        "usage": "Used for evaluating the effectiveness of the proposed framework.",
+        "evidence": "For DBLP, we extract records from 2011 to 2021 covering 14,533 publications from CCF-A conferences in the field of artificial intelligence."
+      },
+      {
+        "name": "PubMed",
+        "data_description": "96,612 research articles related to depression, published between 2015 and 2025.",
+        "usage": "Used for evaluating the effectiveness of the proposed framework.",
+        "evidence": "From PubMed, we select 96,612 research articles related to depression, published between 2015 and 2025."
+      },
+      {
+        "name": "PatSnap",
+        "data_description": "6,677 patent records on medical robotics, with legal status marked as active, covering the period from 2020 to 2025.",
+        "usage": "Used for evaluating the effectiveness of the proposed framework.",
+        "evidence": "Lastly, for PatSnap, we use 6,677 patent records on medical robotics, with legal status marked as active, covering the period from 2020 to 2025."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Cosine Similarity",
+        "purpose": "Measures the similarity between problem-method summaries and their corresponding ground-truth summaries.",
+        "application": "Used to evaluate the alignment between generated summaries and ground-truth summaries.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "ROUGE",
+        "purpose": "Measures the overlap between generated summaries and reference summaries.",
+        "application": "Used to evaluate the quality of problem-method summarization.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "MSE",
+        "purpose": "Measures the mean squared error between predicted and actual disruptive index scores.",
+        "application": "Used to evaluate the accuracy of disruptive index prediction.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      },
+      {
+        "name": "MAE",
+        "purpose": "Measures the mean absolute error between predicted and actual disruptive index scores.",
+        "application": "Used to evaluate the accuracy of disruptive index prediction.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Our proposed framework addresses two key challenges. First, we introduce a contrastive learning-based mechanism to identify distinguishing features of historically disruptive method combinations within problem-driven contexts."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We conduct extensive experiments on publication databases across three scientific domains."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for modeling and discovering impactful knowledge combinations across multiple scientific domains.",
+        "evidence": "Empirical studies across multiple domains show that the framework is capable of modeling the structural dynamics of innovation and successfully highlights combinations with high disruptive potential."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed framework outperforms state-of-the-art methods in predicting the disruptiveness of problem-method combinations.",
+        "evidence": "Our results demonstrate that the proposed framework outperforms state-of-the-art methods in predicting the disruptiveness of problem-method combinations."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GPT",
+        "description": "General-purpose large language model used for natural language understanding and text generation tasks.",
+        "evidence": "We consider the following baselines: (1) General-purpose LLMs: GPT and Claude, widely used for natural language understanding and text generation tasks."
+      },
+      {
+        "name": "SciBERT",
+        "description": "A pre-trained language model designed specifically for scientific text processing.",
+        "evidence": "SciBERT [29], a pre-trained language model designed specifically for scientific text processing, which has demonstrated strong performance in scientific literature comprehension and reasoning tasks."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DBLP",
+        "data_description": "Records from 2011 to 2021 covering 14,533 publications from CCF-A conferences in the field of artificial intelligence.",
+        "usage": "Used for evaluating the effectiveness of the proposed framework.",
+        "evidence": "For DBLP, we extract records from 2011 to 2021 covering 14,533 publications from CCF-A conferences in the field of artificial intelligence."
+      },
+      {
+        "name": "PubMed",
+        "data_description": "96,612 research articles related to depression, published between 2015 and 2025.",
+        "usage": "Used for evaluating the effectiveness of the proposed framework.",
+        "evidence": "From PubMed, we select 96,612 research articles related to depression, published between 2015 and 2025."
+      },
+      {
+        "name": "PatSnap",
+        "data_description": "6,677 patent records on medical robotics, with legal status marked as active, covering the period from 2020 to 2025.",
+        "usage": "Used for evaluating the effectiveness of the proposed framework.",
+        "evidence": "Lastly, for PatSnap, we use 6,677 patent records on medical robotics, with legal status marked as active, covering the period from 2020 to 2025."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Cosine Similarity",
+        "purpose": "Measures the similarity between problem-method summaries and their corresponding ground-truth summaries.",
+        "application": "Used to evaluate the alignment between generated summaries and ground-truth summaries.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "ROUGE",
+        "purpose": "Measures the overlap between generated summaries and reference summaries.",
+        "application": "Used to evaluate the quality of problem-method summarization.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "MSE",
+        "purpose": "Measures the mean squared error between predicted and actual disruptive index scores.",
+        "application": "Used to evaluate the accuracy of disruptive index prediction.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      },
+      {
+        "name": "MAE",
+        "purpose": "Measures the mean absolute error between predicted and actual disruptive index scores.",
+        "application": "Used to evaluate the accuracy of disruptive index prediction.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "data_description": null,
+    "usage": null,
+    "evidence": "No traditional benchmark dataset was used in the study."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Historical Data",
+        "description": "For emerging scientific fields with minimal prior work, the framework may struggle due to a lack of sufficient historical data.",
+        "evidence": "First, for entirely emerging scientific fields with minimal prior work, our framework may encounter challenges due to a lack of sufficient historical data."
+      },
+      {
+        "name": "Computational Complexity",
+        "description": "The multi-step process increases computational complexity and execution time, limiting scalability for large-scale real-time applications.",
+        "evidence": "Second, our framework involves a multi-step process that includes problem-method summarization, source validation, information extraction, secondary learning, and deviation-aware alignment."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": "No explicit future directions were stated in the paper."
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No human-facing resource URL was found in the paper."
+  }
+}

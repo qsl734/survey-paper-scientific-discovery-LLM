@@ -1,0 +1,118 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a multi-agent framework for computational fluid dynamics (CFD) that enables fully automated, end-to-end simulations directly from natural-language queries.",
+    "evidence": "We propose the first multi-agent framework for computational fluid dynamics that enables fully automated, end-to-end simulations directly from natural-language queries."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of integrating large language models with CFD, which requires precise numerical specifications, complex geometry handling, sophisticated physics modeling, and specialized result interpretation.",
+    "evidence": "However, this integration faces significant challenges: CFD simulations demand precise numerical specifications, complex geometry handling, sophisticated physics modeling, and specialized result interpretation."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of a multi-agent framework that automates CFD simulations from natural language queries.",
+      "The use of specialized agents for pre-processing, prompt generation, simulation execution, and post-processing.",
+      "The framework's ability to maintain high trustworthiness and reproducibility in CFD simulations."
+    ],
+    "evidence": [
+      "The proposed multi-agent framework for CFD automation, as illustrated in Figure 1, comprises four specialized intelligent agents that collaboratively orchestrate end-to-end CFD workflows from pre-processing, simulation to post-processing without any human intervention.",
+      "By integrating specialized agents for pre-processing, prompt generation, simulation execution, and post-processing, our system successfully handles diverse fluid dynamics problems with 100% reproducibility."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Pandey et al. (2025) OpenFOAMGPT: A retrieval-augmented large language model (LLM) agent for OpenFOAM-based computational fluid dynamics. (Methodological precursors)",
+    "evidence": "In this paper, we build upon OpenFOAMGPT system [34, 35] to present a comprehensive end-to-end multi-agent framework specifically designed for CFD applications."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Pre-processing",
+        "input": "User queries",
+        "output": "Critical simulation parameters and mesh generation strategy",
+        "evidence": "This agent harnesses LLMs’ advanced semantic understanding capabilities to comprehensively analyze user queries."
+      },
+      {
+        "step": "Prompt Generation",
+        "input": "User query and identified simulation parameters",
+        "output": "Structured simulation instructions",
+        "evidence": "This agent implements an adaptive prompt engineering pipeline that dynamically constructs simulation instructions tailored to each specific case requirement."
+      },
+      {
+        "step": "Simulation Execution",
+        "input": "Simulation instructions",
+        "output": "CFD simulation results",
+        "evidence": "OpenFOAMGPT: This agent functions as the core simulation engine, executing a robust self-correcting simulation loop through three sophisticated modules."
+      },
+      {
+        "step": "Post-processing",
+        "input": "Simulation outputs",
+        "output": "Visualization and analysis of results",
+        "evidence": "This agent extracts visualization and analysis requirements from original user queries, functioning as the final component in the automated CFD workflow."
+      }
+    ],
+    "tools": [
+      {
+        "name": "OpenFOAM",
+        "description": "Used for mesh generation and executing CFD simulations",
+        "evidence": "OpenFOAM provides two primary utilities: blockMesh for structured hexahedral meshes in simple geometries, and snappyHexMesh for unstructured meshes."
+      },
+      {
+        "name": "Claude-3.7-Sonnet",
+        "description": "Provides the foundation for natural language understanding and generation capabilities",
+        "evidence": "All intelligent agents within the framework are powered by the Claude-3.7-Sonnet."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The system transforms natural language queries into structured simulation instructions.",
+        "evidence": "This agent implements an adaptive prompt engineering pipeline that dynamically constructs simulation instructions tailored to each specific case requirement."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The system iteratively refines simulation configurations based on error feedback.",
+        "evidence": "The error information is then fed back to the LLM along with the original case prompt and system constraints, enabling intelligent refinement of the configuration files."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on automating CFD simulations, which are critical in engineering disciplines.",
+        "evidence": "Computational Fluid Dynamics (CFD), a branch of fluid mechanics employing numerical methods and algorithms to analyze and solve problems involving fluid flows."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The framework achieved a 100% success rate across both single-case simulations and parametric multi-case studies.",
+        "evidence": "Throughout our experimental validation, the framework demonstrated remarkable robustness and reliability. When provided with well-formulated user queries and operating under the constraints of our carefully designed system prompts, the framework achieved a 100% success rate across both single-case simulations and parametric multi-case studies."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": []
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Adaptation to Industry-level Challenges",
+        "description": "The authors plan to adapt the framework to more complex, industry-level challenges.",
+        "evidence": "Our future work will focus on adapting them to more complex, industry-level challenges."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

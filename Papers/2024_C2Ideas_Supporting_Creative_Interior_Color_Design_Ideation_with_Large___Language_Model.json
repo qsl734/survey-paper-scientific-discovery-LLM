@@ -1,0 +1,184 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to develop C2Ideas, an innovative system for designers to creatively ideate color schemes enabled by an intent-aligned and domain-oriented large language model, addressing the challenges of aligning AI-generated designs with user intentions and design rationales.",
+    "evidence": "Informed by a need-finding preliminary study, we develop C2Ideas, an innovative system for designers to creatively ideate color schemes enabled by an intent-aligned and domain-oriented large language model."
+  },
+  "knowledge_gap": {
+    "answer": "Existing AI-based approaches for color design often misalign with user intention and disregard design rationales, lacking a comprehensive integration of domain knowledge such as color psychology and composition principles.",
+    "evidence": "Nevertheless, existing AI-based approaches for color design have been focusing on utilizing pre-trained models learned from large datasets, whilst few efforts are devoted to understanding such abstract requirements."
+  },
+  "novelty": {
+    "answer": [
+      "C2Ideas integrates a three-stage process that aligns with the conventional workflow of interior color design, enhancing interpretability and controllability.",
+      "The system incorporates domain knowledge through prompt engineering and employs a multi-tiered feedback mechanism to align with diverse user intents.",
+      "C2Ideas provides an interactive interface for user refinement, enabling a semi-automated method for converting user intent into scene-specific color schemes."
+    ],
+    "evidence": [
+      "C2Ideas integrates a three-stage process: Idea Prompting stage distills user intentions into color linguistic prompts; Word-Color Association stage transforms the prompts into semantically and stylistically coherent color schemes; and Interior Coloring stage assigns colors to interior elements complying with design principles.",
+      "We introduce an LLM-based system workflow for interior color design, which incorporates domain knowledge through prompt engineering and effectively aligns with diverse user intents by employing a multi-tiered feedback mechanism.",
+      "We develop a semi-automated approach C2Ideas, that converts user intent into scene-specific color schemes bolstered by an interactive interface for user refinement."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Bahng et al. (2018) Coloring with words: Guiding image colorization through text-based palette generation. (Methodological precursors)\n- Solah et al. (2022) Mood-Driven Colorization of Virtual Indoor Scenes. (Experimental baselines)",
+    "evidence": "Numerous efforts have been made to intertwine AI and color design, encompassing approaches that range from data-driven models learning textual-color mappings [8, 60] to prompt-driven strategies guiding pre-trained models towards user-desired outcomes [9]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Idea Prompting",
+        "input": "User's high-level design intents",
+        "output": "Domain-oriented prompts composed of professional design themes and color mood attributes",
+        "evidence": "In the first stage, we aim to translate user intentions into a set of well-defined prompts, which are then used to guide the subsequent process."
+      },
+      {
+        "step": "Word-Color Association",
+        "input": "Refined design concepts",
+        "output": "Concrete color schemes",
+        "evidence": "In the second stage, we aim to transfer conceptual color prompts to definitive color schemes, keeping semantic and stylistic coherence."
+      },
+      {
+        "step": "Interior Coloring",
+        "input": "Color scheme and textual description of the interior scene",
+        "output": "Colors assigned to interior elements",
+        "evidence": "In the third stage, we color the interior scene using the generated color scheme, test how well the scheme fits the interior space and refine the result if necessary."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Model (LLM)",
+        "description": "Used for generating prompts, color schemes, and assigning colors to interior elements.",
+        "evidence": "C2Ideas, an innovative system for designers to creatively ideate color schemes enabled by an intent-aligned and domain-oriented large language model."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Outcome Relevance",
+        "purpose": "Measures the relevance of the generated results to the input styles.",
+        "application": "Used to assess the alignment between predetermined input styles and generated results.",
+        "evidence": "Outcome Relevance: Participants gauged the relevance of the generated results to the input styles, assessing the alignment between predetermined input styles and generated results."
+      },
+      {
+        "name": "Preference",
+        "purpose": "Measures user satisfaction with the results.",
+        "application": "Allows for subjective evaluations.",
+        "evidence": "Preference: This assessed user satisfaction with the results, allowing for subjective evaluations."
+      },
+      {
+        "name": "Reasonableness",
+        "purpose": "Measures the extent to which the generated results take into account domain knowledge.",
+        "application": "Evaluates the generated results by considering both color composition ratios as well as color mood dimensions.",
+        "evidence": "Reasonableness: The participant evaluated the generated results by considering both color composition ratios as well as color mood dimensions, which represent the extent to which the generated results take into account domain knowledge."
+      },
+      {
+        "name": "Diverse and Inspiring",
+        "purpose": "Assesses the diversity and inspirational potential of the generated results.",
+        "application": "Emphasizes the ability of the approach to provide color schemes that can bring new ideas to the designer.",
+        "evidence": "Diverse and Inspiring: This indicator assesses the diversity and inspirational potential of the generated results, emphasizing the ability of the approach to provide color schemes that can bring new ideas to the designer."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We develop C2Ideas, an innovative system for designers to creatively ideate color schemes enabled by an intent-aligned and domain-oriented large language model."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We evaluate the effectiveness of our approach through a user study, and the results showed that our method outperforms a baseline LLM method and other alternatives that do not involve domain knowledge."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a system for creative interior color design using AI.",
+        "evidence": "C2Ideas, an innovative system for designers to creatively ideate color schemes enabled by an intent-aligned and domain-oriented large language model."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The work integrates AI with design principles for interior color design.",
+        "evidence": "C2Ideas integrates a three-stage process: Idea Prompting stage distills user intentions into color linguistic prompts; Word-Color Association stage transforms the prompts into semantically and stylistically coherent color schemes; and Interior Coloring stage assigns colors to interior elements complying with design principles."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "C2Ideas significantly outperforms approaches that exclude specific domain knowledge in terms of outcome relevance, preference, reasonableness, and diversity.",
+        "evidence": "C2Ideas’s outcome relevance significantly outperforms the two approaches that eliminate domain knowledge (𝑑.𝑓. = 209, 𝑝< .001), and so does the End-to-end approach (𝑑.𝑓. = 209, 𝑝< .001)."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "End-to-End Approach",
+        "description": "Lacks all domain knowledge for interior color design.",
+        "evidence": "The baseline known as 'End-to-end' lacks all domain knowledge for interior color design; it does not include the process of the chain of thought, which directly outputs color scheme results based on inputs."
+      }
+    ],
+    "benchmark_datasets": "Not reported in the paper",
+    "evaluation_metrics": [
+      {
+        "name": "Outcome Relevance",
+        "purpose": "Measures the relevance of the generated results to the input styles.",
+        "application": "Used to assess the alignment between predetermined input styles and generated results.",
+        "evidence": "Outcome Relevance: Participants gauged the relevance of the generated results to the input styles, assessing the alignment between predetermined input styles and generated results."
+      },
+      {
+        "name": "Preference",
+        "purpose": "Measures user satisfaction with the results.",
+        "application": "Allows for subjective evaluations.",
+        "evidence": "Preference: This assessed user satisfaction with the results, allowing for subjective evaluations."
+      },
+      {
+        "name": "Reasonableness",
+        "purpose": "Measures the extent to which the generated results take into account domain knowledge.",
+        "application": "Evaluates the generated results by considering both color composition ratios as well as color mood dimensions.",
+        "evidence": "Reasonableness: The participant evaluated the generated results by considering both color composition ratios as well as color mood dimensions, which represent the extent to which the generated results take into account domain knowledge."
+      },
+      {
+        "name": "Diverse and Inspiring",
+        "purpose": "Assesses the diversity and inspirational potential of the generated results.",
+        "application": "Emphasizes the ability of the approach to provide color schemes that can bring new ideas to the designer.",
+        "evidence": "Diverse and Inspiring: This indicator assesses the diversity and inspirational potential of the generated results, emphasizing the ability of the approach to provide color schemes that can bring new ideas to the designer."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": []
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhancing Scene Complexity and Adaptability",
+        "description": "Expand the approach to address both the adaptability of scenes, accommodating dynamic layout adjustments, and the intricacies of more complex design scenarios.",
+        "evidence": "In future research, we aim to expand our approach to address both the adaptability of scenes, accommodating dynamic layout adjustments, and the intricacies of more complex design scenarios."
+      },
+      {
+        "name": "Incorporating Subtle Design Rationales and Cultural Influence",
+        "description": "Consider encompassing a broader range of color composition ratio paradigms or enabling designers to customize.",
+        "evidence": "Future developments should consider encompassing a broader range of color composition ratio paradigms or enabling designers to customize."
+      },
+      {
+        "name": "Balancing Diversity and Reasonability",
+        "description": "Explore advanced methodologies to effectively navigate the balance between diversity and reasonability.",
+        "evidence": "In our forthcoming investigations, we will explore advanced methodologies to effectively navigate this delicate equilibrium."
+      },
+      {
+        "name": "Support Image Modality",
+        "description": "Expand the framework to incorporate visual references, allowing designers to utilize their existing design assets for creating more personalized and context-relevant design solutions.",
+        "evidence": "Moving forward, we plan to expand our framework to incorporate these visual references, allowing designers to utilize their existing design assets for creating more personalized and context-relevant design solutions."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

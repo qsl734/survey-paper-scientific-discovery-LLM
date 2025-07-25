@@ -1,0 +1,185 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce SciDFM, a mixture-of-experts large language model, designed to enhance scientific reasoning and understanding of molecules and amino acid sequences, thereby bridging the gap in domain-specific knowledge.",
+    "evidence": "To bridge these gaps, we introduce SciDFM, a mixture-of-experts LLM, which is trained from scratch and is able to conduct college-level scientific reasoning and understand molecules and amino acid sequences."
+  },
+  "knowledge_gap": {
+    "answer": "Most large language models focus on general scientific knowledge and lack domain-specific knowledge, such as chemical molecules and amino acid sequences, which are fundamental to advances in fields like chemistry and biology.",
+    "evidence": "Despite remarkable achievements in science, LLMs primarily focus on general scientific knowledge represented in text form, ignoring domain-specific contents such as molecules in chemistry and proteins in biology, which are fundamental to advances in these fields."
+  },
+  "novelty": {
+    "answer": [
+      "SciDFM integrates a mixture-of-experts architecture into a transformer-based framework to enhance scientific reasoning and understanding across different disciplines.",
+      "The model is trained from scratch with a large-scale corpus containing scientific literature and domain-specific databases to capture vast scientific knowledge.",
+      "SciDFM is fine-tuned on instruction-following data to improve performance on downstream benchmarks, particularly in domain-specific tasks."
+    ],
+    "evidence": [
+      "SciDFM integrates a mixture-of-experts (MoE) architecture into a transformer-based framework, aiming at enhancing its sophisticated scientific reasoning and understanding capabilities.",
+      "SciDFM leverages a carefully curated corpus of scientific literature and domain-specific databases for pretraining to capture vast scientific knowledge.",
+      "We meticulously fine-tune SciDFM using a set of instruction-following data containing about 9.3M samples, including interpreting molecular structures and amino acid sequences."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Galactica (2022) A large language model for science inspired our approach to store, combine, and reason about scientific knowledge. (Methodological precursors)\n- ChemDFM (2024) Their focus on chemical general intelligence influenced our domain-specific training. (Experimental baselines)",
+    "evidence": "Galactica [4] is a large language model that can store, combine and reason about scientific knowledge... ChemDFM [5] is specifically trained for Chemistry, combining knowledge from chemical literature and general domains."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Pretraining SciDFM with a mixture-of-experts architecture",
+        "input": "A large-scale corpus containing scientific literature and domain-specific databases",
+        "output": "A pretrained model with enhanced scientific reasoning and understanding capabilities",
+        "evidence": "SciDFM leverages a carefully curated corpus of scientific literature and domain-specific databases for pretraining to capture vast scientific knowledge."
+      },
+      {
+        "step": "Fine-tuning SciDFM on instruction-following data",
+        "input": "Instruction-following data containing about 9.3M samples",
+        "output": "Improved performance on downstream benchmarks, particularly in domain-specific tasks",
+        "evidence": "We meticulously fine-tune SciDFM using a set of instruction-following data containing about 9.3M samples, including interpreting molecular structures and amino acid sequences."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Mixture-of-Experts (MoE) architecture",
+        "description": "Used to enhance the model's ability to handle different disciplines and modalities",
+        "evidence": "SciDFM integrates a mixture-of-experts (MoE) architecture into a transformer-based framework."
+      },
+      {
+        "name": "Transformer-based framework",
+        "description": "Forms the basis of the SciDFM model architecture",
+        "evidence": "SciDFM is based on a transformer architecture."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SciEval",
+        "data_description": "A comprehensive and multidisciplinary benchmark designed to assess scientific research capabilities",
+        "usage": "Used to evaluate the general scientific language understanding and reasoning tasks",
+        "evidence": "SciEval [15] is a comprehensive and multidisciplinary benchmark designed to assess the scientific research capabilities of Large Language Models."
+      },
+      {
+        "name": "Mol-Instructions",
+        "data_description": "A specialized dataset containing diverse biomolecular instructions",
+        "usage": "Used to evaluate domain-specific tasks related to molecular and protein understanding",
+        "evidence": "Mol-Instructions [17] is a specialized, meticulously curated dataset containing diverse biomolecular instructions."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "AUC-ROC",
+        "purpose": "Measures the model's ability to predict molecular properties",
+        "application": "Used to evaluate molecular property prediction tasks on MoleculeNet",
+        "evidence": "Table 7 presents the performance of molecular property prediction tasks on MoleculeNet in AUC-ROC scores."
+      },
+      {
+        "name": "ROUGE-L",
+        "purpose": "Measures the model's performance on protein understanding tasks",
+        "application": "Used to evaluate protein understanding tasks on Mol-Instructions",
+        "evidence": "All tasks are evaluated in ROUGE-L score."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "SciDFM is trained from scratch and is able to conduct college-level scientific reasoning and understand molecules and amino acid sequences."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We conduct evaluation on eight general scientific language understanding and reasoning tasks and two domain-specific tasks."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Biological Sciences",
+        "description": "The model is designed to understand amino acid sequences and proteins.",
+        "evidence": "SciDFM is able to conduct college-level scientific reasoning and understand molecules and amino acid sequences."
+      },
+      {
+        "name": "Chemical Sciences",
+        "description": "The model is designed to understand chemical molecules.",
+        "evidence": "SciDFM is able to conduct college-level scientific reasoning and understand molecules and amino acid sequences."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The model integrates knowledge across different scientific disciplines.",
+        "evidence": "SciDFM integrates a mixture-of-experts (MoE) architecture into a transformer-based framework, aiming at enhancing its sophisticated scientific reasoning and understanding capabilities and better modeling similarities and differences across different disciplines."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "SciDFM achieves strong performance on general scientific benchmarks such as SciEval and SciQ, and it reaches a SOTA performance on domain-specific benchmarks among models of similar size.",
+        "evidence": "From the results, we show that SciDFM achieves strong performance on general scientific benchmarks such as SciEval and SciQ, and it reaches a SOTA performance on domain-specific benchmarks among models of similar size."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Galactica-30B",
+        "description": "A large language model designed to store, combine, and reason about scientific knowledge.",
+        "evidence": "Galactica [4] is a large language model that can store, combine and reason about scientific knowledge."
+      },
+      {
+        "name": "Llama3-8B-Instruct",
+        "description": "An open-source powerful language model trained on massive public datasets.",
+        "evidence": "Llama [2] is a series of open-source powerful language models, ranging from 7 billion to 70 billion parameters."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SciEval",
+        "data_description": "A comprehensive and multidisciplinary benchmark designed to assess scientific research capabilities",
+        "usage": "Used to evaluate the general scientific language understanding and reasoning tasks",
+        "evidence": "SciEval [15] is a comprehensive and multidisciplinary benchmark designed to assess the scientific research capabilities of Large Language Models."
+      },
+      {
+        "name": "Mol-Instructions",
+        "data_description": "A specialized dataset containing diverse biomolecular instructions",
+        "usage": "Used to evaluate domain-specific tasks related to molecular and protein understanding",
+        "evidence": "Mol-Instructions [17] is a specialized, meticulously curated dataset containing diverse biomolecular instructions."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "AUC-ROC",
+        "purpose": "Measures the model's ability to predict molecular properties",
+        "application": "Used to evaluate molecular property prediction tasks on MoleculeNet",
+        "evidence": "Table 7 presents the performance of molecular property prediction tasks on MoleculeNet in AUC-ROC scores."
+      },
+      {
+        "name": "ROUGE-L",
+        "purpose": "Measures the model's performance on protein understanding tasks",
+        "application": "Used to evaluate protein understanding tasks on Mol-Instructions",
+        "evidence": "All tasks are evaluated in ROUGE-L score."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "MoleculeNet",
+    "data_description": "A comprehensive benchmark dataset for molecular machine learning",
+    "usage": "Used for molecular property prediction tasks",
+    "evidence": "MoleculeNet [47] is a comprehensive benchmark dataset for molecular machine learning, featuring curated public datasets, standardized evaluation metrics, and open-source implementation of various molecular featurization and learning methods."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited General Science Performance",
+        "description": "SciDFM is weaker in general science tasks compared to some larger models.",
+        "evidence": "We find that SciDFM outperforms all models except Llama3-8B-Instruct on math and biology domain, while it is weak in general science tasks."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": "No explicit future directions were stated in the paper."
+  },
+  "resource_link": {
+    "answer": "https://huggingface.co/OpenDFM/SciDFM-MoE-A5.6B-v1.0",
+    "evidence": "To benefit the broader research community, we open-source SciDFM at https://huggingface.co/OpenDFM/SciDFM-MoE-A5.6B-v1.0."
+  }
+}

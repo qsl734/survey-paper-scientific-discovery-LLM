@@ -1,0 +1,187 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a novel pre-training framework, PIE, to discover implicit equations from unsupervised data, addressing the problem of degenerate solutions in symbolic regression.",
+    "evidence": "To tackle this problem, we introduce a novel pre-training framework—namely, Pre-trained neural symbolic model for Implicit Equation (PIE)—to discover implicit equations from unsupervised data."
+  },
+  "knowledge_gap": {
+    "answer": "Existing symbolic regression approaches struggle with discovering implicit equations from unsupervised data due to the dense distribution of degenerate solutions in the search space.",
+    "evidence": "However, due to the dense distribution of degenerate solutions (e.g., f(x) = xi −xi) in the discrete search space, most existing SR approaches customized for this task fail to achieve satisfactory performance."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of a pre-training framework that formulates implicit equation discovery as a translation task.",
+      "Utilization of a pre-trained language model to infer non-degenerate skeletons of underlying relations.",
+      "The use of Set Transformer for permutation-invariant function approximation in the model architecture."
+    ],
+    "evidence": [
+      "The core idea is that, we formulate the implicit equation discovery on unsupervised scientific data as a translation task.",
+      "Extensive experiments show that, leveraging the prior from a pre-trained model, PIE effectively tackles the problem of degenerate solutions.",
+      "The Set Transformer [15] is designed for permutation-invariant function approximation."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Schmidt and Lipson (2009) Symbolic regression of implicit equations. (Methodological precursors)\n- Chen et al. (2018) Comprehensive learning gene expression programming for automatic implicit equation discovery. (Experimental baselines)",
+    "evidence": "Several enhanced approaches are proposed to tackle this problem [2, 3]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Data Generation",
+        "input": "Randomly generated symbolic equations and sampled data points.",
+        "output": "Pre-training dataset consisting of equation skeletons and corresponding data points.",
+        "evidence": "For the pre-training dataset, each training sample is comprised of a 'skeleton' ˜fk of an implicit equation fk as the target, and a corresponding set of data points Dk = {xn}NDk n=1 as the input."
+      },
+      {
+        "step": "Pre-training",
+        "input": "Pre-training dataset with equation skeletons and data points.",
+        "output": "Trained model parameters.",
+        "evidence": "We train a Transformer model via a randomly generated large pre-training dataset for end-to-end prediction."
+      },
+      {
+        "step": "Inference",
+        "input": "Unseen data points.",
+        "output": "Predicted implicit equation skeletons and constants.",
+        "evidence": "During inference, the decoder computes a probability distribution p( ¯fl+1 | ¯f1:l, z) and selects the next symbol from this distribution iteratively."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Set Transformer",
+        "description": "Used for permutation-invariant function approximation in the model architecture.",
+        "evidence": "The Set Transformer [15] is designed for permutation-invariant function approximation."
+      },
+      {
+        "name": "BFGS algorithm",
+        "description": "Used for inner optimization to recover the constants by maximizing the fitness function.",
+        "evidence": "We use the BFGS algorithm [18] for inner optimization to recover the constants by maximizing the fitness function."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Synthetic dataset",
+        "data_description": "Dataset created via the same process as the dataset used to pre-train the model.",
+        "usage": "Used to evaluate the in-domain performance of the model.",
+        "evidence": "The first dataset, named as the Synthetic dataset, tests the in-domain performance of our model."
+      },
+      {
+        "name": "AI-Feynman dataset",
+        "data_description": "Derived from the well-known Feynman SR database, a real-world dataset.",
+        "usage": "Used to evaluate the out-of-domain generalization ability.",
+        "evidence": "The second dataset is the AI-Feynman dataset, which is derived from the well-known Feynman SR database [11]."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Fitness",
+        "purpose": "Measures the similarity between the learned and ground-truth implicit equations.",
+        "application": "Used to evaluate the performance of different approaches.",
+        "evidence": "Thus, we propose a novel metric to measure the similarity between the learned ˆf and the ground-truth f."
+      },
+      {
+        "name": "Accuracy (Accτ)",
+        "purpose": "Measures the accuracy of the learned implicit equation based on a threshold.",
+        "application": "Used to evaluate the performance of different approaches.",
+        "evidence": "We further propose another metric to measure the accuracy of the learned implicit equation, i.e., Accτ = 1(fitness( ˆf, f) ≥τ)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The core idea of PIE is to learn a prior from a large pre-training dataset to avoid degenerate solutions."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We conduct extensive experiments2 on our framework to 1) evaluate the in-domain performance on a synthetic dataset generated from the same distribution as the pre-training dataset."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for symbolic discovery applicable to various scientific fields.",
+        "evidence": "Symbolic regression (SR)—which learns symbolic equations to describe the underlying relation from input-output pairs—is widely used for scientific discovery."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "PIE significantly outperforms all the existing SR approaches in terms of learning accuracy and robustness to noisy data.",
+        "evidence": "Extensive experiments show that, leveraging the prior from a pre-trained model, PIE effectively tackles the problem of degenerate solutions and significantly outperforms all the enhanced SR approaches."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Genetic Programming (GP)",
+        "description": "Classical SR approach in GP-based paradigm.",
+        "evidence": "We compare our model against four different baselines. We adopt baselines from genetic programming (GP)."
+      },
+      {
+        "name": "Deep Symbolic Optimization (DSO)",
+        "description": "Classical SR approach in RL-based paradigm.",
+        "evidence": "We compare our model against four different baselines. We adopt baselines from genetic programming (GP) and deep symbolic optimization (DSO)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Synthetic dataset",
+        "data_description": "Dataset created via the same process as the dataset used to pre-train the model.",
+        "usage": "Used to evaluate the in-domain performance of the model.",
+        "evidence": "The first dataset, named as the Synthetic dataset, tests the in-domain performance of our model."
+      },
+      {
+        "name": "AI-Feynman dataset",
+        "data_description": "Derived from the well-known Feynman SR database, a real-world dataset.",
+        "usage": "Used to evaluate the out-of-domain generalization ability.",
+        "evidence": "The second dataset is the AI-Feynman dataset, which is derived from the well-known Feynman SR database [11]."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Fitness",
+        "purpose": "Measures the similarity between the learned and ground-truth implicit equations.",
+        "application": "Used to evaluate the performance of different approaches.",
+        "evidence": "Thus, we propose a novel metric to measure the similarity between the learned ˆf and the ground-truth f."
+      },
+      {
+        "name": "Accuracy (Accτ)",
+        "purpose": "Measures the accuracy of the learned implicit equation based on a threshold.",
+        "application": "Used to evaluate the performance of different approaches.",
+        "evidence": "We further propose another metric to measure the accuracy of the learned implicit equation, i.e., Accτ = 1(fitness( ˆf, f) ≥τ)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "data_description": null,
+    "usage": null,
+    "evidence": "No traditional benchmark dataset was used; the datasets were either generated or adapted from existing sources."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scope",
+        "description": "PIE considers a special case of implicit equations in unsupervised scientific discovery.",
+        "evidence": "One limitation of PIE is that, it considers a special case—i.e., the implicit equation—in unsupervised scientific discovery."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Generalize to More Mathematical Relations",
+        "description": "Apply PIE to discover more general mathematical relations, such as data following specific distributions or parametric equations.",
+        "evidence": "Applying PIE to discover more general mathematical relations—e.g., data following specific distributions or parametric equations—is an exciting avenue for further research."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No resource link was provided in the paper."
+  }
+}

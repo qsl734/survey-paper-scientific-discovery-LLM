@@ -1,0 +1,177 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a new novelty metric for large language model (LLM) generations that balances originality and quality, and to evaluate this metric across different models and tasks.",
+    "evidence": "We propose a new novelty metric for LLM generations that balances originality and quality—the harmonic mean of the fraction of n-grams unseen during training and a task-specific quality score."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in evaluating LLM-generated outputs where originality is often measured without considering quality, leading to outputs that may be original but of low quality.",
+    "evidence": "Past work measure novelty by memorization (e.g., whether snippets of the text appear in the training data)... However, originality alone is not sufficient."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a novelty metric that combines originality and quality using the harmonic mean.",
+      "Evaluation of LLM generations on three creative tasks using the proposed metric.",
+      "Analysis of the trade-off between originality and quality in LLM generations."
+    ],
+    "evidence": [
+      "We propose to measure novelty as the harmonic mean of originality (measured by the fraction of unseen n-grams in a generation) and quality according to task-specific measures.",
+      "We evaluate the novelty of generations from two families of open-data models—OLMo and Pythia—across three creativity-focused tasks.",
+      "Our analysis identifies an apparent trade-off between originality and quality in LLM generations."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- McCoy et al. (2023) Their work on measuring n-gram originality inspired the originality component of our novelty metric. (Methodological precursors)\n- Merrill et al. (2024) Their analysis of n-gram originality variation with model size and decoding strategies informed our evaluation approach. (Methodological precursors)",
+    "evidence": "Following McCoy et al. (2023); Elazar et al. (2024); Merrill et al. (2024), we calculate n-gram originality as the proportion of n-grams in a generation that appear in a corpus C."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Define a novelty metric combining originality and quality.",
+        "input": "Fraction of unseen n-grams and task-specific quality scores.",
+        "output": "A single measure of novelty.",
+        "evidence": "We propose to measure novelty as the harmonic mean of originality (measured by the fraction of unseen n-grams in a generation) and quality according to task-specific measures."
+      },
+      {
+        "step": "Evaluate LLM generations on creative tasks.",
+        "input": "Generations from OLMo and Pythia models.",
+        "output": "Novelty scores for each task.",
+        "evidence": "We evaluate the novelty of generations from two families of open-data models—OLMo and Pythia—across three creativity-focused tasks."
+      },
+      {
+        "step": "Analyze the trade-off between originality and quality.",
+        "input": "Novelty scores and model configurations.",
+        "output": "Insights into the trade-off and methods to improve novelty.",
+        "evidence": "Our analysis identifies an apparent trade-off between originality and quality in LLM generations."
+      }
+    ],
+    "tools": [
+      {
+        "name": "WIMBD API",
+        "description": "Used to calculate n-gram originality by indexing pre-training corpora.",
+        "evidence": "We calculate the n-gram originality using the WIMBD API (Elazar et al., 2024), which indexes the Pile (Gao et al., 2020) and Dolma (Soldaini et al., 2024) pre-training corpora."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "TinyStories",
+        "data_description": "A synthetic dataset of short stories for language models.",
+        "usage": "Used to evaluate model-generated story endings.",
+        "evidence": "We use the TinyStories dataset (Eldan & Li, 2023) to evaluate model generated story endings."
+      },
+      {
+        "name": "CoPoet",
+        "data_description": "A dataset of poetic lines with instructions for content and literary devices.",
+        "usage": "Used to evaluate poetry writing tasks.",
+        "evidence": "We use the CoPoet dataset (Chakrabarty et al., 2022), where the model generates a single poetic line in response to a given instruction."
+      },
+      {
+        "name": "MacGyver",
+        "data_description": "A dataset of reasoning problems requiring creative use of items.",
+        "usage": "Used to evaluate creative tool use tasks.",
+        "evidence": "We use the MacGyver dataset (Tian et al., 2024) of reasoning problems that require creative use of items to complete physical objectives."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Measures the balance of originality and quality in LLM outputs.",
+        "application": "Used to compare different models and generation methods.",
+        "evidence": "We report novelty as the harmonic mean of quality (renormalized to a value between 0 and 1) and originality (as measured by the unseen n-gram fraction) of each generation."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We propose to measure novelty as the harmonic mean of originality (measured by the fraction of unseen n-grams in a generation) and quality according to task-specific measures."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We evaluate the novelty of generations from two families of open-data models—OLMo and Pythia—across three creativity-focused tasks."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper evaluates LLMs on creative tasks, bridging computational linguistics and creativity studies.",
+        "evidence": "We evaluate the novelty of generations from two families of open-data models—OLMo and Pythia—across three creativity-focused tasks."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Larger LLMs and post-training improve novelty by enhancing quality at the same level of originality.",
+        "evidence": "Across both families, we find that larger LLMs generate more novel outputs, driven by improved quality at the same level of originality."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Dataset Baseline",
+        "description": "Average human writing used as a baseline for novelty.",
+        "evidence": "We compare the novelty of model generations with the references from each task dataset."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "TinyStories",
+        "data_description": "A synthetic dataset of short stories for language models.",
+        "usage": "Used to evaluate model-generated story endings.",
+        "evidence": "We use the TinyStories dataset (Eldan & Li, 2023) to evaluate model generated story endings."
+      },
+      {
+        "name": "CoPoet",
+        "data_description": "A dataset of poetic lines with instructions for content and literary devices.",
+        "usage": "Used to evaluate poetry writing tasks.",
+        "evidence": "We use the CoPoet dataset (Chakrabarty et al., 2022), where the model generates a single poetic line in response to a given instruction."
+      },
+      {
+        "name": "MacGyver",
+        "data_description": "A dataset of reasoning problems requiring creative use of items.",
+        "usage": "Used to evaluate creative tool use tasks.",
+        "evidence": "We use the MacGyver dataset (Tian et al., 2024) of reasoning problems that require creative use of items to complete physical objectives."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Measures the balance of originality and quality in LLM outputs.",
+        "application": "Used to compare different models and generation methods.",
+        "evidence": "We report novelty as the harmonic mean of quality (renormalized to a value between 0 and 1) and originality (as measured by the unseen n-gram fraction) of each generation."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used.",
+    "usage": "The study used datasets specifically created for the tasks evaluated.",
+    "evidence": "We use the TinyStories dataset (Eldan & Li, 2023), CoPoet dataset (Chakrabarty et al., 2022), and MacGyver dataset (Tian et al., 2024)."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Trade-off Between Originality and Quality",
+        "description": "Increasing originality often comes at the expense of quality, and vice versa.",
+        "evidence": "Our analysis identifies an apparent trade-off between originality and quality in LLM generations."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Explore Methods to Uniformly Improve Novelty",
+        "description": "Research methods that can push the frontier of novelty along both originality and quality dimensions.",
+        "evidence": "Our findings highlight the need for research to identify methods that uniformly push the frontier of novelty along both dimensions."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/YuehHanChen/quantifying-novelty",
+    "evidence": "We share the data and code at https://github.com/YuehHanChen/quantifying-novelty."
+  }
+}

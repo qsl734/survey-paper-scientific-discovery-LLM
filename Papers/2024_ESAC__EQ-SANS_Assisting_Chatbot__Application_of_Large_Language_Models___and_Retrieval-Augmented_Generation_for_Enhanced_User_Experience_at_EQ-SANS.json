@@ -1,0 +1,112 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce an innovative chatbot application, ESAC, that leverages Large Language Models and Retrieval-Augmented Generation technologies to enhance the user experience at the EQ-SANS instrument at Oak Ridge National Laboratory.",
+    "evidence": "This paper introduces an innovative chatbot application that leverages Large Language Models(LLM) and Retrieval-Augmented Generation (RAG) technologies to significantly enhance the user experience at the EQ-SANS, a small-angle neutron scattering instrument at the Spallation Neutron Source of Oak Ridge National Laboratory."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of users needing specific knowledge or training to operate neutron scattering instruments due to their complexity and the limited number of experiments each person may perform annually.",
+    "evidence": "While user interfaces have been improved over time, neutron scattering experiments still require specific knowledge or training by an expert due to the complexity of such advanced instrumentation and the limited number of experiments each person may perform each year."
+  },
+  "novelty": {
+    "answer": [
+      "The development of ESAC, a chatbot that uses LLM and RAG to assist users in writing experimental scripts and obtaining help with scripting commands.",
+      "The integration of a knowledge database that allows the chatbot to retrieve information based on context and query.",
+      "The ability of ESAC to generate full experiment scripts based on user-provided natural language descriptions."
+    ],
+    "evidence": [
+      "To address this need, we developed the EQ-SANS Assisting Chatbot (ESAC). ESAC not only provides descriptions and usage examples of script commands. It is also capable of writing scripts to run experiments based on user-provided natural language descriptions of the desired measurements.",
+      "Initially, we established a knowledge database to enable the LLM to retrieve information based on the context and query.",
+      "Users can describe the details of their experimental plans in natural English by specifying names of samples, position in the sample holders, types of sample holders, duration of measurements and the instrument configurations to be used."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lewis et al. (2021) Retrieval-augmented generation for knowledge-intensive NLP tasks. (Methodological precursors)",
+    "evidence": "In order to provide information specific to EQ-SANS, we designed a chatbot utilizing a Large Language Model (LLM), specifically chatGPT API (https://openai.com), augmented by the Retrieval-Augmented Generation (RAG) method [10]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Establish a knowledge database for the chatbot.",
+        "input": "Knowledge documents containing experimental procedures and Python script functions.",
+        "output": "A vector store with embedded text chunks for information retrieval.",
+        "evidence": "Initially, we established a knowledge database to enable the LLM to retrieve information based on the context and query."
+      },
+      {
+        "step": "Create a vector store using OpenAIEmbeddings and FAISS.",
+        "input": "Text chunks from knowledge documents.",
+        "output": "Efficiently organized and indexed information for retrieval.",
+        "evidence": "Once the text chunks are embedded into numerical vectors, a vector store is established using FAISS package to efficiently organize and index the information."
+      },
+      {
+        "step": "Construct the chatbot object with retrieval and memory capabilities.",
+        "input": "Vector store, ChatOpenAI model, and ConversationBufferMemory.",
+        "output": "A cohesive framework for conversational retrieval.",
+        "evidence": "Finally, a ConversationalRetrievalChain is constructed from the LLM, retriever, and memory components to form a cohesive framework for conversational retrieval."
+      }
+    ],
+    "tools": [
+      {
+        "name": "ChatOpenAI",
+        "description": "Used as the language model for conversational capability.",
+        "evidence": "We used ChatOpenAI (\"gpt-4\") as our language model (LLM) to provide conversational capability to our chatbot."
+      },
+      {
+        "name": "FAISS",
+        "description": "Used to organize and index the information for retrieval.",
+        "evidence": "Once the text chunks are embedded into numerical vectors, a vector store is established using FAISS package to efficiently organize and index the information."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "evidence": "Initially, we established a knowledge database to enable the LLM to retrieve information based on the context and query."
+      },
+      {
+        "name": "Transformation/structurization of user input",
+        "evidence": "Users can describe the details of their experimental plans in natural English by specifying names of samples, position in the sample holders, types of sample holders, duration of measurements and the instrument configurations to be used."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on enhancing user experience with neutron scattering instruments, which are engineering applications.",
+        "evidence": "This paper introduces an innovative chatbot application that leverages Large Language Models(LLM) and Retrieval-Augmented Generation (RAG) technologies to significantly enhance the user experience at the EQ-SANS, a small-angle neutron scattering instrument at the Spallation Neutron Source of Oak Ridge National Laboratory."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": "Not reported in the paper",
+    "baselines": "Not reported in the paper",
+    "benchmark_datasets": "Not reported in the paper",
+    "evaluation_metrics": "Not reported in the paper"
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Script Generation Flaws",
+        "description": "The ESAC-generated script is not without flaws, as it may misinterpret vague user requests.",
+        "evidence": "While not perfect, this chat model provided a full-length script with all the right commands in a correct structure."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhance ESAC with Additional Knowledge Documents",
+        "description": "Future enhancements could include automated assistance with more sophisticated tasks, such as the generation of complete scripts for data acquisition and data reduction.",
+        "evidence": "Looking to the future, ESAC can be enhanced through additional knowledge documents to provide automated assistance with more sophisticated tasks."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://code.ornl.gov/ccd/esac/",
+    "evidence": "The current set of knowledge documents is included in the git repository (https://code.ornl.gov/ccd/esac/)."
+  }
+}

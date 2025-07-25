@@ -1,0 +1,156 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to assess how well large language models (LLMs) can reverse-engineer black-box systems by identifying their underlying structures from both passively observed and actively collected data.",
+    "evidence": "In this paper, we explore how well a large language model (LLM) learns to identify a black-box function from passively observed versus actively collected data."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in understanding the capabilities of LLMs to make inferences from passive observations and actively collect data to refine hypotheses, which has not been systematically evaluated in state-of-the-art LLMs.",
+    "evidence": "However, such controlled methodologies have not yet been applied to evaluating state-of-the-art LLMs, leaving fundamental questions unanswered: 'How well can LLMs make inferences from passive observations?' and 'Can they actively collect data to refine their hypotheses?'."
+  },
+  "novelty": {
+    "answer": [
+      "Formalizing reverse-engineering as a core problem for assessing the scientific discovery capabilities of LLMs.",
+      "Designing three black-box tasks (programs, formal languages, and math equations) for evaluating LLMs.",
+      "Demonstrating that LLMs can perform interventions to obtain more informative data, improving performance.",
+      "Identifying failure modes of overcomplication and overlooking in LLMs and showing how interventions can mitigate these."
+    ],
+    "evidence": [
+      "Drawing inspiration from controlled studies of human cognition, we formalize reverse-engineering as a core problem for assessing the scientific discovery capabilities of LLMs and design three black-box tasks that can be used in such assessment.",
+      "We show that LLMs can perform interventions to obtain more informative data, and that effective intervention mitigates the failure modes of overcomplication and overlooking."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Rule et al. (2024) Symbolic metaprogram search improves learning efficiency and explains rule learning in humans. (Methodological precursors)\n- Yang & Piantadosi (2022) One model for the learning of language. (Experimental baselines)\n- Foster et al. (2019) Variational Bayesian optimal experimental design. (Papers with limitations addressed by this work)",
+    "evidence": "We use list-mapping programs [58] for the Program black-box. The Formal Language black-box is defined by a simple program that generates sequences of symbols. We use the Constant Elasticity of Substitution (CES) formulation from economics [21] as the Math Equation black-box."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Define black-box systems and tasks for reverse-engineering.",
+        "input": "Literature on inductive inference and cognitive science.",
+        "output": "Three black-box function classes: Program, Formal Language, and Mathematical Equation.",
+        "evidence": "We select tasks commonly used to study learning of complex relationships to design our black-box systems and scale them up for evaluation with LLMs."
+      },
+      {
+        "step": "Conduct experiments with LLMs on reverse-engineering tasks.",
+        "input": "LLMs like GPT-4o and observational data.",
+        "output": "Performance data on LLMs' ability to reverse-engineer black-box systems.",
+        "evidence": "We systematically study LLMs on three reverse-engineering tasks inspired by the cognitive-science literature."
+      },
+      {
+        "step": "Evaluate the impact of interventions on LLM performance.",
+        "input": "Intervention data collected by LLMs.",
+        "output": "Improved performance metrics and analysis of failure modes.",
+        "evidence": "We show that LLMs can perform interventions to obtain more informative data, and that effective intervention mitigates the failure modes of overcomplication and overlooking."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used for reverse-engineering and as a judge in experiments.",
+        "evidence": "We use different versions of GPT-4o [31] for reverse-engineering (gpt-4o-2024-08-06, dubbed as reverse-engineer LLM) and as the judge (gpt-4o-2024-05-13, dubbed as the judge LLM)."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Descriptive Score",
+        "purpose": "Measures the quality of LLM-generated hypotheses against ground truth.",
+        "application": "Used for Program and Formal Language black-box types.",
+        "evidence": "We use descriptive evaluation for Program and Formal Language."
+      },
+      {
+        "name": "1 - RMSE",
+        "purpose": "Measures the accuracy of inferred parameters against ground truth.",
+        "application": "Used for Math Equation black-box type.",
+        "evidence": "As the Math Equation does not require verbalization beyond the weights and ratio, we report the flipped root mean square error (1 - RMSE) between the inferred parameters and ground truth."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper explores the intersection of AI, cognitive science, and reverse-engineering.",
+        "evidence": "We systematically study LLMs on three reverse-engineering tasks inspired by the cognitive-science literature."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "LLMs struggle with passive observations but improve with interventions, yet still fall short of Bayesian inference.",
+        "evidence": "Through extensive experiments, we show that LLMs are limited in their ability to make inferences from observations, leading to performance plateaus when compared to Bayesian models."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Bayesian Inference",
+        "description": "Optimal reference model for reverse-engineering tasks.",
+        "evidence": "We compare the GPT-4o performance (blue) to Bayesian inference (green)."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Descriptive Score",
+        "purpose": "Measures the quality of LLM-generated hypotheses against ground truth.",
+        "application": "Used for Program and Formal Language black-box types.",
+        "evidence": "We use descriptive evaluation for Program and Formal Language."
+      },
+      {
+        "name": "1 - RMSE",
+        "purpose": "Measures the accuracy of inferred parameters against ground truth.",
+        "application": "Used for Math Equation black-box type.",
+        "evidence": "As the Math Equation does not require verbalization beyond the weights and ratio, we report the flipped root mean square error (1 - RMSE) between the inferred parameters and ground truth."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Task Scope",
+        "description": "The study only covers three types of black-box systems, which may not generalize to other tasks.",
+        "evidence": "However, the three black-box types we studied represent only a narrow slice of possible tasks, even within controlled settings."
+      },
+      {
+        "name": "Idealized Conditions",
+        "description": "The experiments assume noise-free black-boxes and fully trustworthy data, which is not realistic.",
+        "evidence": "In addition, we have assumed idealized, noise-free black-boxes and fully trustworthy data—a condition that is rarely met in real scientific practices."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand Evaluation Suite",
+        "description": "Develop a broader range of black-box tasks to better assess LLMs' reverse-engineering abilities.",
+        "evidence": "A more comprehensive assessment will require expanding and scaling up the evaluation suite to probe LLMs’ reverse-engineering abilities across a broader spectrum of scenarios."
+      },
+      {
+        "name": "Test LLM Robustness",
+        "description": "Evaluate LLM performance in the presence of noise and uncertainty.",
+        "evidence": "An important next step is to relax this assumption and rigorously test LLM robustness in the presence of noise and uncertainty."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/JiayiGeng/reverse-engineering",
+    "evidence": "Codes are available at https://github.com/JiayiGeng/reverse-engineering."
+  }
+}

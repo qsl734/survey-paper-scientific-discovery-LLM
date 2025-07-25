@@ -1,0 +1,168 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to develop LitLinker, an interactive system powered by a large language model, to facilitate the ideation of interdisciplinary contexts for teaching literature in elementary schools.",
+    "evidence": "In this paper, we develop LitLinker via an iterative design process involving 13 teachers to facilitate the ideation of interdisciplinary contexts for teaching literature."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge that neither conversational applications of LLMs nor existing LLM-powered tools can offer a comprehensive solution for ideating interdisciplinary contexts for literature teaching.",
+    "evidence": "However, neither conversational applications of LLMs (e.g., ChatGPT) nor these LLM-powered tools can offer a comprehensive solution for the challenges at hand."
+  },
+  "novelty": {
+    "answer": [
+      "LitLinker is an interactive system that supports the ideation of interdisciplinary contexts for literature classes.",
+      "The system uses a user-centered design approach involving 13 Chinese literature teachers.",
+      "LitLinker provides a structured workflow that aligns with teachers' habitual practices in interdisciplinary context ideation.",
+      "The system includes a Context Pool with original contexts derived from popular words and textbooks."
+    ],
+    "evidence": [
+      "First, we introduce LitLinker, an interactive system that supports the ideation of interdisciplinary contexts for literature classes.",
+      "To develop LitLinker, we follow a user-centered design approach that involves in total 13 Chinese literature teachers.",
+      "LitLinker aligns its behavior with teachers’ habitual practices in interdisciplinary ideation.",
+      "The Informal Education Database contains 113 original contexts derived from a famous Chinese journal Yao Wen Jiao Zi’s 'Annual Popular Words (2008-2023)'."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Hong et al. (2024) MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework. (Methodological precursors)\n- Lewis et al. (2020) Retrieval-augmented generation for knowledge-intensive NLP tasks. (Methodological precursors)",
+    "evidence": "Inspired by [27, 58], LitLinker aligns its behavior with teachers’ habitual practices in interdisciplinary ideation (DP1). We designed an LLM-based multi-agent system to simulate human collaboration. Following the multi-agent collaborative framework by Hong et al. [26], we decompose the task into multiple steps, allowing agents to use tools when necessary and interact with the user for feedback. The effectiveness of the content generated through this architecture relies on a comprehensive Context Pool (DP4) and carefully designed prompts (DP2, DP3), which will be introduced in Section 4.2.2 and Section 4.2.3, respectively."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Select interdisciplinary subjects and reading materials for exploration.",
+        "input": "User-selected subjects and reading materials.",
+        "output": "Initial configuration for context exploration.",
+        "evidence": "To initiate the exploration process, users are required to select the interdisciplinary subjects and reading materials they wish to explore."
+      },
+      {
+        "step": "Generate recommended contexts based on selected materials.",
+        "input": "Selected subjects and reading materials.",
+        "output": "A series of context cards with detailed descriptions.",
+        "evidence": "Upon clicking the 'Generate Recommended Contexts' button, LitLinker displays a series of context cards."
+      },
+      {
+        "step": "Analyze texts based on selected context.",
+        "input": "Selected context and reading materials.",
+        "output": "In-depth single-text analysis and pairwise comparisons.",
+        "evidence": "Texts that are most relevant to the selected context are displayed at the top in Texts Exploration View, with each reading material accompanied by the analysis."
+      },
+      {
+        "step": "Generate structured ideation outcomes.",
+        "input": "Selected contexts and analyzed texts.",
+        "output": "A comprehensive course plan with introduction and activities.",
+        "evidence": "Subsequently, users are prompted to enter the 'Expected number of lessons' and select the 'Generate Introduction and Course Plan' to create a comprehensive course plan."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GLM-4",
+        "description": "Used as the LLM to power LitLinker for generating contexts and analyses.",
+        "evidence": "LitLinker is a web application powered by the LLM GLM-4."
+      },
+      {
+        "name": "Zhipu embedding-3 model",
+        "description": "Used for embedding texts and contexts for retrieval.",
+        "evidence": "Before the application is implemented, all original contexts and reading materials are embedded using the Zhipu embedding-3 model."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "LitLinker can recommend interdisciplinary topics and contextualize them with literary elements."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "LitLinker produces a lesson plan that includes a course outline, an introductory overview, and recommended classroom activities."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper focuses on integrating interdisciplinary contexts into literature teaching.",
+        "evidence": "Teaching literature under interdisciplinary (e.g., science, art) contexts that connect reading materials has become popular in elementary schools."
+      },
+      {
+        "name": "Social Sciences",
+        "description": "The methodology targets educational practices and teacher support.",
+        "evidence": "We develop LitLinker via an iterative design process involving 13 teachers to facilitate the ideation of interdisciplinary contexts for teaching literature."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "LitLinker leads to deeper integration of different subjects in the outcome lesson plan, is deemed significantly more satisfying and efficient, and significantly reduces task workload.",
+        "evidence": "The quantitative results indicate that LitLinker leads to deeper integration of different subjects in the outcome lesson plan, is deemed significantly more satisfying and efficient, and significantly reduces task workload."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "LLM chatbot",
+        "description": "Used as a comparison to evaluate LitLinker's effectiveness.",
+        "evidence": "A within-subjects study (N=16) shows that compared to an LLM chatbot, LitLinker can improve the integration depth of different subjects and reduce workload in this ideation task."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "None",
+        "data_description": "No traditional benchmark datasets were used.",
+        "usage": "Not applicable.",
+        "evidence": "Not reported in the paper."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Satisfaction",
+        "purpose": "Measures user satisfaction with the system.",
+        "application": "Used to evaluate user experience with LitLinker.",
+        "evidence": "The quantitative results indicate that LitLinker is deemed significantly more satisfying."
+      },
+      {
+        "name": "Efficiency",
+        "purpose": "Measures the efficiency of the system in reducing workload.",
+        "application": "Used to evaluate the reduction in task workload with LitLinker.",
+        "evidence": "LitLinker is deemed significantly more efficient and significantly reduces task workload."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Alignment with Educational Objectives",
+        "description": "The outputs from LitLinker were less appropriate in terms of aligning the contexts with educational objectives compared to the baseline.",
+        "evidence": "This indicates that the outputs from LitLinker were less appropriate in terms of aligning the contexts with educational objectives compared to the baseline."
+      },
+      {
+        "name": "System Misinterpretation",
+        "description": "The system occasionally provided excessive or inaccurate interpretations of the texts.",
+        "evidence": "The system occasionally provided excessive or inaccurate interpretations of the texts, leading to lower appropriateness of context scores."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Improve Context Diversity",
+        "description": "Collect more diverse and suitable contexts from various sources to enhance the system's recommendations.",
+        "evidence": "Future work could consider identifying suitable types of informal contexts with teachers and collecting more such contexts from diverse sources."
+      },
+      {
+        "name": "Enhance User Customization",
+        "description": "Allow teachers to easily customize the system based on their needs to achieve more effective collaboration with AI.",
+        "evidence": "We look forward to building an extensible version of LitLinker in which teachers without programming skills can easily customize the system based on their needs."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/fanhaoxiang1/LitLinker",
+    "evidence": "It is open-sourced and available on https://github.com/fanhaoxiang1/LitLinker"
+  }
+}

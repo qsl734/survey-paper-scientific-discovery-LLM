@@ -1,0 +1,182 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce Perovskite-R1, a specialized large language model (LLM) designed for the discovery and design of perovskite solar cell (PSC) precursor additives. The authors aim to provide intelligent and systematic support for material design and screening in the field of perovskite photovoltaics.",
+    "evidence": "To address this gap, we introduce Perovskite-R1, a specialized large language model (LLM) with advanced reasoning capabilities tailored for the discovery and design of PSC precursor additives."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of efficiently accessing and utilizing the rapidly growing body of knowledge in perovskite solar cell research, which is hindered by the complex interplay of materials, processes, and device architectures.",
+    "evidence": "However, the explosive growth of scientific literature and the complex interplay of materials, processes, and device architectures make it increasingly difficult for researchers to efficiently access, organize, and utilize domain knowledge in this rapidly evolving field."
+  },
+  "novelty": {
+    "answer": [
+      "Development of Perovskite-R1, a domain-specific LLM with advanced reasoning capabilities for PSC precursor additive discovery.",
+      "Integration of a comprehensive library of 33,269 candidate materials and 1,232 high-quality scientific publications to construct a domain-specific instruction-tuning dataset.",
+      "Use of automated question–answer generation and chain-of-thought reasoning to fine-tune the QwQ-32B model, resulting in Perovskite-R1.",
+      "Experimental validation of model-proposed strategies confirming their effectiveness in improving material stability and performance."
+    ],
+    "evidence": [
+      "To address this gap, we introduce Perovskite-R1, a specialized large language model (LLM) with advanced reasoning capabilities tailored for the discovery and design of PSC precursor additives.",
+      "By systematically mining and curating 1,232 high-quality scientific publications and integrating a comprehensive library of 33,269 candidate materials, we constructed a domain-specific instruction-tuning dataset using automated question–answer generation and chain-of-thought reasoning.",
+      "Fine-tuning the QwQ-32B model on this dataset resulted in Perovskite-R1, which can intelligently synthesize literature insights and generate innovative and practical solutions for defect passivation and the selection of precursor additives.",
+      "Experimental validation of several model-proposed strategies confirms their effectiveness in improving material stability and performance."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Wei et al. (2022) Chain-of-Thought prompting led to significant improvements in mathematical reasoning tasks for large models. (Methodological precursors)\n- Jaech et al. (2024) OpenAI o1 model was used for generating high-quality question–answer pairs. (Methodological precursors)",
+    "evidence": "For example, the introduction of Chain-of-Thought (CoT) prompting in 2022 led to significant improvements in mathematical reasoning tasks for large models [18].\nWe employ the OpenAI o1 API to automatically generate high-quality question–answer pairs from these text segments."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construction of a high-quality instruction fine-tuning dataset.",
+        "input": "1,232 peer-reviewed research articles and a library of 33,269 candidate materials.",
+        "output": "An instruction-tuning dataset with deep semantic structure and scientific logic.",
+        "evidence": "The foundation of Perovskite-R1 lies in the construction of a high-quality instruction fine-tuning dataset specifically oriented toward the task of defect passivation in perovskite precursors."
+      },
+      {
+        "step": "Fine-tuning the QwQ-32B model using the LoRA strategy.",
+        "input": "CoT-enhanced dataset.",
+        "output": "Perovskite-R1 model with specialized expertise in perovskite materials.",
+        "evidence": "For the model training stage, we select the powerful QwQ-32B model as the base language model and perform efficient parameter fine-tuning using the LoRA technique on the aforementioned CoT-enhanced dataset."
+      },
+      {
+        "step": "Designing structured prompts to guide the model.",
+        "input": "Specific tasks such as experimental design and material screening.",
+        "output": "Model-generated recommendations implemented as practical experimental protocols.",
+        "evidence": "To enable controlled application of the model in real-world scientific research tasks, we develop a structured prompt system tailored to the research workflow."
+      },
+      {
+        "step": "Experimental validation of model-generated recommendations.",
+        "input": "Recommendations generated by Perovskite-R1.",
+        "output": "Synthesis and validation in the laboratory.",
+        "evidence": "Ultimately, under the guidance of materials chemistry experts, we design several experimental protocols based on the recommendations generated by Perovskite-R1 and carried out corresponding synthesis and validation in the laboratory."
+      }
+    ],
+    "tools": [
+      {
+        "name": "QwQ-32B model",
+        "description": "Used as the base language model for fine-tuning with the CoT-enhanced dataset.",
+        "evidence": "For the model training stage, we select the powerful QwQ-32B model as the base language model and perform efficient parameter fine-tuning using the LoRA technique on the aforementioned CoT-enhanced dataset."
+      },
+      {
+        "name": "OpenAI o1 API",
+        "description": "Used to automatically generate high-quality question–answer pairs from text segments.",
+        "evidence": "We employ the OpenAI o1 API to automatically generate high-quality question–answer pairs from these text segments."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Leveraging the capabilities of Perovskite-R1, we systematically identify a set of potential defect compensation strategies for perovskite precursor additives."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Ultimately, under the guidance of materials chemistry experts, we design several experimental protocols based on the recommendations generated by Perovskite-R1 and carried out corresponding synthesis and validation in the laboratory."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Chemical Sciences",
+        "description": "The paper focuses on the discovery and design of precursor additives for perovskite solar cells.",
+        "evidence": "Perovskite-R1 aims to provide intelligent and systematic support for material design and screening in the field of perovskite photovoltaics."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The work involves the application of a domain-specific LLM for intelligent material discovery in perovskite photovoltaics.",
+        "evidence": "Our work demonstrates the potential of domain-adapted LLMs in accelerating materials discovery and provides a closed-loop framework for intelligent, data-driven advancements in perovskite photovoltaic research."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Perovskite-R1 consistently outperforms competing models across all difficulty categories, achieving a 10% enhancement in accuracy over the original QwQ-32B.",
+        "evidence": "As summarized in Table 1, Perovskite-R1 consistently outperforms the competing models across all difficulty categories, with particularly excelling in challenging, domain-specific tasks. Notably, Perovskite-R1 has achieved a 10% enhancement in accuracy over the original QwQ-32B."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "QwQ-32B",
+        "description": "Original model used as a baseline for comparison.",
+        "evidence": "Notably, Perovskite-R1 has achieved a 10% enhancement in accuracy over the original QwQ-32B."
+      },
+      {
+        "name": "DeepSeek-R1",
+        "description": "A competing language model used for comparison.",
+        "evidence": "We subsequently benchmark Perovskite-R1 against several prominent language models, including DeepSeek-R1, Gemini-2.5-Flash-Thinking, and others."
+      },
+      {
+        "name": "Gemini-2.5-Flash-Thinking",
+        "description": "A competing language model used for comparison.",
+        "evidence": "We subsequently benchmark Perovskite-R1 against several prominent language models, including DeepSeek-R1, Gemini-2.5-Flash-Thinking, and others."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Perovskite benchmark dataset",
+        "data_description": "A comprehensive dataset focused on perovskite research, comprising a wide range of carefully curated question–answer pairs.",
+        "usage": "Used as a standardized evaluation platform for benchmarking Perovskite-R1 against other models.",
+        "evidence": "To rigorously evaluate the effectiveness of our model and enable fair comparison with other state-of-the-art language models, we constructed a comprehensive benchmark dataset focused on perovskite research."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the correctness of model predictions.",
+        "application": "Used to compare Perovskite-R1's performance against other models across different difficulty categories.",
+        "evidence": "As summarized in Table 1, Perovskite-R1 consistently outperforms the competing models across all difficulty categories."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Perovskite benchmark dataset",
+    "data_description": "A comprehensive dataset focused on perovskite research, comprising a wide range of carefully curated question–answer pairs.",
+    "usage": "Used as a standardized evaluation platform for benchmarking Perovskite-R1 against other models.",
+    "evidence": "To rigorously evaluate the effectiveness of our model and enable fair comparison with other state-of-the-art language models, we constructed a comprehensive benchmark dataset focused on perovskite research."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Depth of Output",
+        "description": "The depth of the model's output is limited by the phrasing of the question, often remaining superficial.",
+        "evidence": "Although Perovskite-R1 can accurately recognize terminology and provide reasonable answers in single-turn question answering, the depth of its output is limited by the phrasing of the question, often remaining superficial."
+      },
+      {
+        "name": "Control over Experimental Design",
+        "description": "The model primarily generates experimental protocols through text prompts, requiring manual post-processing for parameter settings.",
+        "evidence": "Currently, the model primarily generates experimental protocols through text prompts. However, parameter settings such as molar concentration, additive ratio, and spin-coating speed still require manual post-processing."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand Material System Coverage",
+        "description": "Broaden the application boundaries of the model to encompass a wider range of tasks, such as interface engineering design and solvent system optimization.",
+        "evidence": "In the future, we aim to broaden the application boundaries of the model to encompass a wider range of tasks, such as interface engineering design, solvent system optimization, stability regulation strategies, and the co-design of device architectures."
+      },
+      {
+        "name": "Enhance Multi-task Capabilities",
+        "description": "Improve the model's ability to handle multiple tasks simultaneously, enhancing its utility in diverse research scenarios.",
+        "evidence": "Looking ahead, the development of Perovskite-R1 will focus on several key directions, including expanding the coverage of material systems, enhancing multi-task capabilities, and improving the synthesizability and experimental closed-loop capability of generated solutions."
+      },
+      {
+        "name": "Improve Synthesizability and Experimental Closed-loop Capability",
+        "description": "Enhance the model's ability to generate solutions that are readily synthesizable and can be validated in experimental settings.",
+        "evidence": "Looking ahead, the development of Perovskite-R1 will focus on several key directions, including expanding the coverage of material systems, enhancing multi-task capabilities, and improving the synthesizability and experimental closed-loop capability of generated solutions."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/hiyouga/LLaMA-Factory",
+    "evidence": "The complete repository is publicly available at: https://github.com/hiyouga/LLaMA-Factory, released under Apache License 2.0."
+  }
+}

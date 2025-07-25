@@ -1,20 +1,20 @@
 {
   "objective": {
-    "answer": "The primary objective of the paper is to explore the hypothesis that hallucinations can improve Large Language Models (LLMs) in drug discovery by incorporating hallucinated text into prompts for specific tasks.",
-    "evidence": "In this paper, we come up with the hypothesis that hallucinations can improve LLMs in drug discovery."
+    "answer": "The primary objective of the paper is to explore the hypothesis that hallucinations can improve Large Language Models (LLMs) in drug discovery by using LLMs to describe SMILES strings of molecules in natural language and incorporating these descriptions into prompts for specific drug discovery tasks.",
+    "evidence": "In this paper, we come up with the hypothesis that hallucinations can improve LLMs in drug discovery. To verify this hypothesis, we use LLMs to describe the SMILES string of molecules in natural language and then incorporate these descriptions as part of the prompt to address specific tasks in drug discovery."
   },
   "knowledge_gap": {
-    "answer": "The paper addresses the unexplored potential of leveraging hallucinations in LLMs for drug discovery, as opposed to the common focus on mitigating hallucinations.",
+    "answer": "The paper addresses the unexplored potential of leveraging hallucinations in LLMs for drug discovery, as opposed to the traditional focus on mitigating hallucinations.",
     "evidence": "We acknowledge that the exploration of leveraging hallucination, rather than mitigating it, remains unexplored."
   },
   "novelty": {
     "answer": [
-      "Systematic investigation into how hallucinations affect LLMs in drug discovery.",
-      "Validation of the hypothesis that hallucinations can enhance LLM performance in drug discovery tasks.",
-      "Empirical experiments and case studies examining factors influencing hallucinations and their impact on performance."
+      "The paper conducts the first systematic investigation into how hallucinations affect LLMs in drug discovery.",
+      "The study validates the hypothesis that hallucinations can enhance LLM performance in drug discovery tasks.",
+      "The research examines factors influencing hallucinations and their impact on performance, uncovering reasons behind this phenomenon."
     ],
     "evidence": [
-      "We conduct the first systematic investigation into how hallucinations affect LLMs in drug discovery.",
+      "We conduct the first systematic investigation into how hallucinations affect LLMs in drug discovery, providing valuable insights for future research on harnessing LLMs for pharmaceutical innovation.",
       "By evaluating seven instruction-tuned LLMs, we validate the hypothesis that hallucinations can enhance LLM performance in drug discovery tasks.",
       "Through empirical experiments and a case study, we examine the factors that influence hallucinations, assess their impact on performance, and uncover the reasons behind this phenomenon."
     ]
@@ -26,15 +26,15 @@
   "method": {
     "steps": [
       {
-        "step": "Generate textual descriptions of molecules based on SMILES strings.",
-        "input": "SMILES strings of molecules.",
-        "output": "Textual descriptions containing hallucinations.",
+        "step": "Generate textual descriptions of molecules based on SMILES strings using LLMs.",
+        "input": "SMILES strings of molecules",
+        "output": "Textual descriptions containing hallucinations",
         "evidence": "We first use LLMs to generate textual descriptions of molecules based on their SMILES strings."
       },
       {
-        "step": "Incorporate generated text into the prompt for LLMs to predict specific molecular properties.",
-        "input": "Generated text and SMILES strings.",
-        "output": "Predictions of molecular properties.",
+        "step": "Incorporate generated descriptions into prompts for LLMs to predict specific molecular properties.",
+        "input": "Generated descriptions and SMILES strings",
+        "output": "Predictions of specific molecular properties",
         "evidence": "We then add the text descriptions, along with the SMILES strings of molecules, to the model’s input and provide task-specific instructions to predict whether a molecule possesses a specific function."
       }
     ],
@@ -42,19 +42,14 @@
       {
         "name": "MolT5",
         "description": "Used to generate reference descriptions of molecules for comparison.",
-        "evidence": "We use MolT5 to translate molecules into natural language as the reference description."
-      },
-      {
-        "name": "HHM-2.1-Open Model",
-        "description": "Used to evaluate factual consistency and measure hallucination levels.",
-        "evidence": "To evaluate the generated text and verify whether it contains hallucinations, we use HHM-2.1-Open Model."
+        "evidence": "For comparison, we use MolT5 to translate molecules into natural language as the reference description."
       }
     ],
     "benchmark_datasets": [
       {
         "name": "MoleculeNet",
-        "data_description": "Contains datasets related to classifying and inferring the ability of molecules regarding biophysical and physiological features.",
-        "usage": "Used for evaluating LLM performance on drug discovery tasks.",
+        "data_description": "Datasets related to classifying and inferring the ability of molecules regarding biophysical and physiological features.",
+        "usage": "Used for evaluating model performance on drug discovery tasks.",
         "evidence": "We select five datasets from the MoleculeNet benchmark."
       }
     ],
@@ -62,8 +57,8 @@
       {
         "name": "ROC-AUC",
         "purpose": "Measures the model's ability to distinguish between classes.",
-        "application": "Used to evaluate model performance on classification tasks.",
-        "evidence": "We evaluate model performance using ROC-AUC."
+        "application": "Used to evaluate model performance across different tasks.",
+        "evidence": "We evaluate model performance using ROC-AUC, following Wu et al. [2018]."
       }
     ]
   },
@@ -90,7 +85,7 @@
       },
       {
         "name": "Interdisciplinary Sciences",
-        "description": "The study combines elements of natural language processing and drug discovery.",
+        "description": "The study integrates concepts from natural language processing and drug discovery.",
         "evidence": "LLMs have not only been extensively applied in daily life to address real-world tasks but also increasingly utilized as tools or agents in scientific domains, including materials science, biology, and chemistry."
       }
     ]
@@ -98,8 +93,8 @@
   "performance_summary": {
     "performance_summary": [
       {
-        "summary": "LLMs with hallucinated text achieved better performance, with Llama-3.1-8B showing an 18.35% gain in ROC-AUC compared to the baseline.",
-        "evidence": "Llama-3.1-8B achieves an 18.35% gain in ROC-AUC compared to the SMILES baseline."
+        "summary": "Llama-3.1-8B achieves an 18.35% gain in ROC-AUC compared to the SMILES baseline and a 13.79% gain compared to the MolT5 baseline.",
+        "evidence": "Notably, Llama-3.1-8B achieves an 18.35% gain in ROC-AUC compared to the SMILES baseline and a 13.79% gain compared to the MolT5 baseline."
       }
     ],
     "baselines": [
@@ -111,14 +106,14 @@
       {
         "name": "MolT5",
         "description": "Baseline using descriptions generated by MolT5.",
-        "evidence": "The [Description] is set to the description of the molecule generated by MolT5."
+        "evidence": "The [Description] is set to the description of the molecule generated by MolT5, allowing the LLM to access both the molecular structure and a reference description of the molecule in natural language."
       }
     ],
     "benchmark_datasets": [
       {
         "name": "MoleculeNet",
-        "data_description": "Contains datasets related to classifying and inferring the ability of molecules regarding biophysical and physiological features.",
-        "usage": "Used for evaluating LLM performance on drug discovery tasks.",
+        "data_description": "Datasets related to classifying and inferring the ability of molecules regarding biophysical and physiological features.",
+        "usage": "Used for evaluating model performance on drug discovery tasks.",
         "evidence": "We select five datasets from the MoleculeNet benchmark."
       }
     ],
@@ -126,15 +121,15 @@
       {
         "name": "ROC-AUC",
         "purpose": "Measures the model's ability to distinguish between classes.",
-        "application": "Used to evaluate model performance on classification tasks.",
-        "evidence": "We evaluate model performance using ROC-AUC."
+        "application": "Used to evaluate model performance across different tasks.",
+        "evidence": "We evaluate model performance using ROC-AUC, following Wu et al. [2018]."
       }
     ]
   },
   "benchmark_dataset": {
     "name": "MoleculeNet",
-    "description": "Contains datasets related to classifying and inferring the ability of molecules regarding biophysical and physiological features.",
-    "usage": "Used for evaluating LLM performance on drug discovery tasks.",
+    "description": "Datasets related to classifying and inferring the ability of molecules regarding biophysical and physiological features.",
+    "usage": "Used for evaluating model performance on drug discovery tasks.",
     "evidence": "We select five datasets from the MoleculeNet benchmark."
   },
   "limitations": {
@@ -142,12 +137,7 @@
       {
         "name": "Limited Generalizability",
         "description": "The study's findings may not generalize to other domains beyond drug discovery.",
-        "evidence": "Our research sheds light on the potential use of hallucinations for LLMs and offers new perspectives for future research leveraging LLMs in drug discovery."
-      },
-      {
-        "name": "Dependence on Model Size",
-        "description": "The performance improvement with hallucinations is influenced by the size of the LLM.",
-        "evidence": "As model size increases, performance also improves gradually from the 1B to the 8B models when compared to the MolT5 baseline."
+        "evidence": "While generation temperature has minimal impact on the observed improvements, model size plays a significant role, with larger models demonstrating greater potential for improvement with hallucinations."
       }
     ]
   },
@@ -155,13 +145,8 @@
     "future_directions": [
       {
         "name": "Explore Hallucinations in Other Domains",
-        "description": "Investigate the potential of hallucinations in LLMs for applications beyond drug discovery.",
-        "evidence": "Future research could build on these findings to further investigate the effects of hallucinations and explore the underlying mechanisms in depth."
-      },
-      {
-        "name": "Optimize Hallucination Generation",
-        "description": "Develop methods to optimize the generation of beneficial hallucinations for LLMs.",
-        "evidence": "We further explore factors that may influence hallucinations and the performance of LLMs."
+        "description": "Investigate the potential of hallucinations in LLMs for creativity in other scientific domains.",
+        "evidence": "Our work provides a new perspective on leveraging hallucinations for LLMs and highlights their potential for fostering creativity in AI."
       }
     ]
   },

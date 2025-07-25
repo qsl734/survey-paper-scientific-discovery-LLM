@@ -1,0 +1,127 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a self-service platform for secure, end-to-end selection, training, evaluation, and private hosting of user-trained large language models (LLMs). The platform aims to make customized LLMs more accessible and affordable while ensuring security and compliance with regulations like HIPAA.",
+    "evidence": "In this paper, we present a self-service platform for the secure end-to-end selection, training, evaluation, and private hosting of user-trained LLMs."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of high resource costs and complexity associated with deploying local LLMs, which impedes their application to valuable use cases.",
+    "evidence": "The rate of local LLM community development, combined with a diverse set of techniques, tools, and development options, has created a learning curve that continues to grow steeper by the day, impeding the application of local LLMs to potentially valuable use cases."
+  },
+  "novelty": {
+    "answer": [
+      "The platform supports multi-LoRA inference, allowing hundreds of private models to be served in isolation from the same GPU, providing efficiencies over standalone model deployments.",
+      "The system integrates with Cresco, an agent-based framework, to establish a secure computational network overlay, ensuring end-to-end encryption and multi-tenant isolation.",
+      "The platform provides a self-service interface for dataset curation, model configuration, and secure hosting of custom LLMs and adapters."
+    ],
+    "evidence": [
+      "The multi-LoRA inference capabilities of LoRAX allow us to serve hundreds of private models in isolation from the same GPU, providing considerable efficiencies over standalone model deployments.",
+      "To satisfy our security, accessibility, and active resource monitoring requirements, we make use of Cresco, an agent-based framework, to establish a computational network overlay between islands of resources.",
+      "Our system provides interactive dataset curation interfaces, model configuration, composition tools, and agent-based methods for the secure hosting of custom LLMs and associated adapters."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Chen et al. (2023) Punica: Multi-Tenant LoRA Serving. (Methodological precursors)\n- Sheng et al. (2023) S-lora: Serving thousands of concurrent lora adapters. (Methodological precursors)",
+    "evidence": "As previously mentioned, in late 2023, researchers representing Punica and S-LoRA projects demonstrated the ability to host thousands of independent adapters concurrently from the same base model."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Model inference using LoRAX server",
+        "input": "User requests with specific model configurations",
+        "output": "Inference results from selected models",
+        "evidence": "We make use of the LoRAX server for model inference. LoRAX supports multi-LoRA inference through a custom REST API, Python client library, and OpenAI-compatible API."
+      },
+      {
+        "step": "Training of custom LoRA adapters",
+        "input": "Unstructured text and structured JSON datasets",
+        "output": "Trained LoRA adapters",
+        "evidence": "LLM Factory enables efficient training of custom LoRA adapters, supporting both pretraining on unstructured text and generation of full adapters trained on structured JSON datasets."
+      },
+      {
+        "step": "Secure computational network setup using Cresco",
+        "input": "Isolated resources and data",
+        "output": "Secure, encrypted communication and resource management",
+        "evidence": "To satisfy our security, accessibility, and active resource monitoring requirements, we make use of Cresco, an agent-based framework, to establish a computational network overlay between islands of resources."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LoRAX",
+        "description": "Used for model inference and multi-LoRA support",
+        "evidence": "We make use of the LoRAX server for model inference. LoRAX supports multi-LoRA inference through a custom REST API, Python client library, and OpenAI-compatible API."
+      },
+      {
+        "name": "ClearML",
+        "description": "Used for orchestrating training and hyperparameter tuning",
+        "evidence": "This system utilizes ClearML, a job management service to orchestrate training across standalone server training, local clusters, or cloud-based resources."
+      },
+      {
+        "name": "Cresco",
+        "description": "Used to establish a secure computational network overlay",
+        "evidence": "To satisfy our security, accessibility, and active resource monitoring requirements, we make use of Cresco, an agent-based framework, to establish a computational network overlay between islands of resources."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "evidence": "We began by creating an internal web interface that stores histories of chat sessions and gives the user the ability to adjust the system prompt, maximum output tokens, temperature, and the weights of selected adapters."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "evidence": "Embeddings provide a mechanism for enriching responses by injecting domain specific knowledge on a per-query basis."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The platform is designed to provide secure, customizable development and usage of local LLMs.",
+        "evidence": "In this paper, we present a self-service platform for the secure end-to-end selection, training, evaluation, and private hosting of user-trained LLMs."
+      },
+      {
+        "name": "Health Sciences",
+        "description": "The platform supports HIPAA compliance for biomedical informatics applications.",
+        "evidence": "Locally trained LLMs are well-suited for biomedical informatic applications that require stringent security and data access controls."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The system can handle nearly 200 requests per second across eight independent GPUs.",
+        "evidence": "Scaling inference services across eight independent GPUs on a single node, we can service nearly 200 request per second."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Resource Costs",
+        "description": "The operational cost of running hundreds or thousands of unique models is financially prohibitive for many use cases.",
+        "evidence": "The operational cost of running hundreds or thousands of unique models is financially prohibitive for many use cases."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Development of tools for dataset and adapter composition",
+        "description": "The authors plan to develop tools to assist in dataset and adapter composition.",
+        "evidence": "In future efforts, we aim to target the development of tools to assist in dataset and adapter composition."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/innovationcore/llm_factory_demos",
+    "evidence": "Code, examples, and setup instructions can be found in the following repository: https://github.com/innovationcore/llm_factory_demos"
+  }
+}
