@@ -1,0 +1,154 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to enhance the Chinese language ability and scientific reasoning ability of the Llama-3 model through continual pre-training, while retaining its original capabilities.",
+    "evidence": "Our focus is to enhance the model’s capacities from two major aspects: Chinese language ability and scientific reasoning ability, while retaining its original capabilities."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in effectively enhancing specific abilities of large language models, such as Chinese language and scientific reasoning, without causing catastrophic forgetting of their original capabilities.",
+    "evidence": "Although CPT has been widely conducted in existing work, the key training details (e.g., data selection, mixture, and curriculum) to develop new abilities and maintain existing abilities have not been well discussed, especially how to boost the comprehensive capacities of a well-trained model under a limited training budget."
+  },
+  "novelty": {
+    "answer": [
+      "The paper introduces a novel data synthesis technique to generate high-quality scientific and code data for continual pre-training.",
+      "It presents a unique approach to data mixture and curriculum design to balance new and original abilities of LLMs.",
+      "The study is the first public work to report on synthesizing and utilizing large-scale multidisciplinary scientific data for continual pre-training."
+    ],
+    "evidence": [
+      "We extensively explore the data synthesis technique, and generate high-quality scientific and code data (in the format of QA pairs).",
+      "We design specific data curation strategies to improve the backbone models.",
+      "To the best of our knowledge, it is the first public work that reports how to synthesize and utilize large-scale multidisciplinary scientific data for continual pre-training."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Ke et al. (2023) Continual pre-training of language models inspired our approach to enhance domain-specific abilities. (Methodological precursors)\n- Luo et al. (2023) Their work on catastrophic forgetting informed our strategies to retain original model capabilities. (Papers with limitations addressed)",
+    "evidence": "To address these issues, a widely-used approach is to conduct continual pre-training (CPT) for LLMs on specially-curated data related to the expected abilities (Ke et al., 2023; Gupta et al., 2023; Ibrahim et al., 2024). During the CPT process, catastrophic forgetting (Luo et al., 2023) has become a common technical issue."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Data collection and selection for pre-training",
+        "input": "Existing datasets and synthesized high-quality datasets",
+        "output": "A curated dataset for continual pre-training",
+        "evidence": "We collect and select extensive Chinese text data from diverse sources for effective bilingual adaptation."
+      },
+      {
+        "step": "Data synthesis for scientific reasoning",
+        "input": "Content of web pages in the pre-training corpus",
+        "output": "Synthetic multidisciplinary scientific QA pairs",
+        "evidence": "We synthesize multidisciplinary scientific question and answer (QA) pairs based on the content of web pages in the pre-training corpus."
+      },
+      {
+        "step": "Continual pre-training of Llama-3",
+        "input": "Curated and synthesized datasets",
+        "output": "Llama-3-SynE model with enhanced abilities",
+        "evidence": "We refer to the continually pre-trained model in this work as Llama-3-SynE (Synthetic data Enhanced Llama-3)."
+      }
+    ],
+    "tools": [
+      {
+        "name": "TinyLlama",
+        "description": "Used for surrogate experiments to explore data curation strategies",
+        "evidence": "We perform surrogate experiments using a relatively small model, TinyLlama (Zhang et al., 2024)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "C-Eval",
+        "data_description": "Chinese evaluation benchmark",
+        "usage": "Used to evaluate Chinese language understanding capability",
+        "evidence": "Extensive experiments show that our CPT approach is very effective (yielding large improvements on Chinese and scientific benchmarks without hurting the performance on English benchmarks)."
+      },
+      {
+        "name": "MATH",
+        "data_description": "Mathematical reasoning dataset",
+        "usage": "Used to evaluate scientific reasoning abilities",
+        "evidence": "Extensive experiments on a number of evaluation benchmarks show that our approach can largely improve the performance of the backbone models, including both the general abilities (+8.81 on C-Eval and +6.31 on CMMLU) and the scientific reasoning abilities (+12.00 on MATH and +4.13 on SciEval)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Perplexity (PPL)",
+        "purpose": "Measures the model's capability regarding specific topics",
+        "application": "Used to track the LLM’s capabilities on different topic categories during the training process",
+        "evidence": "To track the LLM’s capabilities on different topic categories during the training process, we evaluate the change of the perplexity (PPL) score in each topic on the validation set."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The approach involves synthesizing data to enhance model capabilities.",
+        "evidence": "We synthesize multidisciplinary scientific question and answer (QA) pairs based on the content of web pages in the pre-training corpus."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We perform surrogate experiments using a relatively small model, TinyLlama (Zhang et al., 2024)."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper focuses on enhancing language models for both Chinese language and scientific reasoning across multiple disciplines.",
+        "evidence": "Our focus is to enhance the model’s capacities from two major aspects: Chinese language ability and scientific reasoning ability."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed model, Llama-3-SynE, significantly improves Chinese language understanding and scientific reasoning abilities without degrading original capabilities.",
+        "evidence": "Extensive experiments on a number of evaluation benchmarks show that our approach can largely improve the performance of the backbone models, including both the general abilities (+8.81 on C-Eval and +6.31 on CMMLU) and the scientific reasoning abilities (+12.00 on MATH and +4.13 on SciEval), without hurting the original capacities."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Llama-3",
+        "description": "The original backbone model before continual pre-training.",
+        "evidence": "We present the technical report for continually pre-training the open-sourced LLM—Llama-3 (8B)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "C-Eval",
+        "data_description": "Chinese evaluation benchmark",
+        "usage": "Used to evaluate Chinese language understanding capability",
+        "evidence": "Extensive experiments show that our CPT approach is very effective (yielding large improvements on Chinese and scientific benchmarks without hurting the performance on English benchmarks)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Perplexity (PPL)",
+        "purpose": "Measures the model's capability regarding specific topics",
+        "application": "Used to track the LLM’s capabilities on different topic categories during the training process",
+        "evidence": "To track the LLM’s capabilities on different topic categories during the training process, we evaluate the change of the perplexity (PPL) score in each topic on the validation set."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The approach may not generalize well to other languages or domains not covered by the synthetic data.",
+        "evidence": "Considering these two limitations, we aim to improve Llama-3’s Chinese capacities as well as to enhance its performance in multidisciplinary scientific tasks."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand Synthetic Data Coverage",
+        "description": "Plan to expand the coverage of synthetic data to include more disciplines and languages.",
+        "evidence": "For each discipline, we manually collect a list of domain names relevant to the respective fields, such as math.stackexchange.com and physicsforums.com, allowing for the expansion of this list as needed to enhance the coverage."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/RUC-GSAI/Llama-3-SynE",
+    "evidence": "Our model, data, and codes are available at https://github.com/RUC-GSAI/Llama-3-SynE."
+  }
+}

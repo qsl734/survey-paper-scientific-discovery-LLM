@@ -1,26 +1,26 @@
 {
   "objective": {
-    "answer": "The primary objective of the paper is to present Assay2Mol, a large language model-based workflow that utilizes existing biochemical screening assays for early-stage drug discovery by generating candidate molecules using in-context learning.",
+    "answer": "The primary objective of the paper is to introduce Assay2Mol, a large language model-based workflow that leverages existing biochemical screening assays for early-stage drug discovery. The authors aim to solve the problem of utilizing unstructured text in BioAssay records to generate candidate molecules with desired biological activity.",
     "evidence": "We present Assay2Mol, a large language model-based workflow that can capitalize on the vast existing biochemical screening assays for early-stage drug discovery."
   },
   "knowledge_gap": {
-    "answer": "The paper addresses the gap in utilizing unstructured text from BioAssay records for drug discovery, which has been untapped due to its format.",
+    "answer": "The paper addresses the gap in utilizing unstructured text from BioAssay records for drug discovery, which has been largely untapped due to its format.",
     "evidence": "Unstructured text that describes the biological mechanisms through which these targets operate, experimental screening protocols, and other attributes of assays offer rich information for new drug discovery campaigns but has been untapped because of that unstructured format."
   },
   "novelty": {
     "answer": [
       "Assay2Mol does not require protein structures or sequences, unlike traditional structure-based drug discovery methods.",
-      "Assay2Mol generates chemically plausible and synthetically accessible molecules by relying on LLMs pretrained on chemical data.",
-      "The workflow retrieves relevant PubChem BioAssay data and uses in-context learning to generate new candidate molecules."
+      "The workflow uses large language models to generate molecules that are chemically plausible and synthetically accessible.",
+      "Assay2Mol can generate active molecules for cell-based and phenotypic assays and endpoints."
     ],
     "evidence": [
       "Unlike structure-based drug discovery (SBDD) methods, Assay2Mol does not require protein structures or even sequences.",
       "Because Assay2Mol relies on LLMs that are pretrained on chemical data for its molecule generation, the output molecules can be more like 'retrieval' rather than de novo 'generation'.",
-      "We introduce Assay2Mol, an LLM-based drug design workflow that retrieves relevant PubChem BioAssay data for a given query and then learns to generate new candidate molecules from this assay context."
+      "It can even generate active molecules for cell-based and phenotypic assays and endpoints (e.g., tumor shrinkage, cardiotoxicity, QT interval prolongation)."
     ]
   },
   "inspirational_papers": {
-    "answer": "- Kim et al. (2024) PubChem now contains 1.77 million assay records (BioAssay records) comprising ∼300 million bioactivity outcomes across ∼250,000 protein targets and 1,000s of cell lines. (Experimental baselines)\n- Mendez et al. (2018) ChEMBL: towards direct deposition of bioassay data. (Experimental baselines)",
+    "answer": "- Kim et al. (2024) PubChem now contains 1.77 million assay records. (Experimental baselines)\n- Mendez et al. (2018) ChEMBL as a valuable resource for data mining. (Experimental baselines)",
     "evidence": "Public screening data repositories like PubChem (Kim et al., 2024) and ChEMBL (Mendez et al., 2018) possess great value in this regard."
   },
   "method": {
@@ -28,38 +28,32 @@
       {
         "step": "Retrieve relevant BioAssays based on protein target descriptions.",
         "input": "Protein target descriptions, phenotypic data, or other textual information.",
-        "output": "Relevant BioAssays retrieved from PubChem.",
+        "output": "Relevant BioAssays retrieved for molecule generation.",
         "evidence": "Given input such as protein target descriptions, phenotypic data, or other textual information, Assay2Mol retrieves relevant BioAssays."
       },
       {
-        "step": "Summarize BioAssays and retrieve experimental tables.",
-        "input": "BioAssay IDs from retrieved BioAssays.",
-        "output": "Summarized BioAssays and experimental tables.",
-        "evidence": "The BioAssay ID is then used to retrieve experimental tables."
-      },
-      {
         "step": "Generate candidate molecules using in-context learning.",
-        "input": "Protein description, BioAssay summaries, and data tables.",
-        "output": "Generated candidate molecules.",
-        "evidence": "The final molecule generation prompt is formed by combining the description, summarization, and selected test molecules with associated test outcomes, enabling the LLM to generate relevant active molecules."
+        "input": "Retrieved BioAssay data and protein target descriptions.",
+        "output": "New candidate molecules with desired biological activity.",
+        "evidence": "Assay2Mol retrieves existing assay records involving targets similar to the new target and generates candidate molecules using in-context learning with the retrieved assay screening data."
       }
     ],
     "tools": [
       {
         "name": "OpenAI text embedding tool",
-        "description": "Used to obtain embeddings for protein descriptions and BioAssay records.",
+        "description": "Used to obtain an embedding for BioAssay records.",
         "evidence": "We use the OpenAI text embedding tool (Neelakantan et al., 2022) and obtain an embedding for BioAssay record i in json format."
       },
       {
         "name": "AutoDock Vina",
-        "description": "Used to score the binding complementarity of generated molecules with protein targets.",
+        "description": "Used to score the binding complementarity of a molecule with a protein target.",
         "evidence": "The average AutoDock Vina (Eberhardt et al., 2021) score for the five molecules without BioAssay context is -7.44."
       }
     ],
     "benchmark_datasets": [
       {
         "name": "CrossDocked2020",
-        "data_description": "A dataset for structure-based drug design containing docked protein binding complexes.",
+        "data_description": "A dataset for structure-based drug design with docked protein binding complexes.",
         "usage": "Used to assess how BioAssay context compares to protein structure context for generating candidate protein binders.",
         "evidence": "CrossDocked2020 (CrossDocked for short) is a common dataset for SBDD (Francoeur et al., 2020) that allows us to assess how BioAssay context compares to protein structure context for generating candidate protein binders."
       }
@@ -68,12 +62,12 @@
       {
         "name": "Vina Dock",
         "purpose": "Measures the binding complementarity of a molecule with a protein target.",
-        "application": "Used to score the generated molecules' interaction strength with protein targets.",
+        "application": "Used to score the binding strength of generated molecules.",
         "evidence": "We use Vina Dock to score the binding complementarity of a molecule, or the strength of interaction, with a protein target."
       },
       {
-        "name": "Qualitative Estimate of Drug-Likeness (QED)",
-        "purpose": "Measures the drug-likeness of generated molecules.",
+        "name": "QED",
+        "purpose": "Measures drug-likeness of molecules.",
         "application": "Used to evaluate the drug-likeness of generated molecules.",
         "evidence": "Qualitative Estimate of Drug-Likeness (QED) and Synthetic Accessibility (SA) are computed with RDKit (Landrum, 2016)."
       }
@@ -88,13 +82,13 @@
       },
       {
         "name": "Knowledge Extraction and Structurization",
-        "description": "The system summarizes BioAssays and retrieves experimental tables.",
-        "evidence": "The BioAssay ID is then used to retrieve experimental tables."
+        "description": "The system extracts key textual and tabular chemical testing data from BioAssay records.",
+        "evidence": "Scientists need workflows that can rapidly identify relevant BioAssay records based on their associated text, extract key textual and tabular chemical testing data comprising molecule structures paired with experimental activity outcomes."
       },
       {
         "name": "Hypothesis or Idea Generation",
         "description": "The system generates candidate molecules using in-context learning.",
-        "evidence": "The final molecule generation prompt is formed by combining the description, summarization, and selected test molecules with associated test outcomes, enabling the LLM to generate relevant active molecules."
+        "evidence": "Assay2Mol retrieves existing assay records involving targets similar to the new target and generates candidate molecules using in-context learning with the retrieved assay screening data."
       }
     ]
   },
@@ -129,7 +123,7 @@
     "benchmark_datasets": [
       {
         "name": "CrossDocked2020",
-        "data_description": "A dataset for structure-based drug design containing docked protein binding complexes.",
+        "data_description": "A dataset for structure-based drug design with docked protein binding complexes.",
         "usage": "Used to assess how BioAssay context compares to protein structure context for generating candidate protein binders.",
         "evidence": "CrossDocked2020 (CrossDocked for short) is a common dataset for SBDD (Francoeur et al., 2020) that allows us to assess how BioAssay context compares to protein structure context for generating candidate protein binders."
       }
@@ -138,12 +132,12 @@
       {
         "name": "Vina Dock",
         "purpose": "Measures the binding complementarity of a molecule with a protein target.",
-        "application": "Used to score the generated molecules' interaction strength with protein targets.",
+        "application": "Used to score the binding strength of generated molecules.",
         "evidence": "We use Vina Dock to score the binding complementarity of a molecule, or the strength of interaction, with a protein target."
       },
       {
-        "name": "Qualitative Estimate of Drug-Likeness (QED)",
-        "purpose": "Measures the drug-likeness of generated molecules.",
+        "name": "QED",
+        "purpose": "Measures drug-likeness of molecules.",
         "application": "Used to evaluate the drug-likeness of generated molecules.",
         "evidence": "Qualitative Estimate of Drug-Likeness (QED) and Synthetic Accessibility (SA) are computed with RDKit (Landrum, 2016)."
       }
@@ -151,20 +145,20 @@
   },
   "benchmark_dataset": {
     "name": "CrossDocked2020",
-    "data_description": "A dataset for structure-based drug design containing docked protein binding complexes.",
+    "data_description": "A dataset for structure-based drug design with docked protein binding complexes.",
     "usage": "Used to assess how BioAssay context compares to protein structure context for generating candidate protein binders.",
     "evidence": "CrossDocked2020 (CrossDocked for short) is a common dataset for SBDD (Francoeur et al., 2020) that allows us to assess how BioAssay context compares to protein structure context for generating candidate protein binders."
   },
   "limitations": {
     "limitations": [
       {
-        "name": "Relevance Assessment Imperfection",
-        "description": "The LLM's assessment of BioAssay relevance is imperfect, leading to potential inclusion of irrelevant BioAssays.",
+        "name": "Relevance Assessment",
+        "description": "The LLM's assessment of BioAssay relevance is imperfect, leading to potential inclusion of irrelevant data.",
         "evidence": "Having LLMs directly assess the relevance of the retrieved BioAssay text guards against many irrelevant matches but is imperfect (Table 4)."
       },
       {
-        "name": "Conditional Text Query Limitation",
-        "description": "The current version of Assay2Mol cannot properly process conditional text queries, such as molecules that inhibit proteins A, B, and C but not D and E.",
+        "name": "Conditional Text Queries",
+        "description": "The current version cannot properly process conditional text queries for complex molecule generation.",
         "evidence": "A related limitation is that the current version of Assay2Mol cannot properly process conditional text queries, such as molecules that inhibit proteins A, B, and C but not D and E."
       }
     ]
@@ -172,19 +166,19 @@
   "future_directions": {
     "future_directions": [
       {
-        "name": "Enhance BioAssay Retrieval",
-        "description": "Improve the initial embedding-based query and BioAssay similarity calculations to better capture the complexity of biological regulation in pathways.",
-        "evidence": "For example, we observed that the initial embedding-based query and BioAssay similarity calculations are not sophisticated enough to capture the complexity of biological regulation in pathways (Appendix A.6)."
+        "name": "Enhance Relevance Processing",
+        "description": "Improve the initial embedding-based similarity calculations to better capture biological regulation complexity.",
+        "evidence": "This limitation is again related to the initial embedding-based similarity calculations, which could possibly be addressed with enhancement to the Assay2Mol relevance processing step."
       },
       {
-        "name": "Improve LLM Interpretation",
-        "description": "Explore methods to enhance LLM interpretation of the desired activity of generated molecules with respect to target function.",
-        "evidence": "We continue to explore methods to enhance LLM interpretation of the desired activity of generated molecules with respect to target function (i.e., activation, inhibition, allosteric regulation)."
+        "name": "Open Weight Implementation",
+        "description": "Develop a fully open weight version of Assay2Mol to replace the current reliance on proprietary LLMs.",
+        "evidence": "Most of the LLM-based steps in Assay2Mol are implemented using both closed and open weights LLMs with the goal of having a fully open weight version of Assay2Mol."
       }
     ]
   },
   "resource_link": {
     "answer": "https://github.com/gitter-lab/Assay2Mol",
-    "evidence": "The code is available at https://github.com/gitter-lab/Assay2Mol under the MIT License."
+    "evidence": "The code is available at https://github.com/gitter-lab/Assay2Mol under the MIT License and archived at https://doi.org/10.5281/zenodo.15871304."
   }
 }

@@ -1,0 +1,130 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to demonstrate that large language models (LLMs), coupled with prompt engineering, can effectively generate non-trivial materials hypotheses by integrating scientific principles from diverse sources without explicit design guidance by human experts.",
+    "evidence": "This work demonstrates that large language models (LLMs), coupled with prompt engineering, can effectively generate non-trivial materials hypotheses by integrating scientific principles from diverse sources without explicit design guidance by human experts."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of generating materials design hypotheses, which is traditionally limited by human cognitive constraints and the complexity of integrating multidisciplinary knowledge.",
+    "evidence": "Materials design often relies on human-generated hypotheses, a process inherently limited by cognitive constraints such as knowledge gaps and limited ability to integrate and extract knowledge implications, particularly when multidisciplinary expertise is required."
+  },
+  "novelty": {
+    "answer": [
+      "The use of LLMs to generate materials design hypotheses without explicit human guidance.",
+      "The integration of materials system charts to condense key information from numerous papers for hypothesis generation.",
+      "The generation of synergistic hypotheses that extend beyond current domain knowledge."
+    ],
+    "evidence": [
+      "In this research, we aim to leverage LLMs for generating materials design hypotheses even without explicit guidance from human experts.",
+      "Our approach primarily leverages materials system charts encoding processing-structure-property relationships, enabling more effective data integration by condensing key information from numerous papers.",
+      "The LLM then creates novel interdependencies between mechanisms that are not explicitly found in the input literature, generating synergistic hypotheses that extend beyond the current knowledge of the domain of interest."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yang et al. (2021) Their work on martensitic transformation inspired our hypothesis generation for high-entropy alloys. (Experimental baselines)",
+    "evidence": "Conversely, interdependent effects, as in the former case, are generally not obvious and require deep domain knowledge to develop, thereby often remaining unrealized until a thoughtful expert proposes them, as the example was actually published recently in a high-impact journal."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Collect multiple sets of papers using non-specific keywords.",
+        "input": "Keywords: 'cryogenic, high entropy alloy' and 'high entropy alloy'.",
+        "output": "A total of 24 papers collected from high-impact journals.",
+        "evidence": "In this work, two sets of papers, a total of 24 papers, are collected from high-impact journals using the Web-of-Science platform with the keywords: 'cryogenic, high entropy alloy' and 'high entropy alloy'."
+      },
+      {
+        "step": "Extract and organize key information from the papers into a structured table.",
+        "input": "Collected papers.",
+        "output": "Structured table reducing token count for each paper by a factor of ten.",
+        "evidence": "In Step II (Figure 1c), key information from the papers is extracted and organized into a structured table to be used for the subsequent steps, reducing the token count for each paper by a factor of ten."
+      },
+      {
+        "step": "Generate hypotheses by synergistically combining mechanisms from the compiled chart.",
+        "input": "Compiled chart from structured table.",
+        "output": "Generated hypotheses with novel interdependencies.",
+        "evidence": "In Step III (Figure 1d), the LLM generates hypotheses by synergistically combining mechanisms from the compiled chart, without directly incorporating the original papers."
+      },
+      {
+        "step": "Evaluate and categorize the generated hypotheses.",
+        "input": "Generated hypotheses.",
+        "output": "Narrowed down hypotheses to a few tens of high-quality ones.",
+        "evidence": "In Step IV (Figure 1e), the generated hypotheses are evaluated and categorized by the LLM. This step narrows down thousands of hypotheses to a few tens of high-quality ones."
+      }
+    ],
+    "tools": [
+      {
+        "name": "gpt-4-1106-preview",
+        "description": "Used for extracting and synthesizing mechanisms from literature.",
+        "evidence": "We leverage an LLM, gpt-4-1106-preview snapshot model of GPT-4, for extracting and synergistically synthesizing meaningfully distinct mechanisms."
+      },
+      {
+        "name": "gemini-1.5-pro",
+        "description": "Used for evaluating and categorizing hypotheses.",
+        "evidence": "The gpt-4-1106-preview model is used for Steps II, III, and V, and gemini-1.5-pro is utilized for Step IV."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The LLM then creates novel interdependencies between mechanisms that are not explicitly found in the input literature, generating synergistic hypotheses that extend beyond the current knowledge of the domain of interest."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The process of extracting and organizing key information from literature into structured formats.",
+        "evidence": "In Step II (Figure 1c), key information from the papers is extracted and organized into a structured table to be used for the subsequent steps."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on materials design and hypothesis generation using LLMs.",
+        "evidence": "This work demonstrates that large language models (LLMs), coupled with prompt engineering, can effectively generate non-trivial materials hypotheses by integrating scientific principles from diverse sources."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The LLM generated ~2,100 hypotheses, classifying ~700 as synergistic and scientifically grounded.",
+        "evidence": "For cryogenic HEAs, the LLM generated ~2,100 hypotheses, classifying ~700 as synergistic and scientifically grounded."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The hypotheses generated are based on the specific set of papers collected, which may not cover all possible mechanisms.",
+        "evidence": "The general keywords imply that the activity can be conducted by researchers unfamiliar with the specific topics or even by LLMs."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "### Expand Keyword Selection",
+        "description": "Explore more diverse keywords for literature search to enhance hypothesis generation.",
+        "evidence": "Keywords can also be generated by LLMs once the background information or objective is given."
+      },
+      {
+        "name": "### Improve Hypothesis Evaluation",
+        "description": "Refine the model’s evaluation prompts to achieve greater accuracy in hypothesis evaluation.",
+        "evidence": "We believe that with the next generation of LLMs, prompts, and potentially fine-tuning, significantly greater advancements can be achieved."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://doi.org/10.6084/m9.figshare.26391241",
+    "evidence": "Datasets and Supporting Information to the paper entitled “Beyond designer’s knowledge: Generating materials design hypotheses via a large language model”, can be found under https://doi.org/10.6084/m9.figshare.26391241"
+  }
+}
