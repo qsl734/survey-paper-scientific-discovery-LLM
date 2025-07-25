@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 # 📁 Path to your JSON folder
-json_dir = "/home/mdh121/i_created_scripts/literature_retrieval_practice/new_paper_collection/New_Algorithms_Items"
+json_dir = json_dir = "../Papers"
 
 # 🔍 Get all JSON files in the folder
 json_files = sorted(f for f in os.listdir(json_dir) if f.endswith(".json"))
