@@ -1,0 +1,207 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to use large language models (LLMs) to automatically generate complete Bayesian Optimization (BO) algorithms, moving beyond the usage of LLMs to assist in single components of the modular framework.",
+    "evidence": "We tackle a new challenge: Using LLMs to automatically generate full BO algorithm code."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap that LLMs have not yet been used to generate complete Python implementations of Bayesian optimization (BO) algorithms.",
+    "evidence": "Despite recent advances, LLMs have not yet been used to generate complete Python implementations of Bayesian optimization (BO) algorithms, as LLaMEA [Stein and Bäck, 2025] does for evolutionary algorithms."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of LLaMEA-BO, which utilizes multiple evolution strategy variants and introduces BO-specific prompt structures along with dedicated crossover and mutation operators.",
+      "The framework demonstrates that LLMs can serve as algorithmic co-designers, offering a new paradigm for automating BO development.",
+      "LLaMEA-BO is the first LLM-driven framework to automatically evolve complete BO algorithms which outperform current state-of-the-art BO baselines."
+    ],
+    "evidence": [
+      "We propose LLaMEA-BO, which utilizes multiple ES variants and introduces BO-specific prompt structures along with dedicated crossover and mutation operators to evolve increasingly effective algorithms.",
+      "This work demonstrates that LLMs can serve as algorithmic co-designers, offering a new paradigm for automating BO development and accelerating the discovery of novel algorithmic combinations.",
+      "LLaMEA-BO is the first LLM-driven framework to automatically evolve complete BO algorithms which are outperforming current state-of-the-art BO baselines."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Stein and Bäck (2025) The LLaMEA framework inspired the development of LLaMEA-BO. (Methodological precursors)\n- Liu et al. (2024b) Their work on using LLMs in all phases of a modular BO framework influenced the approach. (Methodological precursors)",
+    "evidence": "Our approach builds on the Large-Language-Model Evolutionary Algorithm (LLaMEA) framework introduced by Stein and Bäck [2025].\nIt is with the most recent work by Liu et al. [2024b] that LLMs are used in all phases of a the modular BO framework."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Initialization Phase",
+        "input": "Initial prompt to LLM, size of parent population",
+        "output": "Initial population of candidate algorithms",
+        "evidence": "prompt ←getInitialPrompt(Pt)\nsolution ←LLM(prompt, top_k, temperature)"
+      },
+      {
+        "step": "Evolutionary Loop",
+        "input": "Current population, crossover rate, LLM parameters",
+        "output": "Evolved population of candidate algorithms",
+        "evidence": "prompts ←getPrompts(Pt, min(λ, T −t), pcr)\nsolutions ←LLM(prompts, top_k, temperature)"
+      },
+      {
+        "step": "Evaluation",
+        "input": "Generated algorithms",
+        "output": "Performance scores based on AOCC",
+        "evidence": "We measure performance of all generated algorithms with the anytime Area Over the Convergence Curve (AOCC)."
+      }
+    ],
+    "tools": [
+      {
+        "name": "gemini-2.0-flash",
+        "description": "Used as the core LLM for generating candidate BO algorithms.",
+        "evidence": "Our core LLM is gemini-2.0-flash, selected for its strong performance in prior tests."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "BBOB",
+        "data_description": "A suite of noiseless functions for evaluating optimization algorithms.",
+        "usage": "Used for evaluating the performance of generated BO algorithms.",
+        "evidence": "We benchmark the top generated BO algorithms on the full set of 24 test functions of BBOB."
+      },
+      {
+        "name": "Bayesmark",
+        "data_description": "A benchmark framework designed to compare BO methods on real machine learning tasks.",
+        "usage": "Used to test the generalization of generated BO algorithms on real ML tasks.",
+        "evidence": "We benchmark the BO algorithms on 25 tasks extracted from Bayesmark."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Area Over the Convergence Curve (AOCC)",
+        "purpose": "Measures the performance of optimization algorithms over time.",
+        "application": "Used to evaluate the performance of generated algorithms on BBOB functions.",
+        "evidence": "We measure performance of all generated algorithms with the anytime Area Over the Convergence Curve (AOCC)."
+      },
+      {
+        "name": "Loss",
+        "purpose": "Measures the difference between the function value at chosen points and the global minimum.",
+        "application": "Used to assess algorithm performance on BBOB functions.",
+        "evidence": "We measure algorithm performance in terms of loss, defined as minh∈Ht |f(h) −f ∗min|."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The LLM is prompted to produce multiple candidate algorithms."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We validate the quality of the best BO algorithms generated by LLaMEA-BO through extensive benchmarking against state-of-the-art BO baselines."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a framework for automating the design of optimization algorithms.",
+        "evidence": "This work demonstrates that LLMs can serve as algorithmic co-designers, offering a new paradigm for automating BO development."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology applies LLMs to the field of optimization, bridging AI and algorithm design.",
+        "evidence": "Recent advancements in Large Language Models (LLMs) have opened new avenues for automating scientific discovery, including the automatic design of optimization algorithms."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The LLaMEA-BO-generated algorithms outperform state-of-the-art BO baselines in 19 out of 24 BBOB functions in dimension 5 and generalize well to higher dimensions.",
+        "evidence": "Despite no additional fine-tuning, the LLM-generated algorithms outperform state-of-the-art BO baselines in 19 (out of 24) BBOB functions in dimension 5 and generalize well to higher dimensions."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "CMA-ES",
+        "description": "A well-established optimization algorithm used as a baseline.",
+        "evidence": "We compare our generated algorithms to the Covariance Matrix Adaptation Evolution Strategy (CMA-ES)."
+      },
+      {
+        "name": "HEBO",
+        "description": "A state-of-the-art Bayesian optimization approach.",
+        "evidence": "The state-of-the-art baselines we compare our generated algorithms to are the Covariance Matrix Adaptation Evolution Strategy (CMA-ES), and the well-established BO approaches Heteroscedastic and Evolutionary Bayesian Optimization (HEBO)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "BBOB",
+        "data_description": "A suite of noiseless functions for evaluating optimization algorithms.",
+        "usage": "Used for evaluating the performance of generated BO algorithms.",
+        "evidence": "We benchmark the top generated BO algorithms on the full set of 24 test functions of BBOB."
+      },
+      {
+        "name": "Bayesmark",
+        "data_description": "A benchmark framework designed to compare BO methods on real machine learning tasks.",
+        "usage": "Used to test the generalization of generated BO algorithms on real ML tasks.",
+        "evidence": "We benchmark the BO algorithms on 25 tasks extracted from Bayesmark."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Area Over the Convergence Curve (AOCC)",
+        "purpose": "Measures the performance of optimization algorithms over time.",
+        "application": "Used to evaluate the performance of generated algorithms on BBOB functions.",
+        "evidence": "We measure performance of all generated algorithms with the anytime Area Over the Convergence Curve (AOCC)."
+      },
+      {
+        "name": "Loss",
+        "purpose": "Measures the difference between the function value at chosen points and the global minimum.",
+        "application": "Used to assess algorithm performance on BBOB functions.",
+        "evidence": "We measure algorithm performance in terms of loss, defined as minh∈Ht |f(h) −f ∗min|."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "BBOB",
+    "data_description": "A suite of noiseless functions for evaluating optimization algorithms.",
+    "usage": "Used for evaluating the performance of generated BO algorithms.",
+    "evidence": "We benchmark the top generated BO algorithms on the full set of 24 test functions of BBOB."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Inductive Bias",
+        "description": "Most high-performing discoveries are trust-region variants, hinting at an inductive bias introduced by the BO template and the short evaluation budget.",
+        "evidence": "Most high-performing discoveries are trust-region (TR) variants, hinting at an inductive bias introduced by the BO template and the short evaluation budget."
+      },
+      {
+        "name": "Single LLM Backend",
+        "description": "All experiments rely on a single LLM backend (gemini-2.0-flash), limiting the exploration of other potential LLMs.",
+        "evidence": "All experiments rely on a single LLM backend (gemini-2.0-flash). Due to budget constraints experimenting with other LLMs was out of scope for this work."
+      },
+      {
+        "name": "Reproducibility",
+        "description": "Exact reproducibility cannot be guaranteed due to stochastic LLM sampling and evolving downstream libraries.",
+        "evidence": "Because LLM sampling is inherently stochastic and downstream libraries evolve, exact reproducibility cannot be guaranteed."
+      },
+      {
+        "name": "Task Scope",
+        "description": "The empirical study is limited to noiseless, continuous, single-objective tasks, leaving other settings unexplored.",
+        "evidence": "The empirical study is limited to noiseless, continuous, single-objective tasks; mixed-integer, constrained, noisy, or multi-objective settings are left unexplored."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Diversifying Prompts",
+        "description": "Encourage structural innovations beyond TR logic by diversifying prompts and variation operators.",
+        "evidence": "Diversifying prompts, variation operators, and fitness aggregation should encourage structural innovations beyond TR logic."
+      },
+      {
+        "name": "Integrating Mixed-Integer Benchmarks",
+        "description": "Integrate mixed-integer, multi-objective, constrained, or noise-aware benchmarks with minor modifications.",
+        "evidence": "Integrating mixed-integer, multi-objective, constrained, or noise-aware benchmarks requires only minor modifications."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/Ewendawi/LLaMEA-BO",
+    "evidence": "The source code is provided at https://github.com/Ewendawi/LLaMEA-BO."
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "objective": {
+    "answer": "The paper aims to develop GENESUM, a two-stage automated gene summary extractor utilizing a large language model (LLM) to efficiently summarize gene-related literature and enhance decision-making in genomic research.",
+    "evidence": "In response, we propose GENESUM, a two-stage automated gene summary extractor utilizing a large language model (LLM)."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of efficiently summarizing the extensive and rapidly expanding literature on gene functions, characteristics, and expressions, which remains a daunting, labor-intensive task.",
+    "evidence": "However, the extraction and summary of specific gene knowledge from this burgeoning literature remains a daunting, labor-intensive task, and is mainly carried out by experts."
+  },
+  "novelty": {
+    "answer": [
+      "First application of LLMs to the gene summary problem.",
+      "Development of sophisticated data preprocessing techniques for genetic databases.",
+      "Comprehensive experiments and case studies demonstrating the framework's effectiveness."
+    ],
+    "evidence": [
+      "We have defined the gene summary problem within the context of modern bioinformatics and are the first to apply LLMs to this challenge.",
+      "We have developed sophisticated data preprocessing techniques that significantly enhance the efficiency and accuracy of information extraction from genetic databases.",
+      "Through comprehensive experiments and case studies on real-world datasets, we demonstrate the effectiveness of our framework."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Shang et al. (2014) Learning to rank-based gene summary extraction. (Experimental baselines)\n- Jin et al. (2009) Towards automatic generation of gene summary. (Methodological precursors)",
+    "evidence": "Existing literature has partially address the gene summary problem. (1) extractive-summarization, which has been the traditional approach due to its straightforward methodology of selecting key sentences directly from texts [3], [4]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Literature retrieving and filtering",
+        "input": "Target gene literature",
+        "output": "Filtered set of candidate sentences",
+        "evidence": "Initially, our system retrieves literature relevant to the target gene and analyzes the inherent relationships among knowledge entities to eliminate redundant content."
+      },
+      {
+        "step": "Gene Ontology rewrite",
+        "input": "GO annotations",
+        "output": "Gene function description set",
+        "evidence": "We aim to establish a multi-angle gene-specific description in three aspects: molecular function, biological process, and cellular component."
+      },
+      {
+        "step": "Clustering and streamline",
+        "input": "Filtered sentences and GO term descriptions",
+        "output": "Key sentences with highest semantic similarity",
+        "evidence": "We adopted K-means as the clustering method... At this stage, we adopt the GO term descriptions to identify the sentence with the lowest cosine distance as key sentences."
+      },
+      {
+        "step": "Injection and generation",
+        "input": "Key sentences and task-specific prompt",
+        "output": "Refined gene summaries",
+        "evidence": "We employ Gemma-7B as the base model, utilizing LoRA to fine-tune the process to generate refined summaries of genetic knowledge."
+      }
+    ],
+    "tools": [
+      {
+        "name": "BioBERT",
+        "description": "Used for vectorization of textual data into numerical vectors",
+        "evidence": "In this study, we employ BioBERT for vectorization, which is a domain-specific language representation model pretrained on a large biomedical corpus."
+      },
+      {
+        "name": "Gemma-7B",
+        "description": "Base model for generating refined gene summaries",
+        "evidence": "We employ Gemma-7B as the base model, utilizing LoRA to fine-tune the process to generate refined summaries of genetic knowledge."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Entrez Gene",
+        "data_description": "Gene function description information",
+        "usage": "Used as a reference for experimentation",
+        "evidence": "We utilized gene function description information from the summary attribute of the database as a reference from NCBI sub-database Entrez Gene."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "ROUGE-1",
+        "purpose": "Measures overlap of unigrams between generated and reference summaries",
+        "application": "Used to evaluate the quality of generated summaries",
+        "evidence": "We adopt the ROUGE-1, ROUGE-2, and ROUGE-L as metrics for evaluation as the same in [3], [23]."
+      },
+      {
+        "name": "ROUGE-2",
+        "purpose": "Measures overlap of bigrams between generated and reference summaries",
+        "application": "Used to evaluate the quality of generated summaries",
+        "evidence": "We adopt the ROUGE-1, ROUGE-2, and ROUGE-L as metrics for evaluation as the same in [3], [23]."
+      },
+      {
+        "name": "ROUGE-L",
+        "purpose": "Measures longest common subsequence between generated and reference summaries",
+        "application": "Used to evaluate the quality of generated summaries",
+        "evidence": "We adopt the ROUGE-1, ROUGE-2, and ROUGE-L as metrics for evaluation as the same in [3], [23]."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Literature or Dataset Retrieval",
+        "description": "The approach includes retrieving relevant literature for the target gene.",
+        "evidence": "Initially, our system retrieves literature relevant to the target gene and analyzes the inherent relationships among knowledge entities to eliminate redundant content."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The approach involves extracting and structuring gene-specific information from literature.",
+        "evidence": "We aim to establish a multi-angle gene-specific description in three aspects: molecular function, biological process, and cellular component."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Biological Sciences",
+        "description": "The paper focuses on summarizing gene-related literature using LLMs.",
+        "evidence": "Emerging topics in biomedical research are continuously expanding, providing a wealth of information about genes and their function."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology integrates computational techniques with biological data.",
+        "evidence": "We propose GENESUM, a two-stage automated gene summary extractor utilizing a large language model (LLM)."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "GENESUM significantly outperforms six baselines across three ROUGE metrics, with ROUGE-2 showing a greater improvement by at least fourfold.",
+        "evidence": "Our model significantly outperforms six baselines across three ROUGE metrics, due to leveraging the GO information of each gene for sentence selection and employing fine-tuning of a large model for sentence generation."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Random",
+        "description": "Randomly selects five sentences from candidate sentences about genes.",
+        "evidence": "Random. This baseline randomly selects five sentences from the candidate sentences about genes and generates the description by the same LLM as GENESUM."
+      },
+      {
+        "name": "LTR",
+        "description": "Uses three features for sentence selection: gene ontology relevance, topic relevance, and TextRank.",
+        "evidence": "LTR [3] use three features as a basis for sentence selection: gene ontology relevance, topic relevance, and TextRank."
+      },
+      {
+        "name": "Llama2-70B",
+        "description": "A general LLM used with prompt and each gene’s related literature as context.",
+        "evidence": "We adopt (3) Llama2-70B [24] and (4) ChatGPT-3.5 [24] with prompt and each gene’s related literature as context."
+      },
+      {
+        "name": "ChatGPT-3.5",
+        "description": "A general LLM used with prompt and each gene’s related literature as context.",
+        "evidence": "We adopt (3) Llama2-70B [24] and (4) ChatGPT-3.5 [24] with prompt and each gene’s related literature as context."
+      },
+      {
+        "name": "BioMistral-7B-DARE",
+        "description": "A large-scale biomedical model trained on curated datasets in biology and medicine.",
+        "evidence": "We selected (5) BioMistral-7B-DARE [25] and (6) Llama3-OpenBioLLM-8B [26], large-scale biomedical models trained on meticulously curated training datasets in the field of biology and medicine."
+      },
+      {
+        "name": "Llama3-OpenBioLLM-8B",
+        "description": "A large-scale biomedical model trained on curated datasets in biology and medicine.",
+        "evidence": "We selected (5) BioMistral-7B-DARE [25] and (6) Llama3-OpenBioLLM-8B [26], large-scale biomedical models trained on meticulously curated training datasets in the field of biology and medicine."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Entrez Gene",
+        "data_description": "Gene function description information",
+        "usage": "Used as a reference for experimentation",
+        "evidence": "We utilized gene function description information from the summary attribute of the database as a reference from NCBI sub-database Entrez Gene."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "ROUGE-1",
+        "purpose": "Measures overlap of unigrams between generated and reference summaries",
+        "application": "Used to evaluate the quality of generated summaries",
+        "evidence": "We adopt the ROUGE-1, ROUGE-2, and ROUGE-L as metrics for evaluation as the same in [3], [23]."
+      },
+      {
+        "name": "ROUGE-2",
+        "purpose": "Measures overlap of bigrams between generated and reference summaries",
+        "application": "Used to evaluate the quality of generated summaries",
+        "evidence": "We adopt the ROUGE-1, ROUGE-2, and ROUGE-L as metrics for evaluation as the same in [3], [23]."
+      },
+      {
+        "name": "ROUGE-L",
+        "purpose": "Measures longest common subsequence between generated and reference summaries",
+        "application": "Used to evaluate the quality of generated summaries",
+        "evidence": "We adopt the ROUGE-1, ROUGE-2, and ROUGE-L as metrics for evaluation as the same in [3], [23]."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Entrez Gene",
+    "data_description": "Gene function description information",
+    "usage": "Used as a reference for experimentation",
+    "evidence": "We utilized gene function description information from the summary attribute of the database as a reference from NCBI sub-database Entrez Gene."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The model's performance is evaluated on a specific set of genes, which may not generalize to all gene types.",
+        "evidence": "Among numerous human-related genes, we selected 8,887 genes that had existing gene function description information for experimentation."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Other Gene Types",
+        "description": "Plan to evaluate the model on a broader range of gene types to enhance generalizability.",
+        "evidence": "In future work, we plan to evaluate our pipeline on multimodal medical imaging datasets."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

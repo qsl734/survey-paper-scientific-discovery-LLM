@@ -1,0 +1,185 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce Tree-of-Debate (ToD), a framework that converts scientific papers into LLM personas that debate their respective novelties, enabling fine-grained analysis of independent novelty arguments within scholarly articles.",
+    "evidence": "Inspired by this, we introduce Tree-of-Debate (ToD), a framework which converts scientific papers into LLM personas that debate their respective novelties."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of assessing the significance, novelty, and distinctions between related scientific works, particularly those from different research communities, which is difficult due to the exponential growth of research facilitated by modern technology.",
+    "evidence": "This makes it challenging to assess the significance, novelty, incremental findings, and equivalent ideas between related works, particularly those from different research communities."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a structured multi-persona debate framework to generate fine-grained contrastive summaries.",
+      "Dynamic construction of a debate tree to reason about fine-grained arguments discussed in scholarly articles.",
+      "Integration of iterative retrieval throughout a debate to improve fine-grained reasoning."
+    ],
+    "evidence": [
+      "We introduce Tree-of-Debate, a structured multi-persona debate framework, to generate fine-grained contrastive summaries.",
+      "Tree-of-Debate can dynamically construct a debate tree to reason about fine-grained arguments discussed in scholarly articles.",
+      "Iterative retrieval throughout a debate improves fine-grained reasoning."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Hayashi et al. (2023) Existing comparative summarization works inspired our approach to generate comparative summaries. (Experimental baselines)\n- Ströhle et al. (2023) Their two-step pipeline for extractive summaries influenced our methodology. (Methodological precursors)",
+    "evidence": "Automatically generating comparative summaries of research papers has proven valuable for addressing these challenges (Hayashi et al., 2023). Existing comparative summarization works (Ströhle et al., 2023) typically follow a two-step pipeline."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Preparation of personas by retrieving topic-relevant segments from their paper.",
+        "input": "Scientific papers and a root topic.",
+        "output": "Segments relevant to the debate topic and identified novel contributions.",
+        "evidence": "First, each persona prepares (self-deliberation) by retrieving topic-relevant segments from their paper, identifying their novel contributions."
+      },
+      {
+        "step": "Moderator determines the most valuable subtopics to explore.",
+        "input": "Contributions and evidence from personas.",
+        "output": "List of subtopics for further debate.",
+        "evidence": "Based on this, the moderator determines the most valuable subtopics to explore."
+      },
+      {
+        "step": "Conducting debates at each subtopic node.",
+        "input": "Subtopics and initial arguments from personas.",
+        "output": "Revised arguments and potential expansion of debate nodes.",
+        "evidence": "For each subtopic, a child debate node is formed, where each persona presents their initial arguments, responds to one another, and revises their argument based on the interaction."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LLM agent",
+        "description": "Used to embody each debate persona and integrate retrieved information into its context.",
+        "evidence": "We leverage an LLM agent to embody each debate persona, allowing for retrieved information from the papers and the debate history to be easily integrated into its context."
+      },
+      {
+        "name": "Retrieval embedding model",
+        "description": "Used for segment-level retrieval to compute and rank segment-level embeddings.",
+        "evidence": "We employ a retrieval embedding model (Xiao et al., 2023) and cosine-similarity to compute and rank segment-level embeddings."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Factuality",
+        "purpose": "Measures how factual the summary is.",
+        "application": "Each sentence is given a binary score for factuality, and the scores are averaged across the summary.",
+        "evidence": "Factuality: How factual is the summary? Each sentence is given a 1/0 binary score for factuality, and the scores are averaged across the summary."
+      },
+      {
+        "name": "Breadth",
+        "purpose": "Measures the comprehensiveness and completeness of the summary.",
+        "application": "Each summary is rated from 0-4 ('not at all' to 'very').",
+        "evidence": "Breadth: Is the summary comprehensive and complete? Each summary is rated from 0-4 ('not at all' to 'very')."
+      },
+      {
+        "name": "Contextualization",
+        "purpose": "Measures if the summary explains and/or justifies the posed similarities/differences between the papers.",
+        "application": "Each summary is rated from 0-4 ('not at all' to 'very').",
+        "evidence": "Contextualization: Does the summary explain and/or justify the posed similarities/differences between the papers, as opposed to just mentioning them? Each summary is rated from 0-4 ('not at all' to 'very')."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We explore the use of multi-agent debates for inducing fine-grained, comparative reasoning."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We integrate these proposed principles into Tree-of-Debate, a framework which dynamically structures a debate between paper personas, conducted by a moderator."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework applicable across various scientific domains for comparative analysis.",
+        "evidence": "Through experiments on scientific literature across various domains, evaluated by expert researchers, we demonstrate that ToD generates informative arguments."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Tree-of-Debate summaries were found to be 6.85% more complete and 25.98% more contextualized compared to the most competitive baseline.",
+        "evidence": "ToD summaries 6.85% more complete and 25.98% more contextualized compared to the most competitive baseline."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Single Stage",
+        "description": "Uses the title, abstract, and introduction sections of both papers to directly generate a comparative summary.",
+        "evidence": "Single Stage uses the title, abstract and introduction sections of both papers to directly generate a comparative summary."
+      },
+      {
+        "name": "Two Stage",
+        "description": "First individually summarizes each paper and then generates a comparative summary.",
+        "evidence": "Two Stage first individually summarizes each paper based on the title, abstract and introductions, and then uses the generated summaries to generate a comparative summary."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Not reported in the paper",
+        "data_description": "The paper does not specify any traditional benchmark datasets used.",
+        "usage": "N/A",
+        "evidence": "No datasets currently exist for comparing non-citing pairs of scientific papers."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Factuality",
+        "purpose": "Measures how factual the summary is.",
+        "application": "Each sentence is given a binary score for factuality, and the scores are averaged across the summary.",
+        "evidence": "Factuality: How factual is the summary? Each sentence is given a 1/0 binary score for factuality, and the scores are averaged across the summary."
+      },
+      {
+        "name": "Breadth",
+        "purpose": "Measures the comprehensiveness and completeness of the summary.",
+        "application": "Each summary is rated from 0-4 ('not at all' to 'very').",
+        "evidence": "Breadth: Is the summary comprehensive and complete? Each summary is rated from 0-4 ('not at all' to 'very')."
+      },
+      {
+        "name": "Contextualization",
+        "purpose": "Measures if the summary explains and/or justifies the posed similarities/differences between the papers.",
+        "application": "Each summary is rated from 0-4 ('not at all' to 'very').",
+        "evidence": "Contextualization: Does the summary explain and/or justify the posed similarities/differences between the papers, as opposed to just mentioning them? Each summary is rated from 0-4 ('not at all' to 'very')."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Dependence on Model Pre-training",
+        "description": "The quality of the debate and resulting summaries may vary based on the pre-training data of the LLMs used.",
+        "evidence": "The quality of this critical response may vary based on the difficulty of the task (e.g., a more fine-grained topic that has no presence within the model’s existing pre-training dataset)."
+      },
+      {
+        "name": "Potential for Hallucinations",
+        "description": "Personas may suggest potential future studies or new methods, introducing noise to the summarization process.",
+        "evidence": "If certain evidence is not present to support a paper’s fine-grained claims, the personas begin to suggest potential future studies or even new methods."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend to Other Complex Reasoning Tasks",
+        "description": "Apply the Tree-of-Debate framework to other general, complex reasoning tasks that can exploit tree-based decomposition and debate-based critical feedback.",
+        "evidence": "Tree-of-Debate can be extended to other general, complex reasoning tasks which can exploit our tree-based decomposition and debate-based critical feedback."
+      },
+      {
+        "name": "Explore Negotiation Settings",
+        "description": "Consider extending the framework to negotiation settings where various aspects need to be considered for optimal compromise.",
+        "evidence": "We can also consider extending this to a negotiation setting, where there are various aspects to consider when determining the optimal compromise."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/pkargupta/tree-of-debate",
+    "evidence": "Reproducibility: We provide our dataset and source code1 to facilitate further studies. 1https://github.com/pkargupta/tree-of-debate"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore how large language models (LLMs) can be combined with evolutionary computation techniques to automatically discover optimization algorithms for designing photonic structures.",
+    "evidence": "We study how large language models can be used in combination with evolutionary computation techniques to automatically discover optimization algorithms for the design of photonic structures."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in domain-specific guidance for LLM-driven algorithm discovery in photonic problems, which previously relied on generic task prompts and limited evolutionary strategies.",
+    "evidence": "Original LLaMEA prompts lacked domain-specific guidance, which can lead to suboptimal algorithm designs for photonic problems."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of structured task prompts enriched with photonics-specific problem descriptions and algorithmic insights.",
+      "Systematic evaluation of five new evolutionary strategy configurations to balance exploration-exploitation trade-offs."
+    ],
+    "evidence": [
+      "To overcome these limitations, we introduce structured task prompts enriched with photonics-specific problem descriptions and algorithmic insights.",
+      "Furthermore, we systematically evaluate five new evolutionary strategy configurations-(1,5), (1+5), (2,10), (2+10), and (5+5)-to balance exploration-exploitation trade-offs."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- van Stein and Bäck (2024) LLaMEA framework inspired the extension to real-world photonic problems. (Methodological precursors)\n- Bennet et al. (2020) Their photonics and ARCoating testbeds were used for problem simulation. (Experimental baselines)",
+    "evidence": "In this work, we extend the capabilities of the Large Language Model Evolutionary Algorithm (LLaMEA) framework [33] to deal with real-world photonic problems... We apply LLaMEA to real-world problems published by P. Bennet et al. to automatically discover and implement photonic structure optimization algorithms [2, 33]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Real-world problem simulation using PyMoosh and migration to IOHexperimenter platform.",
+        "input": "Problems defined by P. Bennet et al. and PyMoosh toolkit.",
+        "output": "Simulated photonic optimization problems for benchmarking.",
+        "evidence": "Building on PyMoosh, P. Bennet et al. have developed a testbed for defining and solving photonic optimization problems [2]. Based on their work, we migrate the following problems to the IOHexperimenter platform [5]."
+      },
+      {
+        "step": "Enhanced task prompt design with problem description and algorithmic insight.",
+        "input": "Domain-specific knowledge and meta-prompts to GPT-4.",
+        "output": "Structured task prompts for LLaMEA.",
+        "evidence": "To improve LLaMEA’s ability to address domain-specific problems, we have added two key sections to the original task prompt: Problem Description and Algorithmic Insight."
+      },
+      {
+        "step": "Automatic generation of algorithms using LLaMEA.",
+        "input": "Structured task prompts and evolutionary strategies.",
+        "output": "Generated optimization algorithms for photonic problems.",
+        "evidence": "We chose LLaMEA as the algorithm discovery method in our experiments for the following reasons: Targeting continuous optimization problems... Reliable performance."
+      }
+    ],
+    "tools": [
+      {
+        "name": "PyMoosh",
+        "description": "Used for calculating the optical properties of multilayer structures.",
+        "evidence": "Python-based Multilayer Optics Optimization and Simulation Hub (PyMoosh) is a numerical toolkit for calculating the optical properties of multilayer structures [17]."
+      },
+      {
+        "name": "IOHexperimenter",
+        "description": "Platform for defining and solving photonic optimization problems.",
+        "evidence": "Based on their work, we migrate the following problems to the IOHexperimenter platform [5]."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "AOCC",
+        "purpose": "Measures the area over the convergence curve.",
+        "application": "Used as feedback to the LLM for algorithm improvement.",
+        "evidence": "We use the metric suggested by LLaMEA, AOCC, as a feedback to the LLM."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on optimizing photonic structures, which is a key area in engineering.",
+        "evidence": "Optimization of photonic structures plays a key role in the advancement of technologies in various fields such as telecommunication, solar energy, and materials science."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The algorithms generated by LLaMEA achieve advanced performance on real-world problems, matching or surpassing state-of-the-art methods like DE and CMA-ES.",
+        "evidence": "In complex photonic optimization tasks, LLM generates algorithms that can match or even surpass state-of-the-art methods (e.g., DE and CMA-ES) with performance comparable to human-designed heuristics."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Differential Evolution (DE)",
+        "description": "A commonly used algorithm for photonic structure optimization.",
+        "evidence": "In addition, five algorithms commonly used in the field of photonic structure optimization are added to the benchmark to provide a performance comparison, including DE [7]."
+      },
+      {
+        "name": "Covariance Matrix Adaptation Evolution Strategy (CMA-ES)",
+        "description": "A state-of-the-art optimization method for continuous problems.",
+        "evidence": "In benchmarking continuous problems, it produces algorithms that are comparable to or better than state-of-the-art optimization methods such as the covariance matrix adaptation evolution strategy (CMA-ES)."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "AOCC",
+        "purpose": "Measures the area over the convergence curve.",
+        "application": "Used as feedback to the LLM for algorithm improvement.",
+        "evidence": "We use the metric suggested by LLaMEA, AOCC, as a feedback to the LLM."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": []
+  },
+  "future_directions": {
+    "future_directions": "No explicit future directions were stated in the paper."
+  },
+  "resource_link": {
+    "answer": "https://doi.org/10.5281/zenodo.15073784",
+    "evidence": "This chapter presents the results of the experiments, for which the raw data and associated code are publicly available 1."
+  }
+}

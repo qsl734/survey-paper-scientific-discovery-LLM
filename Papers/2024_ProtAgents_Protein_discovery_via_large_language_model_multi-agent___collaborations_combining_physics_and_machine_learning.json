@@ -1,0 +1,143 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce ProtAgents, a platform for de novo protein design based on Large Language Models (LLMs), where multiple AI agents with distinct capabilities collaboratively address complex tasks within a dynamic environment.",
+    "evidence": "In this study, we introduce ProtAgents, a platform for de novo protein design based on Large Language Models (LLMs), where multiple AI agents with distinct capabilities collaboratively address complex tasks within a dynamic environment."
+  },
+  "knowledge_gap": {
+    "answer": "Current AI-based models for protein design often focus on specific material objectives or structural properties, limiting their flexibility when incorporating out-of-domain knowledge into the design process or comprehensive data analysis is required.",
+    "evidence": "However, these models frequently focus on specific material objectives or structural properties, limiting their flexibility when incorporating out-of-domain knowledge into the design process or comprehensive data analysis is required."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a multi-agent system driven by LLMs for protein design.",
+      "Integration of physics-based simulations with AI models for protein analysis.",
+      "Development of a dynamic collaboration framework among AI agents with distinct expertise."
+    ],
+    "evidence": [
+      "The dynamic collaboration between agents, empowered by LLMs, provides a versatile approach to tackling protein design and analysis problems.",
+      "The agent model consists a suite of AI and physics based components such as: Physics simulators: obtain new physical data from simulations, specifically normal modes and vibrational properties by solving partial differential equations (PDEs).",
+      "The versatility in agent development allows for expertise in diverse domains, including knowledge retrieval, protein structure analysis, physics-based simulations, and results analysis."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Huang et al. (2016) The coming of age of de novo protein design. (Methodological precursors)\n- Jumper et al. (2021) Highly accurate protein structure prediction with AlphaFold. (Experimental baselines)",
+    "evidence": "For instance, the development of deep learning (DL)-based AlphaFold 2 marked a significant breakthrough in the field of 3D folding protein prediction with a level of accuracy that in some cases rivaled expensive and time-consuming experimental techniques."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Design proteins with sequence length of 120 and analyze their secondary structure and first 10 frequencies.",
+        "input": "Protein sequence length of 120.",
+        "output": "Secondary structure and first 10 frequencies of the designed proteins.",
+        "evidence": "Design three proteins with sequence length of 120 and analyze their secondary structure and first 10 frequencies."
+      },
+      {
+        "step": "Fold the proteins and repeat the analysis.",
+        "input": "Designed protein sequences.",
+        "output": "Folded protein structures and their secondary structure and frequencies.",
+        "evidence": "Then fold the proteins and repeat the analysis."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Chroma",
+        "description": "Used for de novo protein design.",
+        "evidence": "Chroma offers a unified approach for protein design that can directly sample novel protein structures and sequences."
+      },
+      {
+        "name": "OmegaFold",
+        "description": "Used for predicting the three-dimensional folded protein structure.",
+        "evidence": "OmegaFold is a state-of-the-art folding method without the need of using multiple sequence alignments (MSA) to predict the three-dimensional folded protein structure given its AA sequence."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Secondary Structure Analysis",
+        "purpose": "Measures the composition of secondary structures in proteins.",
+        "application": "Used to analyze the secondary structure of designed and folded proteins.",
+        "evidence": "Analyze their secondary structure and first 10 frequencies."
+      },
+      {
+        "name": "Frequency Calculation",
+        "purpose": "Measures the natural frequencies of protein structures.",
+        "application": "Used to compute the first 10 frequencies of designed and folded proteins.",
+        "evidence": "Compute its first 13 natural frequencies."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The dynamic collaboration between agents, empowered by LLMs, provides a versatile approach to tackling protein design and analysis problems."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The plan mentions all the corresponding functions that need to be executed to accomplish the task."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Biological Sciences",
+        "description": "The paper focuses on protein design and analysis, which are core topics in biological sciences.",
+        "evidence": "The problems of interest encompass designing new proteins, analyzing protein structures and obtaining new first-principles data."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The integration of physics-based simulations with AI models for protein analysis relates to engineering applications.",
+        "evidence": "The agent model consists a suite of AI and physics based components such as: Physics simulators: obtain new physical data from simulations."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The multi-agent framework effectively handles complex tasks in protein design and analysis, demonstrating strong memory and error correction capabilities.",
+        "evidence": "The results suggest that the framework effectively retains all outputs, demonstrating its strong memory even in the face of diverse and extended results."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Secondary Structure Analysis",
+        "purpose": "Measures the composition of secondary structures in proteins.",
+        "application": "Used to analyze the secondary structure of designed and folded proteins.",
+        "evidence": "Analyze their secondary structure and first 10 frequencies."
+      },
+      {
+        "name": "Frequency Calculation",
+        "purpose": "Measures the natural frequencies of protein structures.",
+        "application": "Used to compute the first 10 frequencies of designed and folded proteins.",
+        "evidence": "Compute its first 13 natural frequencies."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": []
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Integrate more external tools",
+        "description": "Incorporate additional tools into the multi-agent system for broader applications.",
+        "evidence": "Furthermore, additional tools can be integrated into the multi-agent system with popular external APIs."
+      },
+      {
+        "name": "Enhance model accuracy",
+        "description": "Develop an integrated system of agents to automate the lifecycle of training deep neural networks for protein design.",
+        "evidence": "Future research endeavors could revolve around the development of an integrated system of agents designed to automate the entire lifecycle of training deep neural networks for protein design."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/lamm-mit/ProtAgents",
+    "evidence": "All data and codes are available on GitHub at https://github.com/lamm-mit/ProtAgents."
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce AISciVision, a framework that specializes Large Multimodal Models (LMMs) for scientific image classification tasks, aiming to enhance interpretability and effectiveness in niche scientific domains.",
+    "evidence": "Motivated by this problem, we introduce AISciVision, a framework that specializes Large Multimodal Models (LMMs) into interactive research partners and classification models for image classification tasks in niche scientific domains."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in the ability of general-purpose AI models to provide deep, domain-specific reasoning required for specialized tasks in scientific research, which current models fail to achieve.",
+    "evidence": "The general knowledge embedded in LMMs falls short of the nuanced expertise required for these specialized tasks, limiting their effectiveness where it matters most."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of AISciVision, a framework that combines Visual Retrieval-Augmented Generation (VisRAG) with domain-specific interactive tools for scientific image classification.",
+      "Deployment of AISciVision as a web application for real-time scientific monitoring, allowing users to interact with inference transcripts.",
+      "AISciVision's ability to produce natural language transcripts detailing the reasoning and tool usage that led to predictions, enhancing interpretability and trust."
+    ],
+    "evidence": [
+      "We introduce AISciVision, a novel framework for specializing Large Multimodal Models (LMMs) to niche scientific image classification tasks. It combines Visual Retrieval-Augmented Generation (VisRAG) with domain-specific interactive tools.",
+      "We have deployed AISciVision as a web application that ecologists and scientists use to classify images and generate inference transcripts.",
+      "Each inference produces both a prediction and a natural language transcript detailing the reasoning and tool usage that led to the prediction."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lewis et al. (2020) Retrieval-Augmented Generation techniques inspired the VisRAG component. (Methodological precursors)\n- Radford et al. (2021) CLIP embeddings are used for image similarity in VisRAG. (Experimental baselines)",
+    "evidence": "RAG techniques enhance LMM predictions by retrieving task-specific examples... (Lewis et al., 2020); All embeddings for VisRAG are computed via CLIP... (Radford et al., 2021)"
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Encode training images into a shared embedding space.",
+        "input": "Training set of binary labeled images.",
+        "output": "Embeddings of images in a shared space.",
+        "evidence": "We first encode all available training images into a shared embedding space."
+      },
+      {
+        "step": "Retrieve relevant images using VisRAG.",
+        "input": "Test image embedding.",
+        "output": "Most similar positive and negative examples.",
+        "evidence": "We then retrieve relevant images to enrich the LMM’s context by computing the cosine similarity of the test image embedding."
+      },
+      {
+        "step": "Use domain-specific tools for interactive analysis.",
+        "input": "Test image and tool descriptions.",
+        "output": "Refined understanding of the target image.",
+        "evidence": "We leverage expert-designed tools for each classification task, empowering the LMM to refine its predictions by interacting with these tools."
+      },
+      {
+        "step": "Output classification label and confidence score.",
+        "input": "Refined image analysis.",
+        "output": "Binary prediction and confidence score.",
+        "evidence": "Finally, the model outputs a classification label with a probability score indicating its confidence."
+      }
+    ],
+    "tools": [
+      {
+        "name": "VisRAG",
+        "description": "Retrieves most similar positive and negative examples for context.",
+        "evidence": "We then retrieve relevant images to enrich the LMM’s context by computing the cosine similarity of the test image embedding."
+      },
+      {
+        "name": "Domain-specific tools",
+        "description": "Used to manipulate and inspect images for refined analysis.",
+        "evidence": "We leverage expert-designed tools for each classification task, empowering the LMM to refine its predictions by interacting with these tools."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Aquaculture Pond Detection",
+        "data_description": "Satellite images from Rondônia, Brazil, with aquaculture ponds.",
+        "usage": "Used for evaluating the framework's performance.",
+        "evidence": "The Aquaculture dataset contains 799 images (640×640) from Rondônia, Brazil."
+      },
+      {
+        "name": "Eelgrass Wasting Disease Detection",
+        "data_description": "Images of eelgrass from Washington state, with diseased samples.",
+        "usage": "Used for evaluating the framework's performance.",
+        "evidence": "The Eelgrass dataset contains 9887 images (128 × 128) from Washington state."
+      },
+      {
+        "name": "Solar Panel Detection",
+        "data_description": "Satellite images tracking solar panel adoption.",
+        "usage": "Used for evaluating the framework's performance.",
+        "evidence": "The open-source Solar dataset tracks solar panel adoption with satellite images."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures correct classifications over total predictions.",
+        "application": "Used to compare all methods in both low-labeled and full-labeled data settings.",
+        "evidence": "All methods are evaluated in low-labeled (20%) and full-labeled (100%) data settings, on Accuracy, F1-score, and Area Under Curve (AUC) metrics."
+      },
+      {
+        "name": "F1-score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate the performance of the classification models.",
+        "evidence": "All methods are evaluated in low-labeled (20%) and full-labeled (100%) data settings, on Accuracy, F1-score, and Area Under Curve (AUC) metrics."
+      },
+      {
+        "name": "AUC",
+        "purpose": "Measures model discrimination performance between classes.",
+        "application": "Used as a secondary metric to validate robustness.",
+        "evidence": "All methods are evaluated in low-labeled (20%) and full-labeled (100%) data settings, on Accuracy, F1-score, and Area Under Curve (AUC) metrics."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The system transforms input images into embeddings for retrieval and analysis.",
+        "evidence": "We first encode all available training images into a shared embedding space."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The system extracts relevant examples and structures them for context-aware inference.",
+        "evidence": "We then retrieve relevant images to enrich the LMM’s context by computing the cosine similarity of the test image embedding."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The system iteratively refines its analysis using domain-specific tools.",
+        "evidence": "We leverage expert-designed tools for each classification task, empowering the LMM to refine its predictions by interacting with these tools."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The framework is applied to scientific image classification across multiple domains.",
+        "evidence": "We evaluate AISciVision on three real-world scientific image classification datasets: detecting the presence of aquaculture ponds, diseased eelgrass, and solar panels."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The framework is used for practical applications in environmental monitoring and engineering.",
+        "evidence": "AISciVision is actively deployed in real-world use, specifically for aquaculture research, through a dedicated web application."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "AISciVision outperforms fully supervised models in low and full-labeled data settings across all datasets.",
+        "evidence": "Our AISciVision framework outperforms both fully supervised and zero-shot methods while producing transcripts detailing the agent’s reasoning."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "k-NN",
+        "description": "Naïve k-Nearest Neighbor using CLIP embeddings.",
+        "evidence": "Hence, a natural baseline is naïve k-Nearest Neighbor (k-NN with k = 3) using CLIP embeddings."
+      },
+      {
+        "name": "CLIP-ZeroShot",
+        "description": "Zero-shot classification using CLIP text embeddings.",
+        "evidence": "We also include CLIP-ZeroShot as a baseline: we classify a test image by comparing the cosine similarities of CLIP text embeddings of the two labels with the CLIP image embedding."
+      },
+      {
+        "name": "CLIP+MLP",
+        "description": "Binary classification using a Multi-Layer Perceptron on CLIP embeddings.",
+        "evidence": "We evaluate another baseline CLIP+MLP for binary classification, where we train a 2-layer Multi-Layer Perceptron (MLP) on top of frozen CLIP image embeddings."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Aquaculture Pond Detection",
+        "data_description": "Satellite images from Rondônia, Brazil, with aquaculture ponds.",
+        "usage": "Used for evaluating the framework's performance.",
+        "evidence": "The Aquaculture dataset contains 799 images (640×640) from Rondônia, Brazil."
+      },
+      {
+        "name": "Eelgrass Wasting Disease Detection",
+        "data_description": "Images of eelgrass from Washington state, with diseased samples.",
+        "usage": "Used for evaluating the framework's performance.",
+        "evidence": "The Eelgrass dataset contains 9887 images (128 × 128) from Washington state."
+      },
+      {
+        "name": "Solar Panel Detection",
+        "data_description": "Satellite images tracking solar panel adoption.",
+        "usage": "Used for evaluating the framework's performance.",
+        "evidence": "The open-source Solar dataset tracks solar panel adoption with satellite images."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures correct classifications over total predictions.",
+        "application": "Used to compare all methods in both low-labeled and full-labeled data settings.",
+        "evidence": "All methods are evaluated in low-labeled (20%) and full-labeled (100%) data settings, on Accuracy, F1-score, and Area Under Curve (AUC) metrics."
+      },
+      {
+        "name": "F1-score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate the performance of the classification models.",
+        "evidence": "All methods are evaluated in low-labeled (20%) and full-labeled (100%) data settings, on Accuracy, F1-score, and Area Under Curve (AUC) metrics."
+      },
+      {
+        "name": "AUC",
+        "purpose": "Measures model discrimination performance between classes.",
+        "application": "Used as a secondary metric to validate robustness.",
+        "evidence": "All methods are evaluated in low-labeled (20%) and full-labeled (100%) data settings, on Accuracy, F1-score, and Area Under Curve (AUC) metrics."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "data_description": null,
+    "usage": null,
+    "evidence": "No traditional benchmark dataset was used; all datasets were domain-specific and collected for this study."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Financial Cost",
+        "description": "Using off-the-shelf LMMs for inference is financially expensive compared to traditional methods.",
+        "evidence": "While AISciVision offers significant benefits in providing transparent reasoning and the potential for enhanced accuracy, it comes with a trade-off: using off-the-shelf LMMs for inference is financially expensive, compared to traditional machine learning methods."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Incorporate Expert Feedback",
+        "description": "Develop the web application to collect expert feedback on the LMM agent’s reasoning.",
+        "evidence": "For our future work, we aim to actively develop our web application to continue to collect expert feedback on the LMM agent’s reasoning through a ChatGPT-style interface."
+      },
+      {
+        "name": "Extend to Other Modalities",
+        "description": "Test and extend the method to other modalities such as sound or tokenizable input.",
+        "evidence": "Beyond refining our approach for image data, we also plan to test and extend our method to other modalities, such as sound or any tokenizable input that can be incorporated into an LMM."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/gomes-lab/AiSciVision",
+    "evidence": "Our code is available at https://github.com/gomes-lab/AiSciVision."
+  }
+}

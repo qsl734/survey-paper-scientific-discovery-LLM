@@ -1,0 +1,207 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose SemRank, a framework for scientific paper retrieval that combines LLM-guided query understanding with a concept-based semantic index to improve retrieval accuracy.",
+    "evidence": "To overcome these limitations, we propose SemRank, an effective and efficient paper retrieval framework that combines LLM-guided query understanding with a concept-based semantic index."
+  },
+  "knowledge_gap": {
+    "answer": "Existing dense retrieval methods fail to capture fine-grained scientific concepts essential for accurately understanding scientific queries, and LLMs lack grounding in corpus-specific knowledge.",
+    "evidence": "Specifically, general-purpose semantic representations learned by dense retrievers often fail to capture fine-grained scientific concepts that are crucial for accurately understanding and satisfying a scientific query."
+  },
+  "novelty": {
+    "answer": [
+      "SemRank introduces a concept-based semantic index at multiple granularities to capture essential content of scientific papers.",
+      "The framework uses LLMs to identify core concepts from the corpus, reducing hallucination and ensuring alignment with the semantic index.",
+      "SemRank can be integrated with any dense retriever to improve retrieval quality without relying on annotated query data."
+    ],
+    "evidence": [
+      "We build concept-based semantic index at various granularities: from broad research topics such as 'natural language generation' to specific terms such as 'multidimensional evaluation metrics'.",
+      "We augment the prompt with candidate concepts derived from the corpus, which helps the LLM to reduce hallucination and ensure the generated content align with the semantic index of corpus.",
+      "Our method can be easily integrated with any dense retriever and improve their retrieval quality without relying on any annotated query data."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Karpukhin et al. (2020) Dense passage retrieval methods inspired the semantic representation approach. (Methodological precursors)\n- Gao et al. (2023) HyDE's use of LLMs for query understanding influenced the LLM-guided query understanding in SemRank. (Methodological precursors)",
+    "evidence": "Recently, dense passage retrieval methods have been widely studied in various ad hoc searches (Karpukhin et al., 2020; Izacard et al., 2021). For example, HyDE (Gao et al., 2023) uses an LLM to generate a hypothetical passage for encoding."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Semantic Index Construction",
+        "input": "Scientific papers and a domain-specific topic label space",
+        "output": "A semantic index containing research topics and key phrases for each paper",
+        "evidence": "To capture the core research concepts at various granularities for scientific papers, we propose to build a semantic index of the corpus that contains general research topics and specific key phrases."
+      },
+      {
+        "step": "Core Concepts Identification",
+        "input": "Candidate topics and key phrases for each paper",
+        "output": "A set of core scientific concepts for each query",
+        "evidence": "With the fine-tuned scientific topic classifier, we first predict a set of candidate topics likely relevant to each paper in the retrieval corpus. Then, we prompt an LLM to perform two tasks: (1) select a set of topics from the candidate list that are not too broad or irrelevant, and (2) extract a set of key phrases from the paper."
+      },
+      {
+        "step": "LLM-Guided Semantic-Based Retrieval",
+        "input": "Query and candidate concepts from the corpus",
+        "output": "Refined retrieval results with concept-aware ranking",
+        "evidence": "Given a base retriever, SemRank first identifies a set of candidate concepts relevant to the query and prompts an LLM to analyze the retrieval context and select the most salient core concepts."
+      }
+    ],
+    "tools": [
+      {
+        "name": "SPECTER-v2",
+        "description": "Used for encoding scientific documents and topics",
+        "evidence": "We initialize the paper encoder with a pre-trained scientific domain language model (e.g., SPECTER-v2 (Singh et al., 2022))."
+      },
+      {
+        "name": "GPT-4.1-mini",
+        "description": "Used as the LLM for SemRank and all LLM-based baselines",
+        "evidence": "We use GPT-4.1-mini as the LLM for SemRank and all LLM-based baselines for fair comparison."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "CSFCube",
+        "data_description": "A test collection of computer science research articles",
+        "usage": "Used for evaluating retrieval performance",
+        "evidence": "We use three public datasets on scientific paper retrieval: CSFCube (Mysore et al., 2021), DORISMAE (Wang et al., 2023a), and LitSearch (Ajith et al., 2024)."
+      },
+      {
+        "name": "DORISMAE",
+        "data_description": "Scientific document retrieval dataset",
+        "usage": "Used for evaluating retrieval performance",
+        "evidence": "We use three public datasets on scientific paper retrieval: CSFCube (Mysore et al., 2021), DORISMAE (Wang et al., 2023a), and LitSearch (Ajith et al., 2024)."
+      },
+      {
+        "name": "LitSearch",
+        "data_description": "A retrieval benchmark for scientific literature search",
+        "usage": "Used for evaluating retrieval performance",
+        "evidence": "We use three public datasets on scientific paper retrieval: CSFCube (Mysore et al., 2021), DORISMAE (Wang et al., 2023a), and LitSearch (Ajith et al., 2024)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Recall@K",
+        "purpose": "Measures the proportion of relevant documents retrieved in the top K results",
+        "application": "Used to evaluate retrieval performance across different datasets",
+        "evidence": "We use Recall@K (R@K) as our evaluation metric. Following previous studies, we use K = 50, 100 for CSFCube and DORISMAE, and K = 5, 20, 100 for LitSearch."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The approach involves extracting and organizing scientific concepts into a semantic index.",
+        "evidence": "To capture the core research concepts at various granularities for scientific papers, we propose to build a semantic index of the corpus that contains general research topics and specific key phrases."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The method refines retrieval results by iteratively selecting core concepts for queries.",
+        "evidence": "Given a base retriever, SemRank first identifies a set of candidate concepts relevant to the query and prompts an LLM to analyze the retrieval context and select the most salient core concepts."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper addresses scientific paper retrieval, which is relevant across multiple scientific disciplines.",
+        "evidence": "Scientific paper retrieval is a crucial task to facilitate literature discovery and accelerate scientific progress."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The methodology involves engineering a retrieval framework using advanced computational techniques.",
+        "evidence": "We propose the SemRank, LLM-Guided Semantic-Based Ranking, a plug-and-play framework for scientific paper retrieval."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "SemRank consistently improves retrieval performance across various base retrievers and outperforms existing baselines.",
+        "evidence": "Experiments show that SemRank consistently improves the performance of various base retrievers, surpasses strong existing LLM-based baselines, and remains highly efficient."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "BERT-QE",
+        "description": "Expands the query with relevant text chunks selected from top-ranked papers.",
+        "evidence": "BERT-QE (Zheng et al., 2020) expands the query with relevant text chunks selected from top-ranked papers returned by the base retriever."
+      },
+      {
+        "name": "HyDE",
+        "description": "Prompts an LLM to generate a hypothetical document that answers the query.",
+        "evidence": "HyDE (Gao et al., 2023) prompts an LLM to generate hypothetical document that answers the query and encode it as the query vector."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "CSFCube",
+        "data_description": "A test collection of computer science research articles",
+        "usage": "Used for evaluating retrieval performance",
+        "evidence": "We use three public datasets on scientific paper retrieval: CSFCube (Mysore et al., 2021), DORISMAE (Wang et al., 2023a), and LitSearch (Ajith et al., 2024)."
+      },
+      {
+        "name": "DORISMAE",
+        "data_description": "Scientific document retrieval dataset",
+        "usage": "Used for evaluating retrieval performance",
+        "evidence": "We use three public datasets on scientific paper retrieval: CSFCube (Mysore et al., 2021), DORISMAE (Wang et al., 2023a), and LitSearch (Ajith et al., 2024)."
+      },
+      {
+        "name": "LitSearch",
+        "data_description": "A retrieval benchmark for scientific literature search",
+        "usage": "Used for evaluating retrieval performance",
+        "evidence": "We use three public datasets on scientific paper retrieval: CSFCube (Mysore et al., 2021), DORISMAE (Wang et al., 2023a), and LitSearch (Ajith et al., 2024)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Recall@K",
+        "purpose": "Measures the proportion of relevant documents retrieved in the top K results",
+        "application": "Used to evaluate retrieval performance across different datasets",
+        "evidence": "We use Recall@K (R@K) as our evaluation metric. Following previous studies, we use K = 50, 100 for CSFCube and DORISMAE, and K = 5, 20, 100 for LitSearch."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": null,
+    "usage": null,
+    "evidence": "No traditional benchmark dataset was used; the datasets mentioned are specific to scientific paper retrieval."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited to Title and Abstract",
+        "description": "The study is limited to scientific paper retrieval datasets with only title and abstract, which may not generalize to full paper retrieval.",
+        "evidence": "First, our current studies limit to scientific paper retrieval dataset with only title and abstract, while retrieving full scientific papers could be more challenging due to the difficulties of effectively understanding long structured text."
+      },
+      {
+        "name": "Concept Relationship Ignored",
+        "description": "SemRank does not consider the internal relationship between scientific concepts, which could provide more insights.",
+        "evidence": "Second, SemRank only consider scientific concepts as a set, while not considering their internal relationship which could bring more insights to paper and query understanding."
+      },
+      {
+        "name": "Prompt Sensitivity",
+        "description": "The reliance on LLM prompting introduces sensitivity to prompt design and model behavior.",
+        "evidence": "Third, although our use of LLMs is efficient, the reliance on prompting still introduces sensitivity to prompt design and model behavior, which may require tuning for different domains."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Full Paper Retrieval",
+        "description": "Extend the method to handle full scientific papers, not just titles and abstracts.",
+        "evidence": "First, our current studies limit to scientific paper retrieval dataset with only title and abstract, while retrieving full scientific papers could be more challenging due to the difficulties of effectively understanding long structured text."
+      },
+      {
+        "name": "Explore Concept Relationships",
+        "description": "Investigate the internal relationships between scientific concepts for enhanced understanding.",
+        "evidence": "Second, SemRank only consider scientific concepts as a set, while not considering their internal relationship which could bring more insights to paper and query understanding."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No human-facing resource URL was found in the paper."
+  }
+}

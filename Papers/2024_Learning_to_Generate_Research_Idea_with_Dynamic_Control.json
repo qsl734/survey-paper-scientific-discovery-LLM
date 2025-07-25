@@ -1,0 +1,203 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a novel framework for research ideation that dynamically adjusts emphasis on key metrics to achieve high overall quality through a two-stage approach: Supervised Fine-Tuning (SFT) and controllable Reinforcement Learning (RL).",
+    "evidence": "To address these limitations, we for the first time propose fine-tuning LLMs to be better idea proposers and introduce a novel framework that employs a two-stage approach combining Supervised Fine-Tuning (SFT) and controllable Reinforcement Learning (RL)."
+  },
+  "knowledge_gap": {
+    "answer": "Existing LLM-based systems for research ideation predominantly rely on prompting-based pre-trained models, limiting their ability to optimize generated content effectively and lacking the capability to handle complex interdependencies among novelty, feasibility, and effectiveness.",
+    "evidence": "However, current approaches predominantly rely on prompting-based pre-trained models, limiting their ability to optimize generated content effectively. Moreover, they also lack the capability to deal with the complex interdependence and inherent restrictions among novelty, feasibility, and effectiveness."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of a two-stage framework combining Supervised Fine-Tuning (SFT) and controllable Reinforcement Learning (RL) for research ideation.",
+      "The use of dimensional controllers to dynamically adjust the generation style to prioritize specific metric dimensions.",
+      "The implementation of a sentence-level decoder to ensure context-aware emphasis during inference."
+    ],
+    "evidence": [
+      "We propose a novel research ideation framework that utilizes fine-tuned LLMs to dynamically control the optimization of the generated ideas towards novelty, feasibility, and effectiveness for better overall quality.",
+      "To enable precise and adaptive control, we introduce dimensional controllers, trained alongside the RL process, which adjusts the generation style to prioritize specific metric dimensions when necessary.",
+      "This is complemented at inference time by a sentence-level decoder that dynamically adjusts the weights of controllers, ensuring context-aware emphasis."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Baek et al. (2024) ResearchAgent: Iterative Research Idea Generation over Scientific Literature with Large Language Models. (Methodological precursors)\n- Bornstein and Singh (2024) Hypothesis-craft: Towards automated hypothesis generation and refinement using llms. (Methodological precursors)\n- Ouyang et al. (2022) Training language models to follow instructions with human feedback. (Experimental baselines)",
+    "evidence": "This capability is demonstrated by a growing body of work employing autonomous LLM-based agents to generate and validate innovative ideas (Baek et al., 2024; Bornstein and Singh, 2024). For example, Reinforcement Learning from Human Feedback (RLHF) has been explored to benefit LLM training (Ouyang et al., 2022)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Supervised Fine-Tuning (SFT) stage",
+        "input": "Pairs of research papers and follow-up ideas",
+        "output": "Model learns foundational patterns",
+        "evidence": "In the SFT stage, the idea generator learns foundational patterns by training on pairs of research papers and corresponding follow-up ideas."
+      },
+      {
+        "step": "Reinforcement Learning (RL) stage",
+        "input": "Multi-dimensional reward modeling guided by fine-grained feedback",
+        "output": "Optimized generated ideas across key metrics",
+        "evidence": "In the RL stage, we employ multi-dimensional reward modeling as a real-world assessment approximation."
+      },
+      {
+        "step": "Dimensional controllers training",
+        "input": "Feedback signals from reward models",
+        "output": "Dynamic adjustment of generation style",
+        "evidence": "To enable precise and adaptive control, we introduce dimensional controllers, trained alongside the RL process."
+      },
+      {
+        "step": "Sentence-level decoding",
+        "input": "Contextual information during inference",
+        "output": "Context-aware emphasis in idea generation",
+        "evidence": "This is complemented at inference time by a sentence-level decoder that dynamically adjusts the weights of controllers."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LLaMA",
+        "description": "Used for extracting research ideas from sampled papers",
+        "evidence": "We utilize the LLaMA with a prompt (detailed in appendix D) to extract the research idea y from the sampled paper p as the golden output."
+      },
+      {
+        "name": "PPO algorithm",
+        "description": "Used to train the model during reinforcement learning",
+        "evidence": "Thereafter, we utilize the PPO algorithm (Schulman et al., 2017) to train the model following the existing work (Jing and Du, 2024)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ICLR 2023 and 2024 papers",
+        "data_description": "Papers from a top-tier conference in machine learning",
+        "usage": "Used for supervised fine-tuning and reward model training",
+        "evidence": "To conduct a Supervised Fine-Tuning stage, we first collect papers from the ICLR 2023 and 2024."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Evaluates how original and creative the generated ideas are",
+        "application": "Used to assess the creativity of generated ideas",
+        "evidence": "Novelty: Evaluates how original and creative the generated ideas are, compared to existing works."
+      },
+      {
+        "name": "Feasibility",
+        "purpose": "Assesses the practical implementation likelihood",
+        "application": "Used to evaluate the practicality of generated ideas",
+        "evidence": "Feasibility: Assesses the practical implementation and the likelihood that the idea can be executed within typical resource constraints."
+      },
+      {
+        "name": "Effectiveness",
+        "purpose": "Measures the potential improvement or impact of the generated idea",
+        "application": "Used to compare the potential impact of generated ideas",
+        "evidence": "Effectiveness: Measures the potential improvement or impact of the generated idea when compared to baseline models."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Our framework provides a balanced approach to research ideation, achieving high-quality outcomes by dynamically navigating the trade-offs among novelty, feasibility, and effectiveness."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Typically, a well-developed scientific research idea (or hypothesis) consists of a methodology and an experiment plan."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper focuses on automating research ideation, which spans multiple scientific disciplines.",
+        "evidence": "The rapid advancements in large language models (LLMs) have demonstrated their potential to accelerate scientific discovery, particularly in automating the process of research ideation."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed model with dynamic decoding achieved the highest overall score of 6.2, demonstrating superior adaptability and performance across novelty, feasibility, and effectiveness metrics.",
+        "evidence": "Dynamic Decoding emerges as the most effective approach, leveraging contextual dynamic strategy to balance creativity, practicality, and impact, ultimately producing higher-quality ideas."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "T5-SFT",
+        "description": "A version of the T5 model trained using SFT on 1,000 examples, without reinforcement learning or control strategies.",
+        "evidence": "T5-SFT: A version of the T5 model trained using SFT on 1,000 examples, without reinforcement learning or control strategies."
+      },
+      {
+        "name": "LLaMA2-SFT",
+        "description": "A fine-tuned version of the LLaMA2 model using 1,000 examples of research paper-idea pairs, without any RL or dimensional controllers.",
+        "evidence": "LLaMA2-SFT: A fine-tuned version of the LLaMA2 model using 1,000 examples of research paper-idea pairs, without any RL or dimensional controllers."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ICLR and NeurIPS papers",
+        "data_description": "Research papers submitted to ICLR and NeurIPS in 2023 and 2024",
+        "usage": "Used for training and evaluation of the proposed model",
+        "evidence": "We collect a dataset of 6,765 usable research papers in total submitted to ICLR and NeurIPS in the years 2023 and 2024."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Evaluates how original and creative the generated ideas are",
+        "application": "Used to assess the creativity of generated ideas",
+        "evidence": "Novelty: Evaluates how original and creative the generated ideas are, compared to existing works."
+      },
+      {
+        "name": "Feasibility",
+        "purpose": "Assesses the practical implementation likelihood",
+        "application": "Used to evaluate the practicality of generated ideas",
+        "evidence": "Feasibility: Assesses the practical implementation and the likelihood that the idea can be executed within typical resource constraints."
+      },
+      {
+        "name": "Effectiveness",
+        "purpose": "Measures the potential improvement or impact of the generated idea",
+        "application": "Used to compare the potential impact of generated ideas",
+        "evidence": "Effectiveness: Measures the potential improvement or impact of the generated idea when compared to baseline models."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "data_description": null,
+    "usage": null,
+    "evidence": "No traditional benchmark dataset was used; the study utilized datasets from ICLR and NeurIPS, which are not established benchmarks."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The model's performance is evaluated on a specific set of research papers from ICLR and NeurIPS, which may not generalize to other domains or conferences.",
+        "evidence": "We collect a dataset of 6,765 usable research papers in total submitted to ICLR and NeurIPS in the years 2023 and 2024."
+      },
+      {
+        "name": "Dependence on LLMs",
+        "description": "The framework heavily relies on large language models, which may not capture domain-specific nuances without extensive fine-tuning.",
+        "evidence": "The rapid advancements in large language models (LLMs) have demonstrated their potential to accelerate scientific discovery."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Other Scientific Domains",
+        "description": "Explore the application of the framework to other scientific fields beyond machine learning.",
+        "evidence": "In future work, we plan to evaluate our pipeline on multimodal medical imaging datasets."
+      },
+      {
+        "name": "Enhance Dimensional Control",
+        "description": "Improve the precision and adaptability of dimensional controllers for better idea generation.",
+        "evidence": "Future versions will explore alternative labeling methods to reduce noise in training data."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/du-nlp-lab/Learn2Gen",
+    "evidence": "Our benchmark is publicly available at https://github.com/du-nlp-lab/Learn2Gen."
+  }
+}

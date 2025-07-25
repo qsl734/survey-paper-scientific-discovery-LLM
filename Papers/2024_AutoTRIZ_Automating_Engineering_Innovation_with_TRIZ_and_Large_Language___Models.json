@@ -1,0 +1,120 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce AutoTRIZ, an artificial ideation system that integrates Large Language Models (LLMs) to automate and enhance the TRIZ methodology for engineering innovation.",
+    "evidence": "To address this, we introduce AutoTRIZ, an artificial ideation system that integrates Large Language Models (LLMs) to automate and enhance the TRIZ methodology."
+  },
+  "knowledge_gap": {
+    "answer": "The complexity of TRIZ and its reliance on users’ knowledge, experience, and reasoning capabilities limit its practicality, necessitating an automated approach.",
+    "evidence": "However, the complexity of TRIZ and its reliance on users’ knowledge, experience, and reasoning capabilities limit its practicality."
+  },
+  "novelty": {
+    "answer": [
+      "AutoTRIZ automates the entire TRIZ reasoning process using LLMs, reducing cognitive demands on users.",
+      "The system generates a structured solution report by following the TRIZ thinking flow.",
+      "AutoTRIZ integrates a fixed knowledge base with LLMs to control the reasoning process while leveraging LLMs' pre-trained knowledge."
+    ],
+    "evidence": [
+      "AutoTRIZ automates the entire reasoning process, it still follows the core TRIZ logic of 'from specific to general' and 'general to specific,' leveraging LLMs to facilitate these steps efficiently.",
+      "AutoTRIZ takes a problem statement from the user and automatically generates a report that includes multiple solutions, strictly following the TRIZ thinking flow.",
+      "Within AutoTRIZ, we have defined a four-step reasoning flow based on the classic TRIZ workflow. The system includes an inner fixed knowledge base consisting of three segments related to TRIZ details, enabling controlled reasoning."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Cascini and Russo (2007) Developed the PAT-ANALYZER system that can analyze patent texts and automatically extract the contradictory information underlying the innovation for TRIZ. (Methodological precursors)\n- Guarino et al. (2022) Proposed the PaTRIZ, combining BERT and CRF for word-level patent analysis and TRIZ contradiction mining. (Methodological precursors)",
+    "evidence": "For instance, Cascini and Russo [5] developed the PAT-ANALYZER system that can analyze patent texts and automatically extract the contradictory information underlying the innovation for TRIZ. Similarly, Guarino et al. [6] proposed the PaTRIZ, combining the Bidirectional Encoder Representations from Transformers (BERT) and Conditional Random Fields (CRF) for word-level patent analysis and TRIZ contradiction mining."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Identify the specific problem from user input.",
+        "input": "User input containing a problem statement.",
+        "output": "A clear and concise problem statement.",
+        "evidence": "In Module 1, AutoTRIZ identifies the problem to be solved from user input U and converts it into descriptive text T."
+      },
+      {
+        "step": "Transform the specific problem into a general problem by identifying contradictions.",
+        "input": "Processed problem description.",
+        "output": "Identified engineering contradiction.",
+        "evidence": "In Module 2, AutoTRIZ receives the processed problem description T and detects its engineering contradiction."
+      },
+      {
+        "step": "Use the contradiction matrix to find relevant inventive principles.",
+        "input": "Identified contradiction.",
+        "output": "Set of inventive principles.",
+        "evidence": "Once the contradiction is identified, Module 3 searches the contradiction matrix CM to find the indexes of corresponding inventive principles."
+      },
+      {
+        "step": "Apply the selected inventive principles to generate solutions.",
+        "input": "Original problem description, identified contradiction, and inventive principles.",
+        "output": "Set of final solutions.",
+        "evidence": "Following this, Module 4 synthesizes the original problem description T, the identified engineering contradiction C, and the inventive principles I, to generate the set of final solutions S."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4",
+        "description": "Used as the backend LLM for reasoning and solution generation.",
+        "evidence": "Throughout the deployment of this tool and all experiments and case studies presented in this study, we utilized GPT-4 (Version: 20231106, the state-of-the-art model at the time this work was done) as the backend LLM."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "AutoTRIZ begins with a problem statement from the user and automatically generates a report that includes multiple solutions, strictly following the TRIZ thinking flow."
+      },
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The approach includes transforming user input into structured formats for further processing.",
+        "evidence": "In Module 1, AutoTRIZ identifies the problem to be solved from user input U and converts it into descriptive text T."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on automating engineering innovation using TRIZ and LLMs.",
+        "evidence": "AutoTRIZ offers a novel, generative, and interpretable approach to engineering innovation."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "AutoTRIZ was evaluated through comparative experiments with textbook cases and a real-world application in the design of a Battery Thermal Management System (BTMS).",
+        "evidence": "We demonstrate and evaluate the effectiveness of AutoTRIZ through comparative experiments with textbook cases and a real-world application in the design of a Battery Thermal Management System (BTMS)."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited TRIZ Database",
+        "description": "The original TRIZ defines only 40 inventive principles, which may not fully capture the diversity of modern engineering challenges.",
+        "evidence": "However, AutoTRIZ is also constrained by the limitations of TRIZ databases. For instance, the original TRIZ defines only 40 inventive principles, which may not fully capture the vast diversity of modern engineering and innovation challenges."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend to Other Knowledge-Based Methods",
+        "description": "The framework could be extended to automate other knowledge-based innovation methods like SCAMPER and Design Heuristics.",
+        "evidence": "Although this paper primarily focuses on integrating LLMs with TRIZ, the proposed framework holds the potential to be extended to other knowledge-based ideation methods, including SCAMPER, Design Heuristics, and Design-by-Analogy."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://www.autotriz.ai/",
+    "evidence": "We have developed a web-based tool for public users to test and use AutoTRIZ, available at: https://www.autotriz.ai/"
+  }
+}

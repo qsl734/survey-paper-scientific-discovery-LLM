@@ -1,0 +1,174 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to model the process of discovering novel language model architectures that improve on the standard transformer architecture.",
+    "evidence": "In this paper, we focus on discovery in machine learning and ask: Can we model the process of discovering novel language model architectures that improve on the standard transformer architecture?"
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in automated scientific discovery systems that focus on open-ended research with unclear goals and where discoveries are hard to verify.",
+    "evidence": "However, while many new large language model (LLM)-driven ASD systems have been recently proposed, much of this work focuses on open-ended research with unclear goals and where discoveries are hard to verify."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of a multi-agent LLM approach that simulates conventional research stages.",
+      "The use of a Ladder of Scales approach for efficient discovery and verification.",
+      "The implementation of a novel genetic programming backbone for design generation.",
+      "The development of a Language Model Architecture Discovery Environment (LMADE) with a knowledge engine and verification engine."
+    ],
+    "evidence": [
+      "Inspired by real research, we propose a multi-agent LLM approach that simulates the conventional stages of research.",
+      "Genesys employs a Ladder of Scales approach; new designs are proposed, adversarially reviewed, implemented, and selectively verified at increasingly larger model scales.",
+      "Genesys uses a novel genetic programming backbone, which we show has empirical advantages over commonly used direct prompt generation workflows.",
+      "Our Language Model Architecture Discovery Environment (LMADE) specifically consists of two core resources, a general-purpose knowledge engine that provides access to the academic literature and a verification engine that provides tools for performing model pre-training and evaluation."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Vaswani et al. (2017) Transformers remain the de facto standard architecture for language models. (Methodological precursors)\n- Elsken et al. (2019) Neural architecture search literature provides the foundation for architecture research. (Methodological precursors)",
+    "evidence": "While transformers (Vaswani et al., 2017) remain the de facto standard architecture for language models, research into alternative architectures and transformer variants remains an active and important area of research with connections to the mature field of neural architecture search (NAS) (Elsken et al., 2019)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Propose new research ideas and produce executable architecture designs.",
+        "input": "LLM-driven designer agents and a reference library of LM papers.",
+        "output": "Executable architecture designs stored in an evolution tree.",
+        "evidence": "Our system Genesys then consists of LLM-driven designer agents that propose new research ideas and produce executable architecture designs."
+      },
+      {
+        "step": "Verify designs through generative pre-training.",
+        "input": "Designs selected from the evolution tree.",
+        "output": "Verified designs with empirical performance metrics.",
+        "evidence": "Verifiers select designs from the evolution tree and verify them through budget-aware pre-training."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LMADE Knowledge Engine",
+        "description": "Provides access to academic literature for producing new research ideas.",
+        "evidence": "The Knowledge Engine (KE) provides information from the academic literature that is needed to produce new research ideas."
+      },
+      {
+        "name": "LMADE Verification Engine",
+        "description": "Performs model pre-training and evaluation.",
+        "evidence": "The Verification Engine (VE) then provides tools for verifying the correctness of designs and executing experiments."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SmolLM corpus",
+        "data_description": "A filtered corpus for model pre-training.",
+        "usage": "Used for design verification by automating pretraining.",
+        "evidence": "Finally, VE can perform design verification by automating pretraining in a filtered SmolLM corpus."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Empirical performance",
+        "purpose": "Measures the success of architecture designs.",
+        "application": "Used to evaluate the fitness of new designs over time.",
+        "evidence": "We find that our system produces highly competitive designs, e.g., ones that outperform comparable transformer and mamba2 models in 6 / 9 common downstream tasks."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Our system Genesys then consists of LLM-driven designer agents that propose new research ideas and produce executable architecture designs."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Verifiers select designs from the evolution tree and verify them through budget-aware pre-training."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a system for automated scientific discovery across multiple domains.",
+        "evidence": "Automated scientific discovery (ASD) aims to simulate all aspects of the conventional research process — from ideation/system design to experiment execution."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The methodology targets the design and evaluation of language model architectures.",
+        "evidence": "We focus on discovery in machine learning and ask: Can we model the process of discovering novel language model architectures?"
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The system produces highly competitive designs, outperforming comparable transformer and mamba2 models in 6/9 common downstream tasks.",
+        "evidence": "We find that our system produces highly competitive designs, e.g., ones that outperform comparable transformer and mamba2 models in 6 / 9 common downstream tasks."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GPT2",
+        "description": "A standard transformer-based language model.",
+        "evidence": "We find that our system produces highly competitive designs, e.g., ones that outperform comparable transformer and mamba2 models."
+      },
+      {
+        "name": "Mamba2",
+        "description": "A state-space model used as a baseline for comparison.",
+        "evidence": "We find that our system produces highly competitive designs, e.g., ones that outperform comparable transformer and mamba2 models."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SmolLM corpus",
+        "data_description": "A filtered corpus for model pre-training.",
+        "usage": "Used for design verification by automating pretraining.",
+        "evidence": "Finally, VE can perform design verification by automating pretraining in a filtered SmolLM corpus."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Empirical performance",
+        "purpose": "Measures the success of architecture designs.",
+        "application": "Used to evaluate the fitness of new designs over time.",
+        "evidence": "We find that our system produces highly competitive designs, e.g., ones that outperform comparable transformer and mamba2 models in 6 / 9 common downstream tasks."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "SmolLM corpus",
+    "description": "A filtered corpus for model pre-training.",
+    "usage": "Used for design verification by automating pretraining.",
+    "evidence": "Finally, VE can perform design verification by automating pretraining in a filtered SmolLM corpus."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scale of Verification",
+        "description": "Verification is performed on a limited range of model scales, which may not fully capture performance at larger scales.",
+        "evidence": "To make verification feasible, we employ a Ladder-of-Scales approach where new designs are verified on increasingly larger model scales with a controlled budget."
+      },
+      {
+        "name": "Complexity of Integration",
+        "description": "Combining multiple advanced mechanisms introduces significant architectural complexity.",
+        "evidence": "Combining three advanced mechanisms—selective gating, vector quantization, and hierarchical memory—introduces significant architectural complexity."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Empirical Evaluation Plan",
+        "description": "Develop a comprehensive plan for empirical evaluations to test the VQH-GAU’s performance across various benchmarks.",
+        "evidence": "Develop a comprehensive plan for empirical evaluations to test the VQH-GAU’s performance across various benchmarks."
+      },
+      {
+        "name": "Quantization Strategy",
+        "description": "Provide detailed strategies for managing the trade-off between compression and information retention.",
+        "evidence": "Provide detailed strategies for managing the trade-off between compression and information retention."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://genesys.allen.ai",
+    "evidence": "All code and discovery artifacts (e.g., new designs, agent interactions and dialogues) can be found at https://genesys.allen.ai (live console) and https://github.com/allenai/genesys (system code)."
+  }
+}

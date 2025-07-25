@@ -1,0 +1,185 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to design a framework called Agent Ideate for automatically generating product-based business ideas from patents using Large Language Models (LLMs) and autonomous agents.",
+    "evidence": "In this work, we design Agent Ideate, a framework for automatically generating product-based business ideas from patents."
+  },
+  "knowledge_gap": {
+    "answer": "Generating viable and actionable product ideas from patents remains an underexplored area despite the wealth of technical insights contained within patent documents.",
+    "evidence": "Despite the wealth of technical insights contained within patent documents, generating product business ideas from patents remains an underexplored area."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of a multi-agent architecture that leverages an external search tool for generating product ideas from patent text.",
+      "The use of a multi-agent system where different tasks are handled by different specialized agents, enhancing modularity and control.",
+      "Incorporation of a search tool to enrich the reasoning process with external information, differentiating it from standalone LLM approaches."
+    ],
+    "evidence": [
+      "In this study, we built the Agent Ideate framework, which is a Multi-Agent architecture leveraging an external search tool for generating product ideas from patent text.",
+      "The second approach builds on modularization via a multi-agent system, where different tasks are handled by different specialized agents.",
+      "The third and most comprehensive method incorporates a search tool to enrich the reasoning process with external information."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Jiang and Goetz (2024) Artificial intelligence exploring the patent field. (Papers with limitations addressed by this work)\n- Si et al. (2024) Can llms generate novel research ideas? a large-scale human study with 100+ nlp researchers. (Methodological precursors)",
+    "evidence": "Despite the wealth of technical insights contained within patent documents, generating product business ideas from patents remains an underexplored area (Jiang and Goetz, 2024). One closely related line of work is by Si et al. (2024), who investigate the research ideation capabilities of LLMs."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Prompt-based LLM Approach",
+        "input": "The entire patent or its reduced components: title, abstract, claims, and summarized description.",
+        "output": "Business ideas in JSON format with fields such as product title, product description, implementation, and differentiation.",
+        "evidence": "We use a single-prompt approach with a large language model (LLM), wherein the entire patent (or its reduced components: title, abstract, claims, and summarized description) is passed as input to the model."
+      },
+      {
+        "step": "Multi-Agent LLM Architecture",
+        "input": "Summarized insight from the patent.",
+        "output": "Structured business idea.",
+        "evidence": "A Business Idea Generator Agent uses the summarized insight to generate a structured business idea."
+      },
+      {
+        "step": "Multi-Agent LLM with External Search Tool",
+        "input": "Patent summary and external market insights.",
+        "output": "A business idea that is clearly differentiated from known solutions.",
+        "evidence": "The Business Idea Generator Agent utilizes both the patent summary and external market insights to create a business idea that is clearly differentiated from known solutions."
+      }
+    ],
+    "tools": [
+      {
+        "name": "DuckDuckGo Tool",
+        "description": "Used for performing web searches to gather information about existing tools, libraries, or products in the domain.",
+        "evidence": "A Research Agent, which performs a DuckDuckGo tool-based web search using these keywords to gather information about existing tools, libraries, or products in the domain."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "150 U.S. patents dataset",
+        "data_description": "Structured metadata such as the title, abstract, claims, description, publication number, and publication date.",
+        "usage": "Used for generating product ideas and evaluating the system.",
+        "evidence": "The dataset provided by the shared task organizers comprises a total of 150 U.S. patents, with 50 patents each from three distinct domains: Computer Science(CS), Natural Language Processing (NLP), and Material Chemistry(MC)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Technical feasibility",
+        "purpose": "Measures the appropriateness and realistic implementation of the patent technology.",
+        "application": "Used to evaluate the technical validity of generated ideas.",
+        "evidence": "The LLM is then instructed to critically evaluate the ideas across six well-defined dimensions: technical validity, innovativeness, specificity, need validity, market size, and competitive advantage."
+      },
+      {
+        "name": "Innovativeness",
+        "purpose": "Assesses the novelty and creativity of the idea.",
+        "application": "Used to evaluate the innovativeness of generated ideas.",
+        "evidence": "The LLM is then instructed to critically evaluate the ideas across six well-defined dimensions: technical validity, innovativeness, specificity, need validity, market size, and competitive advantage."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The goal of this task is to evaluate systems that can read a patent and generate a realistic product idea that could be implemented and launched within three years."
+      },
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The approach includes transforming patent text into structured business ideas.",
+        "evidence": "The prompt is crafted to guide the model in generating business ideas, specifying the required structure in JSON format with fields such as product title, product description, implementation, and differentiation."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper explores the use of AI and LLMs across multiple domains including Computer Science, NLP, and Material Chemistry.",
+        "evidence": "We experimented with open-source LLMs and agent-based architectures across three domains: Computer Science, Natural Language Processing, and Material Chemistry."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The agentic approach consistently outperformed standalone LLMs in terms of idea quality, relevance, and novelty.",
+        "evidence": "Evaluation results show that the agentic approach consistently outperformed standalone LLMs in terms of idea quality, relevance, and novelty."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Prompt-based LLM Approach",
+        "description": "A single-prompt approach with a large language model for generating business ideas.",
+        "evidence": "This is the simplest baseline. We use a single-prompt approach with a large language model (LLM)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "150 U.S. patents dataset",
+        "data_description": "Structured metadata such as the title, abstract, claims, description, publication number, and publication date.",
+        "usage": "Used for generating product ideas and evaluating the system.",
+        "evidence": "The dataset provided by the shared task organizers comprises a total of 150 U.S. patents, with 50 patents each from three distinct domains: Computer Science(CS), Natural Language Processing (NLP), and Material Chemistry(MC)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Technical feasibility",
+        "purpose": "Measures the appropriateness and realistic implementation of the patent technology.",
+        "application": "Used to evaluate the technical validity of generated ideas.",
+        "evidence": "The LLM is then instructed to critically evaluate the ideas across six well-defined dimensions: technical validity, innovativeness, specificity, need validity, market size, and competitive advantage."
+      },
+      {
+        "name": "Innovativeness",
+        "purpose": "Assesses the novelty and creativity of the idea.",
+        "application": "Used to evaluate the innovativeness of generated ideas.",
+        "evidence": "The LLM is then instructed to critically evaluate the ideas across six well-defined dimensions: technical validity, innovativeness, specificity, need validity, market size, and competitive advantage."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "150 U.S. patents dataset",
+    "description": "Structured metadata such as the title, abstract, claims, description, publication number, and publication date.",
+    "usage": "Used for generating product ideas and evaluating the system.",
+    "evidence": "The dataset provided by the shared task organizers comprises a total of 150 U.S. patents, with 50 patents each from three distinct domains: Computer Science(CS), Natural Language Processing (NLP), and Material Chemistry(MC)."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Reliance on Open-Source LLMs",
+        "description": "The reliance on open-source LLMs may restrict performance compared to state-of-the-art proprietary models.",
+        "evidence": "Reliance on open-source LLMs (e.g., LLama-4-17B, and LLaMA-3-70B) may restrict performance compared to state-of-the-art proprietary models."
+      },
+      {
+        "name": "Domain-Specific Performance Variability",
+        "description": "The system's effectiveness varies significantly across domains, requiring domain-specific models.",
+        "evidence": "The system’s effectiveness varies significantly across domains, requiring domain specific models."
+      },
+      {
+        "name": "Dependence on External Search Quality",
+        "description": "The tool-augmented agent's performance depends heavily on external search quality, which can introduce noise.",
+        "evidence": "Finally, the tool-augmented agent’s performance depends heavily on external search quality, which can introduce noise."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Robust Domain Adaptation",
+        "description": "Develop more robust domain adaptation methods to improve performance across different domains.",
+        "evidence": "These constraints highlight the need for more robust domain adaptation, hybrid evaluation methods, and improved tool integration in future work."
+      },
+      {
+        "name": "Hybrid Evaluation Methods",
+        "description": "Explore hybrid evaluation methods to complement LLM-based evaluations.",
+        "evidence": "These constraints highlight the need for more robust domain adaptation, hybrid evaluation methods, and improved tool integration in future work."
+      },
+      {
+        "name": "Improved Tool Integration",
+        "description": "Enhance tool integration to reduce noise and improve the quality of external information used.",
+        "evidence": "These constraints highlight the need for more robust domain adaptation, hybrid evaluation methods, and improved tool integration in future work."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/gopichandkanumolu/AgentIdeate",
+    "evidence": "Our code is publicly available 2."
+  }
+}

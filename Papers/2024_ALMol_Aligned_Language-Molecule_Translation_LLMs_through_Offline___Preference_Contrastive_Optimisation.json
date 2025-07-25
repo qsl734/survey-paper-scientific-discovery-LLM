@@ -1,0 +1,185 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to address challenges in training robust language models for language-molecule translation by deploying a novel training approach called contrastive preference optimisation, which avoids generating translations that are merely adequate but not perfect.",
+    "evidence": "In this context, we focus on machine language-molecule translation and deploy a novel training approach called contrastive preference optimisation, which avoids generating translations that are merely adequate but not perfect."
+  },
+  "knowledge_gap": {
+    "answer": "Existing approaches in language-molecule translation rely on larger models and datasets, which do not necessarily guarantee higher performance and often require exponentially more data than typically used in NLP tasks.",
+    "evidence": "In light of the recent significant advancements in the field, none of the above approaches effectively tackle the inherent challenges in training such models. Instead, they rely on sparse or noisy synthetic data, often necessitating exponentially more data than is typically used in NLP tasks."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of contrastive preference optimisation (CTO) for training language models, which avoids generating translations that are merely adequate but not perfect.",
+      "The use of only 10% of the data to ensure generalisability and mitigate memorisation effects.",
+      "A fine-grained, domain-agnostic evaluation method to assess hallucination in LLMs."
+    ],
+    "evidence": [
+      "We deploy a novel way of training LLMs for language-molecule translation that avoids generating translations that are only adequate but not perfect, called contrastive preference optimisation (CTO).",
+      "To ensure that our models can effectively generalise instead of memorising patterns, we conduct experiments using only 10% of the L+M-24 dataset.",
+      "Finally, we propose a fine-grained, domain-agnostic evaluation method to assess hallucination in LLMs."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Edwards et al. (2024) The L+M-24 dataset was used for training and evaluation. (Experimental baselines)\n- Xu et al. (2024) Their work on contrastive preference optimisation inspired our training approach. (Methodological precursors)",
+    "evidence": "To ensure that our models can effectively generalise instead of memorising patterns, we conduct experiments using only 10% of the L+M-24 dataset (Edwards et al., 2024). CTO is based on offline preferences instead of supervised fine-tuning, mimicking reference translations (Xu et al., 2024)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Formulate the language-molecule translation task as a cross-modal translation task using offline preference data.",
+        "input": "Pairs of source and target sequences mapped to X and Y spaces, offline preference data D = {x(i), y(i)w , y(i)l }N i=1.",
+        "output": "An optimal function f : X ↔Y through a model πθ parameterised by θ.",
+        "evidence": "Let (x, y) be a pair of source and target sequences mapped to X and Y spaces, respectively. We cast the problem of language-molecule translation as a cross-modal translation task that operates on offline preference data D = {x(i), y(i) w , y(i) l }N i=1."
+      },
+      {
+        "step": "Apply contrastive preference optimisation (CTO) to train the model.",
+        "input": "Offline preference data, uniform reference model, parameterised model πθ, and hyperparameter β.",
+        "output": "A trained model that avoids generating translations that are merely adequate.",
+        "evidence": "Contrastive preference optimisation (CTO) addresses challenges stemming from the inherent limitation in RLHF, as discussed in § 2, and from the necessity of high-quality data."
+      },
+      {
+        "step": "Introduce a behaviour cloning regulariser to maintain the model close to the preferred data distribution.",
+        "input": "Preferred data distribution, Kullback-Leibler divergence, small positive constant ϵ.",
+        "output": "A regularised model that aligns closely with the preferred data distribution.",
+        "evidence": "To maintain πθ close to the preferred data distribution, a behaviour cloning (BC) regulariser is introduced."
+      }
+    ],
+    "tools": [
+      {
+        "name": "QAFactEval",
+        "description": "Used to evaluate the factual consistency of generated captions in molecule-to-language translation.",
+        "evidence": "For molecule-to-language translation, we deploy the QAFactEval (Fabbri et al., 2022) metric to evaluate the factual consistency of generated captions."
+      },
+      {
+        "name": "Chr-F metric",
+        "description": "Used to evaluate character n-gram matches between prediction-reference pairs in language-to-molecule translation.",
+        "evidence": "For language-to-molecule translation, we employ the Chr-F metric, an F-score statistic, to evaluate character n-gram matches between prediction-reference pairs."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "L+M-24",
+        "data_description": "A dataset encompassing both molecule and linguistic modalities.",
+        "usage": "Used for training and validation of the models.",
+        "evidence": "We conduct experiments on the L+M-24 benchmark dataset, which encompasses both molecule and linguistic modalities."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "QAFactEval",
+        "purpose": "Measures the factual consistency of generated captions.",
+        "application": "Used to evaluate the semantic overlap, f1 accuracy, and answerability of generated captions.",
+        "evidence": "QAFactEval measures the semantic overlap between the QA model’s responses and the selected answers to produce the final metric score."
+      },
+      {
+        "name": "Chr-F",
+        "purpose": "Assesses the matches in generated molecules against their references.",
+        "application": "Used to evaluate character n-gram matches between prediction-reference pairs.",
+        "evidence": "This metric assesses the matches in generated molecules against their references by averaging the scores of unigram, bigram, and trigram matches."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We cast the problem of language-molecule translation as a cross-modal translation task that operates on offline preference data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We conduct experiments using only 10% of the L+M-24 dataset to ensure generalisability and mitigate memorisation effects."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Chemical Sciences",
+        "description": "The paper focuses on language-molecule translation, which is directly related to chemical sciences.",
+        "evidence": "In this context, we focus on machine language-molecule translation and deploy a novel training approach."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The integration of large language models with scientific modalities is an application of engineering principles.",
+        "evidence": "The integration of large language models (LLMs) with scientific modalities has shown significant promise in this endeavour."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed models achieved up to a 32% improvement compared to counterpart models, demonstrating superior factual consistency and character-level n-gram overlaps.",
+        "evidence": "Our results demonstrate that our models achieve up to a 32% improvement compared to counterpart models."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Meditron",
+        "description": "A model trained on the entire dataset for unidirectional language-molecule translation.",
+        "evidence": "Our empirical results demonstrate that our models consistently outperform the leading baseline, Meditron, which is trained on the entire dataset."
+      },
+      {
+        "name": "TxtChem-T5",
+        "description": "A T5 model trained on both linguistic and molecule modalities with a multi-task objective.",
+        "evidence": "TxtChem-T5 (Christofidellis et al., 2023): A T5 model trained on both linguistic and molecule modalities with a multi-task objective across various datasets."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "L+M-24",
+        "data_description": "A dataset encompassing both molecule and linguistic modalities.",
+        "usage": "Used for training and validation of the models.",
+        "evidence": "We conduct experiments on the L+M-24 benchmark dataset, which encompasses both molecule and linguistic modalities."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "QAFactEval",
+        "purpose": "Measures the factual consistency of generated captions.",
+        "application": "Used to evaluate the semantic overlap, f1 accuracy, and answerability of generated captions.",
+        "evidence": "QAFactEval measures the semantic overlap between the QA model’s responses and the selected answers to produce the final metric score."
+      },
+      {
+        "name": "Chr-F",
+        "purpose": "Assesses the matches in generated molecules against their references.",
+        "application": "Used to evaluate character n-gram matches between prediction-reference pairs.",
+        "evidence": "This metric assesses the matches in generated molecules against their references by averaging the scores of unigram, bigram, and trigram matches."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "L+M-24",
+    "data_description": "A dataset encompassing both molecule and linguistic modalities.",
+    "usage": "Used for training and validation of the models.",
+    "evidence": "We conduct experiments on the L+M-24 benchmark dataset, which encompasses both molecule and linguistic modalities."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Data Usage",
+        "description": "The study uses only 10% of the available data, which may limit the generalisability of the findings.",
+        "evidence": "To ensure that our models can effectively generalise instead of memorising patterns, we conduct experiments using only 10% of the L+M-24 dataset."
+      },
+      {
+        "name": "Initialisation Challenges",
+        "description": "The model struggled to learn molecular patterns when initialised from agnostic cross-modals.",
+        "evidence": "However, even though our model achieved better performance compared to Meditron when initialised from agnostic cross-modals, it struggled to learn molecular patterns."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Explore Advanced Initialisation Methods",
+        "description": "The authors plan to explore more advanced initialised methods to address challenges in learning molecular patterns.",
+        "evidence": "In the future, we aim to explore more advanced initialised methods to address this challenge."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

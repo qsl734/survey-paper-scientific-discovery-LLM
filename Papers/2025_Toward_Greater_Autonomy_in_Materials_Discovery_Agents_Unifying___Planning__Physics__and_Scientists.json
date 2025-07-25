@@ -1,0 +1,233 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to design language agents with greater autonomy for crystal materials discovery by automating workflow planning given high-level goals and scientist intuition.",
+    "evidence": "We aim at designing language agents with greater autonomy for crystal materials discovery. While most of existing studies restrict the agents to perform specific tasks within predefined workflows, we aim to automate workflow planning given high-level goals and scientist intuition."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in enabling more autonomy in materials discovery agents, which are currently constrained to predefined workflows and lack the ability to plan and reason independently.",
+    "evidence": "Currently, most existing studies constrain LLM agents to perform predefined actions specified by human experts, with fixed tasks at each step. In these setups, a fixed discovery pipeline is defined in advance, and LLM agents primarily serve to coordinate AI tools."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of MAPPS, a multi-agent system that unifies planning, physics, and scientists to enable autonomous materials discovery.",
+      "The use of a Workflow Planner that employs large language models to generate structured and multi-step workflows.",
+      "The development of a Tool Code Generator that synthesizes executable Python code for various tasks, including invoking a force field foundation model that encodes physics.",
+      "The inclusion of a Scientific Mediator that coordinates communications, facilitates scientist feedback, and ensures robustness through error reflection and recovery."
+    ],
+    "evidence": [
+      "To this end, we propose Materials Agent unifying Planning, Physics, and Scientists, known as MAPPS.",
+      "The Workflow Planner uses large language models (LLMs) to generate structured and multi-step workflows.",
+      "The Tool Code Generator synthesizes executable Python code for various tasks, including invoking a force field foundation model that encodes physics.",
+      "The Scientific Mediator coordinates communications, facilitates scientist feedback, and ensures robustness through error reflection and recovery."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yan et al. (2024) Invariant tokenization of crystalline materials for language model enabled generation. (Methodological precursors)\n- Xie et al. (2022) Crystal Diffusion Variational Autoencoder for Periodic Material Generation. (Experimental baselines)\n- Gan et al. (2025) Large language models are innate crystal structure generators. (Papers with limitations addressed by this work)",
+    "evidence": "Following Yan et al. [8], we represent each crystal structure as a tuple M = (X, P, L)... CDVAE [12] models the generation of crystal structures by combining variational autoencoders with denoising diffusion... MatLLMSearch [15] demonstrates that pre-trained LLMs, combined with evolutionary search algorithms, can generate stable crystal structures without additional fine-tuning."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Generate workflows for different tasks using a large reasoning model.",
+        "input": "High-level task description and human-provided intuition.",
+        "output": "A workflow consisting of actionable steps.",
+        "evidence": "The Workflow Planner is built on a large reasoning model (LRM), which is an advanced LLM with enhanced planning and reasoning capabilities, to generate workflows for different tasks."
+      },
+      {
+        "step": "Translate each workflow step into executable Python functions.",
+        "input": "Input context from the Scientific Mediator and a set of domain-specific physics tools.",
+        "output": "Executable Python code for each workflow step.",
+        "evidence": "The Tool Code Generator is an autonomous agent responsible for translating each workflow step into executable Python functions."
+      },
+      {
+        "step": "Coordinate communication between agents and humans.",
+        "input": "High-level task description and proposed workflow.",
+        "output": "Reviewed and refined workflow, ready for execution.",
+        "evidence": "The Scientific Mediator incorporates human guidance at key decision points to ensure scientific reliability and task relevance."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Workflow Planner",
+        "description": "Used to decompose high-level scientific goals into adaptive, multi-step plans.",
+        "evidence": "The Workflow Planner uses an LLM to decompose high-level scientific goals into adaptive, multi-step plans."
+      },
+      {
+        "name": "Tool Code Generator",
+        "description": "Synthesizes executable code for each step and incorporates physics-based tools.",
+        "evidence": "The Tool Code Generator synthesizes executable code for each step and incorporates physics-based tools."
+      },
+      {
+        "name": "Scientific Mediator",
+        "description": "Coordinates communication between agents and humans, maintaining consistency and tracking progress.",
+        "evidence": "The Scientific Mediator coordinates communication between agents and humans, maintaining consistency and tracking progress."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MP-20",
+        "data_description": "Includes 45,231 stable materials from the Materials Project.",
+        "usage": "Used as the retrieval database and for evaluation.",
+        "evidence": "MP-20 includes 45,231 stable materials from the Materials Project, covering materials with a maximum of 20 atoms per unit cell."
+      },
+      {
+        "name": "Matbench",
+        "data_description": "A dataset processed for use in material discovery tasks.",
+        "usage": "Used as the retrieval database and for evaluation.",
+        "evidence": "We follow [15] to process Matbench. The datasets are used as the retrieval database of our method and the training set of the baselines."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Validity Rate",
+        "purpose": "Measures the structural and compositional validity of generated crystal structures.",
+        "application": "Used to evaluate the quality of generated crystal structures.",
+        "evidence": "We compute both structural and compositional validity percentages based on heuristic checks of interatomic distances and charge balance, respectively."
+      },
+      {
+        "name": "Metastability Rate",
+        "purpose": "Estimates the fraction of structures with decomposition energies below certain thresholds.",
+        "application": "Used to assess the metastability of generated structures.",
+        "evidence": "For metastability, we adopt the approach of Gan et al. [15], using CHGNet and M3GNet as surrogate models to estimate the fraction of structures with decomposition energies below thresholds of 0.1 eV/atom and 0.03 eV/atom."
+      },
+      {
+        "name": "Stability Rate",
+        "purpose": "Assesses the stability of structures through DFT calculations.",
+        "application": "Used to determine if a structure is stable based on its energy above the convex hull.",
+        "evidence": "Stability is further assessed through DFT calculations, where a structure is considered stable if its energy above the convex hull (Ehull) is less than 0 eV/atom."
+      },
+      {
+        "name": "S.U.N Rate",
+        "purpose": "Measures the proportion of structures that are stable, unique, and novel.",
+        "application": "Used to evaluate the novelty and uniqueness of generated structures.",
+        "evidence": "Finally, the S.U.N. rate measures the proportion of structures that are stable, unique, and novel."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We attempt to explore their performance in a constrained setting of materials discovery and particularly in scientific workflow planning."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The Workflow Planner uses an LLM to decompose high-level scientific goals into adaptive, multi-step plans."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on designing autonomous agents for materials discovery, which is a key area in engineering.",
+        "evidence": "The goal of materials discovery is to discover novel materials structures with desirable physical or chemical properties."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The work integrates computer science, materials science, and physics to develop autonomous agents.",
+        "evidence": "By unifying planning, physics, and scientists, MAPPS enables flexible and reliable materials discovery with greater autonomy."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "MAPPS achieves a five-fold improvement in stability, uniqueness, and novelty rates compared with prior generative models when evaluated on the MP-20 data.",
+        "evidence": "By unifying planning, physics, and scientists, MAPPS enables flexible and reliable materials discovery with greater autonomy, achieving a five-fold improvement in stability, uniqueness, and novelty rates compared with prior generative models when evaluated on the MP-20 data."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "CDVAE",
+        "description": "A crystal diffusion variational autoencoder that learns to denoise atomic coordinates and atom types through a diffusion process.",
+        "evidence": "CDVAE [12] models the generation of crystal structures by combining variational autoencoders with denoising diffusion."
+      },
+      {
+        "name": "DiffCSP",
+        "description": "A diffusion-based generative model that uses a periodic E(3)-equivariant network to jointly generate lattice parameters and fractional atomic coordinates.",
+        "evidence": "DiffCSP [6] is a diffusion-based approach specifically designed for crystal structure prediction."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MP-20",
+        "data_description": "Includes 45,231 stable materials from the Materials Project.",
+        "usage": "Used as the retrieval database and for evaluation.",
+        "evidence": "MP-20 includes 45,231 stable materials from the Materials Project, covering materials with a maximum of 20 atoms per unit cell."
+      },
+      {
+        "name": "Matbench",
+        "data_description": "A dataset processed for use in material discovery tasks.",
+        "usage": "Used as the retrieval database and for evaluation.",
+        "evidence": "We follow [15] to process Matbench. The datasets are used as the retrieval database of our method and the training set of the baselines."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Validity Rate",
+        "purpose": "Measures the structural and compositional validity of generated crystal structures.",
+        "application": "Used to evaluate the quality of generated crystal structures.",
+        "evidence": "We compute both structural and compositional validity percentages based on heuristic checks of interatomic distances and charge balance, respectively."
+      },
+      {
+        "name": "Metastability Rate",
+        "purpose": "Estimates the fraction of structures with decomposition energies below certain thresholds.",
+        "application": "Used to assess the metastability of generated structures.",
+        "evidence": "For metastability, we adopt the approach of Gan et al. [15], using CHGNet and M3GNet as surrogate models to estimate the fraction of structures with decomposition energies below thresholds of 0.1 eV/atom and 0.03 eV/atom."
+      },
+      {
+        "name": "Stability Rate",
+        "purpose": "Assesses the stability of structures through DFT calculations.",
+        "application": "Used to determine if a structure is stable based on its energy above the convex hull.",
+        "evidence": "Stability is further assessed through DFT calculations, where a structure is considered stable if its energy above the convex hull (Ehull) is less than 0 eV/atom."
+      },
+      {
+        "name": "S.U.N Rate",
+        "purpose": "Measures the proportion of structures that are stable, unique, and novel.",
+        "application": "Used to evaluate the novelty and uniqueness of generated structures.",
+        "evidence": "Finally, the S.U.N. rate measures the proportion of structures that are stable, unique, and novel."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "MP-20",
+    "data_description": "Includes 45,231 stable materials from the Materials Project.",
+    "usage": "Used as the retrieval database and for evaluation.",
+    "evidence": "MP-20 includes 45,231 stable materials from the Materials Project, covering materials with a maximum of 20 atoms per unit cell."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Human-in-the-loop Requirement",
+        "description": "MAPPS currently requires human expert input and does not achieve full autonomy.",
+        "evidence": "MAPPS currently has human expert in the loop, and does not reach full autonomous agent system which is Level 3."
+      },
+      {
+        "name": "Domain Limitation",
+        "description": "The current focus is on materials discovery tasks, with limited exploration in other domains.",
+        "evidence": "We currently focus on materials discovery tasks, while extensions to other domains such as molecules, polymers, or other systems remain underexplored."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Achieve Level 3 Autonomy",
+        "description": "Develop agents that can independently design and adapt workflows without human input.",
+        "evidence": "Looking forward, level 3 autonomy where agents independently design and adapt workflows without human input, offers exciting potential for scientific discovery."
+      },
+      {
+        "name": "Expand to Other Domains",
+        "description": "Extend the MAPPS framework to other domains such as molecules, polymers, or other systems.",
+        "evidence": "We currently focus on materials discovery tasks, while extensions to other domains such as molecules, polymers, or other systems remain underexplored."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

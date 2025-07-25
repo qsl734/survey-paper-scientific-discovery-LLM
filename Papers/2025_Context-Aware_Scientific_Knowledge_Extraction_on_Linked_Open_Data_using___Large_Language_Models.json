@@ -1,0 +1,220 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce WISE, a novel system that combines Large Language Models (LLMs) with a structured, multi-layered workflow to extract, refine, and rank scientific knowledge tailored to specific queries, addressing the limitations of traditional search engines and LLMs in providing detailed and context-aware information.",
+    "evidence": "This paper introduces WISE (Workflow for Intelligent Scientific Knowledge Extraction), a novel system that addresses these limitations by combining LLMs with a structured, multi-layered workflow to extract, refine, and rank scientific knowledge tailored to specific queries."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in efficiently extracting and synthesizing detailed, context-aware scientific knowledge from the exponentially growing volume of literature, which traditional search engines and general-purpose LLMs struggle to manage effectively.",
+    "evidence": "The exponential growth of scientific literature presents a significant challenge for researchers seeking to extract and synthesize relevant knowledge. Traditional search engines often return a large number of sources without directly providing detailed answers, while general-purpose Large Language Models (LLMs) may offer concise responses that lack depth or fail to incorporate the most up-to-date information."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a scalable, tree-based architecture that efficiently navigates large, heterogeneous datasets using LLM-based filtering.",
+      "Development of a dynamic ranking and pruning mechanism that quantifies each source's unique knowledge contribution.",
+      "Implementation of an adaptive, expert-inspired exploration approach that mirrors expert-driven inquiry by progressively deepening the search along promising paths.",
+      "Demonstrated effectiveness in gene-disease association discovery, significantly outperforming baseline methods in terms of recall and depth of knowledge."
+    ],
+    "evidence": [
+      "We introduce a novel, tree-structured workflow that efficiently navigates large, heterogeneous datasets. This architecture leverages LLM-based filtering at each layer to incrementally refine data subsets according to domain-specific queries, ensuring scalability and focus.",
+      "We present a transparent scoring mechanism that quantifies each source’s unique knowledge contribution.",
+      "Our approach mirrors expert-driven inquiry by progressively deepening the search along promising paths while adaptively halting exploration when further gains are minimal.",
+      "Through empirical evaluation on gene-disease association queries, we demonstrate that WISE significantly outperforms baseline methods, including traditional search engines and general-purpose LLMs, in terms of recall, uniqueness of extracted information (ROUGE/BLEU), and depth of knowledge (level-based analysis)."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Zhai (2024) Large language models and future of information retrieval: Opportunities and challenges. (Methodological precursors)\n- Salemi and Zamani (2024) Towards a search engine for machines: Unified ranking for multiple retrieval-augmented large language models. (Methodological precursors)\n- Ziems et al. (2023) Large language models are built-in autoregressive search engines. (Methodological precursors)",
+    "evidence": "While traditional search engines and general-purpose Large Language Models (LLMs) offer some assistance, they often fall short in providing domain-specific insights, filtering irrelevant content, and efficiently managing the sheer volume of data [3]–[5]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Content Filtering",
+        "input": "User's domain-specific query and raw content from sources",
+        "output": "Filtered content relevant to the query",
+        "evidence": "This stage employs query-specific extraction via LLM-driven contextual analysis, ensuring that only information relevant to the query is retained while noise, such as advertisements, is removed."
+      },
+      {
+        "step": "Score Calculation",
+        "input": "Filtered content from the previous step",
+        "output": "Scores quantifying each source's unique knowledge contribution",
+        "evidence": "In this stage, the filtered content is evaluated for its unique contribution to the evolving knowledge container. Novel and relevant insights are prioritized, while redundant material is discarded."
+      },
+      {
+        "step": "Threshold Checking",
+        "input": "Scores from the previous step",
+        "output": "Decision to continue or terminate exploration",
+        "evidence": "This component determines whether continued exploration of sources is justified. It acts as a termination criterion for the recursive process, halting when additional contributions fall below a defined threshold."
+      },
+      {
+        "step": "Knowledge Consolidation",
+        "input": "Filtered content from selected sources",
+        "output": "Updated knowledge container with comprehensive, context-aware information",
+        "evidence": "Extracted information is incrementally merged into a growing repository of domain-specific knowledge. This ensures that the final knowledge container is comprehensive, context-aware, and aligned with the user’s query."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for filtering content and contextual analysis",
+        "evidence": "This stage employs query-specific extraction via LLM-driven contextual analysis, ensuring that only information relevant to the query is retained while noise, such as advertisements, is removed."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "HGNC database",
+        "data_description": "Contains sources related to the HBB gene",
+        "usage": "Used as the initial set of sources for the experiment",
+        "evidence": "The experiment started with an initial set of 24 sources related to the HBB gene, obtained from the HGNC database."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "ROUGE",
+        "purpose": "Measures overlap and uniqueness of information",
+        "application": "Used to assess the overlap and uniqueness of the information extracted by each system",
+        "evidence": "To assess the overlap and uniqueness of the information extracted by each system, we employed ROUGE (Recall-Oriented Understudy for Gisting Evaluation) metrics."
+      },
+      {
+        "name": "BLEU",
+        "purpose": "Measures the quality of machine-generated text",
+        "application": "Used to compare each system’s output against the others",
+        "evidence": "We adapted these metrics, calculating ROUGE-1, ROUGE-2, and ROUGE-L, along with BLEU, to compare each system’s output against the others."
+      },
+      {
+        "name": "Recall",
+        "purpose": "Measures comprehensiveness of information retrieval",
+        "application": "Calculated based on a combined output created by taking the union of all unique diseases identified by any of the five systems",
+        "evidence": "To evaluate the comprehensiveness of each system, we calculated their recall based on a combined output created by taking the union of all unique diseases identified by any of the five systems."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The system transforms raw data into structured, query-specific insights.",
+        "evidence": "This stage employs query-specific extraction via LLM-driven contextual analysis, ensuring that only information relevant to the query is retained while noise, such as advertisements, is removed."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The system extracts and structures knowledge from diverse sources.",
+        "evidence": "WISE employs an LLM-powered, tree-based architecture with a customized search function to iteratively refine extracted data, focusing on query-aligned and context-aware information while actively avoiding redundancy."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The system iteratively refines the knowledge container until incremental findings diminish.",
+        "evidence": "The iterative refinement continues layer by layer, with WISE’s knowledge container—the growing repository of extracted, query-specific insights—expanding until incremental findings diminish."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Biological Sciences",
+        "description": "The paper focuses on extracting knowledge related to gene-disease associations.",
+        "evidence": "Experiments focused on biological queries related to HBB gene-associated diseases demonstrate that WISE reduces the volume of processed text by over 80% while simultaneously achieving significantly higher recall compared to baseline methods."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology is applicable across diverse research domains, including drug discovery and social science.",
+        "evidence": "This paper also explores how the WISE workflow can be adapted as a general framework for diverse research domains, such as drug discovery, material science, and social science."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "WISE significantly outperforms baseline methods in terms of recall, uniqueness of extracted information, and depth of knowledge.",
+        "evidence": "Through empirical evaluation on gene-disease association queries, we demonstrate that WISE significantly outperforms baseline methods, including traditional search engines and general-purpose LLMs, in terms of recall, uniqueness of extracted information (ROUGE/BLEU), and depth of knowledge (level-based analysis)."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "ChatGPT",
+        "description": "A standard model relying solely on its pre-trained knowledge.",
+        "evidence": "Pure ChatGPT (a standard model, version GPT-4o accessed via the OpenAI API, relying solely on its pre-trained knowledge)."
+      },
+      {
+        "name": "ChatGPT with Search",
+        "description": "A version of ChatGPT augmented with web search capabilities.",
+        "evidence": "ChatGPT with Search (a version of ChatGPT, version GPT-4o augmented with web search capabilities)."
+      },
+      {
+        "name": "Gemini",
+        "description": "Google’s large language model designed to integrate information from various sources.",
+        "evidence": "Gemini (Google’s large language model, designed to integrate information from various sources)."
+      },
+      {
+        "name": "Google Search",
+        "description": "The standard Google Search engine.",
+        "evidence": "Traditional Google Search (the standard Google Search engine, considering the top 5 search results for analysis)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "HGNC database",
+        "data_description": "Contains sources related to the HBB gene",
+        "usage": "Used as the initial set of sources for the experiment",
+        "evidence": "The experiment started with an initial set of 24 sources related to the HBB gene, obtained from the HGNC database."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "ROUGE",
+        "purpose": "Measures overlap and uniqueness of information",
+        "application": "Used to assess the overlap and uniqueness of the information extracted by each system",
+        "evidence": "To assess the overlap and uniqueness of the information extracted by each system, we employed ROUGE (Recall-Oriented Understudy for Gisting Evaluation) metrics."
+      },
+      {
+        "name": "BLEU",
+        "purpose": "Measures the quality of machine-generated text",
+        "application": "Used to compare each system’s output against the others",
+        "evidence": "We adapted these metrics, calculating ROUGE-1, ROUGE-2, and ROUGE-L, along with BLEU, to compare each system’s output against the others."
+      },
+      {
+        "name": "Recall",
+        "purpose": "Measures comprehensiveness of information retrieval",
+        "application": "Calculated based on a combined output created by taking the union of all unique diseases identified by any of the five systems",
+        "evidence": "To evaluate the comprehensiveness of each system, we calculated their recall based on a combined output created by taking the union of all unique diseases identified by any of the five systems."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "HGNC database",
+    "data_description": "Contains sources related to the HBB gene",
+    "usage": "Used as the initial set of sources for the experiment",
+    "evidence": "The experiment started with an initial set of 24 sources related to the HBB gene, obtained from the HGNC database."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Restricted Access to Data Sources",
+        "description": "WISE was unable to extract content from 10 out of 34 initial sources due to paywalls and security measures.",
+        "evidence": "One of the primary obstacles encountered during the experiments was restricted access to some data sources. Out of 34 initial sources, WISE successfully extracted content from 24, while the remaining 10 sources were inaccessible."
+      },
+      {
+        "name": "Comprehensiveness of Outputs",
+        "description": "The detailed responses provided by WISE may overwhelm non-specialist users who require more concise information.",
+        "evidence": "By design, WISE delivers detailed, authoritative responses that include exhaustive references, disease sub-variations, and contextual information. While this level of detail is highly valuable for academic and clinical professionals, it may overwhelm non-specialist users who require more concise and simplified information."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Knowledge Graph Integration",
+        "description": "Integrate knowledge graphs to amplify WISE’s ability to reason about complex relationships within scientific data.",
+        "evidence": "The integration of knowledge graphs represents a transformative opportunity to amplify WISE’s ability to reason about complex relationships within scientific data."
+      },
+      {
+        "name": "Enhanced Query Engagement",
+        "description": "Focus on enhancing query engagement to steer the system towards a more precise understanding of user intent.",
+        "evidence": "WISE currently relies on user-provided queries, future iterations will focus on enhancing query engagement to steer the system towards a more precise understanding of user intent."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No human-facing resource URL was found in the paper."
+  }
+}

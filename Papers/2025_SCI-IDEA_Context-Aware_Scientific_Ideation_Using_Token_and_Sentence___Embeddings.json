@@ -1,0 +1,166 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce SCI-IDEA, a framework that uses large language models (LLMs) for context-aware scientific ideation, focusing on generating high-quality and innovative ideas by employing LLM prompting strategies and 'Aha Moment' detection for iterative idea refinement.",
+    "evidence": "We introduce SCI-IDEA, a framework that uses LLM prompting strategies and 'Aha Moment' detection for iterative idea refinement."
+  },
+  "knowledge_gap": {
+    "answer": "Existing methods for scientific ideation often fail to balance novelty, relevance, and computational efficiency, and lack systematic mechanisms to evaluate the novelty and impact of generated ideas.",
+    "evidence": "Recently, there has been growing attention on leveraging LLMs for scientific ideation, yet existing methods often fail to balance novelty, relevance, and computational efficiency. Additionally, traditional methods lack systematic mechanisms to evaluate the novelty and impact of generated ideas."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of 'Aha Moment' detection to identify transformative ideas.",
+      "The use of diverse prompting strategies, including zero-shot, zero-shot chain-of-thought, and few-shot prompting, to generate context-aware scientific ideas.",
+      "The integration of human-in-the-loop processes for dynamic idea exploration and refinement."
+    ],
+    "evidence": [
+      "Generated ideas are evaluated for novelty and surprise using semantic embedding methods to identify transformative 'Aha moments'.",
+      "The framework employs different prompting strategies based on researcher requirements: (1) Zero-shot prompting for straightforward context-aware idea generation, (2) Zero-shot chain-of-thought prompting for reasoning through multi-step research gaps, and (3) Few-shot prompting for tasks requiring domain-specific context.",
+      "SCI-IDEA incorporates these metrics into a human-in-the-loop process, dynamically balancing idea exploration and refinement."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Si et al. (2024) Can LLMS generate novel research ideas? A large-scale human study with 100+ NLP researchers. (Methodological precursors)",
+    "evidence": "This multi-dimensional evaluation aligns with recent AI-assisted ideation studies [27], ensuring the assessment of strengths and limitations."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Context Retrieval",
+        "input": "Researcher's scientific identifier and research query",
+        "output": "Retrieval of the researcher's publications and related ones",
+        "evidence": "This process begins with a researcher providing their scientific identifier (e.g., ORCID ID) and a research query."
+      },
+      {
+        "step": "Facet Extraction",
+        "input": "Full texts from publications",
+        "output": "Extraction of key facets such as research objectives, methodologies, evaluation, and future work",
+        "evidence": "The framework leverages an LLM to extract key facets, such as research objectives, methodologies, evaluation, and future work."
+      },
+      {
+        "step": "Research Gap Identification",
+        "input": "Structured facets from publications",
+        "output": "Identification of research gaps",
+        "evidence": "Using the structured facets extracted from the researchers and related research publications, the framework identifies research gaps."
+      },
+      {
+        "step": "Idea Generation and Iterative Refinement",
+        "input": "Identified research gaps",
+        "output": "Generation of context-aware scientific ideas and their iterative refinement",
+        "evidence": "Building on identified research gaps, the framework generates context-aware scientific ideas using diverse prompting strategies."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for generating context-aware scientific ideas and evaluating novelty and surprise",
+        "evidence": "We introduce SCI-IDEA, a framework that uses LLM prompting strategies and 'Aha Moment' detection for iterative idea refinement."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Measures the originality of generated ideas",
+        "application": "Computed as semantic dissimilarity using cosine similarity on embeddings",
+        "evidence": "Novelty is measured by semantic dissimilarity (cosine similarity on embeddings)."
+      },
+      {
+        "name": "Surprise",
+        "purpose": "Measures how unexpected an idea is given the context",
+        "application": "Quantified as the negative log-likelihood of ideas given their context",
+        "evidence": "Surprise is measured by the negative log-likelihood of ideas given their context."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "SCI-IDEA generates context-aware scientific ideas using diverse prompting strategies."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The approach includes refining generated ideas through iterative processes.",
+        "evidence": "SCI-IDEA incorporates these metrics into a human-in-the-loop process, dynamically balancing idea exploration and refinement."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper focuses on generating scientific ideas that integrate multidisciplinary knowledge.",
+        "evidence": "They act as virtual thought collectives, integrating multidisciplinary knowledge and historical breakthroughs."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "SCI-IDEA achieves average scores of 6.84, 6.86, 6.89, and 6.84 across novelty, excitement, feasibility, and effectiveness, respectively.",
+        "evidence": "Comprehensive experiments validate SCI-IDEA’s effectiveness, achieving average scores of 6.84, 6.86, 6.89, and 6.84 (on a 1–10 scale) across novelty, excitement, feasibility, and effectiveness, respectively."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Measures the originality of generated ideas",
+        "application": "Computed as semantic dissimilarity using cosine similarity on embeddings",
+        "evidence": "Novelty is measured by semantic dissimilarity (cosine similarity on embeddings)."
+      },
+      {
+        "name": "Surprise",
+        "purpose": "Measures how unexpected an idea is given the context",
+        "application": "Quantified as the negative log-likelihood of ideas given their context",
+        "evidence": "Surprise is measured by the negative log-likelihood of ideas given their context."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Reliance on Input Data Quality",
+        "description": "The framework relies heavily on the quality of input data, which may introduce biases or incomplete representations.",
+        "evidence": "The framework relies heavily on the quality of input data, such as the researcher’s and related publications, which may introduce biases or incomplete representations of the research landscape."
+      },
+      {
+        "name": "Computational Cost",
+        "description": "The computational cost of iterative refinement and embedding-based evaluations can be prohibitive for large-scale applications.",
+        "evidence": "The computational cost of iterative refinement and embedding-based evaluations can be prohibitive for large-scale applications."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Incorporate More Diverse Datasets",
+        "description": "Future work will focus on addressing limitations by incorporating more diverse datasets.",
+        "evidence": "Future work will focus on addressing limitations by incorporating more diverse datasets."
+      },
+      {
+        "name": "Develop Broader Evaluation Metrics",
+        "description": "Develop broader evaluation metrics to enhance the assessment of generated ideas.",
+        "evidence": "Future work will focus on addressing limitations by developing broader evaluation metrics."
+      },
+      {
+        "name": "Optimize Computational Efficiency",
+        "description": "Optimize computational efficiency to make the framework more scalable.",
+        "evidence": "Future work will focus on addressing limitations by optimizing computational efficiency."
+      },
+      {
+        "name": "Explore Integration of Domain-Specific Knowledge Graphs",
+        "description": "Explore the integration of domain-specific knowledge graphs and multi-modal inputs to enhance the quality and diversity of generated ideas.",
+        "evidence": "We also plan to explore the integration of domain-specific knowledge graphs and multi-modal inputs to enhance the quality and diversity of generated ideas."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

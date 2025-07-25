@@ -1,0 +1,202 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a Multimodal Large Language Model (MLLM)-based approach for interpretable hypothesis inference, enabling the automated generation, assessment, and refinement of hypotheses concerning urban form and transportation safety.",
+    "evidence": "To address these limitations, we propose a Multimodal Large Language Model (MLLM)-based approach for interpretable hypothesis inference, enabling the automated generation, assessment, and refinement of hypotheses concerning urban form and transportation safety."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in utilizing unstructured urban data, such as street view imagery, for discovering interpretable factors related to urban design and transportation risk.",
+    "evidence": "Third, unstructured urban data, particularly street view imagery (SVI), remains an underutilized source of contextual information. Although SVIs contain rich visual cues about the built environment and social space, current models struggle to transform them into structured, meaningful variables."
+  },
+  "novelty": {
+    "answer": [
+      "The use of MLLMs as semantic engines to translate unstructured inputs, such as SVIs, into structured and interpretable variables.",
+      "The development of an interpretable, nonparametric framework for hypothesis inference, implemented as an iterative procedure over the hypothesis space.",
+      "The application of the framework to study road safety in Manhattan, uncovering novel, interpretable visual variables that significantly correlate with crash rates."
+    ],
+    "evidence": [
+      "We introduce a novel use of MLLMs as semantic engines that translate unstructured inputs, such as SVIs, into structured and interpretable variables guided by natural language hypotheses.",
+      "We develop an interpretable, nonparametric framework for hypothesis inference, implemented as an iterative procedure over the hypothesis space.",
+      "We apply our framework to study road safety in the Manhattan area and demonstrate its ability to uncover novel, interpretable visual variables that significantly correlate with crash rates."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yu et al. (2024) Their work on traffic safety inspired our exploration of urban form and societal outcomes. (Methodological precursors)\n- Ewing and Handy (2009) Their study on walkability influenced our approach to urban design qualities. (Methodological precursors)",
+    "evidence": "Researchers across domains such as transportation, planning, and public policy have long sought to uncover statistically meaningful links between the built environment and key outcomes such as traffic safety Yu et al. (2024); Xue et al. (2024), walkability Ewing and Handy (2009); Ignatius et al. (2024)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Hypothesis Generation",
+        "input": "Initial hypothesis set sampled from an LLM",
+        "output": "Refined hypothesis set incorporating empirical feedback",
+        "evidence": "Starting from an initial hypothesis set 0 sampled from an LLM, we iteratively refine the set by evaluating each hypothesis using a linear regression model."
+      },
+      {
+        "step": "Embedding Construction",
+        "input": "Street view images and generated hypotheses",
+        "output": "Structured matrix of embeddings for statistical analysis",
+        "evidence": "For each SVI 𝑥𝑖, we employ an MLLM to infer categorical responses to each hypothesis ℎ𝑡 𝑗∈𝑡, based solely on the visual content of the SVI."
+      },
+      {
+        "step": "Hypothesis Assessment",
+        "input": "Hypothesis-aligned embedding matrix",
+        "output": "Statistical significance of each hypothesis",
+        "evidence": "We fit a linear model of the form: 𝑦𝑖= 𝛽0 + ∑𝑘 𝑗=1 𝛽𝑗𝑒𝑡 𝑖𝑗+ 𝜀𝑖, and apply a two-sided 𝑡-test to each coefficient 𝛽𝑗."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used for hypothesis generation",
+        "evidence": "For hypothesis generation, we use GPT-4o."
+      },
+      {
+        "name": "InternVL2.5-78B",
+        "description": "Used for constructing visual embeddings",
+        "evidence": "To construct visual embeddings based on structured prompts, we use InternVL2.5-78B."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "NYC Open Data",
+        "data_description": "Crash records for New York City",
+        "usage": "Used for sourcing crash records",
+        "evidence": "Crash records were sourced from NYC Open Data."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Root Mean Squared Error (RMSE)",
+        "purpose": "Measures the average magnitude of the error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "We begin by evaluating the ability of our interpretable embedding framework to predict segment-level crash rates using only visual information extracted from SVIs. Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Mean Absolute Error (MAE)",
+        "purpose": "Measures the average absolute error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "We begin by evaluating the ability of our interpretable embedding framework to predict segment-level crash rates using only visual information extracted from SVIs. Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Coefficient of Determination (R2)",
+        "purpose": "Measures the proportion of variance explained",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "We begin by evaluating the ability of our interpretable embedding framework to predict segment-level crash rates using only visual information extracted from SVIs. Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "To address these limitations, we leverage LLMs as generative engines for proposing semantically rich, visually grounded hypotheses expressed in natural language."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We evaluate our framework on Manhattan street segments and demonstrate that it outperforms pretrained deep learning baselines while offering full interpretability."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a framework for interpretable hypothesis-driven scientific discovery in urban domains.",
+        "evidence": "Building on these capabilities, we introduce URBANX, a framework for interpretable and hypothesis-driven scientific discovery in urban domains, powered by MLLMs."
+      },
+      {
+        "name": "Social Sciences",
+        "description": "The study focuses on understanding the relationship between urban form and societal outcomes such as road safety.",
+        "evidence": "Understanding how the physical structure of cities shapes societal outcomes is a core objective of urban and transportation science."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed method achieves superior performance across all evaluation metrics, with the LGBM-based variant yielding the lowest prediction error and highest explained variance.",
+        "evidence": "As shown in Figure 3, our approach achieves superior performance across all evaluation metrics. Notably, the LGBM-based variant yields the lowest prediction error and highest explained variance, outperforming both deep learning baselines despite using only interpretable, categorical features."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "ResNet-50",
+        "description": "Standard deep learning baseline for image classification.",
+        "evidence": "For the baselines, we fine-tune two representative image encoders to directly regress crash rates from raw images: ResNet-50, a widely adopted convolutional neural network."
+      },
+      {
+        "name": "ViT-B/16",
+        "description": "Transformer-based architecture for image classification.",
+        "evidence": "For the baselines, we fine-tune two representative image encoders to directly regress crash rates from raw images: ViT-B/16, a transformer-based architecture that segments each image into 16 × 16 patches for self-attention processing."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "NYC Open Data",
+        "data_description": "Crash records for New York City",
+        "usage": "Used for sourcing crash records",
+        "evidence": "Crash records were sourced from NYC Open Data."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Root Mean Squared Error (RMSE)",
+        "purpose": "Measures the average magnitude of the error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "We begin by evaluating the ability of our interpretable embedding framework to predict segment-level crash rates using only visual information extracted from SVIs. Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Mean Absolute Error (MAE)",
+        "purpose": "Measures the average absolute error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "We begin by evaluating the ability of our interpretable embedding framework to predict segment-level crash rates using only visual information extracted from SVIs. Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Coefficient of Determination (R2)",
+        "purpose": "Measures the proportion of variance explained",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "We begin by evaluating the ability of our interpretable embedding framework to predict segment-level crash rates using only visual information extracted from SVIs. Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "NYC Open Data",
+    "data_description": "Crash records for New York City",
+    "usage": "Used for sourcing crash records",
+    "evidence": "Crash records were sourced from NYC Open Data."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Resolution Limitation",
+        "description": "The panoramic images used may downsample visual detail, making it hard to detect small features.",
+        "evidence": "Many of the observed errors, especially those involving subtle signage, infrastructure details, or rare objects, can be traced directly to insufficient resolution in the source image."
+      },
+      {
+        "name": "Ambiguity in Hypotheses",
+        "description": "Certain hypotheses may be ambiguous in practice or rarely triggered in the data.",
+        "evidence": "Certain questions may be ambiguous in practice or rarely triggered in the Manhattan data. Examples include snow or ice on the roadway and visible emergency vehicle access, which occur infrequently in the imagery and hence contribute little statistical signal."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend to Other Urban Outcomes",
+        "description": "Apply the framework to other domains such as walkability, equity, and environmental quality.",
+        "evidence": "The generality of URBANX enables broad applicability to other domains such as walkability, equity, and environmental quality, where unstructured data possesses rich information and model interpretability are central."
+      },
+      {
+        "name": "Integrate Causal Inference",
+        "description": "Incorporate causal inference techniques to enhance the framework's ability to identify causal relationships.",
+        "evidence": "Future work may extend this approach to dynamic data, integrate causal inference, and benefit from ongoing advances in the alignment and efficiency of foundation models."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/YihongT/UrbanX.git",
+    "evidence": "§ Project: https://github.com/YihongT/UrbanX.git"
+  }
+}

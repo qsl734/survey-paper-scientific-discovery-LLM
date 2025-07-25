@@ -1,0 +1,157 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to study AI-Generated Science (AIGS) by developing a system called BABY-AIGS, which autonomously completes the entire research process and discovers scientific laws through a multi-agent system with explicit falsification.",
+    "evidence": "In this paper, we study AI-Generated Science (AIGS), where agents independently and autonomously complete the entire research process and discover scientific laws."
+  },
+  "knowledge_gap": {
+    "answer": "The knowledge gap addressed by the paper is the lack of systems that incorporate explicit falsification in AI-Generated Science, which is essential for scientific rigor and transparency.",
+    "evidence": "Through the lens of falsification, prior systems attempting towards AI-Generated Science either lack the part in their design, or rely heavily on existing verification engines that narrow the use in specialized domains."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of FALSIFICATIONAGENT to explicitly perform falsification in the research process.",
+      "Design of a Domain-Specific Language (DSL) to ensure executability of proposed methodologies.",
+      "Implementation of a multi-agent system that mimics the full-process human research workflow."
+    ],
+    "evidence": [
+      "By introducing FALSIFICATIONAGENT, which identify and then verify possible scientific discoveries, we empower the system with explicit falsification.",
+      "We introduce a Domain-Specific Language (DSL) for PROPOSALAGENT to articulate ideas and methodologies in an executable format, enhancing research executability.",
+      "BABY-AIGS comprises several LLM-powered agents, including PROPOSALAGENT, EXPAGENT, REVIEWAGENT, FALSIFICATIONAGENT, etc., each responsible for distinct stages within the research workflow."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lu et al. (2024) AI Scientist further claims to be able to organize the generated ideas and experimental results into research papers as the output. (Methodological precursors)",
+    "evidence": "AI Scientist (Lu et al., 2024) further claims to be able to organize the generated ideas and experimental results into research papers as the output."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Pre-Falsification phase where ideas and methods are iteratively refined.",
+        "input": "Research topic, history log, and review from REVIEWAGENT.",
+        "output": "Refined proposal including idea, methodology, and experimental settings.",
+        "evidence": "The first phase iteratively refines proposed ideas and methods through enriched feedback, incorporating experimental outcomes, detailed reviews, and relevant literature."
+      },
+      {
+        "step": "Falsification phase where ablation studies are conducted.",
+        "input": "Multi-turn log of all other agents.",
+        "output": "Verified scientific discoveries.",
+        "evidence": "The second phase emphasizes explicit falsification, executed by FALSIFICATIONAGENT."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used as the underlying model for agents in the BABY-AIGS system.",
+        "evidence": "All researches utilize the gpt-4o-2024-05-13 model as the underlying model for our agents."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Alpaca-GPT4 dataset",
+        "data_description": "Contains instruction-response pairs.",
+        "usage": "Used for data engineering research to identify key distinguishing characteristics.",
+        "evidence": "Specifically, we leverage Alpaca-GPT4 dataset (Peng et al., 2023) as the dataset H."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "MT-Bench",
+        "purpose": "Measures the quality of aligned LLMs.",
+        "application": "Used as a test benchmark for evaluating the quality of the redefined dataset.",
+        "evidence": "We evaluate the ICL-aligned LLM on the Vicuna-Bench, as an efficient validation benchmark, and ICL- and the SFT-aligned LLM on the MT-Bench (Zheng et al., 2023), which are used as test benchmarks."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "PROPOSALAGENT is the module to propose ideas and methods within our system."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "FALSIFICATIONAGENT generates the plans and the ablated methods for ablation experiments."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a multi-agent system for autonomous scientific discovery across various domains.",
+        "evidence": "We apply BABY-AIGS across three tasks: data engineering, self-instruct alignment, and language modeling."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "BABY-AIGS outperformed AI Scientist with a significant margin in data engineering, demonstrating effectiveness in exploring research ideas.",
+        "evidence": "For data engineering, BABY-AIGS outperforms AI Scientist with a significant margin, demonstrating the effectiveness of the enriched feedback."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AI Scientist",
+        "description": "A baseline method for automated research systems.",
+        "evidence": "We introduce the AI Scientist (Lu et al., 2024) as the baseline of the automated research system."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MT-Bench",
+        "data_description": "A benchmark for evaluating the quality of aligned LLMs.",
+        "usage": "Used as a test benchmark for evaluating the quality of the redefined dataset.",
+        "evidence": "We evaluate the ICL-aligned LLM on the Vicuna-Bench, as an efficient validation benchmark, and ICL- and the SFT-aligned LLM on the MT-Bench (Zheng et al., 2023), which are used as test benchmarks."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "MT-Bench",
+        "purpose": "Measures the quality of aligned LLMs.",
+        "application": "Used as a test benchmark for evaluating the quality of the redefined dataset.",
+        "evidence": "We evaluate the ICL-aligned LLM on the Vicuna-Bench, as an efficient validation benchmark, and ICL- and the SFT-aligned LLM on the MT-Bench (Zheng et al., 2023), which are used as test benchmarks."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Alpaca-GPT4 dataset",
+    "data_description": "Contains instruction-response pairs.",
+    "usage": "Used for data engineering research to identify key distinguishing characteristics.",
+    "evidence": "Specifically, we leverage Alpaca-GPT4 dataset (Peng et al., 2023) as the dataset H."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Creativity in DSL",
+        "description": "The design of DSL enhances executability but may constrain idea diversity.",
+        "evidence": "However, when the grammar is poorly designed, the DSL is likely to restrain the creativity of the system, because some ideas might not be able to be implemented, which is a limitation of BABY-AIGS for future work."
+      },
+      {
+        "name": "Falsification Process Limitations",
+        "description": "FALSIFICATIONAGENT could identify important factors but failed to design concrete experiment plans.",
+        "evidence": "The average value of the importance score is higher than the consistency and correctness score, indicating that FALSIFICATIONAGENT could identify important factors potentially related to a scientific discovery but failed to design a concrete experiment plan and verify the hypothesis."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhance Falsification Process",
+        "description": "Strengthen modules related to knowledge falsification and explore generalization across diverse research domains.",
+        "evidence": "While we have prototyped the falsification process in our BABY-AIGS system, more efforts are required to strengthen the modules related to knowledge falsification, including the exploitation of the patterns and relationships derived from historical experiments for the guidance of refined research proposals."
+      },
+      {
+        "name": "Balance Idea Diversity and Executability",
+        "description": "Enable agents to develop their own DSLs to enhance executability without diminishing idea diversity.",
+        "evidence": "Achieving a balance between idea diversity and system executability requires further empirical analysis. One potential avenue is enabling agents to develop their own DSLs, which could enhance the executability of generated ideas without diminishing their diverse potential."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/AgentForceTeamOfficial/Baby-AIGS",
+    "evidence": "Code is released at https://github.com/AgentForceTeamOfficial/Baby-AIGS."
+  }
+}

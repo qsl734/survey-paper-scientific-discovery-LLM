@@ -1,0 +1,143 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a generic AI-driven co-design methodology using specialized Large Language Models to generate efficient code for emerging computing hardware, with sustainability as the key performance indicator.",
+    "evidence": "In this vision paper, we propose a generic AI-driven co-design methodology, using specialized Large Language Models (like ChatGPT), to effectively generate efficient code for emerging computing hardware."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in optimizing software for emerging energy-efficient computing hardware to minimize environmental impact in data-intensive scientific applications.",
+    "evidence": "The climate emergency has made it clear that unlimited use of resources (e.g., energy) for scientific discovery is no longer acceptable. Future computing hardware promises to be much more energy efficient, but without better optimized software this cannot reach its full potential."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a novel AI-driven co-design methodology to improve the evaluation of emerging technologies for data-intensive science.",
+      "Use of sustainability as a key performance indicator in the co-design process.",
+      "Application of generative AI models to accelerate the co-design loop by estimating performance potential and aiding in code porting."
+    ],
+    "evidence": [
+      "We present our vision for a novel AI-driven co-design methodology that promises to greatly improve the turn-around time for the evaluation of emerging and new technologies for data-intensive science.",
+      "In contrast to normal co-design, where computational performance or efficiency is used as Key Performance Indicator (KPI), we introduce a sustainability score instead.",
+      "In this project we introduce AI-drive co-design: we will investigate the ability of AI to accelerate co-design tasks by estimating performance potential of emerging technologies for specific tasks and aiding in the often arduous porting of code."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Hey and Gray (2009) Data-intensive science as the fourth paradigm inspired the need for optimized software-hardware co-design. (Methodological precursors)",
+    "evidence": "Data- and compute-intensive science, or eScience, is now firmly established as the fourth science paradigm [22], as introduced by Tony Hey and Jim Gray."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Develop and test a novel AI-assisted hardware-software-science co-design methodology.",
+        "input": "Software, detailed technical description of emerging technology.",
+        "output": "Sustainability estimates and prototype codes for emerging architectures.",
+        "evidence": "We will develop and test a novel AI-assisted hardware-software-science co-design methodology (see Figure 1)."
+      },
+      {
+        "step": "Train generative foundation models with reference implementations of scientific data algorithms.",
+        "input": "Reference implementations of scientific data algorithms.",
+        "output": "Trained AI models capable of generating code for emerging hardware platforms.",
+        "evidence": "We will first train generative foundation models with reference implementations of the scientific data algorithms we use."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used to generate efficient code for emerging computing hardware.",
+        "evidence": "We hypothesize that recent advances in code generation with AI-based Large Language Models (LLMs, e.g., ChatGPT) can be a catalyst for this process."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Sustainability Score",
+        "purpose": "Measures the environmental impact of data-intensive applications.",
+        "application": "Used as a key performance indicator to evaluate the effectiveness of AI-driven co-design.",
+        "evidence": "In contrast to normal co-design, where computational performance or efficiency is used as Key Performance Indicator (KPI), we introduce a sustainability score instead."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We hypothesize that recent advances in code generation with AI-based Large Language Models (LLMs, e.g., ChatGPT) can be a catalyst for this process."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "To validate our approach, we apply this methodology to two relevant and significantly different use-cases in radio astronomy using emerging technologies, with sustainability as the key performance indicator."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a methodology for optimizing software for emerging computing hardware in data-intensive applications.",
+        "evidence": "In this vision paper, we propose a generic AI-driven co-design methodology, using specialized Large Language Models (like ChatGPT), to effectively generate efficient code for emerging computing hardware."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology is applicable to various domains including radio astronomy, climate research, and earth observation.",
+        "evidence": "With the partners in our project, we will explore opportunities in other domains like climate research, remote sensing and earth observation."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed AI-driven co-design methodology aims to reduce the environmental impact of data-intensive applications by optimizing software for emerging hardware platforms.",
+        "evidence": "The primary transverse goal of SuperCode is to reduce the environmental impact of data-intensive applications, through a novel approach of AI-driven co-design."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Traditional Co-design",
+        "description": "Conventional methods focusing on computational performance or efficiency.",
+        "evidence": "In contrast to normal co-design, where computational performance or efficiency is used as Key Performance Indicator (KPI), we introduce a sustainability score instead."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Sustainability Score",
+        "purpose": "Measures the environmental impact of data-intensive applications.",
+        "application": "Used as a key performance indicator to evaluate the effectiveness of AI-driven co-design.",
+        "evidence": "In contrast to normal co-design, where computational performance or efficiency is used as Key Performance Indicator (KPI), we introduce a sustainability score instead."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Current Model Limitations",
+        "description": "Current AI models overestimate their capabilities and need fine-tuning for specific applications.",
+        "evidence": "Using a simple example we show the current limitations of Large Language Models (LLMs) for co-design applications: current models show promise, but are over-estimating their capabilities."
+      },
+      {
+        "name": "Environmental Cost of AI Training",
+        "description": "The cost of training or specializing AI models is not free of environmental cost.",
+        "evidence": "It should be noted that the cost of training or specializing such AI is not free of environmental cost, and this should be considered."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Explore Other Domains",
+        "description": "Apply the AI-driven co-design methodology to domains beyond radio astronomy, such as climate research and earth observation.",
+        "evidence": "With the partners in our project, we will explore opportunities in other domains like climate research, remote sensing and earth observation."
+      },
+      {
+        "name": "Fine-tune AI Models",
+        "description": "Fine-tune AI models for specific applications to improve their effectiveness in co-design tasks.",
+        "evidence": "The result demonstrates that this model is aware of the RISC-V architecture and uses the correct assembly vector instructions. However, it does not understand what a polyphase filter is."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF",
+    "evidence": "1https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF"
+  }
+}

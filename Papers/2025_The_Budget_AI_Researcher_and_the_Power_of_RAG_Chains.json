@@ -1,0 +1,158 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present a novel structural framework for research ideation using retrieval-augmented generation (RAG) chains, vector databases, and topic-guided pairing to recombine concepts from machine learning papers. The authors aim to improve the concreteness and interestingness of generated research ideas compared to standard prompting approaches.",
+    "evidence": "In this study, we present a novel structural framework for research ideation. Our framework, The Budget AI Researcher, uses retrieval-augmented generation (RAG) chains, vector databases, and topic-guided pairing to recombine concepts from hundreds of machine learning papers."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in current large language models (LLMs) which, despite their capabilities, fall short in guiding users toward practical research ideas due to their limitations in domain-specific reasoning and lack of grounding in real-time, trusted external sources.",
+    "evidence": "However, despite their capabilities, large language models (LLMs) exhibit notable limitations when applied to scientific research ideation and other involved tasks. Most LLMs are trained broadly across a wide array of internet text, making them effective for general understanding that is often too shallow for domain-specific reasoning."
+  },
+  "novelty": {
+    "answer": [
+      "The use of retrieval-augmented generation (RAG) chains to incorporate relevant, recent, and personalized information into the generation process.",
+      "The integration of a hierarchical topic tree to identify distant topic pairs for generating novel research abstracts.",
+      "The iterative self-evaluation of generated abstracts against relevant literature and peer reviews to enhance concreteness and interestingness.",
+      "The system's ability to generate and refine research abstracts grounded in real-world research."
+    ],
+    "evidence": [
+      "RAG chains offer several key advantages that make them well-suited for research ideation. They enable quick and accurate access to specialized knowledge outside the LLM’s training data.",
+      "The system ingests papers from nine major AI conferences, which collectively span the vast subfields of machine learning, and organizes them into a hierarchical topic tree.",
+      "It uses the tree to identify distant topic pairs, generate novel research abstracts, and refine them through iterative self-evaluation against relevant literature and peer reviews.",
+      "The Budget AI Researcher is designed as a topic-guided ideation agent that generates and refines research abstracts using information retrieved from real-world machine learning papers."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lu et al. (2024) The AI Scientist inspired our comprehensive approach to utilizing papers from multiple ML conferences. (Methodological precursors)\n- Radensky et al. (2024) Scideator's use of RAG and Semantic Scholar influenced our retrieval and recombination methods. (Methodological precursors)",
+    "evidence": "A prominent example of a related large language model (LLM) agent designed to accelerate machine learning research is 'The AI Scientist.' While 'The AI Scientist' automates peer review by focusing on 500 papers from the ICLR conference, our approach is more comprehensive, utilizing papers from nine different ML conferences. Another recent example of a research agent is 'Scideator,' a RAG and Semantic Scholar-powered tool for recombining multiple facets of papers in literature."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construction of a knowledge base from nine major AI conferences.",
+        "input": "Papers from nine major AI conferences.",
+        "output": "A hierarchical topic tree of machine learning papers.",
+        "evidence": "The system ingests papers from nine major AI conferences, which collectively span the vast subfields of machine learning, and organizes them into a hierarchical topic tree."
+      },
+      {
+        "step": "Pairing of distant topics for ideation.",
+        "input": "Hierarchical topic tree.",
+        "output": "Pairs of distant topics for generating research abstracts.",
+        "evidence": "It uses the tree to identify distant topic pairs, generate novel research abstracts."
+      },
+      {
+        "step": "Refinement of outputs through LLM-based evaluation.",
+        "input": "Generated research abstracts.",
+        "output": "Refined research abstracts with improved concreteness and interestingness.",
+        "evidence": "Refine them through iterative self-evaluation against relevant literature and peer reviews."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LangChain",
+        "description": "Used to augment LLMs’ knowledge bases through a RAG chain system.",
+        "evidence": "LangChain is a tool for applications that chain multiple AI-powered models together."
+      },
+      {
+        "name": "Chroma",
+        "description": "An AI-native open-source vector database for efficient storage and retrieval of vector embeddings.",
+        "evidence": "Chroma (Kedia 2024) is an AI-native open-source vector database designed for efficient storage and retrieval of vector embeddings."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "LLM-based metrics",
+        "purpose": "Measures the concreteness and interestingness of generated research ideas.",
+        "application": "Used to evaluate the improvement of the proposed method over standard prompting approaches.",
+        "evidence": "Experiments using LLM-based metrics indicate that our method significantly improves the concreteness of generated research ideas relative to standard prompting approaches."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The Budget AI Researcher is designed as a topic-guided ideation agent that generates and refines research abstracts using information retrieved from real-world machine learning papers."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The approach includes refining generated ideas through iterative self-evaluation against relevant literature and peer reviews.",
+        "evidence": "Refine them through iterative self-evaluation against relevant literature and peer reviews."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for research ideation applicable across various scientific domains.",
+        "evidence": "By bridging the gap between academic data and creative generation, the Budget AI Researcher offers a practical, free tool for accelerating scientific discovery and lowering the barrier for aspiring researchers."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The Budget AI Researcher significantly improves the concreteness and interestingness of generated research ideas compared to standard prompting approaches.",
+        "evidence": "Experiments using LLM-based metrics indicate that our method significantly improves the concreteness of generated research ideas relative to standard prompting approaches."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Standard prompting approaches",
+        "description": "Baseline methods for generating research ideas using LLMs.",
+        "evidence": "Experiments using LLM-based metrics indicate that our method significantly improves the concreteness of generated research ideas relative to standard prompting approaches."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Not reported in the paper",
+        "data_description": "Not reported in the paper",
+        "usage": "Not reported in the paper",
+        "evidence": "Not reported in the paper"
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "LLM-based metrics",
+        "purpose": "Measures the concreteness and interestingness of generated research ideas.",
+        "application": "Used to evaluate the improvement of the proposed method over standard prompting approaches.",
+        "evidence": "Experiments using LLM-based metrics indicate that our method significantly improves the concreteness of generated research ideas relative to standard prompting approaches."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Dataset Scope",
+        "description": "The system is bound to a set of thousands of papers from 9 conferences, which may not encompass all subjects in AI.",
+        "evidence": "It is bound to a set of thousands of papers from 9 conferences and many of their citations, and while this encompasses most of the subjects in AI, it is far from what the entire Internet has to offer."
+      },
+      {
+        "name": "Rate Limitations",
+        "description": "Rate limits on the Groq API may prevent retrieval of all necessary experimental procedures.",
+        "evidence": "Since rate limits on the Groq API (typically 6000 tokens) can only encompass small bits and pieces of the conference papers, the LLM may not be able to retrieve all the experimental procedures required."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Online Search Feature",
+        "description": "Add an online search feature such as the Semantic Scholar API relevance search to strengthen the ideation process.",
+        "evidence": "To resolve these limitations, we can add an online search feature such as the Semantic Scholar API relevance search to strengthen the ideation process."
+      },
+      {
+        "name": "Finer-grained Ideas",
+        "description": "Employ chain-of-thought with a modified topic tree to generate finer-grained ideas.",
+        "evidence": "To generate finer-grained ideas, we can employ chain-of-thought with a modified topic tree, where each paper in the tree would be broken down into the task, the method, and the peer review if it is available."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/hellojoeAoPS11235/ai-research-agent/tree/main",
+    "evidence": "Code — https://github.com/hellojoeAoPS11235/ai-research-agent/tree/main"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce HelixProtX, a large multimodal model designed to support any-to-any protein modality generation, transforming any input protein modality into any desired protein modality. The authors aim to offer a comprehensive solution to protein research by integrating multimodal model technologies into protein research, thereby accelerating scientific discovery.",
+    "evidence": "To this end, we introduce HelixProtX, a system built upon the large multimodal model, aiming to offer a comprehensive solution to protein research by supporting any-to-any protein modality generation."
+  },
+  "knowledge_gap": {
+    "answer": "Current methodologies in protein research predominantly focus on limited specialized tasks, often predicting one protein modality from another, which restricts the understanding and generation of multimodal protein data.",
+    "evidence": "Despite the advances in deep learning and scientific large language models (LLMs) for protein research, current methodologies predominantly focus on limited specialized tasks – often predicting one protein modality from another. These approaches restrict the understanding and generation of multimodal protein data."
+  },
+  "novelty": {
+    "answer": [
+      "HelixProtX allows for the transformation of any input protein modality into any desired protein modality, unlike existing methods.",
+      "The system integrates large multimodal models into protein research, offering new avenues for understanding protein biology.",
+      "HelixProtX demonstrates superior accuracy across a range of protein-related tasks, outperforming existing state-of-the-art models."
+    ],
+    "evidence": [
+      "Unlike existing methods, it allows for the transformation of any input protein modality into any desired protein modality.",
+      "By integrating multimodal large models into protein research, HelixProtX opens new avenues for understanding protein biology.",
+      "Preliminary findings indicate that HelixProtX consistently achieves superior accuracy across a range of protein-related tasks, outperforming existing state-of-the-art models."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Jumper et al. (2021) Highly accurate protein structure prediction with AlphaFold. (Experimental baselines)\n- Baek et al. (2021) Accurate prediction of protein structures and interactions using a three-track neural network. (Experimental baselines)\n- Dauparas et al. (2022) Robust deep learning–based protein sequence design using ProteinMPNN. (Methodological precursors)",
+    "evidence": "Recently, deep learning has significantly advanced protein structure prediction, as demonstrated by AlphaFold II [4] and RoseTTAfold [9]... ProteinMPNN [3], as the Structure Encoder."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Input processing and encoding",
+        "input": "System message, condition message, and user message",
+        "output": "Encoded representations of sequences, structures, and descriptions",
+        "evidence": "The architecture of HelixProtX, as illustrated in Figure 2a, is centered on the large language model LLM, utilizing ERNIE-Lite, a streamlined version of ERNIE BOT3."
+      },
+      {
+        "step": "Multimodal alignment",
+        "input": "Encoded sequence and structure representations",
+        "output": "Aligned representations in the LLM's feature space",
+        "evidence": "To ensure alignment among different protein modalities and textual queries, we incorporate Sequence Abstractor and Structure Abstractor modules."
+      },
+      {
+        "step": "Multimodal generation",
+        "input": "Aligned representations",
+        "output": "Generated sequences, structures, or descriptions",
+        "evidence": "For sequence decoding, we employ the standard Language Model Head, which generates sequential data of proteins."
+      }
+    ],
+    "tools": [
+      {
+        "name": "ERNIE-Lite",
+        "description": "Used as the core large language model for processing inputs",
+        "evidence": "The architecture of HelixProtX, as illustrated in Figure 2a, is centered on the large language model LLM, utilizing ERNIE-Lite."
+      },
+      {
+        "name": "HelixFold-Single",
+        "description": "Used as the Sequence Encoder for capturing representations of amino acid sequences",
+        "evidence": "We opt to employ our previous work, HelixFold-Single [26], as the Sequence Encoder."
+      },
+      {
+        "name": "ProteinMPNN",
+        "description": "Used as the Structure Encoder for capturing structural modalities",
+        "evidence": "We utilize the well-established protein design model, ProteinMPNN [3], as the Structure Encoder."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "UniProtQA",
+        "data_description": "Functional descriptions and sequence data",
+        "usage": "Used for training and evaluation of description prediction tasks",
+        "evidence": "To build a comprehensive multimodal dataset, we curated resources from UniProtQA [17], which provided functional descriptions and sequence data."
+      },
+      {
+        "name": "SwissProt",
+        "data_description": "Structural data",
+        "usage": "Used for training and evaluation of structure prediction tasks",
+        "evidence": "and SwissProt [31], which contributed structural data."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "BLEU score",
+        "purpose": "Measures the consistency between generated functional descriptions and ground truth descriptions",
+        "application": "Used to assess the accuracy and fluency in the generated descriptions",
+        "evidence": "We employ commonly used evaluation metrics in natural language processing, namely BLEU score and ROUGE score [32]."
+      },
+      {
+        "name": "Sequence Identity",
+        "purpose": "Measures the similarity between the sequences predicted by the model and the reference sequences",
+        "application": "Used to evaluate the efficacy of sequence design tasks",
+        "evidence": "We use Sequence Identity [33] as the metric to measure the similarity between the sequences predicted by the model and the reference sequences."
+      },
+      {
+        "name": "Root Mean Square Deviation (RMSD)",
+        "purpose": "Measures the error between the model-generated structures and the reference structures",
+        "application": "Used to evaluate the accuracy of structure prediction tasks",
+        "evidence": "Root Mean Square Deviation (RMSD) is used to evaluate the error between the model-generated structures and the reference structures."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The system transforms input protein modalities into desired output modalities.",
+        "evidence": "HelixProtX enables the generation of different protein modalities from any given input by seamlessly integrating sequences, structures, and textual descriptions."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The system extracts and structures knowledge from protein sequences, structures, and descriptions.",
+        "evidence": "The Sequence Encoder and Structure Encoder produce Sequence and Structure representations, capturing sequence and structural information in their respective feature spaces."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Biological Sciences",
+        "description": "The paper focuses on protein generation and understanding protein biology.",
+        "evidence": "By harnessing the capabilities of large multimodal models for any-to-any protein generation, HelixProtX can provide novel insights into protein biology."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The integration of multimodal models into protein research represents an interdisciplinary approach.",
+        "evidence": "Integrating these multimodal model technologies into protein research offers significant promise by potentially transforming how proteins are studied."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "HelixProtX consistently outperformed existing benchmarks across most tasks, demonstrating robustness across proteins of varying lengths and families.",
+        "evidence": "Across most tasks, HelixProtX consistently outperformed existing benchmarks, leveraging the advanced capabilities of large multimodal models."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "BioMedGPT",
+        "description": "A bioinformatics large language model used as a baseline for sequence-to-description tasks.",
+        "evidence": "For the sequence-to-description comparison, we use BioMedGPT [17], another bioinformatics large language model, as the baseline."
+      },
+      {
+        "name": "ProteinMPNN",
+        "description": "A model specialized for inverse folding, used as a baseline for structure-to-sequence tasks.",
+        "evidence": "HelixProtX achieves a notably high level of similarity between its designed sequences and the reference sequences, as demonstrated in Figure 4b. Across the vast majority (98%) of samples, HelixProtX significantly surpasses ProteinMPNN."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "UniProtQA",
+        "data_description": "Functional descriptions and sequence data",
+        "usage": "Used for training and evaluation of description prediction tasks",
+        "evidence": "To build a comprehensive multimodal dataset, we curated resources from UniProtQA [17], which provided functional descriptions and sequence data."
+      },
+      {
+        "name": "SwissProt",
+        "data_description": "Structural data",
+        "usage": "Used for training and evaluation of structure prediction tasks",
+        "evidence": "and SwissProt [31], which contributed structural data."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "BLEU score",
+        "purpose": "Measures the consistency between generated functional descriptions and ground truth descriptions",
+        "application": "Used to assess the accuracy and fluency in the generated descriptions",
+        "evidence": "We employ commonly used evaluation metrics in natural language processing, namely BLEU score and ROUGE score [32]."
+      },
+      {
+        "name": "Sequence Identity",
+        "purpose": "Measures the similarity between the sequences predicted by the model and the reference sequences",
+        "application": "Used to evaluate the efficacy of sequence design tasks",
+        "evidence": "We use Sequence Identity [33] as the metric to measure the similarity between the sequences predicted by the model and the reference sequences."
+      },
+      {
+        "name": "Root Mean Square Deviation (RMSD)",
+        "purpose": "Measures the error between the model-generated structures and the reference structures",
+        "application": "Used to evaluate the accuracy of structure prediction tasks",
+        "evidence": "Root Mean Square Deviation (RMSD) is used to evaluate the error between the model-generated structures and the reference structures."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "UniProtQA",
+    "data_description": "Functional descriptions and sequence data",
+    "usage": "Used for training and evaluation of description prediction tasks",
+    "evidence": "To build a comprehensive multimodal dataset, we curated resources from UniProtQA [17], which provided functional descriptions and sequence data."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Structure Prediction Accuracy",
+        "description": "HelixProtX exhibits less accurate results than HelixFold-Single in the sequence-to-structure task.",
+        "evidence": "In contrast to its performance in the description-to-structure task, HelixProtX exhibits less accurate results than HelixFold-Single in the sequence-to-structure task."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhancing structure prediction/design",
+        "description": "Explore more sophisticated network architectures and refine optimization objectives to improve task performance.",
+        "evidence": "Enhancing structure prediction/design: While HelixProtX shows promise, its performance in the structure prediction/design task requires further improvement."
+      },
+      {
+        "name": "Broadening the scope of applications",
+        "description": "Expand the dataset to include additional life science domains, such as small molecules and RNA.",
+        "evidence": "Broadening the scope of applications: It is interesting to expand the dataset to include additional life science domains, such as small molecules and RNA."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/PaddlePaddle/PaddleHelix/tree/dev/apps/helixprotx",
+    "evidence": "The source code and inference code of HelixProtX are freely available on GitHub (https://github.com/PaddlePaddle/PaddleHelix/tree/dev/apps/helixprotx)."
+  }
+}

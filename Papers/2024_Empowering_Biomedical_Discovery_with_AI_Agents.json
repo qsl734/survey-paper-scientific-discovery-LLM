@@ -1,0 +1,134 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to envision and propose the development of 'AI scientists' as systems capable of skeptical learning and reasoning to empower biomedical research through collaborative agents that integrate AI models and biomedical tools with experimental platforms.",
+    "evidence": "We envision “AI scientists” as systems capable of skeptical learning and reasoning that empower biomedical research through collaborative agents that integrate AI models and biomedical tools with experimental platforms."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in developing AI systems that can autonomously make major scientific discoveries and learn independently, which is crucial for advancing biomedical research.",
+    "evidence": "A long-standing ambition for artificial intelligence (AI) is the development of AI systems that can eventually make major scientific discoveries, learn on their own, and acquire knowledge autonomously."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of AI agents that combine human creativity with AI's ability to analyze large datasets and navigate hypothesis spaces.",
+      "Development of AI agents capable of planning discovery workflows and performing self-assessment to identify and mitigate knowledge gaps.",
+      "Use of large language models and generative models to feature structured memory for continual learning.",
+      "Integration of machine learning tools to incorporate scientific knowledge, biological principles, and theories."
+    ],
+    "evidence": [
+      "Rather than taking humans out of the discovery process, biomedical AI agents combine human creativity and expertise with AI’s ability to analyze large datasets, navigate hypothesis spaces, and execute repetitive tasks.",
+      "AI agents are poised to be proficient in various tasks, planning discovery workflows and performing self-assessment to identify and mitigate gaps in their knowledge.",
+      "These agents use large language models and generative models to feature structured memory for continual learning.",
+      "use machine learning tools to incorporate scientific knowledge, biological principles, and theories."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Sachs et al. (2005) Causal protein-signaling networks derived from multiparameter single-cell data. (Methodological precursors)\n- Jumper et al. (2021) Highly accurate protein structure prediction with AlphaFold. (Experimental baselines)",
+    "evidence": "These models have advanced modeling of proteins [22–26], genes [27], phenotypes [28], clinical outcomes [29–31], and chemical compounds [32, 33] through mining of biomedical data."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Develop AI agents that integrate AI models and biomedical tools with experimental platforms.",
+        "input": "Large language models, machine learning tools, and experimental platforms.",
+        "output": "AI agents capable of skeptical learning and reasoning in biomedical research.",
+        "evidence": "We envision “AI scientists” as systems capable of skeptical learning and reasoning that empower biomedical research through collaborative agents that integrate AI models and biomedical tools with experimental platforms."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for conversations and integrating feedback to cooperate with humans and other agents.",
+        "evidence": "Chat-optimized LLMs, such as GPT-4 [9], can incorporate feedback, enabling AI agents to cooperate through conversations with each other and with humans."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "An AI agent should be able to formulate biomedical hypotheses, critically evaluate them, characterize their uncertainty, and use that as a driver to acquire and refine its scientific knowledge bases."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "AI agents should be designed to adapt to new biological insights, incorporate the latest scientific findings, and refine hypotheses based on experimental results."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper discusses AI agents' impact on developing new therapies and understanding cellular mechanisms.",
+        "evidence": "AI agents can impact areas ranging from virtual cell simulation, programmable control of phenotypes, and the design of cellular circuits to developing new therapies."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The integration of AI models, biomedical tools, and experimental platforms spans multiple scientific disciplines.",
+        "evidence": "These multi-agent systems consist of agents based on conversable large language models (LLMs) and can coordinate machine learning (ML) tools, experimental platforms, humans, or even combinations of them."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Not reported in the paper",
+        "evidence": "The paper does not provide specific performance metrics or comparisons with baselines."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AlphaFold",
+        "description": "Used as a baseline for protein structure prediction.",
+        "evidence": "An example is the AlphaFold [38], which predicts 3D protein structures with high accuracy using multi-sequence alignment with a deep learning model but is tailored for protein folding."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "AlphaFold Protein Structure DB",
+        "data_description": "Contains more than 200 million protein structures predicted by AlphaFold.",
+        "usage": "Used for protein structure prediction and retrieval.",
+        "evidence": "An example of such a database is the AlphaFold Protein Structure DB [37], which includes more than 200 million protein structures predicted by AlphaFold [38]."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Not reported",
+        "purpose": "Not reported",
+        "application": "Not reported",
+        "evidence": "The paper does not specify evaluation metrics used."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "AlphaFold Protein Structure DB",
+    "description": "Contains more than 200 million protein structures predicted by AlphaFold.",
+    "usage": "Used for protein structure prediction and retrieval.",
+    "evidence": "An example of such a database is the AlphaFold Protein Structure DB [37], which includes more than 200 million protein structures predicted by AlphaFold [38]."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Lack of Large Experimental Datasets",
+        "description": "The paper highlights the challenge of the lack of large experimental datasets that cover diverse use cases beyond the current focus on a handful of biomedical domains.",
+        "evidence": "Further, challenges uniquely relevant to biomedical AI agents include the lack of large experimental datasets that cover diverse use cases beyond the current focus on a handful of biomedical domains like structural biology and single-cell science."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Responsible Implementation",
+        "description": "The paper suggests the need for responsible implementation of AI agents to ensure their impact and challenges are addressed.",
+        "evidence": "Biomedical AI agents can assist with research and operations under human oversight, but their impact and challenges highlight the need for responsible implementation."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No human-facing resource URL was found in the paper."
+  }
+}

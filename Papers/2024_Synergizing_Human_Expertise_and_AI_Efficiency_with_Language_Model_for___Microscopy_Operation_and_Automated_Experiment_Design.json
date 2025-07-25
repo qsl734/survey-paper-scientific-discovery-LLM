@@ -1,0 +1,124 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore the utility of large language models (LLMs), particularly ChatGPT4, in combination with application program interfaces (APIs) for tasks such as experimental design, programming workflows, and data analysis in scanning probe microscopy.",
+    "evidence": "Here, we explore the utility of LLM, particularly ChatGPT4, in combination with application program interfaces (APIs) in tasks of experimental design, programming workflows, and data analysis in scanning probe microscopy."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in utilizing LLMs as a language interface for scientific instrumentation, specifically in automating and streamlining the process of experiment design and execution in microscopy, which traditionally requires significant expertise and manual operation.",
+    "evidence": "Traditionally, mastering microscopy techniques for scientific discovery often requires years of training. Recently, the rapid progress in the artificial intelligence (AI) field propelled the development of AE in microscopes for physics discoveries."
+  },
+  "novelty": {
+    "answer": [
+      "Integration of LLMs with APIs to assist in programming workflows for scanning probe microscopy.",
+      "Use of LLMs to convert human instructions into executable workflow scripts for scientific instruments.",
+      "Development of AE-GPT, a version of ChatGPT4 trained with AEcroscoPy guidelines for microscope automation."
+    ],
+    "evidence": [
+      "We investigate the potential of combining LLMs with APIs to serve as a language interface assisting researchers in preparing workflows and operating scanning probe microscopy (SPM).",
+      "This language interface would allow for converting human instructions to executable workflow scripts, assisting in data analysis, and automating the reproduction of experiments.",
+      "We employ ChatGPT4 and AEcroscoPy to investigate the application of LLMs in API environment."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Ziatdinov et al. (2022) Bayesian active learning for scanning probe microscopy: from gaussian processes to hypothesis learning. (Methodological precursors)\n- Liu et al. (2023) Disentangling electronic transport and hysteresis at individual grain boundaries in hybrid perovskites via automated scanning probe microscopy. (Experimental baselines)",
+    "evidence": "AE-microscopes utilize a range of machine learning (ML) methods, including supervised ML, active learning, and reinforcement learning for on-the-fly data analysis and decision-making, automating microscope operation, and facilitating physics discovery."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Train ChatGPT4 with AEcroscoPy guidelines.",
+        "input": "AEcroscoPy guideline consisting of SPM experiment procedures.",
+        "output": "AE-GPT, a version of ChatGPT4 trained with AEcroscoPy guidelines.",
+        "evidence": "We feed a complete guideline of AEcroscoPy into ChatGPT4 as a learning resource."
+      },
+      {
+        "step": "Convert human instructions to executable scripts.",
+        "input": "Human commands for SPM operation.",
+        "output": "Python scripts for SPM operation.",
+        "evidence": "We first query AE-GPT about the method of setting parameters and moving the SPM tip."
+      },
+      {
+        "step": "Program multifaceted workflows.",
+        "input": "Experiment workflow comprising multiple steps.",
+        "output": "Workflow script integrating multiple measurement and analysis steps.",
+        "evidence": "We tested its proficiency in programming an experiment that integrates several measurements."
+      }
+    ],
+    "tools": [
+      {
+        "name": "ChatGPT4",
+        "description": "Used for converting human instructions into executable workflow scripts.",
+        "evidence": "We employ ChatGPT4 and AEcroscoPy to investigate the application of LLMs in API environment."
+      },
+      {
+        "name": "AEcroscoPy",
+        "description": "A custom-developed API for microscope automation.",
+        "evidence": "AEcroscoPy is a custom-developed API, a cross-platform software-hardware system designed for microscope automation."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "AE-GPT also shows ability of experimental designs for addressing specific scientific questions."
+      },
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The system transforms user instructions into structured formats like code.",
+        "evidence": "This language interface would allow for converting human instructions to executable workflow scripts."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on using AI to automate and enhance experimental workflows in microscopy.",
+        "evidence": "We explore the LLMs in various scenarios including text-to-program conversion, programming workflow, reproducing experiments, and data analysis."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The integration of AI and scientific instrumentation spans multiple scientific disciplines.",
+        "evidence": "The integration of LLMs and APIs enables more efficient and reproducible experiments, which can potentially significantly increase the pace of scientific research."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": "Not reported in the paper",
+    "baselines": "Not reported in the paper",
+    "benchmark_datasets": "Not reported in the paper",
+    "evaluation_metrics": "Not reported in the paper"
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scientific Interpretation",
+        "description": "AE-GPT's ability in scientific interpretation is very limited, offering mostly definitions rather than insights.",
+        "evidence": "The interpretation is mostly just the definition of certain scientific concept, such interpretation offers limited insights and even can be wrong in some scenarios."
+      },
+      {
+        "name": "Lack of Advanced Experiment Design",
+        "description": "AE-GPT lacks the ability to design advanced experiments based on literature.",
+        "evidence": "AE-GPT is also lack of designing advanced experiments based on literatures, as indicated in Supplemental Note-II."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Develop Domain-Specific LLMs",
+        "description": "Create LLMs specifically trained on scientific literature and instrument manuals for better performance.",
+        "evidence": "To overcome these drawbacks, domain specific LLMs, as well as fine-tuning by domain experts, will be required."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://www.energy.gov/doe-public-access-plan",
+    "evidence": "The Department of Energy will provide public access to these results of federally sponsored research in accordance with the DOE Public Access Plan (https://www.energy.gov/doe-public-access-plan)."
+  }
+}

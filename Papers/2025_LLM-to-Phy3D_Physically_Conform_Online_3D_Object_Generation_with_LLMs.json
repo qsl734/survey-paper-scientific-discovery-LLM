@@ -1,0 +1,157 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce LLM-to-Phy3D, a novel framework for online 3D object generation that ensures physical conformity by leveraging large language models (LLMs) with visual and physics-based evaluations. The authors aim to address the gap in generating physically viable 3D artifacts for engineering design, which is often overlooked in existing LLM-to-3D models.",
+    "evidence": "To address this gap, we introduce LLM-to-Phy3D, a physically conform online 3D object generation that enables existing LLM-to-3D models to produce physically conforming 3D objects on the fly."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the lack of physical knowledge in existing LLM-to-3D models, which results in outputs that do not adhere to real-world physical constraints, particularly in engineering design.",
+    "evidence": "The absence of physical knowledge in existing LLM-to-3D models often results in outputs detached from real-world physical constraints."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a novel online black-box iterative refinement framework that guides LLMs to produce physically plausible 3D artifacts.",
+      "Incorporation of visual and physics-based evaluations to quantify the quality of 3D-generated artifacts.",
+      "Use of orthographic projection in physical light simulation to capture precise surface topology and minimize geometric distortions.",
+      "Evaluation of multiple state-of-the-art LLMs with a standardized meta-prompt for fair comparison."
+    ],
+    "evidence": [
+      "Central to LLM-to-Phy3D is its unique online black-box iterative refinement framework that adaptively steers the LLM to find textual prompts that yield physically plausible 3D artifacts with high geometric novelty.",
+      "Visual and physics-based evaluations are introduced to quantify the quality of 3D-generated artifacts based on its physical performance and geometric novelty.",
+      "To address such issues, we propose conducting the physical light simulation under orthographic projection to capture the precise surface topology of 3D artifacts and minimize geometric distortions.",
+      "In contrast to existing LLM benchmark approaches, which tailor meta-prompts for different LLMs, we evaluate the performance of four state-of-the-art LLMs with the same standardized meta-prompt to ensure a fair comparison of search performance."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Rios et al. (2023) Pioneering research studies that investigate this approach in engineering design optimization. (Experimental baselines)\n- Wong et al. (2024) Preliminary results, particularly in enhancing aerodynamic performance while satisfying domain constraints. (Experimental baselines)",
+    "evidence": "Pioneering research studies that investigate this approach in engineering design optimization, where preliminary results, particularly in enhancing aerodynamic performance while satisfying domain constraints (Rios et al. [2023], Wong et al. [2024]), encourage progress and interest."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Initialize the LLM with the search task and sample prompts to produce 3D artifacts.",
+        "input": "User domain S and design specifications C.",
+        "output": "Initial set of 3D artifacts generated from LLM-generated prompts.",
+        "evidence": "Given a user domain S and design specifications C, LLM-to-Phy3D initializes the LLM (pllm) with the search task."
+      },
+      {
+        "step": "Evaluate the generated 3D artifacts against specifications to determine scores.",
+        "input": "Generated 3D artifacts and specifications C and S.",
+        "output": "Scores for each 3D artifact based on physical performance and domain alignment.",
+        "evidence": "The generated 3D artifacts are evaluated against the specifications to determine the scores."
+      },
+      {
+        "step": "Select better-performing candidates to form an exemplar set for the next iteration.",
+        "input": "Evaluated scores and generated 3D artifacts.",
+        "output": "Exemplar set of N candidates for the next iteration.",
+        "evidence": "This process selects the better-performing candidate from randomly paired candidates to form an exemplar set of N candidates for the next iteration."
+      }
+    ],
+    "tools": [
+      {
+        "name": "OpenFoam",
+        "description": "Used for CFD physics simulation to obtain aerodynamic scores.",
+        "evidence": "We employ CFD physics simulation with OpenFoam (Weller et al. [1998]) to obtain the physical performance aerodynamic scores."
+      },
+      {
+        "name": "EfficientNet",
+        "description": "Used to generate feature maps for geometric novelty measure.",
+        "evidence": "To generate the feature maps in Equation (6), we utilize the EfficientNet model (Tan and Le [2019])."
+      },
+      {
+        "name": "OPTIX",
+        "description": "Used to capture and render the precise surface topology of 3D objects.",
+        "evidence": "We employ the Nvidia ray tracing engine OPTIX (Parker et al. [2010]) to capture and render the precise surface topology of 3D objects."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Domain and Physical Alignment Rating (DPAR)",
+        "purpose": "Measures the ability to produce physically conforming target domain artifacts.",
+        "application": "Used to compare the performance of different methods in generating 3D artifacts.",
+        "evidence": "We define the domain and physical alignment rating (DPAR) of a method of interest as: DPAR(D, S) = E x∈D [fdomain (g(x), S) /fphysical(x)] , where the higher the rating, the better the method in its ability to produce physically conforming target domain artifacts."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Our proposed method then samples prompts from the LLM to produce the corresponding 3D artifacts from the text-to-3D generative model pt3d."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The approach includes refining ideas and designs iteratively based on feedback.",
+        "evidence": "An iteration of LLM-to-Phy3D ends with a selection process that picks the best-performing LLM-generated prompts as exemplars for the LLM to learn the relationship between its prompts and the generated 3D artifacts that resulted in the quantified score, enabling the LLM to improve its performance in the next iteration."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on generating physically conforming 3D objects for engineering design.",
+        "evidence": "The absence of physical knowledge in existing LLM-to-3D models often results in outputs detached from real-world physical constraints. To address this gap, we introduce LLM-to-Phy3D, a physically conform online 3D object generation that enables existing LLM-to-3D models to produce physically conforming 3D objects on the fly."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "LLM-to-Phy3D outperforms existing LLM-to-3D models by up to 106.7% in producing physically conforming target domain 3D artifacts.",
+        "evidence": "Systematic evaluations of LLM-to-Phy3D, along with ablation studies in aerodynamic vehicle design optimization tasks, reveal various LLM improvements gained by 4.5% to 106.7% in producing physically conforming target domain 3D designs."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GPT-3.5 Turbo",
+        "description": "A large language model used as a baseline for generating 3D artifacts.",
+        "evidence": "We select four LLMs - GPT-3.5 Turbo, GPT-4o Mini, Gemini 2.0 Flash Lite, and Mistral 3.1 Small, to compare based on its capabilities in following the designed meta-prompts and creating feasible prompts throughout the iterations in a single experiment run."
+      },
+      {
+        "name": "Shap-E",
+        "description": "A text-to-3D generative model used as a baseline for comparison.",
+        "evidence": "As these LLMs require a text-to-3D generative model to produce 3D artifacts, we select Shap-E and Trellis models."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Not reported in the paper",
+        "data_description": "The paper does not mention any traditional benchmark datasets.",
+        "usage": "N/A",
+        "evidence": "N/A"
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Domain and Physical Alignment Rating (DPAR)",
+        "purpose": "Measures the ability to produce physically conforming target domain artifacts.",
+        "application": "Used to compare the performance of different methods in generating 3D artifacts.",
+        "evidence": "We define the domain and physical alignment rating (DPAR) of a method of interest as: DPAR(D, S) = E x∈D [fdomain (g(x), S) /fphysical(x)] , where the higher the rating, the better the method in its ability to produce physically conforming target domain artifacts."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used in the study.",
+    "usage": "N/A",
+    "evidence": "The paper does not mention any traditional benchmark datasets."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Inherited Generation Issues",
+        "description": "The method inherits generation issues from the base LLM and text-to-3D models, which may limit performance or generate artifacts that are highly fragmented.",
+        "evidence": "Although LLM-to-Phy3D demonstrates remarkable improvements over existing LLMs and text-to-3D models of scope, the pre-existing generation issues and limited expressiveness of these models are inherited, which may limit performance or generate artifacts that are highly fragmented, non-watertight or even containing the multi-face Janus issue."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": "No explicit future directions were stated in the paper."
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No human-facing resource URL was found in the paper."
+  }
+}

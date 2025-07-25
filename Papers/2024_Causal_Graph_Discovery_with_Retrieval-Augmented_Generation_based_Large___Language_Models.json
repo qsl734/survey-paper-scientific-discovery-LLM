@@ -1,0 +1,185 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a novel method leveraging large language models (LLMs) to deduce causal relationships in general causal graph recovery tasks, addressing the limitations of traditional statistical estimation-based methods.",
+    "evidence": "We propose a novel method that leverages LLMs to deduce causal relationships in general causal graph recovery tasks."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in causal graph recovery methods that rely heavily on statistical estimation or expert knowledge, which are often limited by data biases and the complexity of causal reasoning.",
+    "evidence": "Causal graph recovery is traditionally done using statistical estimation-based methods or based on individual’s knowledge about variables of interests. They often suffer from data collection biases and limitations of individuals’ knowledge."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a novel RAG-based causal graph recovery method that improves associational reasoning.",
+      "Design of an associational reasoning-based prompting strategy to reduce LLMs’ task complexity.",
+      "Demonstration of the method's efficacy in overcoming data collection bias issues in traditional methods."
+    ],
+    "evidence": [
+      "We introduce a novel RAG-based causal graph recovery method that achieves better associational reasoning.",
+      "We design an associational reasoning-based prompting strategy that reduce LLMs’ task complexity to simple associational reasoning to improve the reliability of LLMs’ results.",
+      "The method shows its potential in accurate causal graph construction and overcoming data collection bias issues in traditional methods."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Choi et al. (2022) Their clustering pipeline inspired our filtering model. (Methodological precursors)\n- Long et al. (2022) Their direct causal graph output approach was a baseline for our method. (Experimental baselines)\n- Kıcıman et al. (2023) Their work on querying LLMs for causal relationships highlighted limitations we addressed. (Papers with limitations addressed by this work)",
+    "evidence": "Most work have a straightforward way of using LLMs. They directly query the causal relationship between each pair of variables (Choi et al., 2022; Long et al., 2022; Kıcıman et al., 2023) by prompting LLMs with the definition of causality, task details and description of the variables of interest."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Edge existence verification",
+        "input": "Pre-retrieved set of relevant scientific documents, LLM’s background knowledge",
+        "output": "Skeleton of the causal graph",
+        "evidence": "In this phase, we construct the skeleton of the causal graph, i.e., verifying the existence of each edge without clarifying its direction."
+      },
+      {
+        "step": "Orientation",
+        "input": "Skeleton output by LACR 1",
+        "output": "Directed causal graph",
+        "evidence": "Starting at the skeleton output by LACR 1, we continue to determine the direction of each edge in the skeleton."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used for querying and processing causal relationships",
+        "evidence": "We use GPT-4o in the following experiments."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ASIA",
+        "data_description": "8 nodes from domains of medical, biology, and social science",
+        "usage": "Validation of causal graph recovery method",
+        "evidence": "The ASIA dataset has 8 nodes (from domains of medical, biology, and social science) and 8 edges."
+      },
+      {
+        "name": "SACHS",
+        "data_description": "11 nodes from the medical and biological domains",
+        "usage": "Validation of causal graph recovery method",
+        "evidence": "The SACHS dataset has 11 nodes (from the medical and biological domains) and 16 edges."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Adjacency Precision (AP)",
+        "purpose": "Measures the precision of recovered edges",
+        "application": "Used to evaluate the accuracy of edge recovery",
+        "evidence": "We measure LACR 1 and LACR 2 by different metrics. For LACR 1, we show the adjacency precision (AP)."
+      },
+      {
+        "name": "Adjacency Recall (AR)",
+        "purpose": "Measures the recall of recovered edges",
+        "application": "Used to evaluate the completeness of edge recovery",
+        "evidence": "We measure LACR 1 and LACR 2 by different metrics. For LACR 1, we show the adjacency recall (AR)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The system extracts and structures knowledge from scientific literature to inform causal graph recovery.",
+        "evidence": "We retrieve highly related knowledge base from a large scientific corpus that contains valuable insight hidden in datasets about associational/causal relationships among variables."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The approach iteratively refines the causal graph based on extracted knowledge and LLM outputs.",
+        "evidence": "LACR enhances the knowledge base of LLMs with Retrieval Augmented Generation (RAG) for reliable associational reasoning."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper addresses causal graph recovery in domains including medical science.",
+        "evidence": "Estimating causal effect between variables from observational data is a fundamental problem to many domains including medical science."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology applies to various domains such as social science and economics.",
+        "evidence": "Estimating causal effect between variables from observational data is a fundamental problem to many domains including medical science, social science, and economics."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "LACR outperformed baseline LLM methods in causal graph recovery, achieving perfect adjacency precision and recall on the ASIA dataset using background knowledge.",
+        "evidence": "LACR 1 achieves the best performance when relying solely on BG. It successfully recovers the full skeleton and outperforms the high performance of the pure LLM method."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Baseline LLM1",
+        "description": "A pure LLM-based method for causal graph recovery.",
+        "evidence": "We present two types of baseline LLMs: baseline LLM1, which is a pure LLM-based method."
+      },
+      {
+        "name": "Baseline LLM2",
+        "description": "A hybrid method combining statistical estimation-based and LLM-based methods.",
+        "evidence": "We present two types of baseline LLMs: baseline LLM2, which is a hybrid method combining a statistical estimation-based and an LLM-based method."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ASIA",
+        "data_description": "8 nodes from domains of medical, biology, and social science",
+        "usage": "Validation of causal graph recovery method",
+        "evidence": "The ASIA dataset has 8 nodes (from domains of medical, biology, and social science) and 8 edges."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Adjacency Precision (AP)",
+        "purpose": "Measures the precision of recovered edges",
+        "application": "Used to evaluate the accuracy of edge recovery",
+        "evidence": "We measure LACR 1 and LACR 2 by different metrics. For LACR 1, we show the adjacency precision (AP)."
+      },
+      {
+        "name": "Adjacency Recall (AR)",
+        "purpose": "Measures the recall of recovered edges",
+        "application": "Used to evaluate the completeness of edge recovery",
+        "evidence": "We measure LACR 1 and LACR 2 by different metrics. For LACR 1, we show the adjacency recall (AR)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "ASIA",
+    "data_description": "8 nodes from domains of medical, biology, and social science",
+    "usage": "Validation of causal graph recovery method",
+    "evidence": "The ASIA dataset has 8 nodes (from domains of medical, biology, and social science) and 8 edges."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Paper Search Accuracy",
+        "description": "The pre-retrieved document set needs high quality and relevance to provide relevant evidence.",
+        "evidence": "The pre-retrieved document set needs high quality and relevance to provide relevant evidence."
+      },
+      {
+        "name": "LLMs’ Understanding of Professional Documents",
+        "description": "LLMs’ poor comprehension capability on specific domains limits LACR’s performance.",
+        "evidence": "Through our experiments, we found that LLMs’ poor comprehension capability on specific domains, e.g., the SACHS dataset, limits LACR’s performance."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhance Paper Search Accuracy",
+        "description": "Using refined queries and other search engines can enhance the performance.",
+        "evidence": "Therefore, we conjecture that using refined queries and other search engines can enhance the performance."
+      },
+      {
+        "name": "Improve LLMs’ Understanding",
+        "description": "Fine-tuning LLMs to better understand specific domain documents.",
+        "evidence": "An optional solution is to fine-tune LLMs to better understand such documents."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}
