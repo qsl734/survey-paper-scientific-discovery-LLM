@@ -1,0 +1,185 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce CODESCIENTIST, a novel ASD system that frames ideation and experiment construction as a form of genetic search over combinations of research articles and codeblocks. The authors aim to conduct hundreds of automated experiments on machine-generated ideas in the domain of agents and virtual environments, with the goal of discovering new tasks, agents, metrics, and data.",
+    "evidence": "In this work we introduce CODESCIENTIST, a novel ASD system that frames ideation and experiment construction as a form of genetic search jointly over combinations of research articles and codeblocks defining common actions in a domain (like prompting a language model)."
+  },
+  "knowledge_gap": {
+    "answer": "Current ASD systems largely explore variants of existing codebases or similarly constrained design spaces and produce large volumes of research artifacts that are typically evaluated using conference-style paper review with limited evaluation of code.",
+    "evidence": "Despite the surge of interest in autonomous scientific discovery (ASD) of software artifacts (e.g., improved ML algorithms), current ASD systems face two key limitations: (1) they largely explore variants of existing codebases or similarly constrained design spaces, and (2) they produce large volumes of research artifacts (such as automatically generated papers and code) that are typically evaluated using conference-style paper review with limited evaluation of code."
+  },
+  "novelty": {
+    "answer": [
+      "CODESCIENTIST uses a novel genetic search ideation strategy that combines literature-based ideation with a focus on generating implementable ideas using a library of codeblocks.",
+      "The system conducts experiments at scale, suggesting discoveries that meet minimum thresholds for scientific soundness and incremental novelty.",
+      "CODESCIENTIST produces diverse discoveries spanning new tasks, agents, metrics, and data, shifting from benchmark optimization to broader discoveries."
+    ],
+    "evidence": [
+      "In this work, we explore a novel genetic search ideation strategy that combines two facets: the open-endedness of literature-based ideation, with a focus on generating ideas that are implementable by our experiment builder by partially conditioning the ideation on a library of codeblocks available to the executor that implement common research functions.",
+      "We run our system at scale (hundreds of experiments) in the broad domain of agents and virtual environments, and find that of the 19 discoveries our system suggests, 6 appear to meet minimum thresholds for scientific soundness and incremental novelty after domain expert review.",
+      "Moreover, the discoveries our system produces qualitatively appear diverse, and span creating new tasks, agents, metrics, data, and challenging assumptions, which builds-upon (while broadening) the scope of the impressive accomplishments of existing systems that focus on improving model performance on standardized ML benchmarks."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lu et al. (2024a) The AI SCIENTIST system inspired the open-ended scientific discovery approach. (Methodological precursors)\n- Liu et al. (2024) AIGS system's task and past experiments inspired the ideation methodology. (Experimental baselines)\n- Schmidgall et al. (2025) AGENTLAB's human and literature benchmark inspired the evaluation methodology. (Papers with limitations addressed by this work)",
+    "evidence": "Recently, language models (LMs) are fueling explorations into more problem-general discovery systems capable of the full research pipeline of ideation, planning, (code-based) experimentation, and experiment analysis, with numerous impressive systems appearing recently, including AI SCIENTIST (Lu et al., 2024a), AIGS (Liu et al., 2024), AGENTLAB (Schmidgall et al., 2025), and DATA-TO-PAPER (Ifargan et al., 2024)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Ideation",
+        "input": "Human-curated list of papers and a set of relevant codeblocks",
+        "output": "A set of candidate research ideas",
+        "evidence": "The ideator takes a human-generated corpus of papers (papers) and a library of codeblocks (codeblocks) as input, producing a set of candidate ideas (ideas) as output."
+      },
+      {
+        "step": "Planning",
+        "input": "Candidate idea, expert comments, and codeblock library",
+        "output": "A detailed experiment plan and list of codeblocks",
+        "evidence": "The Planner takes as input an idea i, expert comments on that idea h, and the codeblock library C as input, producing a plan p and anticipated list of codeblocks c ⊂C required to implement that plan as output."
+      },
+      {
+        "step": "Experiment Construction and Execution",
+        "input": "Experiment plan and list of codeblocks",
+        "output": "Generated code, experimental results, and output logs",
+        "evidence": "The experiment builder is tasked with generating the code for the artifact and experiment through an iterative series of generate-execute-reflect debugging steps."
+      },
+      {
+        "step": "Reporting",
+        "input": "Experiment plan, code, results, and logs",
+        "output": "Written LATEX report and a short summary report",
+        "evidence": "Successfully completed experiments enter an automated reporting step that takes the experiment plan (p), code (g), results (r), and logs (l) as input and produces both a written LATEX report w, and a short summary report s as output."
+      }
+    ],
+    "tools": [
+      {
+        "name": "TextWorldExpress",
+        "description": "Used to generate environments for experiments",
+        "evidence": "Use TextWorldExpress to generate CookingWorld environments (environment parameters: 3 ingredients, 2 distractors, no doors)"
+      },
+      {
+        "name": "GPT-4o-mini",
+        "description": "Used for all LLM calls in experiments",
+        "evidence": "Model: Use `gpt-4o-mini` for all LLM calls."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "CookingWorld",
+        "data_description": "Simulated text-based cooking environments",
+        "usage": "Used for generating state prediction tasks and evaluating LLM predictions",
+        "evidence": "Use TextWorldExpress to generate CookingWorld environments (environment parameters: 3 ingredients, 2 distractors, no doors)"
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Correlation",
+        "purpose": "Measures the relationship between LLM confidence and prediction accuracy",
+        "application": "Used to evaluate the effectiveness of LLM confidence scores in predicting accuracy",
+        "evidence": "Results: Accuracy vs. Confidence Correlation: r2 = 0.21"
+      },
+      {
+        "name": "Process Score",
+        "purpose": "Measures the systematic exploration and hypothesis generation in tasks",
+        "application": "Used to compare the performance of knowledge graph-based agents and baseline agents",
+        "evidence": "Primary evaluation metrics included: Task completion (binary), Process score (normalized 0-1)"
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The purpose of the ideator is to generate a large set of candidate research ideas (conditioned on recent research articles) that could be explored by CODESCIENTIST."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The planning step converts the high-level idea generated by the ideator into a more detailed, practical, and operational experiment plan for the experiment builder."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on automated scientific discovery in the domain of agents and virtual environments.",
+        "evidence": "We run our system at scale (hundreds of experiments) in the broad domain of agents and virtual environments."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The work integrates methods from AI, machine learning, and scientific discovery.",
+        "evidence": "Recently, language models (LMs) are fueling explorations into more problem-general discovery systems capable of the full research pipeline of ideation, planning, (code-based) experimentation, and experiment analysis."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The knowledge graph agent achieved significantly higher process scores (mean=0.29 vs 0.12, p<0.001) compared to the baseline agent.",
+        "evidence": "Statistical analysis revealed significant differences between the agents: Mean Process Score: Knowledge Graph 0.29, Baseline 0.12"
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Baseline ReAct Agent",
+        "description": "Standard reactive agent with basic state tracking.",
+        "evidence": "The experiment implemented two agent types: Knowledge Graph Agent and Baseline ReAct Agent."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Proteomics-Easy",
+        "data_description": "Virtual environment for proteomics investigation tasks.",
+        "usage": "Used for evaluating agent performance in scientific discovery tasks.",
+        "evidence": "The experiment was conducted in 'PILOT' mode with the following parameters: 50 episodes of Proteomics-Easy difficulty."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Process Score",
+        "purpose": "Measures systematic exploration and hypothesis generation.",
+        "application": "Used to compare the performance of knowledge graph-based agents and baseline agents.",
+        "evidence": "Primary evaluation metrics included: Task completion (binary), Process score (normalized 0-1)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Proteomics-Easy",
+    "description": "Virtual environment for proteomics investigation tasks.",
+    "usage": "Used for evaluating agent performance in scientific discovery tasks.",
+    "evidence": "The experiment was conducted in 'PILOT' mode with the following parameters: 50 episodes of Proteomics-Easy difficulty."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Task Completion",
+        "description": "Neither agent successfully completed the task objectives, suggesting limitations in the current implementation.",
+        "evidence": "Results from a pilot study with 50 episodes show that while the knowledge graph agent achieved significantly higher process scores, neither agent successfully completed the task objectives."
+      },
+      {
+        "name": "High Variance in Performance",
+        "description": "High variance in per-game accuracy suggests inconsistent performance across different game contexts.",
+        "evidence": "High variance in per-game accuracy (20-100%) suggests inconsistent performance across different game contexts."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Improve Hypothesis Generation",
+        "description": "Enhance the system's ability to generate and test hypotheses effectively.",
+        "evidence": "Limited use of collected measurements for hypothesis generation."
+      },
+      {
+        "name": "Expand to More Complex Environments",
+        "description": "Test the system in more complex game environments to assess generalizability.",
+        "evidence": "The simplified game environment may not generalize to more complex scenarios."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/allenai/codescientist",
+    "evidence": "1https://github.com/allenai/codescientist"
+  }
+}

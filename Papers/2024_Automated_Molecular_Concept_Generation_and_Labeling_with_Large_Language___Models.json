@@ -1,0 +1,208 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce the Automated Molecular Concept (AutoMolCo) framework, which leverages Large Language Models (LLMs) to automatically generate and label predictive molecular concepts, enabling simple linear models to outperform Graph Neural Networks (GNNs) and LLM in-context learning on several benchmarks.",
+    "evidence": "This paper introduces the Automated Molecular Concept (AutoMolCo) framework, which leverages Large Language Models (LLMs) to automatically generate and label predictive molecular concepts."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in the application of concept-based models (CMs) in molecular science, which are less common than black-box models like GNNs due to the need for predefined concepts and manual labeling.",
+    "evidence": "In molecular science, CMs are less common than black-box models like Graph Neural Networks (GNNs), due to their need for predefined concepts and manual labeling."
+  },
+  "novelty": {
+    "answer": [
+      "AutoMolCo leverages LLMs to automate the generation and labeling of molecular concepts, eliminating the need for human domain knowledge.",
+      "The framework includes iterative concept refinement, allowing simple linear models to outperform GNNs and LLM in-context learning.",
+      "AutoMolCo operates without human knowledge input, overcoming limitations of existing CMs while maintaining explainability."
+    ],
+    "evidence": [
+      "We propose AutoMolCo, which leverages LLMs for automated concept generation and labeling, eliminating the need for human domain knowledge.",
+      "AutoMolCo also repeats these procedures through iterative interactions with LLMs to refine concepts, enabling simple linear models on the refined concepts to outperform GNNs and LLM in-context learning.",
+      "The whole framework is automated and does not require human knowledge inputs in either concept generation, labeling, or refinement, thus surpassing the limitations of extant CMs."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Koh et al. (2020) Concept Bottleneck Models inspired the use of human-interpretable concepts for predictions. (Methodological precursors)\n- Wu et al. (2018) MoleculeNet datasets were used as benchmarks for evaluating the framework. (Experimental baselines)",
+    "evidence": "A well-known example of CMs is the Concept Bottleneck Model (CBM) (Koh et al., 2020)... We perform a systematic study of AutoMolCo on MoleculeNet (Wu et al., 2018) and High-Throughput Experimentation (HTE) datasets."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Concept Generation",
+        "input": "Task description and LLMs",
+        "output": "A diverse list of potentially relevant molecular concepts",
+        "evidence": "Given a particular task on molecules, the first step is to prompt LLMs to propose a diverse list of concepts that are potentially relevant to the task."
+      },
+      {
+        "step": "Concept Labeling",
+        "input": "Generated concepts and molecule data",
+        "output": "Numerical or categorical labels for each concept",
+        "evidence": "Following the concept generation step, we then label the generated concepts for each data instance."
+      },
+      {
+        "step": "CM Fitting and Concept Selection",
+        "input": "Generated concepts and their labels",
+        "output": "Prediction models and selected useful concepts",
+        "evidence": "After getting the generated concepts and their labels, we utilize them to fit prediction models for the molecular task."
+      },
+      {
+        "step": "Iterative Concepts Refinement",
+        "input": "Empirical performance and concept selection results",
+        "output": "Refined list of meaningful concepts",
+        "evidence": "We do an iterative refinement of the generated concepts by prompting LLMs again with the empirical performance of our prediction model and the concept selection results."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-3.5 Turbo",
+        "description": "Used for generating concepts and direct labeling",
+        "evidence": "We employ GPT-3.5 Turbo as our primary LLMs for generating concepts and direct labeling."
+      },
+      {
+        "name": "RDKit",
+        "description": "Used for labeling concepts through external tool calling",
+        "evidence": "We also utilize LLMs to call external tools like RDKit for labeling."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MoleculeNet",
+        "data_description": "Contains datasets for molecular property prediction tasks",
+        "usage": "Used for evaluating the framework's performance",
+        "evidence": "We perform a systematic study of AutoMolCo on MoleculeNet (Wu et al., 2018) datasets."
+      },
+      {
+        "name": "High-Throughput Experimentation (HTE)",
+        "data_description": "Datasets for reaction yield prediction",
+        "usage": "Used for evaluating the framework's performance",
+        "evidence": "We perform a systematic study of AutoMolCo on High-Throughput Experimentation (HTE) datasets."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Root Mean Square Error (RMSE)",
+        "purpose": "Measures the difference between predicted and actual values",
+        "application": "Used for evaluating regression tasks",
+        "evidence": "For FreeSolv and ESOL, results are measured with Root Mean Square Error (RMSE)."
+      },
+      {
+        "name": "AUC-ROC",
+        "purpose": "Measures the ability of the model to distinguish between classes",
+        "application": "Used for evaluating classification tasks",
+        "evidence": "For BBBP and BACE, we mainly evaluate these datasets using AUC-ROC."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "For concept generation, we prompt LLMs with the task description to suggest relevant concepts."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We perform a systematic study of AutoMolCo on MoleculeNet and High-Throughput Experimentation (HTE) datasets to answer five research questions."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Chemical Sciences",
+        "description": "The paper focuses on molecular concept generation and prediction in molecular science.",
+        "evidence": "Experiments on MoleculeNet and High-Throughput Experimentation (HTE) datasets demonstrate that AutoMolCo-induced explainable CMs are beneficial for molecular science research."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The framework applies AI techniques to automate concept generation and labeling in molecular science.",
+        "evidence": "Artificial intelligence (AI) is transforming scientific research, with explainable AI methods like concept-based models (CMs) showing promise for new discoveries."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "AutoMolCo-induced CMs achieve better results on MoleculeNet regression tasks and HTE tasks, and competitive results on MoleculeNet classification tasks.",
+        "evidence": "AutoMolCo-induced CM achieves better results on MoleculeNet regression tasks and HTE tasks and competitive results on MoleculeNet classification tasks."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GIN",
+        "description": "A Graph Neural Network baseline for molecular property prediction.",
+        "evidence": "Compared to GNNs, our CM achieves better results on MoleculeNet regression tasks and HTE tasks and competitive results on MoleculeNet classification tasks."
+      },
+      {
+        "name": "GPT-3.5 Turbo (zero-shot)",
+        "description": "A baseline using LLM in-context learning for molecular property prediction.",
+        "evidence": "In comparison to the results presented by ICL, our models have demonstrated a substantial performance advantage on all tasks."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MoleculeNet",
+        "data_description": "Contains datasets for molecular property prediction tasks",
+        "usage": "Used for evaluating the framework's performance",
+        "evidence": "We perform a systematic study of AutoMolCo on MoleculeNet (Wu et al., 2018) datasets."
+      },
+      {
+        "name": "High-Throughput Experimentation (HTE)",
+        "data_description": "Datasets for reaction yield prediction",
+        "usage": "Used for evaluating the framework's performance",
+        "evidence": "We perform a systematic study of AutoMolCo on High-Throughput Experimentation (HTE) datasets."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Root Mean Square Error (RMSE)",
+        "purpose": "Measures the difference between predicted and actual values",
+        "application": "Used for evaluating regression tasks",
+        "evidence": "For FreeSolv and ESOL, results are measured with Root Mean Square Error (RMSE)."
+      },
+      {
+        "name": "AUC-ROC",
+        "purpose": "Measures the ability of the model to distinguish between classes",
+        "application": "Used for evaluating classification tasks",
+        "evidence": "For BBBP and BACE, we mainly evaluate these datasets using AUC-ROC."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "MoleculeNet",
+    "data_description": "Contains datasets for molecular property prediction tasks",
+    "usage": "Used for evaluating the framework's performance",
+    "evidence": "We perform a systematic study of AutoMolCo on MoleculeNet (Wu et al., 2018) datasets."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "LLM Limitations",
+        "description": "The performance and reliability of the framework may be affected by LLM limitations such as potential hallucination and rare chemical formula representations.",
+        "evidence": "Limitations of LLM, such as potential hallucination and rare occurrence of certain chemical formula representations during pre-training stage, may effect the performance and reliability of our framework in other instances."
+      },
+      {
+        "name": "Dependency on LLM Quality",
+        "description": "The framework's performance and explainability rely on the quality of LLM-generated concepts and labels.",
+        "evidence": "The AutoMolCo framework’s performance and explainability rely on the quality of LLM-generated concepts and labels."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Improve LLM Performance",
+        "description": "Investigate mechanistic interpretability of LLMs and develop more powerful LLMs dedicated to molecular science.",
+        "evidence": "A thorough investigation on mechanistic interpretability of LLM and a more powerful LLM dedicated to molecular science may address these issues and could be considered as future directions."
+      },
+      {
+        "name": "Automated Evaluation Methods",
+        "description": "Develop automated evaluation methods for generated concepts and labels to reduce dependency on human experts.",
+        "evidence": "Developing automated evaluation methods is another potential direction for improvement."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/ziminz19/AutoMolCo",
+    "evidence": "The source code is available at https://github.com/ziminz19/AutoMolCo."
+  }
+}

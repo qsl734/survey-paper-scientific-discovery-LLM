@@ -5,7 +5,7 @@
   },
   "knowledge_gap": {
     "answer": "Existing models for the text2mol task face challenges in achieving optimal performance and utility, particularly in scenarios where data is scarce and unbalanced.",
-    "evidence": "Existing models[8, 10] in the literature for the text2mol task face challenges in achieving optimal performance and utility, particularly in scenarios where data is scarce and unbalanced."
+    "evidence": "Existing models in the literature for the text2mol task face challenges in achieving optimal performance and utility, particularly in scenarios where data is scarce and unbalanced."
   },
   "novelty": {
     "answer": [
@@ -26,15 +26,15 @@
   "method": {
     "steps": [
       {
-        "step": "Construct knowledge-augmented prompts using task-specific instructions and a few demonstrations.",
-        "input": "Task-specific instructions and demonstrations (input-output pairs).",
-        "output": "Augmented prompts for querying LLMs.",
+        "step": "Construct knowledge-augmented prompts using task-specific instructions and demonstrations.",
+        "input": "Input natural language descriptions of the target molecule.",
+        "output": "Augmented prompt for querying LLMs.",
         "evidence": "We construct knowledge-augmented prompts using task-specific instructions and a few demonstrations (input-output pairs) based on the downstream task."
       },
       {
         "step": "Query LLMs to generate top-R predictions of SMILES representations and produce textual explanations.",
-        "input": "Augmented prompts.",
-        "output": "Top-R predictions of SMILES representations and textual explanations.",
+        "input": "Augmented prompt.",
+        "output": "Top-R ranked predictions and textual explanations.",
         "evidence": "The augmented prompt queries LLMs to generate the top-R predictions of the SMILES representations and produces textual explanations as justifications for its predictions."
       },
       {
@@ -44,67 +44,67 @@
         "evidence": "We fine-tune small-scale pre-trained language models (LMs) on the generated explanations for domain-specific customization to obtain context-aware token embeddings."
       },
       {
-        "step": "Transform LLMs’ top-R predictions to compute prediction embeddings.",
-        "input": "Top-R predictions from LLMs.",
-        "output": "Prediction embeddings.",
-        "evidence": "We transform the LLMs’ top-R predictions to compute prediction embeddings."
+        "step": "Integrate embeddings through a hierarchical multi-head attention mechanism.",
+        "input": "Mono-domain text-level embeddings and prediction embeddings.",
+        "output": "Unified cross-modal embedding.",
+        "evidence": "The cross-modal encoder, modeled by a hierarchical multi-head attention mechanism, computes the unified embeddings by integrating the mono-domain text-level embeddings (both the original text and explanatory text) and prediction embeddings."
       },
       {
-        "step": "Integrate embeddings through a hierarchical multi-head attention mechanism to generate chemical SMILES representations.",
-        "input": "Mono-domain text-level embeddings and prediction embeddings.",
+        "step": "Generate chemical SMILES representations using a transformer decoder.",
+        "input": "Unified cross-modal embedding.",
         "output": "Chemical SMILES representations.",
-        "evidence": "The cross-modal encoder, modeled by a hierarchical multi-head attention mechanism, computes the unified embeddings by integrating the mono-domain text-level embeddings and prediction embeddings."
+        "evidence": "Finally, the transformer decoder generates the chemical SMILES representations."
       }
     ],
     "tools": [
       {
-        "name": "ChatGPT",
-        "description": "Used for generating predictions and explanations in the text2mol task.",
-        "evidence": "LLMs like ChatGPT[2], while proficient in linguistic comprehension, are black-box in nature, resource-intensive, and lack interpretability."
+        "name": "GPT-4",
+        "description": "Used as a backbone for generating predictions and explanations.",
+        "evidence": "We evaluated our approach using the following LLMs: GPT-4.0, GPT-3.5-turbo, GPT-3.0-text-davinci-003, and Google Bard."
       },
       {
         "name": "DeBERTa",
-        "description": "Used as a smaller language model for fine-tuning on generated explanations.",
-        "evidence": "In addition to these, our study also incorporates a pre-trained smaller LM, DeBERTa5, which is an improved version of the BERT[5] architecture."
+        "description": "Used for fine-tuning to obtain context-aware token embeddings.",
+        "evidence": "In addition to these, our study also incorporates a pre-trained smaller LM, DeBERTa, which is an improved version of the BERT architecture."
       }
     ],
     "benchmark_datasets": [
       {
         "name": "ChEBI-20",
         "data_description": "A bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs.",
-        "usage": "Used for training, validation, and testing of the proposed framework.",
-        "evidence": "Our study utilized the ChEBI-20 dataset[8], a bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs with a predefined split ratio of 80:10:10 for training, validation, and test sets, respectively."
+        "usage": "Used for training, validation, and testing.",
+        "evidence": "Our study utilized the ChEBI-20 dataset, a bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs with a predefined split ratio of 80:10:10 for training, validation, and test sets, respectively."
       }
     ],
     "evaluation_metrics": [
       {
         "name": "BLEU",
         "purpose": "Measures the similarity between two text strings.",
-        "application": "Used to evaluate the quality of the chemical SMILES strings generated by the framework.",
+        "application": "Used to evaluate the quality of the chemical SMILES strings generated by our framework.",
         "evidence": "BLEU — this measures the similarity between two text strings, with a higher BLEU score denoting better similarity."
       },
       {
         "name": "Exact Match",
         "purpose": "Quantifies the percentage of generated chemical SMILES strings that are identical to the ground-truth strings.",
-        "application": "Used to evaluate the quality of the chemical SMILES strings generated by the framework.",
-        "evidence": "Exact Match[8] — this quantifies the percentage of generated chemical SMILES strings that are identical to the ground-truth strings."
+        "application": "Used to evaluate the quality of the chemical SMILES strings generated by our framework.",
+        "evidence": "Exact Match — this quantifies the percentage of generated chemical SMILES strings that are identical to the ground-truth strings."
       },
       {
         "name": "Levenshtein distance",
         "purpose": "Calculates the minimum number of single-character edits required to modify the generated chemical SMILES strings to match the ground-truth strings.",
-        "application": "Used to evaluate the quality of the chemical SMILES strings generated by the framework.",
-        "evidence": "Levenshtein distance[14] — this calculates the minimum number of single-character edits required to modify the generated chemical SMILES strings to match the ground-truth strings, with a lower value indicating closer similarity."
+        "application": "Used to evaluate the quality of the chemical SMILES strings generated by our framework.",
+        "evidence": "Levenshtein distance — this calculates the minimum number of single-character edits required to modify the generated chemical SMILES strings to match the ground-truth strings, with a lower value indicating closer similarity."
       },
       {
         "name": "FTS (Fingerprint Tanimoto Similarity)",
         "purpose": "Gauges the chemical similarity between the ground-truth and generated chemical compounds represented as SMILES strings.",
-        "application": "Used to evaluate the chemical similarity of the generated SMILES strings.",
-        "evidence": "We employ the FTS[26] metric to gauge the chemical similarity between the ground-truth and generated chemical compounds represented as SMILES strings."
+        "application": "Used to evaluate the chemical similarity of generated molecules.",
+        "evidence": "We employ the FTS metric to gauge the chemical similarity between the ground-truth and generated chemical compounds represented as SMILES strings by comparing their MACCS, RDK, and Morgan fingerprints."
       },
       {
         "name": "FCD (Fréchet ChemNet Distance)",
         "purpose": "Measures the distance between the mean embeddings of two sets of chemical SMILES strings in the latent space of the pretrained model.",
-        "application": "Used to evaluate the molecular activity resemblance of the generated SMILES strings.",
+        "application": "Used to evaluate the similarity between generated and ground-truth molecules.",
         "evidence": "The FCD is calculated by measuring the distance between the mean embeddings of two sets of chemical SMILES strings (generated and ground-truth) in the latent space of the pretrained model."
       }
     ]
@@ -119,7 +119,7 @@
       {
         "name": "Experimental design generation",
         "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
-        "evidence": "We employ two different sampling strategies to analyze the effectiveness of augmenting prompts with relevant text-molecule pairs in language-conditioned molecule generation tasks."
+        "evidence": "We evaluated our approach using the following LLMs: GPT-4.0, GPT-3.5-turbo, GPT-3.0-text-davinci-003, and Google Bard."
       }
     ]
   },
@@ -127,13 +127,13 @@
     "areas": [
       {
         "name": "Chemical Sciences",
-        "description": "The paper focuses on molecule design and generation using language models.",
+        "description": "The paper develops a model for generating chemical SMILES representations from textual descriptions.",
         "evidence": "Our study explores the use of knowledge-augmented prompting of large language models (LLMs) for the zero-shot text-conditional de novo molecular generation task."
       },
       {
         "name": "Interdisciplinary Sciences",
-        "description": "The research integrates language models with chemical molecule generation.",
-        "evidence": "Molecule design is a multifaceted approach that leverages computational methods and experiments to optimize molecular properties."
+        "description": "The paper integrates language models with chemical molecule generation tasks.",
+        "evidence": "Molecule design is an interdisciplinary approach that involves identifying a target molecule or property to enhance."
       }
     ]
   },
@@ -148,51 +148,51 @@
       {
         "name": "MolT5",
         "description": "An encoder-decoder transformer architecture pretrained for the text2mol translation task.",
-        "evidence": "We used the MolT5 model[8], as a predominant baseline, which is an encoder-decoder transformer architecture pretrained on a large unannotated dataset specifically for the text2mol translation task."
+        "evidence": "We used the MolT5 model, as a predominant baseline, which is an encoder-decoder transformer architecture pretrained on a large unannotated dataset specifically for the text2mol translation task."
       },
       {
         "name": "T5",
-        "description": "A general-purpose sequence-to-sequence model used for comparison.",
-        "evidence": "We evaluated the performance of our proposed framework on the text2mol task, comparing it with several variants of the MolT5[8] and T5[18] models."
+        "description": "A general-purpose sequence-to-sequence model used as a baseline.",
+        "evidence": "We evaluated the performance of our proposed framework on the text2mol task, comparing it with several variants of the MolT5 and T5 models."
       }
     ],
     "benchmark_datasets": [
       {
         "name": "ChEBI-20",
         "data_description": "A bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs.",
-        "usage": "Used for training, validation, and testing of the proposed framework.",
-        "evidence": "Our study utilized the ChEBI-20 dataset[8], a bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs with a predefined split ratio of 80:10:10 for training, validation, and test sets, respectively."
+        "usage": "Used for training, validation, and testing.",
+        "evidence": "Our study utilized the ChEBI-20 dataset, a bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs with a predefined split ratio of 80:10:10 for training, validation, and test sets, respectively."
       }
     ],
     "evaluation_metrics": [
       {
         "name": "BLEU",
         "purpose": "Measures the similarity between two text strings.",
-        "application": "Used to evaluate the quality of the chemical SMILES strings generated by the framework.",
+        "application": "Used to evaluate the quality of the chemical SMILES strings generated by our framework.",
         "evidence": "BLEU — this measures the similarity between two text strings, with a higher BLEU score denoting better similarity."
       },
       {
         "name": "Exact Match",
         "purpose": "Quantifies the percentage of generated chemical SMILES strings that are identical to the ground-truth strings.",
-        "application": "Used to evaluate the quality of the chemical SMILES strings generated by the framework.",
-        "evidence": "Exact Match[8] — this quantifies the percentage of generated chemical SMILES strings that are identical to the ground-truth strings."
+        "application": "Used to evaluate the quality of the chemical SMILES strings generated by our framework.",
+        "evidence": "Exact Match — this quantifies the percentage of generated chemical SMILES strings that are identical to the ground-truth strings."
       },
       {
         "name": "Levenshtein distance",
         "purpose": "Calculates the minimum number of single-character edits required to modify the generated chemical SMILES strings to match the ground-truth strings.",
-        "application": "Used to evaluate the quality of the chemical SMILES strings generated by the framework.",
-        "evidence": "Levenshtein distance[14] — this calculates the minimum number of single-character edits required to modify the generated chemical SMILES strings to match the ground-truth strings, with a lower value indicating closer similarity."
+        "application": "Used to evaluate the quality of the chemical SMILES strings generated by our framework.",
+        "evidence": "Levenshtein distance — this calculates the minimum number of single-character edits required to modify the generated chemical SMILES strings to match the ground-truth strings, with a lower value indicating closer similarity."
       },
       {
         "name": "FTS (Fingerprint Tanimoto Similarity)",
         "purpose": "Gauges the chemical similarity between the ground-truth and generated chemical compounds represented as SMILES strings.",
-        "application": "Used to evaluate the chemical similarity of the generated SMILES strings.",
-        "evidence": "We employ the FTS[26] metric to gauge the chemical similarity between the ground-truth and generated chemical compounds represented as SMILES strings."
+        "application": "Used to evaluate the chemical similarity of generated molecules.",
+        "evidence": "We employ the FTS metric to gauge the chemical similarity between the ground-truth and generated chemical compounds represented as SMILES strings by comparing their MACCS, RDK, and Morgan fingerprints."
       },
       {
         "name": "FCD (Fréchet ChemNet Distance)",
         "purpose": "Measures the distance between the mean embeddings of two sets of chemical SMILES strings in the latent space of the pretrained model.",
-        "application": "Used to evaluate the molecular activity resemblance of the generated SMILES strings.",
+        "application": "Used to evaluate the similarity between generated and ground-truth molecules.",
         "evidence": "The FCD is calculated by measuring the distance between the mean embeddings of two sets of chemical SMILES strings (generated and ground-truth) in the latent space of the pretrained model."
       }
     ]
@@ -200,8 +200,8 @@
   "benchmark_dataset": {
     "name": "ChEBI-20",
     "data_description": "A bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs.",
-    "usage": "Used for training, validation, and testing of the proposed framework.",
-    "evidence": "Our study utilized the ChEBI-20 dataset[8], a bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs with a predefined split ratio of 80:10:10 for training, validation, and test sets, respectively."
+    "usage": "Used for training, validation, and testing.",
+    "evidence": "Our study utilized the ChEBI-20 dataset, a bidirectional text-to-molecule translation dataset comprising 33,010 text description-molecule pairs with a predefined split ratio of 80:10:10 for training, validation, and test sets, respectively."
   },
   "limitations": {
     "limitations": [
@@ -211,7 +211,7 @@
         "evidence": "Additionally, they require significant computational resources for fine-tuning on labeled data for task-specific adaptation or for repurposing for domain-customization."
       },
       {
-        "name": "Interpretability",
+        "name": "Lack of Interpretability",
         "description": "LLMs are inherently black box in nature, which limits explainability.",
         "evidence": "While LLMs are inherently black box in nature, they possess remarkable capabilities. However, their widespread adoption for applications in various downstream tasks is hindered by the unavailability of logits or token embeddings, which limits explainability."
       }
@@ -221,8 +221,13 @@
     "future_directions": [
       {
         "name": "Explore Improved LLMs",
-        "description": "Develop LLMs capable of handling molecular structures and integrating with tools like RDKit.",
+        "description": "Develop LLMs capable of handling molecular structures and seamlessly integrating with tools like RDKit.",
         "evidence": "Improved LLMs capable of handling molecular structures and seamlessly integrating with tools like RDKit are necessary."
+      },
+      {
+        "name": "Expand Knowledge-Augmented Prompting",
+        "description": "Investigate the impact of different sampling strategies and the quality and quantity of demonstrations on knowledge-augmented prompting.",
+        "evidence": "We conducted experiments to compare and contrast the performance of the 'Random' and 'Scaffold' sampling strategies, and to identify the optimal number of demonstrations."
       }
     ]
   },

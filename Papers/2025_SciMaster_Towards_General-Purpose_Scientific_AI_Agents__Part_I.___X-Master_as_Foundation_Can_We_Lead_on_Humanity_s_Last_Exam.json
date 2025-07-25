@@ -1,0 +1,166 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to construct the foundational architecture for general-purpose scientific AI agents and validate their capabilities through leading performance on Humanity's Last Exam (HLE).",
+    "evidence": "In this work, we aim to construct the foundational architecture for general-purpose agents and validate the capabilities through leading performance on HLE."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in developing open-source general-purpose AI agents capable of achieving strong performance on complex scientific benchmarks like Humanity's Last Exam, which has been dominated by closed-source models.",
+    "evidence": "While promising strides have been made on HLE by leading models from OpenAI and Google DeepMind, their closed-source nature severely limits community understanding and participation, hindering widespread exploration and innovation."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of X-Master, a tool-augmented reasoning agent that interacts flexibly with external tools during its reasoning process.",
+      "Development of a scattered-and-stacked agentic workflow, X-Masters, to enhance both the breadth and depth of reasoning.",
+      "Conceptualization of code as an interaction language to enable dynamic problem-solving processes.",
+      "Open-source solution that sets a new state-of-the-art record on Humanity's Last Exam."
+    ],
+    "evidence": [
+      "To achieve this, we introduce X-Master, a tool-augmented reasoning agent designed to emulate human researchers by interacting flexibly with external tools during its reasoning process.",
+      "We further scale its capabilities through X-Masters, a scattered-and-stacked agentic workflow that systematically enhances breadth and depth of reasoning.",
+      "The core mechanism enabling this process is the conceptualization of code as an interaction language.",
+      "Our open-source solution, X-Masters, sets a new state-of-the-art record on HLE with a score of 32.1%."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Phan et al. (2025) Humanity's Last Exam serves as a critical and exceptionally challenging touchstone. (Experimental baselines)",
+    "evidence": "To this end, Humanity’s Last Exam (HLE) (Phan et al., 2025) serves as a critical and exceptionally challenging touchstone."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Design X-Master to interact with external tools using Python code.",
+        "input": "User queries and external tool requirements.",
+        "output": "Enhanced reasoning capabilities through tool interaction.",
+        "evidence": "Our X-Master is designed to generate Python code as a language to interact with external environments."
+      },
+      {
+        "step": "Implement a scattered-and-stacked agentic workflow.",
+        "input": "Initial solutions from Solver agents.",
+        "output": "Refined solutions through Critic, Rewriter, and Selector agents.",
+        "evidence": "This workflow, called X-Masters, is engineered to systematically enhance both the breadth and depth of reasoning by orchestrating a multi-agent cognitive process."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Python Libraries",
+        "description": "Used for computation and interaction with external environments.",
+        "evidence": "The agent is guided to generate Python code that accurately reflects its current requirements."
+      },
+      {
+        "name": "Web Search and Web Parse Tools",
+        "description": "Used for information-seeking tasks and extracting relevant data from the web.",
+        "evidence": "We design two core tools: web search and web parse."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Humanity's Last Exam (HLE)",
+        "data_description": "Expert-level challenges at the frontier of human knowledge.",
+        "usage": "Used to evaluate the capabilities of the AI agents.",
+        "evidence": "Humanity’s Last Exam (HLE) serves as a critical and exceptionally challenging touchstone."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Score on HLE",
+        "purpose": "Measures the performance of AI agents on complex scientific challenges.",
+        "application": "Used to validate the capabilities of the proposed AI agents.",
+        "evidence": "Our X-Masters sets a new record on Humanity’s Last Exam with a remarkable score of 32.1%."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "evidence": "The agent is guided to generate Python code that accurately reflects its current requirements."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "evidence": "The web parse tool is employed when the agent requires a more thorough examination of a selected webpage to extract information directly related to the user query."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "evidence": "The workflow includes four stages: (1) broad initial solutions generation by Solver, (2) solution refinement by Critic, (3) broad solutions rewriting, and (4) final selection."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a general-purpose AI agent applicable across various scientific domains.",
+        "evidence": "Humanity’s Last Exam comprises diverse, expert-level challenges at the frontier of human knowledge."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "X-Masters achieves a score of 32.1% on Humanity's Last Exam, surpassing previous records by OpenAI and Google DeepMind.",
+        "evidence": "Our X-Masters sets a new record on Humanity’s Last Exam with a remarkable score of 32.1%."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "OpenAI Deep Research",
+        "description": "A leading model with a score of 26.6% on HLE.",
+        "evidence": "OpenAI’s and Google’s Deep Research (26.6% and 26.9%)"
+      },
+      {
+        "name": "Google DeepMind Deep Research",
+        "description": "A leading model with a score of 26.9% on HLE.",
+        "evidence": "OpenAI’s and Google’s Deep Research (26.6% and 26.9%)"
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Humanity's Last Exam (HLE)",
+        "data_description": "Expert-level challenges at the frontier of human knowledge.",
+        "usage": "Used to evaluate the capabilities of the AI agents.",
+        "evidence": "Humanity’s Last Exam (HLE) serves as a critical and exceptionally challenging touchstone."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Score on HLE",
+        "purpose": "Measures the performance of AI agents on complex scientific challenges.",
+        "application": "Used to validate the capabilities of the proposed AI agents.",
+        "evidence": "Our X-Masters sets a new record on Humanity’s Last Exam with a remarkable score of 32.1%."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Humanity's Last Exam (HLE)",
+    "data_description": "Expert-level challenges at the frontier of human knowledge.",
+    "usage": "Used to evaluate the capabilities of the AI agents.",
+    "evidence": "Humanity’s Last Exam (HLE) serves as a critical and exceptionally challenging touchstone."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Modality",
+        "description": "The current model is not multi-modal, focusing only on text-based queries.",
+        "evidence": "Since the currently leveraged model is not multi-modal, we focus on the text-only subset from Humanity’s Last Exam."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Development of Specialized Scientific Agents",
+        "description": "Expand on the architectural foundation of X-Master to support literature analysis, scientific computing, and experimental workflows.",
+        "evidence": "Our roadmap includes the development of specialized scientific agents and tools to support literature analysis, scientific computing, and experimental workflows."
+      },
+      {
+        "name": "End-to-End Trained Agents",
+        "description": "Build end-to-end trained agents that fully internalize the sophisticated reasoning and tool-use capabilities.",
+        "evidence": "In addition, we aim to build end-to-end trained agents that fully internalize the sophisticated reasoning and tool-use capabilities showcased by X-Masters."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/sjtu-sai-agents/X-Master",
+    "evidence": "X-Master: https://github.com/sjtu-sai-agents/X-Master"
+  }
+}
