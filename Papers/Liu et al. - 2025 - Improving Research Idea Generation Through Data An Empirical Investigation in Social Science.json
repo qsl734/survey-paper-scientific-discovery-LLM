@@ -1,0 +1,154 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore how augmenting large language models (LLMs) with relevant data during the idea generation process can enhance the quality of generated research ideas in the social science domain, specifically focusing on climate negotiation topics.",
+    "evidence": "This paper explores how augmenting LLMs with relevant data during the idea generation process can enhance the quality of generated ideas."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap that LLM-generated research ideas often face challenges related to feasibility and expected effectiveness, lacking suitable datasets for validation or having uncertain effectiveness.",
+    "evidence": "However, many LLM-generated ideas suffer from practical limitations: they may be infeasible to implement, lack suitable datasets for validation, or have uncertain effectiveness."
+  },
+  "novelty": {
+    "answer": [
+      "Incorporating metadata during the idea generation stage to guide LLMs toward feasible research directions.",
+      "Adding automatic validation during the idea selection stage to assess the empirical plausibility of hypotheses within ideas.",
+      "Construction of the CLIMATEDATABANK to support data-driven research idea generation."
+    ],
+    "evidence": [
+      "We introduce two ways of incorporating data: (1) providing metadata during the idea generation stage to guide LLMs toward feasible directions.",
+      "Adding automatic validation during the idea selection stage to assess the empirical plausibility of hypotheses within ideas.",
+      "We construct the CLIMATEDATABANK to support future work in data-driven research idea generation."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Si et al. (2024) Their study on LLM-generated ideas inspired the exploration of novelty and feasibility in this work. (Methodological precursors)\n- Yamada et al. (2025) Their findings on LLM-generated ideas exhibiting greater novelty than human experts influenced the approach to idea generation. (Methodological precursors)",
+    "evidence": "Recent advances in large language models (LLMs) have demonstrated their potential to generate domain-specific research ideas, with some studies suggesting that these ideas can exhibit greater novelty than those proposed by human experts (Si et al., 2024; Yamada et al., 2025)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Collect and gather relevant datasets into a unified CLIMATEDATABANK.",
+        "input": "Data related to climate negotiations from sources like World Bank Open Data.",
+        "output": "A unified CLIMATEDATABANK containing 22 datasets.",
+        "evidence": "To support the experiments, we first collect and gather relevant datasets into a unified CLIMATEDATABANK."
+      },
+      {
+        "step": "Incorporate metadata into the idea generation process.",
+        "input": "Metadata summarizing datasets in CLIMATEDATABANK.",
+        "output": "LLMs generate more feasible research ideas.",
+        "evidence": "We incorporate metadata, which is concise dataset descriptions, into the idea generation prompt along with the topic and related literature."
+      },
+      {
+        "step": "Conduct automatic validation of generated ideas.",
+        "input": "Generated ideas and corresponding datasets.",
+        "output": "Validation traces and summarized validation processes.",
+        "evidence": "We conduct automatic validation of generated ideas and incorporate the validation results into the idea selection process."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used for idea generation and selection.",
+        "evidence": "We use GPT-4o (gpt-4o-2024-08-06) for idea generation and selection."
+      },
+      {
+        "name": "Gemini-1.5-Pro",
+        "description": "Used as a judge model for automatic evaluation.",
+        "evidence": "We use Gemini-1.5-Pro (Team et al., 2024) (gemini-1.5-pro-002) as judge models."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "ELO scores",
+        "purpose": "Measures the quality of generated research ideas.",
+        "application": "Used to compare the performance of different idea generation methods.",
+        "evidence": "We conduct tournament ranking and compute ELO scores following Idea Arena (Li et al., 2024a)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Social Sciences",
+        "description": "The paper focuses on research idea generation in the social science domain, specifically climate negotiations.",
+        "evidence": "We conduct experiments in the social science domain, focusing specifically on topics related to climate negotiations."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Metadata improves the feasibility of generated ideas by 20%, while automatic validation improves the overall quality of selected ideas by 7%.",
+        "evidence": "We observe that incorporating metadata improves the feasibility by 20% and the expected effectiveness by 18% in human evaluation. Additionally, we find that automatic validation improves the accuracy of idea ranking by an average of 8%, and ideas selected with validation are rated 7% higher in human evaluation compared to those selected without validation."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AI-Researcher",
+        "description": "A method for research idea generation that retrieves papers and generates ideas grounded in prior literature.",
+        "evidence": "We experiment with three prevalent research idea generation methods: AI-Researcher (Si et al., 2024)."
+      },
+      {
+        "name": "GPT-Researcher",
+        "description": "A multi-agent framework for research idea generation.",
+        "evidence": "We experiment with three prevalent research idea generation methods: GPT-Researcher (Elovic, 2023)."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "ELO scores",
+        "purpose": "Measures the quality of generated research ideas.",
+        "application": "Used to compare the performance of different idea generation methods.",
+        "evidence": "We conduct tournament ranking and compute ELO scores following Idea Arena (Li et al., 2024a)."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scope of Topics",
+        "description": "The experiments focus only on topics related to climate negotiations, which may not generalize to other domains.",
+        "evidence": "While our experiments focus on topics related to climate negotiations, the proposed method could be applied to other quantitative social science research areas."
+      },
+      {
+        "name": "Single LLM and Validation Method",
+        "description": "The experiments focus on a single LLM and a specific automatic validation method, limiting the exploration of different models and methods.",
+        "evidence": "Due to the high cost of human evaluation, our experiments focus on a single LLM and a specific automatic validation method."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Generalize to Other Domains",
+        "description": "Apply the proposed method to other quantitative social science research areas and potentially other domains.",
+        "evidence": "We believe that incorporating data could also enhance the generation of research ideas in other domains, such as computer science, but this would need further development of the method."
+      },
+      {
+        "name": "Explore Different Models and Methods",
+        "description": "Systematically evaluate how different models and validation methods impact idea quality.",
+        "evidence": "Future studies could systematically evaluate how different models and validation methods impact idea quality."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

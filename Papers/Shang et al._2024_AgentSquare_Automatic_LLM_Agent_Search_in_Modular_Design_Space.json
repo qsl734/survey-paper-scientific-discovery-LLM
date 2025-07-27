@@ -1,0 +1,158 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a novel research problem called Modularized LLM Agent Search (MoLAS) and propose a framework named AgentSquare to optimize LLM agent designs by leveraging a modular design space.",
+    "evidence": "In this paper, we introduce a new research problem: Modularized LLM Agent Search (MoLAS). We propose a modular design space that abstracts existing LLM agent designs into four fundamental modules with uniform IO interface: Planning, Reasoning, Tool Use, and Memory."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in current research where LLM agent designs are predominantly manual and task-specific, limiting adaptability to novel tasks.",
+    "evidence": "However, current research predominantly relies on manually designed agentic systems tailored for specific tasks, which often depend heavily on expert insight and intensive human labor. Furthermore, these task-specific agent designs frequently struggle to adapt to novel tasks."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a modular design space for LLM agents, enabling the reuse and recombination of existing successful designs.",
+      "Development of the AgentSquare framework that optimizes LLM agents through module evolution and recombination.",
+      "Implementation of a performance predictor using in-context surrogate models to accelerate the search process."
+    ],
+    "evidence": [
+      "We propose a novel modular design space for LLM agents, enabling researchers to easily build on previous successful designs and accumulate new discoveries as a community.",
+      "We design the AgentSquare framework that efficiently searches for novel and good-performing LLM agents via the novel mechanism of module evolution, module recombination, and performance predictor.",
+      "To reduce the expensive evaluation costs of LLM agents, we further introduce a performance predictor that implements an in-context surrogate model for newly proposed LLM agents, enabling us to skip unpromising candidates and significantly accelerate the search process."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Hu et al. (2024) The idea of searching the entire agentic systems defined in code space inspired the modular design space approach. (Methodological precursors)",
+    "evidence": "A more recent work introduces the idea to leverage LLMs to search the entire agentic systems defined in code space (Hu et al., 2024), enabling the discovery of agents with more flexible prompts, control flows, etc."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Define a modular design space for LLM agents.",
+        "input": "Existing LLM agent designs and literature review.",
+        "output": "A modular design space with standardized IO interfaces for Planning, Reasoning, Tool Use, and Memory modules.",
+        "evidence": "The core of our work is a modular design space for LLM agents, comprising 4 categories of modules: Planning, Reasoning, Tool Use, and Memory."
+      },
+      {
+        "step": "Develop the AgentSquare framework for optimizing LLM agents.",
+        "input": "Modular design space and existing modules.",
+        "output": "Optimized LLM agents through module evolution and recombination.",
+        "evidence": "Building on this modular design space, we propose a novel LLM agent search framework called AgentSquare."
+      },
+      {
+        "step": "Implement a performance predictor to accelerate the search process.",
+        "input": "In-context surrogate models and performance data.",
+        "output": "Efficient evaluation of novel agents by skipping unpromising candidates.",
+        "evidence": "We further introduce a performance predictor that implements an in-context surrogate model for newly proposed LLM agents."
+      }
+    ],
+    "tools": [
+      {
+        "name": "AgentSquare",
+        "description": "Used for optimizing LLM agents through module evolution and recombination.",
+        "evidence": "Building on this modular design space, we propose a novel LLM agent search framework called AgentSquare."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ALFWorld",
+        "data_description": "Text-based household tasks where agents navigate and interact with objects using text commands.",
+        "usage": "Used for evaluating agent performance in embodied tasks.",
+        "evidence": "We conduct comprehensive evaluations on six widely adopted benchmarks, covering diverse use cases in web, embodied, tool use and game scenarios."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Success rate",
+        "purpose": "Measures the rate of successful task completions by the agent.",
+        "application": "Used to evaluate agent performance on tasks like ALFWorld and M3ToolEval.",
+        "evidence": "The evaluation metric is 'success rate' for ALFWorld and M3ToolEval."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We propose a novel modular design space for LLM agents, enabling researchers to easily build on previous successful designs and accumulate new discoveries as a community."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We conduct comprehensive evaluations on six widely adopted benchmarks, covering diverse use cases in web, embodied, tool use and game scenarios."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a framework for optimizing LLM agents, which is applicable to various engineering domains.",
+        "evidence": "The design of agentic systems plays a crucial role in harnessing the power of LLMs for various downstream applications."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The modular design space and AgentSquare framework integrate concepts from multiple scientific disciplines.",
+        "evidence": "We believe that the modular design space and AgentSquare search framework offer a platform for fully exploiting the potential of prior successful designs and consolidate the collective efforts of research community."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "AgentSquare outperforms hand-crafted agents with an average performance gain of 17.2% against best-known human designs.",
+        "evidence": "Our experiments show AgentSquare can discover novel LLM agents that outperform hand-crafted agents across all six benchmarks, scoring an average performance gain of 17.2% compared to the best known human designs."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "CoT",
+        "description": "A hand-crafted agent baseline for reasoning tasks.",
+        "evidence": "We compare AgentSquare with four types of baselines including hand-crafted agents, module-level search, prompt-level search and agent-search methods."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ALFWorld",
+        "data_description": "Text-based household tasks where agents navigate and interact with objects using text commands.",
+        "usage": "Used for evaluating agent performance in embodied tasks.",
+        "evidence": "We conduct comprehensive evaluations on six widely adopted benchmarks, covering diverse use cases in web, embodied, tool use and game scenarios."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Success rate",
+        "purpose": "Measures the rate of successful task completions by the agent.",
+        "application": "Used to evaluate agent performance on tasks like ALFWorld and M3ToolEval.",
+        "evidence": "The evaluation metric is 'success rate' for ALFWorld and M3ToolEval."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "ALFWorld",
+    "description": "Text-based household tasks where agents navigate and interact with objects using text commands.",
+    "usage": "Used for evaluating agent performance in embodied tasks.",
+    "evidence": "We conduct comprehensive evaluations on six widely adopted benchmarks, covering diverse use cases in web, embodied, tool use and game scenarios."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "High Evaluation Costs",
+        "description": "The evaluation of LLM agents incurs high API costs, making large-scale searches economically unsustainable.",
+        "evidence": "The last challenge in automatic agent search is the high API cost incurred during the evaluation of each candidate agent."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand Modular Design Space",
+        "description": "Integrate new agentic systems as plug-in modules to enhance the extensibility of the design space.",
+        "evidence": "Our design space is also highly extensible, allowing new agentic systems to be integrated as plug-in modules."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/tsinghua-fib-lab/AgentSquare",
+    "evidence": "Code repo is available at https://github.com/tsinghua-fib-lab/AgentSquare."
+  }
+}

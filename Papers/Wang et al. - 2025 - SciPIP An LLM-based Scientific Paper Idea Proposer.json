@@ -1,0 +1,156 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce SciPIP, a framework designed to enhance the proposal of scientific ideas using large language models by improving literature retrieval and idea generation processes.",
+    "evidence": "To address these limitations, we introduce SciPIP, an innovative framework designed to enhance the LLM-based proposal of scientific ideas through improvements in both literature retrieval and idea generation."
+  },
+  "knowledge_gap": {
+    "answer": "Existing approaches to scientific idea generation using LLMs are limited by their reliance on keyword-based search tools and the internal knowledge of LLMs, which neglects crucial semantic information and valuable insights from full texts.",
+    "evidence": "However, existing approaches often fall short due to their reliance on keyword-based search tools during the retrieval phase, which neglects crucial semantic information and frequently results in incomplete retrieval outcomes."
+  },
+  "novelty": {
+    "answer": [
+      "Construction of a comprehensive literature database that supports advanced retrieval based on semantics and citation relationships.",
+      "Introduction of a multi-granularity retrieval algorithm to ensure thorough and exhaustive retrieval results.",
+      "A dual-path framework for idea generation that integrates content from retrieved papers and the internal knowledge of LLMs."
+    ],
+    "evidence": [
+      "Our approach begins with the construction of a comprehensive literature database that supports advanced retrieval based not only on keywords but also on semantics and citation relationships.",
+      "This is complemented by the introduction of a multi-granularity retrieval algorithm aimed at ensuring more thorough and exhaustive retrieval results.",
+      "For the idea generation phase, we propose a dual-path framework that effectively integrates both the content of retrieved papers and the extensive internal knowledge of LLMs."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lu et al. (2024) AI Scientist relies on keyword-based search engines such as Semantic Scholar for literature retrieval. (Methodological precursors)\n- Su et al. (2024) employs a FAISS vector search database for literature retrieval. (Methodological precursors)\n- Baek et al. (2024) ResearchAgent focuses on identifying problems in retrieved papers and suggesting solutions. (Methodological precursors)",
+    "evidence": "For instance, AI Scientist (Lu et al., 2024) relies on keyword-based search engines such as Semantic Scholar for literature retrieval... In contrast, (Su et al., 2024) employs a FAISS (Johnson et al., 2019) vector search database... ResearchAgent (Baek et al., 2024), on the other hand, focuses on identifying problems in the retrieved papers and suggesting corresponding solutions."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct a literature database",
+        "input": "Approximately 78K papers from top-tier academic conferences",
+        "output": "A structured quintuple consisting of keywords, backgrounds, ideas, concise methods, and references",
+        "evidence": "Specifically, we collect approximately 78K papers from several top-tier academic conferences of AI field and utilize LLMs to re-summarize each paper into a structured quintuple consisting of keywords, backgrounds, ideas, concise methods, and references."
+      },
+      {
+        "step": "Implement multi-granularity literature retrieval",
+        "input": "Constructed literature database",
+        "output": "Thorough literature retrieval results across multiple dimensions",
+        "evidence": "Based on our constructed database, we propose a multi-granularity retrieval method, which comprehensively leverages keywords, semantic embeddings and citation relations, enabling a thorough literature retrieval across multiple dimensions."
+      },
+      {
+        "step": "Dual-path idea generation",
+        "input": "Content of retrieved papers and LLM's internal knowledge",
+        "output": "Comprehensive and well-informed final ideas",
+        "evidence": "In the idea generation phase, we propose a dual-path idea generation framework. This approach explicitly separates idea generation into two pathways: one leveraging the LLM’s internal knowledge and the other utilizing retrieved literature."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LLMs",
+        "description": "Used to re-summarize papers into structured quintuples",
+        "evidence": "utilize LLMs to re-summarize each paper into a structured quintuple"
+      },
+      {
+        "name": "PDF Parser",
+        "description": "Extracts titles, abstracts, introductions, methods, and references from papers",
+        "evidence": "A PDF parser is then employed to extract titles, abstracts, introductions, methods, and references."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Measures the originality of the proposed ideas",
+        "application": "Used to assess the quality of ideas generated by SciPIP",
+        "evidence": "Results show that SciPIP significantly outperforms existing idea generation approaches in both CV and NLP domains in terms of novelty, feasibility, clarity, relevance, etc."
+      },
+      {
+        "name": "Feasibility",
+        "purpose": "Assesses the practicality of the proposed ideas",
+        "application": "Used to evaluate the practicality of ideas generated by SciPIP",
+        "evidence": "Results show that SciPIP significantly outperforms existing idea generation approaches in both CV and NLP domains in terms of novelty, feasibility, clarity, relevance, etc."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "For the idea generation phase, we propose a dual-path framework that effectively integrates both the content of retrieved papers and the extensive internal knowledge of LLMs."
+      },
+      {
+        "name": "Literature or Dataset Retrieval",
+        "description": "The process of retrieving relevant literature or datasets to inform the research process.",
+        "evidence": "Based on our constructed database, we propose a multi-granularity retrieval method, which comprehensively leverages keywords, semantic embeddings and citation relations."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper addresses challenges in scientific idea generation across multiple domains such as NLP and CV.",
+        "evidence": "Our experiments, conducted across various domains such as natural language processing and computer vision, demonstrate SciPIP’s capability to generate a multitude of innovative and useful ideas."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "SciPIP significantly outperforms existing idea generation approaches in both CV and NLP domains in terms of novelty, feasibility, clarity, relevance, etc.",
+        "evidence": "Results show that SciPIP significantly outperforms existing idea generation approaches in both CV and NLP domains in terms of novelty, feasibility, clarity, relevance, etc."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AI Scientist",
+        "description": "A framework that relies on keyword-based search engines for literature retrieval.",
+        "evidence": "AI Scientist (Lu et al., 2024) relies on keyword-based search engines such as Semantic Scholar for literature retrieval."
+      }
+    ],
+    "benchmark_datasets": "Not reported in the paper",
+    "evaluation_metrics": [
+      {
+        "name": "Novelty",
+        "purpose": "Measures the originality of the proposed ideas",
+        "application": "Used to assess the quality of ideas generated by SciPIP",
+        "evidence": "Results show that SciPIP significantly outperforms existing idea generation approaches in both CV and NLP domains in terms of novelty, feasibility, clarity, relevance, etc."
+      },
+      {
+        "name": "Feasibility",
+        "purpose": "Assesses the practicality of the proposed ideas",
+        "application": "Used to evaluate the practicality of ideas generated by SciPIP",
+        "evidence": "Results show that SciPIP significantly outperforms existing idea generation approaches in both CV and NLP domains in terms of novelty, feasibility, clarity, relevance, etc."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Subjective Evaluation",
+        "description": "The feasibility of the generated ideas was evaluated subjectively based on human judgment.",
+        "evidence": "Specifically, the feasibility of the generated ideas was evaluated subjectively based on humans."
+      },
+      {
+        "name": "Domain Specificity",
+        "description": "The study focuses on NLP and CV, limiting its applicability to other fields.",
+        "evidence": "Moreover, this study focuses on two specific fields including NLP and CV, and we intend to extend SciPIP to other fields and disciplines."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend to Other Fields",
+        "description": "Plan to extend SciPIP to other fields and disciplines to assess its broader applicability.",
+        "evidence": "Moreover, this study focuses on two specific fields including NLP and CV, and we intend to extend SciPIP to other fields and disciplines to assess and demonstrate its broader applicability and generalizability."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "Not reported in the paper"
+  }
+}

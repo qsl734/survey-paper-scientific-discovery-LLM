@@ -1,0 +1,157 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a multi-agent system using Large Language Models (LLMs) to automate the TRIZ methodology for solving inventive problems, particularly in engineering. The authors aim to demonstrate the effectiveness of this system in addressing complex innovation challenges through a case study.",
+    "evidence": "This paper introduces a multi-agent approach. We propose an LLM-based multi-agent system, called TRIZ agents, each with specialized capabilities and tool access, collaboratively solving inventive problems based on the TRIZ methodology."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap of applying TRIZ methodology without the need for deep interdisciplinary knowledge and expert involvement, which is a significant barrier to its broader application.",
+    "evidence": "Although the TRIZ methodology has been successfully helping innovators solve problems, it has limitations that still need to be addressed. The biggest one is perhaps the need for experts."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a multi-agent system using LLMs to automate the TRIZ methodology.",
+      "Utilization of agents with various domain expertise to efficiently navigate TRIZ steps.",
+      "Demonstration of agent collaboration to produce diverse, inventive solutions."
+    ],
+    "evidence": [
+      "We propose an LLM-based multi-agent system, called TRIZ agents, each with specialized capabilities and tool access, collaboratively solving inventive problems based on the TRIZ methodology.",
+      "This multi-agent system leverages agents with various domain expertise to efficiently navigate TRIZ steps.",
+      "We demonstrate the potential of agent collaboration to produce diverse, inventive solutions."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Chen et al. (2024a) Previous research has explored using LLMs to enhance the innovation process with TRIZ methodology. (Methodological precursors)\n- Jiang and Luo (2024) Previous works include building workflows that strictly follow TRIZ steps and solve those steps with refined, prompt engineering strategies. (Methodological precursors)",
+    "evidence": "Previous research has explored using LLMs to enhance the innovation process with TRIZ methodology. However, the focus was more on creating workflows for such models (Chen et al., 2024a), comparing prompting strategies and LLM models (Jiang and Luo, 2024)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Defining Engineering System",
+        "input": "Problem description of the gantry crane",
+        "output": "Identification of relevant elements of the gantry crane engineering system",
+        "evidence": "Project Manager prompts Mechanical Engineer to identify relevant elements of gantry crane engineering system."
+      },
+      {
+        "step": "Function Analysis",
+        "input": "Documentation from previous step",
+        "output": "Function analysis from mechanical, control systems, and safety perspectives",
+        "evidence": "Project Manager this time asks Mechanical Engineer to prepare the Function Analysis."
+      },
+      {
+        "step": "Cause and Effect Chain Analysis (CECA)",
+        "input": "Documentation from previous steps",
+        "output": "Identification of control-related issues contributing to problems",
+        "evidence": "Control Systems Engineer was called to make the analysis and used a web search tool."
+      },
+      {
+        "step": "Engineering Contradiction (EC) and Contradiction Matrix",
+        "input": "TRIZ features and contradictions",
+        "output": "Identification of inventive principles using the Contradiction Matrix",
+        "evidence": "TRIZ Specialist agent to do this task. The agent first checks the list of TRIZ features from which it can choose."
+      },
+      {
+        "step": "Physical Contradiction",
+        "input": "Documentation from previous steps",
+        "output": "Identification of physical contradictions",
+        "evidence": "This step is also solely performed by TRIZ Specialist by one answer only without any tool use."
+      },
+      {
+        "step": "Solutions",
+        "input": "Documentation from previous steps",
+        "output": "Proposed solutions based on identified innovative principles",
+        "evidence": "Project Manager decided to begin the last step, which was finding solutions based on identified innovative principles."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Web Search Tool",
+        "description": "Used by agents to gather information relevant to their tasks",
+        "evidence": "Mechanical Engineer uses a web search tool to find relevant information."
+      },
+      {
+        "name": "TRIZ Features Tool",
+        "description": "Returns list of 39 TRIZ parameters",
+        "evidence": "TRIZ Specialist agent uses TRIZ Features Tool to check the list of TRIZ features."
+      },
+      {
+        "name": "Contradiction Matrix Tool",
+        "description": "Finds inventive principles based on improving and worsening features",
+        "evidence": "The agent uses another TRIZ tool, a contradiction matrix, to find inventive principles for those contradictions."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The primary purpose is to showcase the abilities of language agents in collaborative teamwork."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The experiments follow the ideation process of agents solving the case study problem, with each step’s outcome assessed against the original study."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a multi-agent system for solving engineering problems using the TRIZ methodology.",
+        "evidence": "The subject of the system’s work is a case study of the TRIZ application for the improvement design of a gantry crane."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology involves interdisciplinary knowledge and collaboration among agents with various domain expertise.",
+        "evidence": "This multi-agent system leverages agents with various domain expertise to efficiently navigate TRIZ steps."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The multi-agent system successfully modeled the TRIZ methodology and proposed solutions similar to those in the case study.",
+        "evidence": "The proposed multi-agent system simulates a discussion between team members as intended, resulting in six documents about each workflow step and one final report."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Lack of Feedback Loop",
+        "description": "The system lacks a feedback loop for iterating over ideas and refining results.",
+        "evidence": "A substantial limitation of the proposed system is its lack of a feedback loop in the teams’ actions."
+      },
+      {
+        "name": "Context Window Limitations",
+        "description": "The context window may be too small for workflows with more steps.",
+        "evidence": "There are also limitations connected with LLMs properties like context window."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Explore Other Agent Orchestration Architectures",
+        "description": "Investigate how different agent orchestration architectures might perform.",
+        "evidence": "Examining how other agent orchestration architectures might perform would probably bring interesting insights."
+      },
+      {
+        "name": "Investigate Other Methodologies",
+        "description": "Explore the application of other methodologies like Lean Innovation and Design Thinking.",
+        "evidence": "Additionally, only the TRIZ methodology is considered in the study. However, different methods, such as Lean Innovation and Design Thinking, are worth investigating."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore the use of retrieval-augmented generation (RAG) to assist in building causal networks of Alzheimer's Disease (AD) biomarkers for further medical analysis.",
+    "evidence": "This raises an important question: Can advanced large language models (LLMs), such as those utilizing retrieval-augmented generation (RAG), assist in building causal networks of biomarkers for further medical analysis?"
+  },
+  "knowledge_gap": {
+    "answer": "Existing approaches to constructing causal networks of AD biomarkers often rely solely on structured data, overlooking the vast knowledge embedded in scientific literature.",
+    "evidence": "Causal network construction provides a powerful framework for uncovering these relationships, yet existing approaches (Spirtes & Glymour, 1991; Strobl et al., 2018; Chickering, 2020) often rely solely on structured data, overlooking the vast knowledge embedded in scientific literature."
+  },
+  "novelty": {
+    "answer": [
+      "The paper pioneers the use of RAG for accelerating AD biomarkers' causal discovery by integrating literature-based knowledge extraction with LLMs' reasoning capabilities.",
+      "The authors introduce a split-RAG framework that processes each document individually to generate answers, addressing the challenge smaller LLMs face in understanding long context.",
+      "The study applies uncertainty estimation to assess the reliability of predicted causal edges, enhancing the trustworthiness of the generated causal networks."
+    ],
+    "evidence": [
+      "We pioneer exploring RAG for accelerating AD biomarkers’ causal discovery, integrating literature-based knowledge extraction with LLMs’ reasoning capabilities.",
+      "Different from the standard RAG, which uses all retrieved documents as context, split-RAG processes each document individually to generate answers, subsequently aggregating these through methods such as majority voting.",
+      "To measure the trustworthiness of the RAG framework, we apply uncertainty estimation to assess the reliability of predicted causal edges as well as automatic and human evaluations to assess the faithfulness and scientificness of LLM’s reasoning, respectively."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lewis et al. (2020) Their retrieval-augmented generation model inspired the RAG framework used in this study. (Methodological precursors)\n- Zhang et al. (2024) Their work on RAG for causal network construction influenced the application of RAG in this study. (Methodological precursors)",
+    "evidence": "In this work, we pioneer the use of retrieval-augmented generation (RAG) (Lewis et al., 2020; Gao et al., 2023c) to synthesize information from AD scientific literature... The work most relevant to ours is Zhang et al. (2024) which also employs RAG to build causal networks through pairwise predictions."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Collect scientific papers related to AD biomarkers.",
+        "input": "Search keywords include {Alzheimer disease pathophysiology, pathology Alzheimer’s disease, and pathophysiology of Alzheimer’s disease}.",
+        "output": "200 open-access papers on AD biomarkers published after 2000.",
+        "evidence": "Based on citation data, we collected 200 open-access papers on AD biomarkers that are published after 2000 to analyze the evolution of knowledge in the field."
+      },
+      {
+        "step": "Extract related biomarkers from scientific papers using RAG.",
+        "input": "Text from multiple papers split into smaller chunks.",
+        "output": "Retrieved chunks most related to AD biomarkers.",
+        "evidence": "To retrieve AD-related information, we project the query into the same embedding space using the same model and employ a similarity function (e.g., cosine similarity) to identify the most relevant text chunks."
+      },
+      {
+        "step": "Construct causal relations between biomarkers using RAG.",
+        "input": "Retrieved chunks and identified biomarkers.",
+        "output": "Causal network of AD biomarkers.",
+        "evidence": "Given the identified biomarkers, we present our strategy for constructing a causal network using the literature-based RAG."
+      },
+      {
+        "step": "Quantify uncertainty of each RAG predicted causal edge.",
+        "input": "Generated causal nodes and their uncertainty scores.",
+        "output": "Uncertainty scores for each causal edge.",
+        "evidence": "For each node nodei, the LLM will return several biomarkers that can cause nodei, and we compute their average uncertainty score via the averaged token probability of the output sequence."
+      },
+      {
+        "step": "Construct a causal network using causal relationships and uncertainty scores.",
+        "input": "Causal edges and their corresponding uncertainty scores.",
+        "output": "Final causal network as a directed acyclic graph (DAG).",
+        "evidence": "To build the final causal network, we first rank the causal edges by their uncertainty scores. To ensure that the causal network is a directed acyclic graph (DAG), we prioritize adding edges with higher average token probability first."
+      }
+    ],
+    "tools": [
+      {
+        "name": "RAG (Retrieval-Augmented Generation)",
+        "description": "Used for extracting AD-related information from papers and constructing causal networks.",
+        "evidence": "We pioneer exploring RAG for accelerating AD biomarkers’ causal discovery, integrating literature-based knowledge extraction with LLMs’ reasoning capabilities."
+      },
+      {
+        "name": "Transformer",
+        "description": "Used to project text chunks into embedding space for semantic search.",
+        "evidence": "To project these chunks into embedding space, we utilize a transformer (Vaswani et al., 2017) to obtain their embeddings."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the correctness of causal network construction.",
+        "application": "Used to evaluate the accuracy of causal networks.",
+        "evidence": "For the accuracy of causal networks, we use the standard metrics for causal discovery including accuracy, F1-score, and precision."
+      },
+      {
+        "name": "F1-score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate the performance of causal network construction.",
+        "evidence": "For the accuracy of causal networks, we use the standard metrics for causal discovery including accuracy, F1-score, and precision."
+      },
+      {
+        "name": "Precision",
+        "purpose": "Measures the proportion of true positive results in the predicted positive results.",
+        "application": "Used to evaluate the precision of causal network construction.",
+        "evidence": "For the accuracy of causal networks, we use the standard metrics for causal discovery including accuracy, F1-score, and precision."
+      },
+      {
+        "name": "AUROC",
+        "purpose": "Measures the model's ability to distinguish between classes.",
+        "application": "Used to evaluate the uncertainty estimation.",
+        "evidence": "For the evaluation of uncertainty estimation, we use the AUROC metric following Kaur et al. (2024); Geng et al. (2024)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Literature or Dataset Retrieval",
+        "description": "The approach includes retrieving relevant scientific literature for analysis.",
+        "evidence": "Based on citation data, we collected 200 open-access papers on AD biomarkers that are published after 2000 to analyze the evolution of knowledge in the field."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The system extracts and structures knowledge from scientific literature.",
+        "evidence": "To retrieve AD-related information, we project the query into the same embedding space using the same model and employ a similarity function (e.g., cosine similarity) to identify the most relevant text chunks."
+      },
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system generates hypotheses about causal relationships among biomarkers.",
+        "evidence": "What are the biomarkers or conditions that directly cause cognition decline? Select from the options in A. amyloid Beta (β), B.APOE, C.Tau, D.Neuroinflammation, E.cognition decline, F.Neurodegeneration, G.Metabolism."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper focuses on constructing causal networks of Alzheimer's Disease biomarkers.",
+        "evidence": "The causal relationships between biomarkers are essential for disease diagnosis and medical treatment planning. One notable application is Alzheimer’s disease (AD) diagnosis."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The study integrates AI-driven methods with domain expertise in Alzheimer's Disease research.",
+        "evidence": "Our approach is driven by interdisciplinary collaboration, ensuring that both data-driven insights and expert knowledge contribute to the network construction process."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "RAG-based methods often outperform base-LLM across causal discovery evaluation metrics, but the overall performance is still limited.",
+        "evidence": "RAG-based methods (split-RAG and concat-RAG) often outperform the base-LLM across all three causal discovery evaluation metrics, except for the Llama-3-8B model."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "base-LLM",
+        "description": "Generates causal networks without using the retrieved context.",
+        "evidence": "Base-LLM generates the causal networks without using the retrieved context, but its other processes still follow Algorithm 1."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Not reported in the paper",
+        "data_description": "Not reported in the paper",
+        "usage": "Not reported in the paper",
+        "evidence": "Not reported in the paper"
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the correctness of causal network construction.",
+        "application": "Used to evaluate the accuracy of causal networks.",
+        "evidence": "For the accuracy of causal networks, we use the standard metrics for causal discovery including accuracy, F1-score, and precision."
+      },
+      {
+        "name": "F1-score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate the performance of causal network construction.",
+        "evidence": "For the accuracy of causal networks, we use the standard metrics for causal discovery including accuracy, F1-score, and precision."
+      },
+      {
+        "name": "Precision",
+        "purpose": "Measures the proportion of true positive results in the predicted positive results.",
+        "application": "Used to evaluate the precision of causal network construction.",
+        "evidence": "For the accuracy of causal networks, we use the standard metrics for causal discovery including accuracy, F1-score, and precision."
+      },
+      {
+        "name": "AUROC",
+        "purpose": "Measures the model's ability to distinguish between classes.",
+        "application": "Used to evaluate the uncertainty estimation.",
+        "evidence": "For the evaluation of uncertainty estimation, we use the AUROC metric following Kaur et al. (2024); Geng et al. (2024)."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Performance of LLMs",
+        "description": "The overall performance of LLMs in identifying causal relations of AD biomarkers is still limited.",
+        "evidence": "However, the overall performance of LLMs in identifying causal relations of AD biomarkers is still limited."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Compare Different RAG Models",
+        "description": "Plan to compare different RAG models to determine their impact on the quality of causal networks.",
+        "evidence": "Looking ahead, we plan to compare different RAG models to determine their impact on the quality of causal networks."
+      },
+      {
+        "name": "Investigate Low Entailment Rates",
+        "description": "Examine the performance of various entailment evaluation models and explore why larger models tend to produce lower entailment rates.",
+        "evidence": "We also aim to investigate the low entailment rates observed, examining the performance of various entailment evaluation models and exploring why larger models like LLaMA-70B tend to produce lower entailment rates and less accurate networks."
+      },
+      {
+        "name": "Extend RAG Framework to Other Fields",
+        "description": "Explore extending the RAG framework to other scientific fields.",
+        "evidence": "Further, we will explore extending our RAG framework to other scientific fields."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "Not reported in the paper"
+  }
+}

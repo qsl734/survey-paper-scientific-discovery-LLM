@@ -1,0 +1,103 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a research assistant tool (RA) that produces FAIR research knowledge and is accessible free of cost, aiding scientists in six main research tasks.",
+    "evidence": "In this paper, we introduce a research assistant tool (RA, henceforward) that produces FAIR research knowledge and is accessible free of cost. RA serves to aid scientists in six main research tasks."
+  },
+  "knowledge_gap": {
+    "answer": "There is a need for free access to AI-based research assistants that support FAIR research comparisons, as existing tools are hindered by paywalls and generate verbose outputs unsuitable for structured knowledge graphs.",
+    "evidence": "Such limitations underscore the need for free access to AI-based research assistants supporting FAIR research comparisons."
+  },
+  "novelty": {
+    "answer": [
+      "RA is the only tool that facilitates the creation of FAIR research comparisons, addressing a critical need in scientific communication.",
+      "RA introduces 11 standardized ChatGPT prompts tailored to specific research tasks, showcasing a broadened scope of possibilities for NLP researchers.",
+      "RA's workflow is transparent and modularly designed, allowing users to expand it by engineering new research tasks."
+    ],
+    "evidence": [
+      "RA stands out as the only tool that facilitates the creation of FAIR research comparisons, addressing a critical need in scientific communication.",
+      "Out of the box, it introduces 11 standardized ChatGPT prompts tailored to specific research tasks, showcasing a broadened scope of possibilities that NLP researchers can consider in developing new applications using conversational AI in research.",
+      "RA’s workflow is transparent and modularly designed. With the public release of its source code https://github.com/mahsaSH717/research_assistant, users can effortlessly expand RA by engineering new research tasks."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Auer et al. (2020) Improving access to scientific literature with knowledge graphs. (Methodological precursors)",
+    "evidence": "The shift towards structured, machine-actionable methods of scholarly communication, exemplified by Open Research Knowledge Graph (ORKG) [1], represents a major leap in handling the vast volumes of scholarly communication."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Generate FAIR research comparisons",
+        "input": "User input of a research question and selected research contexts",
+        "output": "A table offering the desired research overview",
+        "evidence": "RA provides a detailed ChatGPT prompt to perform the task, resulting in a table that offers the desired research overview."
+      },
+      {
+        "step": "Export and publish research comparisons",
+        "input": "Generated research comparison table",
+        "output": "CSV file shareable via data repository or published on ORKG",
+        "evidence": "RA supports post-editing functions, allowing her to customize and edit the tables before exporting the data as a csv file. She can then publish it on the ORKG."
+      }
+    ],
+    "tools": [
+      {
+        "name": "ChatGPT",
+        "description": "Used to generate prompts and assist in research tasks",
+        "evidence": "Engineered into RA underlying each task are a set of customised ChatGPT prompts that assists end users to access relevant AI-generated data that addresses the research task."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "In RA, she can select the task 'Get ideas for research using selected research dimensions', then all she needs to do is select the set of properties of the GPT models that piqued her interest."
+      },
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The approach includes transforming user input into structured formats.",
+        "evidence": "RA provides a detailed ChatGPT prompt to perform the task, resulting in a table that offers the desired research overview."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The tool is designed to assist with research tasks across various scientific disciplines.",
+        "evidence": "RA’s reliance on generative AI tools like ChatGPT or Gemini means the same research task assistance can be offered in any scientific discipline."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": "Not reported in the paper",
+    "baselines": "Not reported in the paper",
+    "benchmark_datasets": "Not reported in the paper",
+    "evaluation_metrics": "Not reported in the paper"
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Access to AI Tools",
+        "description": "Existing AI tools are hindered by paywalls, restricting democratization.",
+        "evidence": "Additionally, limited access to these tools is hindered by paywalls, restricting democratization."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Usability Study",
+        "description": "Plan a survey for usability factors and application scenarios by showcasing the RA tool to the NLDB attendees.",
+        "evidence": "As such, by showcasing the RA tool to the NLDB attendees, we plan a survey for usability factors and application scenarios."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/mahsaSH717/research_assistant",
+    "evidence": "With the public release of its source code https://github.com/mahsaSH717/research_assistant, users can effortlessly expand RA by engineering new research tasks."
+  }
+}

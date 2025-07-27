@@ -1,0 +1,195 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a strategy that leverages generative AI models to create synthetic data for suicidal ideation detection, addressing the challenge of accessing large-scale annotated datasets due to the sensitivity of suicide-related data.",
+    "evidence": "To address this limitation, we introduce an innovative strategy that leverages the capabilities of generative AI models, such as ChatGPT, Flan-T5, and Llama, to create synthetic data for suicidal ideation detection."
+  },
+  "knowledge_gap": {
+    "answer": "There is a significant challenge in accessing large-scale, annotated datasets necessary for training effective machine learning models for suicidal ideation detection due to the sensitivity and stigma surrounding suicide-related data.",
+    "evidence": "However, the sensitivity surrounding suicide-related data poses challenges in accessing large-scale, annotated datasets necessary for training effective machine learning models."
+  },
+  "novelty": {
+    "answer": [
+      "The paper introduces a socially aware data synthesis approach by extracting social factors from psychology literature to guide the generation of synthetic data.",
+      "The study evaluates the performance of three Generative Large Language Models (GLLMs) in producing synthetic datasets using Zero-Shot and Few-Shot learning techniques.",
+      "The research demonstrates that models trained with synthetic data augmented with a small set of real-world data can outperform models trained by large annotated real-world datasets."
+    ],
+    "evidence": [
+      "We extracted the relevant social factors associated with suicidal ideation through a comprehensive review of existing literature, research papers and clinical studies.",
+      "Our study examines three GLLMs’ performance in producing synthetic datasets with Zero-Shot and Few-Shot learning techniques.",
+      "Our results show that models trained with synthetic data augmented with a small set of real-world data can outperform models trained by large annotated real-world datasets."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Ghanadian et al. (2023) ChatGPT for suicide risk assessment on social media: Quantitative evaluation of model performance, potentials and limitations. (Methodological precursors)\n- Zirikly et al. (2019) CLPsych 2019 shared task: Predicting the degree of suicide risk in Reddit posts. (Experimental baselines)",
+    "evidence": "We compare our classification results with baseline ALBERT and DistilBERT models fine-tuned on the UMD dataset by Ghanadian et al. [36]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Domain knowledge extraction",
+        "input": "Psychology literature on social factors related to suicidal ideation",
+        "output": "Relevant social factors for informed prompting of GLLMs",
+        "evidence": "Extract relevant social factors from the psychology literature for an informed prompting of GLLMs in data synthesis."
+      },
+      {
+        "step": "Synthetic data generation",
+        "input": "Generative Large Language Models (ChatGPT, Flan-T5, Llama)",
+        "output": "Synthetic datasets covering a wide range of suicide-related topics",
+        "evidence": "Use three GLLMs to generate socially aware synthetic data, that is, data that covers a wide range of suicide-related topics."
+      },
+      {
+        "step": "Evaluation of synthetic data",
+        "input": "Synthetic datasets, real-world datasets (UMD)",
+        "output": "Performance metrics of classifiers trained on synthetic and augmented datasets",
+        "evidence": "Train state-of-the-art classifiers with real-world, synthetic, and augmented datasets and test those classifiers on real-world as well as synthetic test sets."
+      }
+    ],
+    "tools": [
+      {
+        "name": "ChatGPT",
+        "description": "Used for generating synthetic data in Zero-Shot and Few-Shot settings",
+        "evidence": "We used the OpenAI Python library to access the ChatCompletion functionality of the gpt-3.5-turbo model through its API."
+      },
+      {
+        "name": "Flan-T5",
+        "description": "Used for generating synthetic data in Zero-Shot setting",
+        "evidence": "In this project, we utilized Flan-T5-XXL presented by Google Research in a Zero-Shot setting."
+      },
+      {
+        "name": "Llama 2",
+        "description": "Used for generating synthetic data in Zero-Shot setting",
+        "evidence": "In this paper, we used Llama 2-13B, presented by Meta in the Zero-Shot setting."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "UMD Dataset",
+        "data_description": "A collection of Reddit posts and comments related to suicidal thoughts or behaviors",
+        "usage": "Used for training and testing classifiers",
+        "evidence": "We compare our classification results with baseline ALBERT and DistilBERT models fine-tuned on the UMD dataset by Ghanadian et al."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the proportion of correctly predicted instances",
+        "application": "Used to evaluate the performance of classifiers",
+        "evidence": "For evaluation, we report two widely-used metrics in this task, accuracy and F-score, to provide a complete and informative evaluation of the performance of the classification models."
+      },
+      {
+        "name": "F1-Score",
+        "purpose": "Measures the balance between precision and recall",
+        "application": "Used to evaluate the performance of classifiers",
+        "evidence": "For evaluation, we report two widely-used metrics in this task, accuracy and F-score, to provide a complete and informative evaluation of the performance of the classification models."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We extracted the relevant social factors associated with suicidal ideation through a comprehensive review of existing literature, research papers and clinical studies."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Train state-of-the-art classifiers with real-world, synthetic, and augmented datasets and test those classifiers on real-world as well as synthetic test sets."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper develops a model for detecting suicidal ideation using synthetic data informed by psychological factors.",
+        "evidence": "Suicidal ideation detection is a vital research area that holds great potential for improving mental health support systems."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The study applies machine learning techniques to generate synthetic data for NLP tasks.",
+        "evidence": "Machine learning and Natural Language Processing (NLP) techniques have shown promise in detecting linguistic patterns and indicators of suicidal ideation."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The synthetic data-driven method achieved consistent F1-scores of 0.82 for both models, and when combined with 30% of the UMD dataset, it achieved an F1-score of 0.88.",
+        "evidence": "Our synthetic data-driven method, informed by social factors, offers consistent F1-scores of 0.82 for both models, suggesting that the richness of topics in synthetic data can bridge the performance gap across different model complexities."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "ALBERT",
+        "description": "A pre-trained language model from the BERT family used as a baseline for comparison.",
+        "evidence": "We compare our classification results with baseline ALBERT and DistilBERT models fine-tuned on the UMD dataset by Ghanadian et al."
+      },
+      {
+        "name": "DistilBERT",
+        "description": "A distilled version of BERT used as a baseline for comparison.",
+        "evidence": "We compare our classification results with baseline ALBERT and DistilBERT models fine-tuned on the UMD dataset by Ghanadian et al."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "UMD Dataset",
+        "data_description": "A collection of Reddit posts and comments related to suicidal thoughts or behaviors",
+        "usage": "Used for training and testing classifiers",
+        "evidence": "We compare our classification results with baseline ALBERT and DistilBERT models fine-tuned on the UMD dataset by Ghanadian et al."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the proportion of correctly predicted instances",
+        "application": "Used to evaluate the performance of classifiers",
+        "evidence": "For evaluation, we report two widely-used metrics in this task, accuracy and F-score, to provide a complete and informative evaluation of the performance of the classification models."
+      },
+      {
+        "name": "F1-Score",
+        "purpose": "Measures the balance between precision and recall",
+        "application": "Used to evaluate the performance of classifiers",
+        "evidence": "For evaluation, we report two widely-used metrics in this task, accuracy and F-score, to provide a complete and informative evaluation of the performance of the classification models."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "UMD Dataset",
+    "data_description": "A collection of Reddit posts and comments related to suicidal thoughts or behaviors",
+    "usage": "Used for training and testing classifiers",
+    "evidence": "We compare our classification results with baseline ALBERT and DistilBERT models fine-tuned on the UMD dataset by Ghanadian et al."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Dataset Diversity",
+        "description": "The synthetic datasets may not fully capture the diversity of real-world data.",
+        "evidence": "Synthetic datasets often exhibit a distributional shift from real-world data. This shift arises due to the inherent differences in the data generation processes between synthetic and real domains."
+      },
+      {
+        "name": "Manual Annotation Bias",
+        "description": "The labeling process for the synthetic test set relied on human annotators, which may introduce bias.",
+        "evidence": "This test set is annotated independently by two human annotators. A notable 89% of the labels, initially generated by the generative models, were agreed upon by the human annotators."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Explore Diversity of LLMs",
+        "description": "Investigate and quantify the extent of diversity within LLMs across various domains, languages, and training methodologies.",
+        "evidence": "Moving forward, exploring the diversity of Language Models (LLMs) stands as an intriguing avenue for future research."
+      },
+      {
+        "name": "Adaptation to Linguistic and Cultural Environments",
+        "description": "Focus on the adaptation of models to various linguistic and cultural environments, acknowledging the diverse ways people express suicidal thoughts.",
+        "evidence": "Future initiatives could focus on the adaptation of models to various linguistic and cultural environments, acknowledging the diverse ways people express suicidal thoughts across different languages and cultures."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/Hamideh-ghanadian/Synthetic_Data_Generation_using_Generative_LLMs",
+    "evidence": "The complete implementation of our project, including Zero-Shot Learning and Few-Shot Learning of GLLMs, as well as the fine-tuned classifiers, is available on GitHub."
+  }
+}

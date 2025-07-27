@@ -1,0 +1,186 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore the potential of using large language models (LLMs) to aid in the design of soft modular robots, reducing the reliance on extensive trial-and-error experiments typically needed to achieve robot designs that meet specific structural or task requirements.",
+    "evidence": "In this paper, we further explore the potential of using LLMs to aid in the design of soft modular robots, taking into account both user instructions and physical laws, to reduce the reliance on extensive trial-and-error experiments typically needed to achieve robot designs that meet specific structural or task requirements."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in the use of large language models for designing soft modular robots, which has not been explored before.",
+    "evidence": "To our knowledge, none of the modular robot design frameworks have utilized large language models (LLMs), and we are particularly interested in exploring the potential and capabilities of LLMs for this purpose."
+  },
+  "novelty": {
+    "answer": [
+      "The use of large language models (LLMs) for designing soft modular robots is novel.",
+      "The introduction of a simulation tool to provide feedback to the generative model, allowing for iterative improvements without requiring extensive human annotations, is a novel approach.",
+      "The development of five evaluation metrics to assess the quality of robot designs from multiple angles is a new contribution."
+    ],
+    "evidence": [
+      "To our knowledge, none of the modular robot design frameworks have utilized large language models (LLMs), and we are particularly interested in exploring the potential and capabilities of LLMs for this purpose.",
+      "To simplify, rather than conducting real-world experiments to assess design quality, we utilize a simulation tool to provide feedback to the generative model, allowing for iterative improvements without requiring extensive human annotations.",
+      "Furthermore, we introduce five evaluation metrics to assess the quality of robot designs from multiple angles including task completion and adherence to instructions, supporting an automatic evaluation process."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Whitman et al. (2020) Applied deep reinforcement learning to design modular serial manipulators for specific tasks. (Methodological precursors)\n- Zhao et al. (2020) Introduced an automated framework that generates optimized robot structures using a recursive graph grammar. (Methodological precursors)\n- Hu et al. (2022) Investigated robot design using a generative adversarial network called RoboGAN. (Methodological precursors)",
+    "evidence": "Whitman et al. [4] apply deep reinforcement learning to design modular serial manipulators for specific tasks. RoboGrammar, done by Zhao et al., introduce an automated framework that generates optimized robot structures by leveraging a recursive graph grammar and various robot components. Hu et al. [6] investigate robot design using a generative adversarial network (GAN) called RoboGAN."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Formulate the robot design process as a sequence generation task using LLMs.",
+        "input": "Natural language instructions and physical laws.",
+        "output": "Construction sequences of robots.",
+        "evidence": "Specifically, we formulate the robot design process as a sequence generation task and find that LLMs are able to capture key requirements expressed in natural language and reflect them in the construction sequences of robots."
+      },
+      {
+        "step": "Utilize a simulation tool to provide feedback to the generative model.",
+        "input": "Simulation tool and generated robot designs.",
+        "output": "Iteratively improved robot designs.",
+        "evidence": "To simplify, rather than conducting real-world experiments to assess design quality, we utilize a simulation tool to provide feedback to the generative model, allowing for iterative improvements without requiring extensive human annotations."
+      },
+      {
+        "step": "Introduce and apply five evaluation metrics to assess robot designs.",
+        "input": "Generated robot designs.",
+        "output": "Evaluation results based on task completion and adherence to instructions.",
+        "evidence": "Furthermore, we introduce five evaluation metrics to assess the quality of robot designs from multiple angles including task completion and adherence to instructions, supporting an automatic evaluation process."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Differentiable physics simulation tool",
+        "description": "Used to generate control sequences of the designed robots for the target goals.",
+        "evidence": "We prepare the training data leveraging automatic data augmentation approaches and use a differentiable physics simulation tool to generate control sequences of the designed robots for the target goals."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Instruction-following metric (IF)",
+        "purpose": "Assesses how closely a model’s generated robot designs adhere to the structural requirements specified in the prompts.",
+        "application": "Used to evaluate the adherence of robot designs to given instructions.",
+        "evidence": "The instruction-following metric (IF) assesses how closely a model’s generated robot designs adhere to the structural requirements specified in the prompts."
+      },
+      {
+        "name": "Promise score (PS)",
+        "purpose": "Estimates the total locomotion distance that each robot designed by the model can achieve within a long duration.",
+        "application": "Used to evaluate the potential distance a robot can travel.",
+        "evidence": "The promise score (PS) estimates the total locomotion distance that each robot designed by the model can achieve within a long duration."
+      },
+      {
+        "name": "Task optimality metric (OPT)",
+        "purpose": "Gauges the efficiency of the robot designs by measuring the time needed to complete the tasks specified in the prompts.",
+        "application": "Used to evaluate the time efficiency of task completion by the robots.",
+        "evidence": "The task optimality metric (OPT) gauges the efficiency of the robot designs by measuring the time needed to complete the tasks specified in the prompts."
+      },
+      {
+        "name": "Generalizability metric (GEN)",
+        "purpose": "Calculates the percentage of robot designs not previously seen in the model’s training data.",
+        "application": "Used to evaluate the model’s ability to generate novel designs.",
+        "evidence": "The generalizability metric (GEN) calculates the percentage of robot designs not previously seen in the model’s training data, highlighting the model’s ability to improvise instead of memorize."
+      },
+      {
+        "name": "Success rate (SR)",
+        "purpose": "Measures how frequently the model can successfully generate a legal robot configuration description.",
+        "application": "Used to evaluate the success rate of generating valid robot designs.",
+        "evidence": "The success rate (SR) measures how frequently the model can successfully generate a legal robot configuration description."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper explores the use of LLMs for designing soft modular robots, which is an engineering application.",
+        "evidence": "This paper explores the use of LLMs for designing soft modular robots, employing a natural language generation input and output style."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed model consistently generates legal robot designs with a high success rate and demonstrates the ability to generate novel designs distinct from the training data.",
+        "evidence": "In response to all prompts, our proposed model consistently generates legal robot designs, ensuring that all modules are correctly interconnected without any 'floating' or detached ones indicated by the relatively high success rate (SR) (over 89%) score."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Instruction-following metric (IF)",
+        "purpose": "Assesses how closely a model’s generated robot designs adhere to the structural requirements specified in the prompts.",
+        "application": "Used to evaluate the adherence of robot designs to given instructions.",
+        "evidence": "The instruction-following metric (IF) assesses how closely a model’s generated robot designs adhere to the structural requirements specified in the prompts."
+      },
+      {
+        "name": "Promise score (PS)",
+        "purpose": "Estimates the total locomotion distance that each robot designed by the model can achieve within a long duration.",
+        "application": "Used to evaluate the potential distance a robot can travel.",
+        "evidence": "The promise score (PS) estimates the total locomotion distance that each robot designed by the model can achieve within a long duration."
+      },
+      {
+        "name": "Task optimality metric (OPT)",
+        "purpose": "Gauges the efficiency of the robot designs by measuring the time needed to complete the tasks specified in the prompts.",
+        "application": "Used to evaluate the time efficiency of task completion by the robots.",
+        "evidence": "The task optimality metric (OPT) gauges the efficiency of the robot designs by measuring the time needed to complete the tasks specified in the prompts."
+      },
+      {
+        "name": "Generalizability metric (GEN)",
+        "purpose": "Calculates the percentage of robot designs not previously seen in the model’s training data.",
+        "application": "Used to evaluate the model’s ability to generate novel designs.",
+        "evidence": "The generalizability metric (GEN) calculates the percentage of robot designs not previously seen in the model’s training data, highlighting the model’s ability to improvise instead of memorize."
+      },
+      {
+        "name": "Success rate (SR)",
+        "purpose": "Measures how frequently the model can successfully generate a legal robot configuration description.",
+        "application": "Used to evaluate the success rate of generating valid robot designs.",
+        "evidence": "The success rate (SR) measures how frequently the model can successfully generate a legal robot configuration description."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Slow Cooling Time of SMAs",
+        "description": "The slow cooling time of the Shape Memory Alloy (SMA) coils restricts the locomotion speed of the robot.",
+        "evidence": "One limitation of our current system is the slow cooling time of the Shape Memory Alloy (SMA) coils, which restricts the locomotion speed of the robot."
+      },
+      {
+        "name": "Simulation Discrepancies",
+        "description": "Discrepancies exist between the real and simulated robots, affecting the alignment of simulation with real-world performance.",
+        "evidence": "Discrepancies exist between the real and simulated robots: real-world connections have four nodes on the connecting line, while the simulation, limited by DiffTaichi, has only two."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Replace SMAs with Alternative Actuators",
+        "description": "Explore the replacement of SMAs with alternative actuators, such as motors, to increase actuation speed and allow for untethered operation.",
+        "evidence": "To address this limitation, we are exploring the replacement of SMAs with alternative actuators, such as motors, which could increase actuation speed and allow for untethered operation."
+      },
+      {
+        "name": "Develop Specialized Physical Engine",
+        "description": "Develop a specialized physical engine tailored to the robots’ specific physical properties to enhance simulation fidelity.",
+        "evidence": "To address these challenges, we are developing a specialized physical engine tailored to our robots’ specific physical properties to enhance simulation fidelity."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

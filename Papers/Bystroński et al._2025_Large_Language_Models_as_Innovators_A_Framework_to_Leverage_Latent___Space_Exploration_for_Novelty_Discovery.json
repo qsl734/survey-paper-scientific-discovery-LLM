@@ -1,0 +1,243 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a model-agnostic latent-space ideation framework that enables controlled, scalable creativity by navigating the continuous embedding space of ideas.",
+    "evidence": "In this paper, we propose a model-agnostic latent-space ideation framework that enables controlled, scalable creativity by navigating the continuous embedding space of ideas."
+  },
+  "knowledge_gap": {
+    "answer": "Current large language models struggle to generate truly original or imaginative outputs due to their tendency to replicate familiar patterns seen during training.",
+    "evidence": "LLMs often struggle to generate truly original or imaginative outputs. Because they are trained on vast repositories of existing data, LLMs tend to follow familiar patterns, leading to repetitive or 'safe' ideas that lack genuine novelty."
+  },
+  "novelty": {
+    "answer": [
+      "The framework is model-agnostic and adapts easily to different domains, input formats, and creative tasks.",
+      "It explores variations of seed ideas in a continuous latent 'idea space' without requiring handcrafted rules.",
+      "The framework synthesizes high-quality ideas by leveraging the model's learned conceptual manifold."
+    ],
+    "evidence": [
+      "Our framework requires no handcrafted rules and adapts easily to different domains, input formats, and creative tasks.",
+      "We propose a novel solution: a model-agnostic latent-space ideation framework that automatically explores variations of seed ideas in a continuous latent 'idea space.'",
+      "By harnessing latent-space exploration, our method synthesizes high-quality ideas without extensive human prompt engineering, instead letting the model’s learned conceptual manifold drive the creative generation."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Mizrahi et al. (2024) Their clustering pipeline inspired our filtering model. (Methodological precursors)\n- Holysz et al. (2025) Their multi-stage LLM pipeline inspired our framework's adaptability. (Methodological precursors)",
+    "evidence": "For example, Mizrahi et al. (2024) introduce a pipeline that parses textual inputs into structured representations and recombines them to generate creative outcomes. Complementing this line of work, Holysz et al. (2025) propose a multi-stage LLM pipeline for synthesizing realistic medical datasets."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Problem Comprehension & Seed Generation",
+        "input": "Creative brief or user-provided seed ideas",
+        "output": "Diverse, high-level idea snippets",
+        "evidence": "If initial ideas or prompts are not provided, the framework begins by interpreting the task context and producing seed concepts."
+      },
+      {
+        "step": "Latent Encoding",
+        "input": "Seed ideas",
+        "output": "Fixed-dimensional latent vectors",
+        "evidence": "Each seed idea is encoded into a fixed-dimensional latent vector using a text encoder."
+      },
+      {
+        "step": "Embedding-Space Exploration",
+        "input": "Latent vectors",
+        "output": "Novel candidate embeddings",
+        "evidence": "To generate novel candidate embeddings, we consider several strategies for exploring the latent space around the known set."
+      },
+      {
+        "step": "Cross-Modal Projection",
+        "input": "New candidate embeddings",
+        "output": "Token embeddings for a decoder LLM",
+        "evidence": "To decode the new vectors, we map each enew ∈Rd into the token embedding space of a decoder LLM."
+      },
+      {
+        "step": "Latent-to-Text Decoding",
+        "input": "Token embeddings",
+        "output": "Textual idea descriptions",
+        "evidence": "With the embedding hX now in context, the decoder LLM generates a textual description."
+      },
+      {
+        "step": "Evaluation",
+        "input": "Generated ideas",
+        "output": "Scored and filtered ideas",
+        "evidence": "Each ynew is scored against a creativity rubric."
+      },
+      {
+        "step": "Feedback Loop",
+        "input": "High-scoring ideas",
+        "output": "Refined idea space",
+        "evidence": "To enable iterative refinement, high-scoring ideas extend known valid ideas manifold."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Mistral 7B",
+        "description": "Used as the ideas generating LLM in the framework.",
+        "evidence": "As in setup from (Cheng et al., 2024), we use Mistral 7B (Jiang et al., 2023) model as ideas generating LLM."
+      },
+      {
+        "name": "SRF-Embeddings-Mistral",
+        "description": "Used as the encoder for latent vectors.",
+        "evidence": "SRF-Embeddings-Mistral (Meng et al., 2024) as encoder."
+      },
+      {
+        "name": "MLP Projector",
+        "description": "Used for cross-modal projection of latent vectors.",
+        "evidence": "MLP Projector from (Cheng et al., 2024)."
+      },
+      {
+        "name": "GPT-4o",
+        "description": "Used for scoring and evaluating generated ideas.",
+        "evidence": "For all judgments, we employ GPT-4o."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Not reported in the paper",
+        "data_description": "Not reported in the paper",
+        "usage": "Not reported in the paper",
+        "evidence": "Not reported in the paper"
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Originality",
+        "purpose": "Measures the novelty of ideas.",
+        "application": "Used to evaluate the originality of generated ideas.",
+        "evidence": "Originality: Is the idea original or unexpected?"
+      },
+      {
+        "name": "Relevancy",
+        "purpose": "Measures the relevance of ideas to the objective.",
+        "application": "Used to evaluate the relevance of generated ideas.",
+        "evidence": "Relevancy: Is the idea relevant to the objective (derived from problem description or input ideas)?"
+      },
+      {
+        "name": "Fluency",
+        "purpose": "Measures the number of unique relevant responses.",
+        "application": "Used to evaluate the fluency of generated ideas.",
+        "evidence": "Fluency measures the number of unique relevant responses."
+      },
+      {
+        "name": "Flexibility",
+        "purpose": "Measures the diversity of semantic categories or shifts across responses.",
+        "application": "Used to evaluate the flexibility of generated ideas.",
+        "evidence": "Flexibility measures the diversity of semantic categories or shifts across responses."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Our framework is designed to act as a versatile 'co-ideator' for humans, adapting to different domains and input formats with minimal effort."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The approach includes refining ideas through iterative feedback loops.",
+        "evidence": "To enable iterative refinement, high-scoring ideas extend known valid ideas manifold, allowing more accurate space exploration."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper proposes a framework applicable across various domains for creative idea generation.",
+        "evidence": "Our framework is designed to act as a versatile 'co-ideator' for humans, adapting to different domains and input formats with minimal effort."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed method consistently improves both Originality and Fluency each iteration, showing that latent space exploration can facilitate the generation of highly creative ideas.",
+        "evidence": "As shown in Table 1, our method consistently improves both Originality and Fluency each iteration, which shows that latent space exploration can facilitate the generation of highly creative ideas."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "LLM Discussion",
+        "description": "A baseline method for enhancing creativity in LLMs.",
+        "evidence": "As a baseline, we use the LLM Discussion (Lu et al., 2024) outputs on provided datasets."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Not reported in the paper",
+        "data_description": "Not reported in the paper",
+        "usage": "Not reported in the paper",
+        "evidence": "Not reported in the paper"
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Originality",
+        "purpose": "Measures the novelty of ideas.",
+        "application": "Used to evaluate the originality of generated ideas.",
+        "evidence": "Originality: Is the idea original or unexpected?"
+      },
+      {
+        "name": "Relevancy",
+        "purpose": "Measures the relevance of ideas to the objective.",
+        "application": "Used to evaluate the relevance of generated ideas.",
+        "evidence": "Relevancy: Is the idea relevant to the objective (derived from problem description or input ideas)?"
+      },
+      {
+        "name": "Fluency",
+        "purpose": "Measures the number of unique relevant responses.",
+        "application": "Used to evaluate the fluency of generated ideas.",
+        "evidence": "Fluency measures the number of unique relevant responses."
+      },
+      {
+        "name": "Flexibility",
+        "purpose": "Measures the diversity of semantic categories or shifts across responses.",
+        "application": "Used to evaluate the flexibility of generated ideas.",
+        "evidence": "Flexibility measures the diversity of semantic categories or shifts across responses."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used in the study.",
+    "usage": "The study did not utilize any established, commonly used datasets.",
+    "evidence": "Not reported in the paper"
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Conservative Filtering Strategy",
+        "description": "The conservative filtering strategy leads to the exclusion of the majority of generated ideas, which may limit the diversity of outputs.",
+        "evidence": "Although manual inspection suggests that the generated ideas are generally relevant, our aggressive rejection strategy leads to the exclusion of the majority of them."
+      },
+      {
+        "name": "Limited Exploration Strategies",
+        "description": "The reliance on interpolation limits the flexibility and diversity of generated ideas.",
+        "evidence": "The decrease in Flexibility may be attributed to our reliance on interpolation, which blends two samples to generate a new one."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Develop More Sophisticated Exploration Strategies",
+        "description": "Future research will focus on developing more sophisticated latent space exploration strategies, such as swarm-based optimization algorithms.",
+        "evidence": "Developing more sophisticated latent space exploration strategies, such as swarm-based optimization algorithms, will be crucial to increase the efficiency of idea generation and improve flexibility."
+      },
+      {
+        "name": "Integrate Advanced Human-in-the-Loop Feedback",
+        "description": "Integrating more advanced human-in-the-loop feedback mechanisms could further refine the iterative ideation process.",
+        "evidence": "Furthermore, integrating more advanced human-in-the-loop feedback mechanisms and dynamic adjustment of exploration parameters could further refine the iterative ideation process."
+      },
+      {
+        "name": "Explore Efficient Scoring Functions",
+        "description": "Future work will explore more efficient and nuanced scoring functions to evaluate generated ideas.",
+        "evidence": "We also recognize the need for more efficient and nuanced scoring functions to evaluate generated ideas, moving beyond reliance on GPT-4o as a judge."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "Not reported in the paper"
+  }
+}

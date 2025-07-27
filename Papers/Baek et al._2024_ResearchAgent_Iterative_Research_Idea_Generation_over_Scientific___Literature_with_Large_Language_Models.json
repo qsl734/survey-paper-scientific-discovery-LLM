@@ -1,0 +1,203 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose ResearchAgent, a system that leverages Large Language Models (LLMs) to assist researchers in generating novel research ideas, including problem identification, method development, and experiment design, by integrating knowledge from scientific literature and iterative feedback from LLM-powered reviewing agents.",
+    "evidence": "To enhance the productivity of researchers, we propose ResearchAgent, which leverages the encyclopedic knowledge and linguistic reasoning capabilities of Large Language Models (LLMs) to assist them in their work. This system automatically defines novel problems, proposes methods and designs experiments, while iteratively refining them based on the feedback from collaborative LLM-powered reviewing agents."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in leveraging LLMs for the first phase of scientific research, specifically idea generation, as previous works have focused mainly on accelerating the experimental validation process.",
+    "evidence": "A few recent papers in the domain of LLM-augmented scientific discovery have focused on the second phase. Specifically, they attempt to mainly accelerate the experimental validation process... Thus, in this paper, we leverage LLMs in the first phase of scientific research – specifically idea generation."
+  },
+  "novelty": {
+    "answer": [
+      "ResearchAgent is the first system to leverage LLMs for open-ended scientific idea generation, including problem identification, method development, and experiment design.",
+      "The system integrates a citation graph-based literature survey and an entity-centric knowledge store to enhance idea generation.",
+      "ResearchAgent employs LLM-powered ReviewingAgents for iterative refinement of research ideas, aligning with human judgment criteria.",
+      "The approach models human research workflows by incorporating broad literature understanding, encyclopedic concept views, and peer feedback mechanisms."
+    ],
+    "evidence": [
+      "To the best of our knowledge, our work is the first to leverage and evaluate the capabilities of LLMs to act as mediators in scientific idea generation in an open-ended setting.",
+      "We model each of these three aspects in our ResearchAgent. Specifically, in order to imbibe related work, the system begins with a core scientific paper and then explores a range of related papers through references and citation relationships.",
+      "Crucially, these ReviewingAgents are prompted with evaluation criteria that are induced from real researchers’ judgments, thus aligning them with actual scientific preferential standards.",
+      "We draw distinctions between three key components of their workflow: a broad and deep understanding of related scientific literature, an encyclopedic view of concepts and how they relate to one another both within and across domains, and a community of colleagues on which to rely for feedback and constructive criticism."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Huang et al. (2023) Their work on LLM-augmented scientific discovery inspired our focus on idea generation. (Methodological precursors)\n- Wang et al. (2023a) Their insights on scientific discovery processes informed our approach to modeling ResearchAgent. (Methodological precursors)",
+    "evidence": "A few recent papers in the domain of LLM-augmented scientific discovery have focused on the second phase. Specifically, they attempt to mainly accelerate the experimental validation process... Thus, in this paper, we leverage LLMs in the first phase of scientific research – specifically idea generation."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Identify a core scientific paper and explore related papers through citation relationships.",
+        "input": "Core scientific paper and its citation graph.",
+        "output": "A subset of relevant literature for idea generation.",
+        "evidence": "The system begins with a core scientific paper and then explores a range of related papers through references and citation relationships."
+      },
+      {
+        "step": "Build an entity-centric knowledge store from scientific literature.",
+        "input": "Scientific literature and entity linking methods.",
+        "output": "A knowledge store capturing entity co-occurrences and relationships.",
+        "evidence": "We view entities as the atomic units of knowledge, which allows for ease of representation and accumulation over papers in a unified manner across different disciplines."
+      },
+      {
+        "step": "Generate research ideas using LLMs with task-specific templates.",
+        "input": "Relevant literature and entity-centric knowledge.",
+        "output": "Generated research ideas including problem, method, and experiment design.",
+        "evidence": "We operationalize this with LLMs by instantiating the aforementioned research idea generation function f with LLM coupled with the task-specific template."
+      },
+      {
+        "step": "Iteratively refine research ideas using LLM-powered ReviewingAgents.",
+        "input": "Generated research ideas and human-aligned evaluation criteria.",
+        "output": "Refined research ideas with improved clarity, relevance, and originality.",
+        "evidence": "Based on the reviews and feedback from ReviewingAgents, the ResearchAgent iteratively updates and refines its generation of research ideas."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for generating research ideas and refining them through iterative feedback.",
+        "evidence": "We operationalize f with LLMs, leveraging their capability to understand and generate academic text."
+      },
+      {
+        "name": "Entity Linker",
+        "description": "Used to extract entities from scientific literature for building the knowledge store.",
+        "evidence": "We can use any entity linker; in this paper we use one developed by Wu et al. (2020)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Semantic Scholar Academic Graph",
+        "data_description": "A large dataset of scientific literature used for idea generation.",
+        "usage": "Used to select core papers and related literature for research idea generation.",
+        "evidence": "The main source to generate research ideas is the scientific literature L, which we obtain from the Semantic Scholar Academic Graph API."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Clarity",
+        "purpose": "Measures how clearly the research problem, method, or experiment is defined.",
+        "application": "Used to evaluate the generated research ideas for clarity.",
+        "evidence": "Clarity: It assesses whether the problem is defined in a clear, precise, and understandable manner."
+      },
+      {
+        "name": "Originality",
+        "purpose": "Evaluates the novelty of the research problem or method.",
+        "application": "Used to assess the originality of generated research ideas.",
+        "evidence": "Originality: It evaluates whether the problem presents a novel challenge or unique perspective that has not been extensively explored before."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The goal of the research idea generation task is to formulate new and valid research ideas, to enhance the overall efficiency of the first phase of scientific discovery."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We aim to produce a complete idea consisting of the problem, method, and experiment design."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The system refines generated ideas through iterative feedback and evaluation.",
+        "evidence": "Based on the reviews and feedback from ReviewingAgents, the ResearchAgent iteratively updates and refines its generation of research ideas."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a system for generating research ideas across multiple scientific disciplines.",
+        "evidence": "We validate the effectiveness of ResearchAgent for research idea generation based on scientific literature across multiple disciplines."
+      },
+      {
+        "name": "Computer Science",
+        "description": "The methodology involves the use of LLMs and computational models for idea generation.",
+        "evidence": "We use the GPT-4 (OpenAI, 2023) release from Nov 06, 2023, as the basis for all models."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "ResearchAgent outperforms strong LLM-powered baselines by generating more clear, relevant, and significant ideas.",
+        "evidence": "We demonstrate that ResearchAgent outperforms strong LLM-powered baselines by large margins, generating more clear, relevant, and significant ideas that are especially novel."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Naive ResearchAgent",
+        "description": "Uses only a core paper to generate research ideas.",
+        "evidence": "Naive ResearchAgent – which uses only a core paper to generate research ideas."
+      },
+      {
+        "name": "ResearchAgent w/o Entity Retrieval",
+        "description": "Uses the core paper and its relevant references without considering entities.",
+        "evidence": "ResearchAgent w/o Entity Retrieval – which uses the core paper and its relevant references without considering entities."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Semantic Scholar Academic Graph",
+        "data_description": "A large dataset of scientific literature used for idea generation.",
+        "usage": "Used to select core papers and related literature for research idea generation.",
+        "evidence": "The main source to generate research ideas is the scientific literature L, which we obtain from the Semantic Scholar Academic Graph API."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Clarity",
+        "purpose": "Measures how clearly the research problem, method, or experiment is defined.",
+        "application": "Used to evaluate the generated research ideas for clarity.",
+        "evidence": "Clarity: It assesses whether the problem is defined in a clear, precise, and understandable manner."
+      },
+      {
+        "name": "Originality",
+        "purpose": "Evaluates the novelty of the research problem or method.",
+        "application": "Used to assess the originality of generated research ideas.",
+        "evidence": "Originality: It evaluates whether the problem presents a novel challenge or unique perspective that has not been extensively explored before."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Semantic Scholar Academic Graph",
+    "description": "A large dataset of scientific literature used for idea generation.",
+    "usage": "Used to select core papers and related literature for research idea generation.",
+    "evidence": "The main source to generate research ideas is the scientific literature L, which we obtain from the Semantic Scholar Academic Graph API."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Entity Coverage",
+        "description": "The entity-centric knowledge store is constructed from a limited number of publications, restricting the range of entities and their interconnectedness.",
+        "evidence": "This store is constructed by extracting entities from the titles and abstracts of a limited number of publications (due to the costs of processing them) thereby precluding a large number of other entities and their interconnectedness."
+      },
+      {
+        "name": "Potential for Hallucination",
+        "description": "ResearchAgent may generate research ideas that are not grounded in reality due to the inherent limitations of LLMs.",
+        "evidence": "Since our ResearchAgent is powered by LLMs, similar to any other approaches based on LLMs, it may hallucinate the generated research ideas."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand Knowledge Sources",
+        "description": "Explore additional knowledge sources beyond existing literature and entities for research idea generation.",
+        "evidence": "There may be additional knowledge sources (beyond the existing literature and entities) for research idea generation, and we leave exploring them as future work."
+      },
+      {
+        "name": "Enhance Entity Coverage",
+        "description": "Improve the entity-centric knowledge store by processing a larger number of publications.",
+        "evidence": "First, recall that we built the entity-centric knowledge store to propose beneficial entities during idea generation; however this store is constructed by extracting entities from the titles and abstracts of a limited number of publications."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/JinheonBaek/ResearchAgent",
+    "evidence": "Code: https://github.com/JinheonBaek/ResearchAgent."
+  }
+}

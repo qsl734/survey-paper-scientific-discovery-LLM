@@ -1,0 +1,124 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a new approach to scientific discovery that unifies data and background knowledge using AI Hilbert, a method that leverages polynomial optimization to derive scientific laws consistent with both experimental data and existing theoretical axioms.",
+    "evidence": "We propose a solution to this problem when all axioms and scientific laws are expressible via polynomial equalities and inequalities and argue that our approach is widely applicable."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in effectively searching over the space of formulae consistent with background theory to find one that best fits the data, especially when data is noisy or scarce.",
+    "evidence": "However, the problem of searching over the space of formulae consistent with background theory to find one that best fits the data is not well-solved."
+  },
+  "novelty": {
+    "answer": [
+      "The use of polynomial optimization to derive scientific laws from axioms and data.",
+      "The integration of Positivstellensatz certificates to prove the validity of derived laws.",
+      "The ability to handle inconsistent or incomplete background theories in scientific discovery."
+    ],
+    "evidence": [
+      "We model notions of minimal complexity using binary variables and logical constraints, solve polynomial optimization problems via mixed-integer linear or semidefinite optimization.",
+      "We obtain formal proofs of the correctness of our laws as a byproduct of the optimization problems.",
+      "Our approach can successfully identify the sources of inconsistency by performing best subset selection to determine the axioms that best explain the data."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Cornelio et al. (2023) Combining data and theory for derivable scientific discovery with AI-Descartes. (Methodological precursors)",
+    "evidence": "To account for background theory in scientific discovery, Cornelio et al. [32] recently proposed an approach called AI-Descartes."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Formulate the polynomial optimization problem using background theory and data.",
+        "input": "Background theory expressed as polynomial equalities and inequalities, experimental data.",
+        "output": "A polynomial optimization problem targeting a specific concept.",
+        "evidence": "The procedure first combines the background theory B and data D to generate a polynomial optimization problem Pr."
+      },
+      {
+        "step": "Reformulate the problem as a semidefinite optimization problem.",
+        "input": "Polynomial optimization problem.",
+        "output": "A semidefinite optimization problem.",
+        "evidence": "AI-Hilbert then reformulates the problem Pr as a semidefinite (or linear if no inequalities are present) optimization problem Prsd."
+      },
+      {
+        "step": "Solve the semidefinite optimization problem.",
+        "input": "Semidefinite optimization problem.",
+        "output": "A candidate formula and its formal derivation.",
+        "evidence": "AI-Hilbert then outputs a candidate formula of the form q(x) = 0."
+      }
+    ],
+    "tools": [
+      {
+        "name": "PolyJuMP.jl",
+        "description": "Used to integrate bounds and constraints into the polynomial optimization problem.",
+        "evidence": "This is achieved by leveraging the distance dc and integrating the bounds and constraints C via the PolyJuMP.jl Julia package."
+      },
+      {
+        "name": "Mosek",
+        "description": "Used to solve the semidefinite optimization problem.",
+        "evidence": "AI-Hilbert solves Prsd using a mixed-integer conic optimization solver such as Gurobi or Mosek."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We propose a new approach to scientific discovery that derives polynomial laws simultaneously consistent with experimental data and a body of background knowledge."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We demonstrate that some famous scientific laws, including Kepler’s Third Law of Planetary Motion, can be derived in a principled manner from axioms and experimental data."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a method for scientific discovery applicable across various scientific domains.",
+        "evidence": "We demonstrate that some famous scientific laws, including Kepler’s Third Law of Planetary Motion, the Hagen-Poiseuille Equation, and the Radiated Gravitational Wave Power equation, can be derived in a principled manner."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "AI-Hilbert successfully derived several known scientific laws, demonstrating its ability to integrate data and theory effectively.",
+        "evidence": "We demonstrate that some famous scientific laws, including Kepler’s Third Law of Planetary Motion, the Hagen-Poiseuille Equation, and the Radiated Gravitational Wave Power equation, can be derived in a principled manner."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Scalability",
+        "description": "The approach may struggle with large-scale problems due to the computational intensity of solving semidefinite programs.",
+        "evidence": "This arguably presents a limitation, because the Newton step in IPMs requires performing a memory-intensive matrix inversion operation."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Improving the Generality of AI-Hilbert",
+        "description": "Extend the method to encompass non-polynomial settings involving differential operators, integrals, and limits.",
+        "evidence": "Therefore, extending AI-Hilbert to encompass these non-polynomial settings would be of interest."
+      },
+      {
+        "name": "Automatically Parameter-Tuning AI-Hilbert",
+        "description": "Automate the hyperparameter optimization process to improve usability.",
+        "evidence": "Therefore, one extension of this work could be to automate this hyperparameter optimization process."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

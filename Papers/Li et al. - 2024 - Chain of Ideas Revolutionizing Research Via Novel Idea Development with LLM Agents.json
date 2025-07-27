@@ -1,0 +1,144 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a Chain-of-Ideas (CoI) agent, an LLM-based framework that organizes relevant literature in a chain structure to enhance the ideation capabilities of large language models (LLMs) for generating novel research ideas.",
+    "evidence": "Inspired by the research process of human researchers, we propose a Chain-of-Ideas (CoI) agent, an LLM-based agent that organizes relevant literature in a chain structure to effectively mirror the progressive development in a research domain."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the challenge of LLMs being exposed to extensive literature without effective organization, which can lead to ideas lacking logical coherence and innovation.",
+    "evidence": "However, in existing attempts, LLMs are presented with an extensive volume of research literature when asked to generate ideas. This makes LLMs vulnerable to the influence of less relevant works, potentially resulting in ideas that lack logical coherence and technological innovation."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of the Chain-of-Ideas (CoI) agent framework to organize literature in a chain structure.",
+      "Development of the Idea Arena, an evaluation protocol for idea generation methods.",
+      "Implementation of a multi-agent system that leverages evolutionary algorithms to enhance the diversity and novelty of LLM-generated research ideas."
+    ],
+    "evidence": [
+      "Motivated by the human practices in conducting research, we introduce a novel Chain-of-Ideas (CoI) agent framework to address the previously identified logical inconsistencies in the ideation processes of LLMs.",
+      "We propose Idea Arena for a comprehensive evaluation of idea-generation methods, which shows high agreement with human researchers.",
+      "We can develop a multi-agent system that leverages evolutionary algorithms to enhance the diversity and novelty of LLM-generated research ideas."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Baek et al. (2024) ResearchAgent framework inspired the structured and dynamic process for generating and refining research ideas. (Methodological precursors)\n- Si et al. (2024) Their work on LLMs generating novel research ideas inspired the empirical validation aspect of the CoI agent. (Experimental baselines)",
+    "evidence": "Notably, Si et al. (2024); Kumar et al. (2024) have validated this hypothesis, highlighting its substantial potential to expedite the discovery of novel concepts and uncharted research avenues."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "CoI Construction",
+        "input": "Research topic",
+        "output": "Multiple CoIs reflecting different trends within the domain",
+        "evidence": "First, given a research topic, the CoI agent constructs multiple CoIs from existing literature, reflecting different trends within the domain."
+      },
+      {
+        "step": "Idea Generation",
+        "input": "Constructed CoIs and their developing trends",
+        "output": "Novel research idea",
+        "evidence": "For each generated CoI, the first step is to predict possible future trends."
+      },
+      {
+        "step": "Experiment Design",
+        "input": "Proposed idea and key entities",
+        "output": "Experiment design to implement the final idea",
+        "evidence": "We prompt the LLM with experiments from existing works obtained from Sec. 2.2 as few-shot examples, along with the proposed idea and key entities, to guide the LLM in designing experiments for our ideas."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used as the LLM implementation for idea generation and experiment design.",
+        "evidence": "In our CoI agent, we primarily use GPT-4o (05-13) as our LLM implementation."
+      },
+      {
+        "name": "Semantic Scholar API",
+        "description": "Used for retrieving subsequent papers that cite the anchor paper.",
+        "evidence": "In the forward direction, starting from Pk0, we identify subsequent papers that directly cite it by leveraging the Semantic Scholar API."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "ELO scores",
+        "purpose": "Measures the performance of idea-generation methods in a pairwise evaluation system.",
+        "application": "Used to compute scores for each idea-generation method in the Idea Arena.",
+        "evidence": "To obtain reliable scores for evaluation, we propose Idea Arena, a pairwise evaluation system using a Round-Robin tournament to compute ELO scores for each idea-generation method."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for enhancing LLMs' ideation capabilities across various scientific domains.",
+        "evidence": "Effective research ideation is a critical step for scientific research. However, the exponential increase in scientific literature makes it challenging for researchers to stay current with recent advances and identify meaningful research directions."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The CoI agent consistently ranks first among all automated baselines, surpassing the second-best one by 56 ELO scores in human evaluation.",
+        "evidence": "The experimental results show that CoI agent consistently ranks first among all automated baselines, surpassing the second-best one by 56 ELO scores in human evaluation."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "RAG",
+        "description": "A vanilla retrieval augmented generation approach.",
+        "evidence": "RAG: This is a vanilla retrieval augmented generation approach (Lewis et al., 2020), where we directly prompt the LLM with retrieved literature for idea generation and experiment design."
+      },
+      {
+        "name": "ResearchAgent",
+        "description": "Leverages additional academic knowledge graph for enhancing literature retrieval.",
+        "evidence": "ResearchAgent (Baek et al., 2024): This work leverages additional academic knowledge graph for enhancing the literature retrieval and adopts a multi-agent framework to iteratively refine ideas through peer discussions."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "ELO scores",
+        "purpose": "Measures the performance of idea-generation methods in a pairwise evaluation system.",
+        "application": "Used to compute scores for each idea-generation method in the Idea Arena.",
+        "evidence": "To obtain reliable scores for evaluation, we propose Idea Arena, a pairwise evaluation system using a Round-Robin tournament to compute ELO scores for each idea-generation method."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Feasibility",
+        "description": "The feasibility of the generated ideas is lower compared to those in existing literature.",
+        "evidence": "Despite the clarity and reasonable technical details of the experiment designs produced by the CoI Agent in support of the proposed ideas, they tend to be less feasible compared to those designs in the existing literature."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhance Feasibility",
+        "description": "Focus on improving the feasibility of generated ideas to match those in existing literature.",
+        "evidence": "Consequently, feasibility represents a significant bottleneck in automatic idea generation, highlighting the need for future research to address this challenge."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/DAMO-NLP-SG/CoI-Agent",
+    "evidence": "The code is released at https://github.com/DAMO-NLP-SG/CoI-Agent."
+  }
+}

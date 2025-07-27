@@ -1,0 +1,186 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to develop a framework for adaptive prompt design in large language models (LLMs) using active learning, termed Active In-context Prompt Design (AIPD). The authors aim to optimize the selection of few-shot examples from a training set to improve performance on a test set, thereby reducing uncertainty in LLM predictions.",
+    "evidence": "In this work, we use active learning for adaptive prompt design and call it Active In-context Prompt Design (AIPD). We design the LLM prompt by adaptively choosing few-shot examples from a training set to optimize performance on a test set."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in optimal prompt design for LLMs, which has been largely focused on handcrafted prompts or clustering-based approaches, lacking a systematic method to balance uncertainty and diversity.",
+    "evidence": "Prior works on prompt tuning mainly focus on hard prompts, which are carefully handcrafted to get the desired output. This can be time-consuming and fragile... Zhang et al. [2022a,b] and Diao et al. [2023] explored adaptive prompt design using clustering-based and uncertainty-reducing approaches. While these approaches offer some benefits, we argue that optimal designs can outperform them by effectively balancing uncertainty and diversity."
+  },
+  "novelty": {
+    "answer": [
+      "The introduction of the G-Optimal design algorithm (GO) for selecting examples closest to test examples based on posterior covariance.",
+      "The development of the Simulation-Based Active Learning algorithm (SAL) that uses simulation to estimate the impact of labeling on uncertainty.",
+      "The analysis of GO and SAL in linear models, showing their equivalence and providing theoretical guarantees."
+    ],
+    "evidence": [
+      "We propose a G-Optimal design algorithm (GO). The key idea in GO is to retrieve the examples to label that are closest to the set of test examples in the inference task.",
+      "We propose a Simulation-Based Active Learning algorithm (SAL). SAL uses simulation to estimate the impact of labeling unlabeled examples on uncertainty of the example in the inference task.",
+      "We show that SAL and GO are equivalent in linear models in Theorem 2."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Zhang et al. (2022a,b) Their clustering-based approach inspired the adaptive prompt design framework. (Methodological precursors)\n- Diao et al. (2023) Their uncertainty-reducing approach influenced the development of AIPD. (Methodological precursors)",
+    "evidence": "Similarly to Zhang et al. [2022a,b] and Diao et al. [2023], we propose a framework for adaptive prompt design called active in-context prompt design (AIPD)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Design the LLM prompt by adaptively choosing few-shot examples from a training set.",
+        "input": "Unlabeled training examples and test examples.",
+        "output": "Optimized LLM prompt with selected few-shot examples.",
+        "evidence": "We design the LLM prompt by adaptively choosing few-shot examples from a training set to optimize performance on a test set."
+      },
+      {
+        "step": "Implement G-Optimal design algorithm (GO) to select examples closest to test examples.",
+        "input": "Training examples and test examples.",
+        "output": "Selected examples that minimize uncertainty.",
+        "evidence": "The key idea in GO is to retrieve the examples to label that are closest to the set of test examples in the inference task."
+      },
+      {
+        "step": "Implement Simulation-Based Active Learning algorithm (SAL) to estimate impact of labeling.",
+        "input": "Unlabeled examples and test examples.",
+        "output": "Estimated impact on uncertainty and selected examples.",
+        "evidence": "SAL uses simulation to estimate the impact of labeling unlabeled examples on uncertainty of the example in the inference task."
+      }
+    ],
+    "tools": [
+      {
+        "name": "G-Optimal design algorithm (GO)",
+        "description": "Used to select examples closest to test examples based on posterior covariance.",
+        "evidence": "We propose a G-Optimal design algorithm (GO)."
+      },
+      {
+        "name": "Simulation-Based Active Learning algorithm (SAL)",
+        "description": "Used to simulate the impact of labeling on uncertainty.",
+        "evidence": "We propose a Simulation-Based Active Learning algorithm (SAL)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "UCI",
+        "data_description": "Regression and classification tasks.",
+        "usage": "Used for evaluation of GO and SAL algorithms.",
+        "evidence": "We evaluate GO and SAL on UCI and OpenML regression and classification tasks."
+      },
+      {
+        "name": "OpenML",
+        "data_description": "Regression and classification tasks.",
+        "usage": "Used for evaluation of GO and SAL algorithms.",
+        "evidence": "We evaluate GO and SAL on UCI and OpenML regression and classification tasks."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Misclassification error",
+        "purpose": "Measures the error rate in classification tasks.",
+        "application": "Used to evaluate performance on classification datasets.",
+        "evidence": "Misclassification error in classification datasets using Mistral-7B (M), Vicuna-13B (V), and Falcon-40B (F)."
+      },
+      {
+        "name": "Mean Squared Error (MSE)",
+        "purpose": "Measures the error in regression tasks.",
+        "application": "Used to evaluate performance on regression datasets.",
+        "evidence": "MSE in regression datasets using Mistral-7B (M), Vicuna-13B (V), and Falcon-40B (F)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We propose a framework for adaptive prompt design called active in-context prompt design (AIPD)."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for adaptive prompt design applicable to various tasks including classification and regression.",
+        "evidence": "We evaluate GO and SAL on UCI and OpenML regression and classification tasks, custom NLP datasets, abstract reasoning corpus (ARC) tasks, and Probabilistic Context Free Grammar (PCFG) tasks."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "GO and SAL consistently outperform other active prompt tuning methods for choosing few-shot examples in the majority of the tasks.",
+        "evidence": "GO and SAL consistently outperform other active prompt tuning methods for choosing few-shot examples in majority of the tasks."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Uniform",
+        "description": "A pure exploration algorithm that samples examples uniformly at random.",
+        "evidence": "Uniform is a pure exploration algorithm that does not take into account the similarity to test examples and variance reduction."
+      },
+      {
+        "name": "Greedy-NN",
+        "description": "Selects examples that align most with test examples based on feature similarity.",
+        "evidence": "The example Xt in round t is chosen to align the most with all test examples x∗,k such that It ←arg maxi∈Ut maxk∈[K] x⊤∗,kxi."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "UCI",
+        "data_description": "Regression and classification tasks.",
+        "usage": "Used for evaluation of GO and SAL algorithms.",
+        "evidence": "We evaluate GO and SAL on UCI and OpenML regression and classification tasks."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Misclassification error",
+        "purpose": "Measures the error rate in classification tasks.",
+        "application": "Used to evaluate performance on classification datasets.",
+        "evidence": "Misclassification error in classification datasets using Mistral-7B (M), Vicuna-13B (V), and Falcon-40B (F)."
+      },
+      {
+        "name": "Mean Squared Error (MSE)",
+        "purpose": "Measures the error in regression tasks.",
+        "application": "Used to evaluate performance on regression datasets.",
+        "evidence": "MSE in regression datasets using Mistral-7B (M), Vicuna-13B (V), and Falcon-40B (F)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "UCI",
+    "description": "A collection of datasets for machine learning research, including regression and classification tasks.",
+    "usage": "Used for evaluation of GO and SAL algorithms.",
+    "evidence": "We evaluate GO and SAL on UCI and OpenML regression and classification tasks."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Dependence on Linear Model Assumptions",
+        "description": "The theoretical analysis of GO and SAL is based on linear model assumptions, which may not hold in all practical scenarios.",
+        "evidence": "The analysis is under the assumption of a linear model with Gaussian noise."
+      },
+      {
+        "name": "Computational Complexity",
+        "description": "The SAL algorithm is computationally expensive due to the need for simulation.",
+        "evidence": "We use these approximations because SAL is computationally expensive."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend AIPD Framework",
+        "description": "Extend the AIPD framework beyond text to enable informative example selection for tasks involving images, videos, or other modalities using multi-modal LLMs.",
+        "evidence": "Our research opens up exciting new directions for future work such as extending AIPD framework beyond text to enable informative example selection for tasks involving images, videos, or other modalities using multi-modal LLMs."
+      },
+      {
+        "name": "Integration with Diffusion Models",
+        "description": "Explore the integration of active learning with diffusion models, a powerful class of generative models.",
+        "evidence": "Additionally, the integration of active learning with diffusion models, a powerful class of generative models, presents promising directions for future research."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No resource link was provided in the paper."
+  }
+}

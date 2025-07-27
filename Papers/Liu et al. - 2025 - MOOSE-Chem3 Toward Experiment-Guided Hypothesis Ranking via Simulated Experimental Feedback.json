@@ -1,0 +1,164 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce and develop a method for experiment-guided hypothesis ranking, which aims to prioritize candidate hypotheses based on simulated experimental feedback to reduce the number of real experiments needed in natural science domains.",
+    "evidence": "We propose a new task: experiment-guided ranking, which focuses on dynamically prioritizing hypotheses by leveraging feedback from sequentially performed experiments."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in hypothesis ranking methods that do not incorporate empirical feedback from experiments, which is crucial for efficient prioritization in resource-constrained natural science domains.",
+    "evidence": "Previous methods for hypothesis ranking primarily rely on evaluations based solely on LLMs’ internal reasoning, without incorporating any empirical feedback from experiments."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a simulator based on domain-informed assumptions to model hypothesis performance as a function of similarity to a known ground truth hypothesis.",
+      "Development of a pseudo experiment-guided ranking method that clusters hypotheses by shared functional characteristics.",
+      "Release of a curated dataset of 124 chemistry hypotheses with experimentally reported outcomes."
+    ],
+    "evidence": [
+      "We propose a simulator grounded in three domain-informed assumptions, modeling hypothesis performance as a function of similarity to a known ground truth hypothesis.",
+      "Building on this simulator, we develop a pseudo experiment-guided ranking method that clusters hypotheses by shared functional characteristics.",
+      "To address this, we propose the use of simulators and release a curated dataset of 124 chemical hypotheses with annotated performance collected from the literature."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yang et al. (2024b) Their clustering pipeline inspired our filtering model. (Methodological precursors)\n- Si et al. (2024) Their limitations in hypothesis ranking without empirical feedback were addressed by our work. (Papers with limitations addressed)",
+    "evidence": "Previous methods for hypothesis ranking (Yang et al., 2024b; Si et al., 2024) primarily rely on evaluations based solely on LLMs’ internal reasoning, without incorporating any empirical feedback from experiments."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct a simulator based on domain-informed assumptions.",
+        "input": "Domain-informed assumptions about hypothesis performance and similarity.",
+        "output": "A simulator that models hypothesis performance as a function of similarity to a known ground truth hypothesis.",
+        "evidence": "We propose a simulator grounded in three domain-informed assumptions, modeling hypothesis performance as a function of similarity to a known ground truth hypothesis."
+      },
+      {
+        "step": "Develop a pseudo experiment-guided ranking method.",
+        "input": "Simulated experimental feedback and functional characteristics of hypotheses.",
+        "output": "A ranking method that prioritizes hypotheses based on simulated feedback.",
+        "evidence": "Building on this simulator, we develop a pseudo experiment-guided ranking method that clusters hypotheses by shared functional characteristics."
+      }
+    ],
+    "tools": [
+      {
+        "name": "CSX-Sim",
+        "description": "Used to simulate experimental outcomes for hypothesis ranking.",
+        "evidence": "We name our simulator as CSX-Sim, and the experiment-guided ranking method as CSX-Rank."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "TOMATO-chem",
+        "data_description": "Includes 51 chemical problems, each annotated with a ground-truth hypothesis.",
+        "usage": "Used to evaluate experiment-guided ranking.",
+        "evidence": "We evaluate experiment-guided ranking on the TOMATO-chem dataset (Yang et al., 2024b), which includes 51 chemical problems."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Spearman Correlation",
+        "purpose": "Measures trend alignment between simulated and experimental results.",
+        "application": "Used to assess whether the predicted performances correctly reflect the relative ranking of ground-truth annotations.",
+        "evidence": "Evaluation focused on two key criteria: (1) trend alignment, measured by Spearman rank correlation."
+      },
+      {
+        "name": "Root Mean Square Error (RMSE)",
+        "purpose": "Measures absolute deviations between predicted and annotated performances.",
+        "application": "Used to quantify predictive accuracy.",
+        "evidence": "predictive accuracy, quantified by root mean square error (RMSE), measuring absolute deviations between predicted and annotated performances."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We propose a new task: experiment-guided ranking, which focuses on dynamically prioritizing hypotheses by leveraging feedback from sequentially performed experiments."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The primary goal of the simulator is to enable systematic research on experiment-guided ranking strategies by providing accessible and high-fidelity approximations of experimental feedback."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Chemical Sciences",
+        "description": "The paper develops a method for hypothesis ranking in chemistry using simulated experimental feedback.",
+        "evidence": "We curate a dataset of 124 chemistry hypotheses with experimentally reported outcomes to validate the simulator."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The proposed method aims to improve efficiency in hypothesis testing, which is applicable in engineering contexts.",
+        "evidence": "Ultimately, the aim is to deploy these strategies in real experimental settings to reduce the overall experimental costs."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "CSX-Sim achieves superior performance with a Spearman correlation of 0.960 and perfect consistency in 26 out of 30 questions, outperforming baselines.",
+        "evidence": "As shown in Table 1, CSX-Sim achieves superior performance across all metrics, with a Spearman correlation of 0.960, perfect consistency in 26 out of 30 questions."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Matched Score",
+        "description": "Evaluates hypotheses by measuring their similarity to ground-truth references.",
+        "evidence": "We adopt the 'Matched Score' (Yang et al., 2024b) as our primary baseline."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "TOMATO-chem",
+        "data_description": "Includes 51 chemical problems, each annotated with a ground-truth hypothesis.",
+        "usage": "Used to evaluate experiment-guided ranking.",
+        "evidence": "We evaluate experiment-guided ranking on the TOMATO-chem dataset (Yang et al., 2024b), which includes 51 chemical problems."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Spearman Correlation",
+        "purpose": "Measures trend alignment between simulated and experimental results.",
+        "application": "Used to assess whether the predicted performances correctly reflect the relative ranking of ground-truth annotations.",
+        "evidence": "Evaluation focused on two key criteria: (1) trend alignment, measured by Spearman rank correlation."
+      },
+      {
+        "name": "Root Mean Square Error (RMSE)",
+        "purpose": "Measures absolute deviations between predicted and annotated performances.",
+        "application": "Used to quantify predictive accuracy.",
+        "evidence": "predictive accuracy, quantified by root mean square error (RMSE), measuring absolute deviations between predicted and annotated performances."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "TOMATO-chem",
+    "data_description": "Includes 51 chemical problems, each annotated with a ground-truth hypothesis.",
+    "usage": "Used to evaluate experiment-guided ranking.",
+    "evidence": "We evaluate experiment-guided ranking on the TOMATO-chem dataset (Yang et al., 2024b), which includes 51 chemical problems."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Simulator Approximation",
+        "description": "The simulator provides an approximation rather than exact experimental results, which may affect the fidelity of the experiment-guided ranking.",
+        "evidence": "While it represents the first attempt to build such a simulator for experiment-guided hypothesis ranking, its outputs remain an approximation rather than exact experimental results."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Develop More Accurate Simulators",
+        "description": "Focus on improving the fidelity of simulators to better approximate real experimental outcomes.",
+        "evidence": "Building on this foundation, we propose a new task: developing more accurate simulators for experimental feedback."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/wanhaoliu/MOOSE-Chem3.git",
+    "evidence": "All code and data can be found in https://github.com/wanhaoliu/MOOSE-Chem3.git"
+  }
+}

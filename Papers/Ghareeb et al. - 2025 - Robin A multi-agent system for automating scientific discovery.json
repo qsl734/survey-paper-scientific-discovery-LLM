@@ -1,0 +1,159 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce Robin, a multi-agent system capable of fully automating the key intellectual steps of the scientific process, including hypothesis generation, experimental proposal, data analysis, and hypothesis refinement, to accelerate scientific discovery.",
+    "evidence": "Here, we introduce Robin, the first multi-agent system capable of fully automating the key intellectual steps of the scientific process."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in fully automating the key intellectual steps of the scientific process, which includes generating hypotheses, proposing experiments, analyzing results, and refining hypotheses.",
+    "evidence": "However, none of these systems are currently capable of fully automating the key intellectual steps of the scientific process, including generating hypotheses and experimental strategies, analyzing results from the experiments, and refining hypotheses in light of new data."
+  },
+  "novelty": {
+    "answer": [
+      "Robin is the first system to fully automate the key intellectual steps of the scientific process in a single workflow.",
+      "Robin integrates literature search agents with data analysis agents to enable semi-autonomous scientific discovery.",
+      "Robin proposed and validated a novel therapeutic candidate, ripasudil, for treating dry age-related macular degeneration."
+    ],
+    "evidence": [
+      "Here, we introduce Robin, the first multi-agent system capable of fully automating the key intellectual steps of the scientific process.",
+      "By integrating literature search agents with data analysis agents, Robin can generate hypotheses, propose experiments, interpret experimental results, and generate updated hypotheses.",
+      "By applying this system, we were able to identify a novel treatment for dry age-related macular degeneration (dAMD), the major cause of blindness in the developed world."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Skarlinski et al. (2024) Language agents achieve superhuman synthesis of scientific knowledge. (Methodological precursors)\n- Mitchener et al. (2025) Bixbench: A comprehensive benchmark for llm-based agents in computational biology. (Experimental baselines)",
+    "evidence": "Crow and Falcon are literature search agents based on PaperQA2 that conduct concise and deep literature summaries, respectively [27]. Finch is a scientific data analysis agent that performs analyses of experimental data from assays, such as RNA-seq and flow cytometry [28]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Hypothesis generation and experimental strategy proposal",
+        "input": "Disease name",
+        "output": "Therapeutic candidates and experimental assays",
+        "evidence": "Given a disease, Robin automatically identifies relevant in vitro assays that model key disease mechanisms and proposes specific drug candidates to evaluate in these experimental models."
+      },
+      {
+        "step": "Experimental data analysis",
+        "input": "Raw or semi-processed experimental data",
+        "output": "Scientific insights and updated therapeutic hypotheses",
+        "evidence": "Once experiments are complete, the scientist uploads raw or semi-processed data and prompts Robin with a desired analysis approach."
+      },
+      {
+        "step": "Iterative refinement of hypotheses",
+        "input": "Experimental results and analysis",
+        "output": "Refined therapeutic candidates and follow-up assays",
+        "evidence": "Robin distills actionable scientific insights from these processed experimental results. Robin also has the ability to propose targeted follow-up assays to explore or confirm significant or unexpected findings."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Crow and Falcon",
+        "description": "Literature search agents for concise and deep literature summaries",
+        "evidence": "Crow and Falcon are literature search agents based on PaperQA2 that conduct concise and deep literature summaries, respectively."
+      },
+      {
+        "name": "Finch",
+        "description": "Scientific data analysis agent for experimental data",
+        "evidence": "Finch is a scientific data analysis agent that performs analyses of experimental data from assays, such as RNA-seq and flow cytometry."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Dunnett test",
+        "purpose": "To compare drug treatments to the DMSO control",
+        "application": "Used to determine if there are any drug treatments that significantly increased signal compared to control.",
+        "evidence": "I recommend using the Dunnett test to compare the drug treatments to the DMSO control."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Robin generates therapeutic candidates via scientific synthesis with Falcon literature search and if provided, experimental results."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Robin proposes top therapeutic candidates for the target disease."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper focuses on developing novel therapeutic candidates for dry age-related macular degeneration.",
+        "evidence": "By applying Robin to discover novel therapeutic candidates for dAMD, this work represents a first step towards AI-generated discovery in scientific research."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper integrates AI-driven methodologies with biomedical research for scientific discovery.",
+        "evidence": "By automating hypothesis generation, experimental planning, and data analysis in an integrated system, Robin represents a powerful new paradigm for AI-driven scientific discovery."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Ripasudil significantly enhanced RPE phagocytosis, outperforming Y-27632 with a 7.5-fold increase compared to DMSO controls.",
+        "evidence": "Finch’s analysis showed that ripasudil, a ROCK inhibitor approved for treatment of glaucoma in Japan, outperformed Y-27632 and increased RPE cell phagocytosis 7.5-fold compared to DMSO controls."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Y-27632",
+        "description": "A ROCK inhibitor used as a baseline for comparison in enhancing RPE phagocytosis.",
+        "evidence": "Preclinical models have demonstrated that Y-27632 can restore phagocytic efficiency in RPE cells, confirming Robin’s literature-based rationale for suggesting this candidate."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Dunnett test",
+        "purpose": "To compare drug treatments to the DMSO control",
+        "application": "Used to determine if there are any drug treatments that significantly increased signal compared to control.",
+        "evidence": "I recommend using the Dunnett test to compare the drug treatments to the DMSO control."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Reliance on Prompt Engineering",
+        "description": "The Finch data analysis agent is heavily reliant on prompt engineering by domain experts to produce reliable analytical results.",
+        "evidence": "The Finch data analysis agent is also heavily reliant on prompt engineering by domain experts to produce reliable analytical results."
+      },
+      {
+        "name": "Lack of Detailed Experimental Protocols",
+        "description": "Robin generates experimental outlines but does not yet produce precise, executable protocols.",
+        "evidence": "For example, while Robin generates experimental outlines, it does not yet produce precise, executable protocols—future iterations aim to provide detailed methodologies that require minimal human translation for laboratory execution."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Develop Detailed Methodologies",
+        "description": "Future iterations aim to provide detailed methodologies that require minimal human translation for laboratory execution.",
+        "evidence": "For example, while Robin generates experimental outlines, it does not yet produce precise, executable protocols—future iterations aim to provide detailed methodologies that require minimal human translation for laboratory execution."
+      },
+      {
+        "name": "Enhance Finch's Autonomy",
+        "description": "Adapting Finch to independently generate or adapt prompts to specific data modalities would enable a more autonomous discovery pipeline.",
+        "evidence": "Adapting Finch to independently generate or adapt prompts to specific data modalities would enable a more autonomous discovery pipeline."
+      },
+      {
+        "name": "Align Hypothesis Generation with Human Judgment",
+        "description": "Future work on better aligning hypothesis generation and evaluation with human scientific judgment may be helpful in more reliably producing high-quality hypotheses.",
+        "evidence": "Finally, while Robin uses an LLM-judged tournament to nominate therapeutic hypotheses, future work on better aligning hypothesis generation and evaluation with human scientific judgment may be helpful in more reliably producing high-quality hypotheses."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/Future-House/robin",
+    "evidence": "Sample trajectories for Robin and Finch, as well as the code for Robin will be available at github.com/Future-House/robin"
+  }
+}

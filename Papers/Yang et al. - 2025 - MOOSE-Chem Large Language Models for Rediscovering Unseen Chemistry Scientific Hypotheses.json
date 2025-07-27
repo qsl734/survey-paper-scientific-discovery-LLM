@@ -1,0 +1,181 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to investigate whether large language models (LLMs) can automatically discover novel and valid chemistry research hypotheses given only a chemistry research background, without limitation on the domain of the research question.",
+    "evidence": "In this work, we investigate this central research question: Can LLMs automatically discover novel and valid chemistry research hypotheses given only a chemistry research background (consisting of a research question and/or a background survey), without limitation on the domain of the research question?"
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in understanding whether LLMs can be used for scientific discovery in the chemistry domain, as previous studies have focused on social sciences or specific areas like catalyst discovery.",
+    "evidence": "However, it is still unclear LLMs’ scientific discovery ability in natural science such as the chemistry domain. Sprueill et al. (2023; 2024) adopt LLMs to conduct a search process for catalyst discovery. However, their method is limited in the catalyst discovery domain, and their evaluation relies on whether LLMs can rediscover existing commercially used catalysts, potentially influenced by a data contamination problem."
+  },
+  "novelty": {
+    "answer": [
+      "The paper proposes a multi-agent framework named MOOSE-CHEM for chemistry scientific discovery, which includes a novel evolutionary algorithm to foster a broader diversity of approaches.",
+      "The study constructs a benchmark consisting of 51 chemistry papers annotated by chemistry PhD students, breaking each paper into background, inspirations, and hypothesis.",
+      "The paper introduces a ranking task for scientific discovery, which has been largely overlooked in previous works."
+    ],
+    "evidence": [
+      "Motivated by this breakup into three smaller questions, we design a multi-agent framework named MOOSE-CHEM for chemistry scientific discovery.",
+      "We build a benchmark consisting of 51 chemistry papers annotated by chemistry PhD students, breaking every paper into a background, several inspirations, and a hypothesis.",
+      "Along with the benchmark, we propose a ranking task for scientific discovery (along with evaluation criteria), which has been largely overlooked in previous works."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yang et al. (2024b) Their multi-agent system for hypothesis generation in social sciences inspired the framework used in this study. (Methodological precursors)\n- Sprueill et al. (2023; 2024) Their work on catalyst discovery using LLMs highlighted limitations that this study aims to address. (Papers with limitations addressed by this work)",
+    "evidence": "Yang et al. (2024b) first find that LLMs can generate novel and valid enough hypotheses evaluated by experts. They focus on the social science domain and make discoveries by developing a multi-agent system... Sprueill et al. (2023; 2024) adopt LLMs to conduct a search process for catalyst discovery. However, their method is limited in the catalyst discovery domain..."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct a benchmark of chemistry papers",
+        "input": "51 chemistry papers published in top journals in 2024",
+        "output": "A benchmark dataset with papers divided into background, inspirations, and hypothesis",
+        "evidence": "We build a benchmark consisting of 51 chemistry papers annotated by chemistry PhD students, breaking every paper into a background, several inspirations, and a hypothesis."
+      },
+      {
+        "step": "Develop a multi-agent framework for hypothesis discovery",
+        "input": "Background question, background survey, and a large chemistry literature corpus",
+        "output": "A list of ranked research hypotheses",
+        "evidence": "The input to the framework is only a background question and/or background survey, together with a (large) chemistry literature corpus to search for inspiration. The output of the framework is a list of ranked research hypothesis."
+      },
+      {
+        "step": "Implement evolutionary algorithm for hypothesis generation",
+        "input": "Background and inspiration papers",
+        "output": "Generated hypotheses with mutations and recombinations",
+        "evidence": "With this motivation, we develop a simple evolutionary algorithm-based method, shown in the top-right of Figure 1. We call it 'evolutionary unit' (EU)."
+      },
+      {
+        "step": "Rank generated hypotheses",
+        "input": "Generated hypotheses",
+        "output": "Ranked hypotheses based on evaluation scores",
+        "evidence": "We adopt a simple and efficient way for R(h), which is to prompt an LLM to output evaluation scores for an input h in terms of validness, novelty, significance, and potential."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for inspiration retrieval, hypothesis generation, and ranking",
+        "evidence": "We use LLMs to perform P(ij|b, hj−1, I), P(hj|b, ij, hj−1), and R(h), and organize them into a multi-agent LLM-based framework."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "TOMATO-Chem",
+        "data_description": "51 chemistry papers annotated with background, inspirations, and hypothesis",
+        "usage": "Used to analyze LLM’s ability in terms of the three smaller questions and as a challenge to rediscover nature-level chemistry hypotheses",
+        "evidence": "The goal of the benchmark, named TOMATO-Chem, is two-fold. Firstly, it is used to analyze LLM’s ability in terms of the three smaller questions."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Hit Ratio",
+        "purpose": "Measures the number of selected ground truth inspiration papers divided by the number of all ground truth inspiration papers",
+        "application": "Used to evaluate the inspiration retrieval process",
+        "evidence": "We use Hit Ratio as the evaluation metric, which is calculated by the number of selected ground truth inspiration papers divided by the number of all ground truth inspiration papers."
+      },
+      {
+        "name": "Matched Score",
+        "purpose": "Measures the similarity between generated hypotheses and ground truth hypotheses",
+        "application": "Used to evaluate the hypothesis generation process",
+        "evidence": "Therefore, we adopt a reference-based evaluation method called 'Matched Score' (MS). The descriptions are shown in Table 6."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We design experiments with the benchmark to test the three fundamental questions and find that LLMs are highly capable."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We propose a ranking task for scientific discovery (along with evaluation criteria), which has been largely overlooked in previous works."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Chemical Sciences",
+        "description": "The paper investigates the ability of LLMs to discover novel and valid chemistry research hypotheses.",
+        "evidence": "In this work, we investigate this central research question: Can LLMs automatically discover novel and valid chemistry research hypotheses given only a chemistry research background..."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The study combines AI and chemistry to explore scientific discovery processes.",
+        "evidence": "Scientific discovery contributes largely to human society’s prosperity, and recent progress shows that LLMs could potentially catalyze this process."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed MOOSE-CHEM framework can rediscover many hypotheses with very high similarity with the ground truth ones, covering the main innovations.",
+        "evidence": "Even in this challenging setting, MOOSE-CHEM can still rediscover many hypotheses with very high similarity with the ground truth ones, covering the main innovations."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Yang et al. (2024b) method",
+        "description": "A multi-agent system for hypothesis generation in social sciences.",
+        "evidence": "Compared with Yang et al. (2024b)’s method in social science that assumes a similar separation between background and inspiration for hypothesis formulation..."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "TOMATO-Chem",
+        "data_description": "51 chemistry papers annotated with background, inspirations, and hypothesis",
+        "usage": "Used to analyze LLM’s ability in terms of the three smaller questions and as a challenge to rediscover nature-level chemistry hypotheses",
+        "evidence": "The goal of the benchmark, named TOMATO-Chem, is two-fold. Firstly, it is used to analyze LLM’s ability in terms of the three smaller questions."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Hit Ratio",
+        "purpose": "Measures the number of selected ground truth inspiration papers divided by the number of all ground truth inspiration papers",
+        "application": "Used to evaluate the inspiration retrieval process",
+        "evidence": "We use Hit Ratio as the evaluation metric, which is calculated by the number of selected ground truth inspiration papers divided by the number of all ground truth inspiration papers."
+      },
+      {
+        "name": "Matched Score",
+        "purpose": "Measures the similarity between generated hypotheses and ground truth hypotheses",
+        "application": "Used to evaluate the hypothesis generation process",
+        "evidence": "Therefore, we adopt a reference-based evaluation method called 'Matched Score' (MS). The descriptions are shown in Table 6."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The study is limited to chemistry and material science hypotheses published in top journals in 2024.",
+        "evidence": "The benchmark consists of 51 chemistry and material science papers and is constructed by multiple chemistry PhD students. We only select those papers published on top chemistry venues and be public on the internet after January 2024."
+      },
+      {
+        "name": "Reliance on LLMs",
+        "description": "The framework's success heavily depends on the capabilities of LLMs, which may not be fully reliable for chemistry hypothesis evaluation.",
+        "evidence": "However, in the chemistry domain, LLMs might not be reliable enough to directly evaluate the generated h (Sprueill et al., 2024)."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Other Scientific Domains",
+        "description": "Explore the application of the framework to other scientific fields beyond chemistry.",
+        "evidence": "In future work, we plan to evaluate our pipeline on multimodal medical imaging datasets."
+      },
+      {
+        "name": "Enhance LLM Capabilities",
+        "description": "Improve the LLMs used in the framework to better handle chemistry-specific challenges.",
+        "evidence": "Future versions will explore alternative labeling methods to reduce noise in training data."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/ZonglinY/MOOSE-Chem.git",
+    "evidence": "Code and Benchmark are available at https://github.com/ZonglinY/MOOSE-Chem.git"
+  }
+}

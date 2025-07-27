@@ -1,0 +1,174 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present a systematic framework, MLR-Copilot, designed to enhance machine learning research productivity through the automatic generation and implementation of research ideas using Large Language Model (LLM) agents.",
+    "evidence": "Motivated by this, we present a new systematic framework, autonomous Machine Learning Research with large language models (MLR-Copilot), designed to enhance machine learning research productivity through the automatic generation and implementation of research ideas using Large Language Model (LLM) agents."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in existing research methodologies that do not fully automate the entire process of machine learning research, from idea generation to experiment execution, using LLM agents.",
+    "evidence": "Different from all the above, we aim at tackling the entire process of machine learning research across different stages. In response to prior works limitations and these challenges, we present MLR-Copilot."
+  },
+  "novelty": {
+    "answer": [
+      "The integration of LLM agents to automate the entire machine learning research process, including idea generation, experiment implementation, and execution.",
+      "The use of a feedback loop and human-in-the-loop feature to refine experiment implementations and ensure robust research outcomes."
+    ],
+    "evidence": [
+      "MLR-Copilot operates in three integrated phases: research idea generation, experiment implementation, and implementation execution.",
+      "The feedback allows for the refinement of the experiment implementations (Stage 2). The implementation and execution process is iterative, and the human-in-the-loop feature ensures that the final research outcomes are robust, reproducible, and scientifically sound."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Baek et al. (2024) ResearchAgent: Iterative research idea generation over scientific literature with large language models. (Methodological precursors)\n- Huang et al. (2023) Benchmarking large language models as AI research agents. (Experimental baselines)",
+    "evidence": "Yang et al. (2023); Wang et al. (2024); Qi et al. (2023a); Baek et al. (2024) only investigate generating natural language research hypothesis based on general scientific literature, which is similar to stage 1 in our work. Huang et al. (2023); Zhang et al. (2023) target automatically conducting experiments for machine learning tasks, which can potentially accelerate the hypothesis validation processes (Stage 2 and 3)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Research idea generation using LLM-powered IdeaAgent.",
+        "input": "Relevant research papers and extracted research problems.",
+        "output": "Generated research hypotheses and experimental plans.",
+        "evidence": "In this first stage, we construct an input prompt consisting of relevant research papers and extracted research problems (including task definition); then IdeaAgent (Baek et al., 2024), an LLM-powered agent, takes in the prompt and generates research hypothesis and experimental plans."
+      },
+      {
+        "step": "Experiment implementation using ExperimentAgent.",
+        "input": "Research idea containing experiment plan.",
+        "output": "Executable experiments with integrated models and datasets.",
+        "evidence": "The second phase involves translating experimental plans into executable experiments. This phase is facilitated by ExperimentAgent, an LLM-based agent."
+      },
+      {
+        "step": "Implementation execution managed by ExperimentAgent.",
+        "input": "Experimental setups with models and datasets.",
+        "output": "Execution results and feedback for refinement.",
+        "evidence": "In the final phase, ExperimentAgent manages the execution of the experiments. The execution phase encompasses running the experiments, incorporating mechanisms for human feedback, and supporting iterative debugging."
+      }
+    ],
+    "tools": [
+      {
+        "name": "IdeaAgent",
+        "description": "Generates research hypotheses and experimental plans.",
+        "evidence": "IdeaAgent extracts and synthesizes relevant information from the literature (Baek et al., 2024)."
+      },
+      {
+        "name": "ExperimentAgent",
+        "description": "Facilitates experiment implementation and execution.",
+        "evidence": "ExperimentAgent implements and executes the experiments."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SemRel",
+        "data_description": "Semantic textual relatedness datasets for 13 languages.",
+        "usage": "Used for evaluating semantic textual relatedness tasks.",
+        "evidence": "SemRel (Ousidhoum et al., 2024) from SemEval 2024 Task 1 focuses on semantic textual relatedness across 13 languages."
+      },
+      {
+        "name": "IMDB",
+        "data_description": "Movie reviews labeled by sentiment.",
+        "usage": "Used for sentiment analysis and NLP tasks.",
+        "evidence": "IMDB (Maas et al., 2011) consists of movie reviews labeled by sentiment, commonly used for sentiment analysis and NLP tasks."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Pearson correlation",
+        "purpose": "Measures the linear correlation between variables.",
+        "application": "Used to evaluate semantic textual relatedness tasks.",
+        "evidence": "We use the supervised track for our experiments and adopt Pearson correlation as the metrics."
+      },
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the proportion of correct predictions.",
+        "application": "Used to evaluate classification tasks.",
+        "evidence": "Classification accuracy is used as the metric for these tasks."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "In this first stage, we construct an input prompt consisting of relevant research papers and extracted research problems (including task definition); then IdeaAgent (Baek et al., 2024), an LLM-powered agent, takes in the prompt and generates research hypothesis and experimental plans."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The second phase involves translating experimental plans into executable experiments. This phase is facilitated by ExperimentAgent, an LLM-based agent."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for automating machine learning research using LLM agents.",
+        "evidence": "MLR-Copilot automates the generation and implementation of research ideas using LLM agents, organized into three integrated phases: research idea generation, experiment implementation, and implementation execution."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed framework shows potential to facilitate research progress and innovations across five machine learning research tasks.",
+        "evidence": "We evaluate our framework on five machine learning research tasks and the experimental results show the framework’s potential to facilitate the research progress and innovations."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Baseline LLM",
+        "description": "An LLM that prompts with only a core paper to generate research ideas.",
+        "evidence": "For baselines, we compare to an LLM in (Baek et al., 2024) which prompts with only a core paper to generate research ideas."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SemRel",
+        "data_description": "Semantic textual relatedness datasets for 13 languages.",
+        "usage": "Used for evaluating semantic textual relatedness tasks.",
+        "evidence": "SemRel (Ousidhoum et al., 2024) from SemEval 2024 Task 1 focuses on semantic textual relatedness across 13 languages."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Pearson correlation",
+        "purpose": "Measures the linear correlation between variables.",
+        "application": "Used to evaluate semantic textual relatedness tasks.",
+        "evidence": "We use the supervised track for our experiments and adopt Pearson correlation as the metrics."
+      },
+      {
+        "name": "Accuracy",
+        "purpose": "Measures the proportion of correct predictions.",
+        "application": "Used to evaluate classification tasks.",
+        "evidence": "Classification accuracy is used as the metric for these tasks."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "IMDB",
+    "data_description": "Movie reviews labeled by sentiment.",
+    "usage": "Used for sentiment analysis and NLP tasks.",
+    "evidence": "IMDB (Maas et al., 2011) consists of movie reviews labeled by sentiment, commonly used for sentiment analysis and NLP tasks."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scope of Evaluation",
+        "description": "The evaluation is limited to five machine learning research tasks, which may not fully represent the framework's capabilities.",
+        "evidence": "We evaluate our framework on five machine learning research tasks and the experimental results show the framework’s potential to facilitate the research progress and innovations."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand Evaluation Scope",
+        "description": "Plan to evaluate the framework on a broader range of machine learning tasks to better understand its capabilities.",
+        "evidence": "Through evaluations and examples, we illustrate that our framework can generate novel and feasible hypotheses for research, enabling researchers to focus on high-level scientific inquiry and innovation."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/du-nlp-lab/MLR-Copilot",
+    "evidence": "Code package, data, and models can be found at: https://github.com/du-nlp-lab/MLR-Copilot."
+  }
+}

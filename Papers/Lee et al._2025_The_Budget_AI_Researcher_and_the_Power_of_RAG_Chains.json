@@ -1,0 +1,172 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present a novel structural framework for research ideation using retrieval-augmented generation (RAG) chains, vector databases, and topic-guided pairing to recombine concepts from machine learning papers.",
+    "evidence": "In this study, we present a novel structural framework for research ideation. Our framework, The Budget AI Researcher, uses retrieval-augmented generation (RAG) chains, vector databases, and topic-guided pairing to recombine concepts from hundreds of machine learning papers."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in large language models' ability to guide users toward practical research ideas due to their limitations in domain-specific reasoning and grounding in real-time, trusted external sources.",
+    "evidence": "However, despite their capabilities, large language models (LLMs) exhibit notable limitations when applied to scientific research ideation and other involved tasks. Most LLMs are trained broadly across a wide array of internet text, making them effective for general understanding that is often too shallow for domain-specific reasoning."
+  },
+  "novelty": {
+    "answer": [
+      "The use of retrieval-augmented generation (RAG) chains to integrate recent and personalized information into the research ideation process.",
+      "The construction of a hierarchical topic tree to identify distant topic pairs for generating novel research abstracts.",
+      "The iterative self-evaluation of generated abstracts against relevant literature and peer reviews to enhance concreteness and interestingness."
+    ],
+    "evidence": [
+      "RAG chains offer several key advantages that make them well-suited for research ideation. They enable quick and accurate access to specialized knowledge outside the LLM’s training data.",
+      "The system ingests papers from nine major AI conferences, which collectively span the vast subfields of machine learning, and organizes them into a hierarchical topic tree.",
+      "Experiments using LLM-based metrics indicate that our method significantly improves the concreteness of generated research ideas relative to standard prompting approaches."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lu et al. (2024) The AI Scientist inspired our comprehensive approach to utilizing papers from multiple ML conferences. (Methodological precursors)\n- Radensky et al. (2024) Scideator's use of RAG and Semantic Scholar influenced our retrieval and recombination methods. (Methodological precursors)",
+    "evidence": "A prominent example of a related large language model (LLM) agent designed to accelerate machine learning research is 'The AI Scientist.' While 'The AI Scientist' automates peer review by focusing on 500 papers from the ICLR conference, our approach is more comprehensive, utilizing papers from nine different ML conferences.\nAnother recent example of a research agent is 'Scideator,' a RAG and Semantic Scholar-powered tool for recombining multiple facets of papers in literature."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct a knowledge base from nine major AI conferences.",
+        "input": "Papers from nine major AI conferences.",
+        "output": "A comprehensive knowledge base for research ideation.",
+        "evidence": "The Budget AI Researcher is designed as a topic-guided ideation agent that generates and refines research abstracts using information retrieved from real-world machine learning papers."
+      },
+      {
+        "step": "Generate a hierarchical topic tree.",
+        "input": "Papers from the knowledge base.",
+        "output": "A hierarchical topic tree to identify distant topic pairs.",
+        "evidence": "We then outline the processing pipeline used to generate a hierarchical topic tree, the pairing of distant topics for ideation."
+      },
+      {
+        "step": "Generate and refine research abstracts.",
+        "input": "Distant topic pairs from the topic tree.",
+        "output": "Novel research abstracts.",
+        "evidence": "The system ingests papers from nine major AI conferences, which collectively span the vast subfields of machine learning, and organizes them into a hierarchical topic tree."
+      },
+      {
+        "step": "Evaluate and polish abstracts using LLM-based evaluation.",
+        "input": "Generated abstracts and relevant literature.",
+        "output": "Refined and polished abstracts.",
+        "evidence": "The Budget AI Researcher also uses the abstracts retrieved from the Semantic Scholar API to polish its own abstracts, making them more professional and novel."
+      }
+    ],
+    "tools": [
+      {
+        "name": "LangChain",
+        "description": "Used to augment LLMs’ knowledge bases through a RAG chain system.",
+        "evidence": "LangChain is a tool for applications that chain multiple AI-powered models together."
+      },
+      {
+        "name": "Chroma",
+        "description": "An AI-native open-source vector database for efficient storage and retrieval of vector embeddings.",
+        "evidence": "Chroma (Kedia 2024) is an AI-native open-source vector database designed for efficient storage and retrieval of vector embeddings."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Interestingness",
+        "purpose": "Measures the perceived interestingness of generated research ideas.",
+        "application": "Used in human evaluations to assess the enhancement in perceived interestingness.",
+        "evidence": "Human evaluations further demonstrate a substantial enhancement in the perceived interestingness of the outputs."
+      },
+      {
+        "name": "Novelty",
+        "purpose": "Assesses the novelty of generated research ideas.",
+        "application": "Used in experiments to compare the novelty of ideas generated by different frameworks.",
+        "evidence": "Table 1 shows the average rating of sample abstracts generated from each framework."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The Budget AI Researcher is designed as a topic-guided ideation agent that generates and refines research abstracts using information retrieved from real-world machine learning papers."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Since these merges may result in vague or infeasible ideas, the Budget AI Researcher can generate an experimental procedure, a sample of which is in Appendix F."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for research ideation across various subfields of machine learning.",
+        "evidence": "The system ingests papers from nine major AI conferences, which collectively span the vast subfields of machine learning."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The Budget AI Researcher generates comparably interesting, much more novel, and comparably feasible ideas than those generated by leading LLMs.",
+        "evidence": "The Budget AI Researcher, which uses Llama 3.2 11B Vision, generates comparably interesting, much more novel, and comparably feasible ideas than those generated by leading LLMs."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GPT-4o-mini",
+        "description": "A baseline LLM with a knowledge cutoff of October 2023.",
+        "evidence": "The baseline LLMs, which have knowledge cutoffs of October 2023, December 2023, and April 2024 for GPT-4o-mini."
+      },
+      {
+        "name": "Llama 3.2 90B",
+        "description": "A baseline LLM with a knowledge cutoff of December 2023.",
+        "evidence": "The baseline LLMs, which have knowledge cutoffs of October 2023, December 2023, and April 2024 for GPT-4o-mini."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Interestingness",
+        "purpose": "Measures the perceived interestingness of generated research ideas.",
+        "application": "Used in human evaluations to assess the enhancement in perceived interestingness.",
+        "evidence": "Human evaluations further demonstrate a substantial enhancement in the perceived interestingness of the outputs."
+      },
+      {
+        "name": "Novelty",
+        "purpose": "Assesses the novelty of generated research ideas.",
+        "application": "Used in experiments to compare the novelty of ideas generated by different frameworks.",
+        "evidence": "Table 1 shows the average rating of sample abstracts generated from each framework."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Dataset Scope",
+        "description": "The system is bound to a set of thousands of papers from 9 conferences, which may not encompass all subjects in AI.",
+        "evidence": "It is bound to a set of thousands of papers from 9 conferences and many of their citations, and while this encompasses most of the subjects in AI, it is far from what the entire Internet has to offer."
+      },
+      {
+        "name": "Rate Limitations",
+        "description": "Rate limits on the Groq API restrict the amount of conference paper content that can be retrieved.",
+        "evidence": "Since rate limits on the Groq API (typically 6000 tokens) can only encompass small bits and pieces of the conference papers, the LLM may not be able to retrieve all the experimental procedures required."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Online Search Feature",
+        "description": "Add an online search feature such as the Semantic Scholar API relevance search to strengthen the ideation process.",
+        "evidence": "To resolve these limitations, we can add an online search feature such as the Semantic Scholar API relevance search to strengthen the ideation process."
+      },
+      {
+        "name": "Finer-grained Ideas",
+        "description": "Employ chain-of-thought with a modified topic tree for generating finer-grained ideas.",
+        "evidence": "To generate finer-grained ideas, we can employ chain-of-thought with a modified topic tree, where each paper in the tree would be broken down into the task, the method, and the peer review if it is available."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/hellojoeAoPS11235/ai-research-agent/tree/main",
+    "evidence": "Code — https://github.com/hellojoeAoPS11235/ai-research-agent/tree/main"
+  }
+}

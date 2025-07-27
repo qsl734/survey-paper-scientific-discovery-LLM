@@ -1,0 +1,240 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a structured framework that models and discovers impactful knowledge combinations, particularly focusing on method combinations that can lead to scientific breakthroughs.",
+    "evidence": "Specifically, we investigate how knowledge units—especially those tied to methodological design—can be modeled and recombined to yield research breakthroughs."
+  },
+  "knowledge_gap": {
+    "answer": "Existing approaches primarily focus on LLM-driven idea generation rather than systematically identifying, filtering, and combining problem-method pairs to enhance the effectiveness of scientific discovery.",
+    "evidence": "Despite this, existing studies largely focus on LLM-driven idea generation rather than systematically identifying, filtering, and combining problem-method pairs to enhance the effectiveness of scientific discovery."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of a contrastive learning-based mechanism to identify distinguishing features of historically disruptive method combinations.",
+      "Proposal of a reasoning-guided Monte Carlo search algorithm leveraging LLMs for identifying promising knowledge recombinations.",
+      "Development of a disruptive index evaluation framework to quantify the disruptiveness of problem-method combinations."
+    ],
+    "evidence": [
+      "First, we introduce a contrastive learning-based mechanism to identify distinguishing features of historically disruptive method combinations within problem-driven contexts.",
+      "Second, we propose a reasoning-guided Monte Carlo search algorithm that leverages the chain-of-thought capability of LLMs to identify promising knowledge recombinations for new problem statements.",
+      "We introduce an innovative disruptive index evaluation framework to quantify the disruptiveness of problem-method combinations."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Funk and Owen-Smith (2017) Introduced the Disruption Index (DI) as a metric to quantify the extent to which new technological advancements displace or reinforce existing knowledge. (Methodological precursors)",
+    "evidence": "To address these limitations, Funk and Owen-Smith (2017) introduced the Disruption Index (DI) as a metric to quantify the extent to which new technological advancements displace or reinforce existing knowledge."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct a paper database indexed by problems and methods.",
+        "input": "Large-scale collection of academic literature.",
+        "output": "Indexed database for efficient retrieval of method candidates.",
+        "evidence": "The paper database is built upon a large-scale collection of academic literature."
+      },
+      {
+        "step": "Retrieve and synthesize relevant papers for a given research question.",
+        "input": "Research question.",
+        "output": "Candidate set of methods.",
+        "evidence": "Given a research question, our framework first retrieves and synthesizes relevant papers."
+      },
+      {
+        "step": "Generate problem-method summaries using a fine-tuned model.",
+        "input": "Problem-method pair and task-specific prompt.",
+        "output": "Concise summary.",
+        "evidence": "The first sub-module aims to automatically generate highly concise summaries for given problem-method pairs."
+      },
+      {
+        "step": "Predict the disruptive index using a prediction model.",
+        "input": "Generated summaries and extracted critical information.",
+        "output": "Disruption score.",
+        "evidence": "The third sub-module utilizes the generated problem-method summaries and extracted critical information to predict the disruptive index for problem-method combinations."
+      },
+      {
+        "step": "Iteratively refine method combinations based on feedback.",
+        "input": "Current method configuration and disruptive index.",
+        "output": "Optimized method combinations.",
+        "evidence": "The dynamic method optimization module is designed to iteratively refine method combinations based on feedback from the disruptive index."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Large Language Models (LLMs)",
+        "description": "Used for generating research ideas and synthesizing existing knowledge.",
+        "evidence": "In scientific discovery, LLMs have been applied to generate research ideas and synthesize existing knowledge."
+      },
+      {
+        "name": "Low-Rank Adaptation (LoRA)",
+        "description": "Used for fine-tuning the summary generation model.",
+        "evidence": "To enhance the accuracy and logical coherence of generated summaries, we employ a summary generation model fine-tuned using Low-Rank Adaptation (LoRA)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DBLP",
+        "data_description": "Records from CCF-A conferences in the field of artificial intelligence.",
+        "usage": "Used for evaluating the effectiveness of the framework.",
+        "evidence": "For DBLP, we extract records from 2011 to 2021 covering 14,533 publications from CCF-A conferences in the field of artificial intelligence."
+      },
+      {
+        "name": "PubMed",
+        "data_description": "Research articles related to depression.",
+        "usage": "Used for evaluating the effectiveness of the framework.",
+        "evidence": "From PubMed, we select 96,612 research articles related to depression, published between 2015 and 2025."
+      },
+      {
+        "name": "PatSnap",
+        "data_description": "Patent records on medical robotics.",
+        "usage": "Used for evaluating the effectiveness of the framework.",
+        "evidence": "Lastly, for PatSnap, we use 6,677 patent records on medical robotics, with legal status marked as active, covering the period from 2020 to 2025."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Cosine Similarity",
+        "purpose": "Measures the similarity between problem-method summaries and ground-truth summaries.",
+        "application": "Used to evaluate the alignment between generated summaries and their corresponding textual representations.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "ROUGE",
+        "purpose": "Measures the overlap between generated summaries and reference summaries.",
+        "application": "Used to evaluate the quality of problem-method summarization.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "MSE",
+        "purpose": "Measures the mean squared error in disruptive index prediction.",
+        "application": "Used to evaluate the accuracy of the disruptive index prediction model.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      },
+      {
+        "name": "MAE",
+        "purpose": "Measures the mean absolute error in disruptive index prediction.",
+        "application": "Used to evaluate the accuracy of the disruptive index prediction model.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Given a research question, our framework first retrieves and synthesizes relevant papers, then employs an LLM assistant to determine whether specific papers can serve as sources for new scientific discoveries related to the question and extracts a candidate set of methods."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "To evaluate the disruptiveness of these strategies, we identify potential source literature in our database, analyze differences between source strategies and current strategies, and propose an adaptive bias-aware alignment model to predict disruptive indices based on these differences."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The framework is applied across multiple scientific domains to model the structural dynamics of innovation.",
+        "evidence": "Empirical studies across multiple domains show that the framework is capable of modeling the structural dynamics of innovation and successfully highlights combinations with high disruptive potential."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed framework outperforms state-of-the-art methods in predicting the disruptiveness of problem-method combinations.",
+        "evidence": "Our results demonstrate that the proposed framework outperforms state-of-the-art methods in predicting the disruptiveness of problem-method combinations."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GPT",
+        "description": "General-purpose large language model for natural language understanding and text generation.",
+        "evidence": "We consider the following baselines: (1) General-purpose LLMs: GPT and Claude, widely used for natural language understanding and text generation tasks."
+      },
+      {
+        "name": "SciBERT",
+        "description": "A pre-trained language model designed specifically for scientific text processing.",
+        "evidence": "SciBERT [29], a pre-trained language model designed specifically for scientific text processing, which has demonstrated strong performance in scientific literature comprehension and reasoning tasks."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DBLP",
+        "data_description": "Records from CCF-A conferences in the field of artificial intelligence.",
+        "usage": "Used for evaluating the effectiveness of the framework.",
+        "evidence": "For DBLP, we extract records from 2011 to 2021 covering 14,533 publications from CCF-A conferences in the field of artificial intelligence."
+      },
+      {
+        "name": "PubMed",
+        "data_description": "Research articles related to depression.",
+        "usage": "Used for evaluating the effectiveness of the framework.",
+        "evidence": "From PubMed, we select 96,612 research articles related to depression, published between 2015 and 2025."
+      },
+      {
+        "name": "PatSnap",
+        "data_description": "Patent records on medical robotics.",
+        "usage": "Used for evaluating the effectiveness of the framework.",
+        "evidence": "Lastly, for PatSnap, we use 6,677 patent records on medical robotics, with legal status marked as active, covering the period from 2020 to 2025."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Cosine Similarity",
+        "purpose": "Measures the similarity between problem-method summaries and ground-truth summaries.",
+        "application": "Used to evaluate the alignment between generated summaries and their corresponding textual representations.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "ROUGE",
+        "purpose": "Measures the overlap between generated summaries and reference summaries.",
+        "application": "Used to evaluate the quality of problem-method summarization.",
+        "evidence": "Table 1 reports the cosine similarity and ROUGE scores between problem-method summaries generated by our framework and their corresponding ground-truth summaries."
+      },
+      {
+        "name": "MSE",
+        "purpose": "Measures the mean squared error in disruptive index prediction.",
+        "application": "Used to evaluate the accuracy of the disruptive index prediction model.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      },
+      {
+        "name": "MAE",
+        "purpose": "Measures the mean absolute error in disruptive index prediction.",
+        "application": "Used to evaluate the accuracy of the disruptive index prediction model.",
+        "evidence": "We evaluate the effectiveness of our disruptive index prediction model based on four key metrics: MSE, MAE, weighted MSE (WMSE), and weighted MAE (WMAE)."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Historical Data",
+        "description": "The framework may encounter challenges in emerging scientific fields with minimal prior work due to a lack of sufficient historical data.",
+        "evidence": "First, for entirely emerging scientific fields with minimal prior work, our framework may encounter challenges due to a lack of sufficient historical data."
+      },
+      {
+        "name": "Computational Complexity",
+        "description": "The multi-step process increases computational complexity and execution time, which may limit scalability for large-scale real-time applications.",
+        "evidence": "Second, our framework involves a multi-step process that includes problem-method summarization, source validation, information extraction, secondary learning, and deviation-aware alignment."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Broader Domains",
+        "description": "Explore expanding the framework to broader domains to further assist researchers in generating groundbreaking discoveries.",
+        "evidence": "Future research may explore expanding the framework to broader domains and improving interpretability to further assist researchers in generating groundbreaking discoveries."
+      },
+      {
+        "name": "Improve Computational Efficiency",
+        "description": "Explore ways to optimize search strategies for data-scarce fields and improve computational efficiency through parallelization and adaptive learning techniques.",
+        "evidence": "Future research should explore ways to mitigate these limitations, including optimizing search strategies for data-scarce fields and improving computational efficiency through parallelization and adaptive learning techniques."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore the feasibility of using open-source post-trained large language models (LLMs) as autonomous agents capable of performing the full cycle of automated research and review, from literature review and manuscript preparation to peer review and paper refinement.",
+    "evidence": "This paper explores the feasibility of using open-source post-trained LLMs as autonomous agents capable of performing the full cycle of automated research and review, from literature review and manuscript preparation to peer review and paper refinement."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the largely unexplored potential of automating the entire research process using open-source LLMs, particularly the integration of iterative feedback essential for maintaining academic soundness and novelty.",
+    "evidence": "The possibility of automating the entire research process with open-source LLMs remains largely unexplored. Moreover, few efforts address the integration of iterative feedback, which is essential for maintaining academic soundness and novelty."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of an iterative reinforcement learning framework that automates the entire research lifecycle, mirroring the real-world Research-Review-Refinement cycle.",
+      "Development of two large-scale datasets, Review-5k and Research-14k, designed to capture the complexity of both peer review and research paper generation in machine learning.",
+      "Demonstration that the CycleResearcher model can generate papers with an average quality level close to human-written preprints."
+    ],
+    "evidence": [
+      "We introduce an iterative reinforcement learning framework that automates the entire research lifecycle, which mirrors the real-world Research-Review-Refinement cycle.",
+      "We release two large-scale datasets, Review-5k and Research-14k, which are publicly available and designed to capture the complexity of both peer review and research paper generation in machine learning.",
+      "We demonstrate that the CycleResearcher model can generate papers with an average quality level close to human-written preprints."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Lu et al. (2024) The AI Scientist project introduced a fully automated, prompt-driven research pipeline. (Methodological precursors)\n- Yuan et al. (2024) Their iterative preference training mechanism inspired our framework. (Methodological precursors)\n- Oberg et al. (2022) Their work on teaching science as a process inspired our approach to automate the research lifecycle. (Methodological precursors)",
+    "evidence": "The AI Scientist project (Lu et al., 2024) introduced a fully automated, prompt-driven research pipeline. Our approach, built entirely on open-source models, aims to replicate the real-world dynamic of research development and peer review processes. By leveraging trainable models, we enable the utilization of the iterative preference training mechanism (Yuan et al., 2024). Automating the entire research lifecycle, 'Oberg et al. (2022) presents a significant challenge to current agent-based methods."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Develop an iterative training framework with CycleResearcher and CycleReviewer models.",
+        "input": "Open-source LLMs, Review-5k and Research-14k datasets.",
+        "output": "A framework that automates the research lifecycle and simulates the peer review process.",
+        "evidence": "We build a novel iterative training framework that contains two core components: the policy model (namely CycleResearcher) and the reward model (namely CycleReviewer)."
+      },
+      {
+        "step": "Train CycleReviewer as the Generative Reward model on the Review-5k Dataset.",
+        "input": "Review-5k Dataset.",
+        "output": "A model that evaluates research output and provides feedback.",
+        "evidence": "We train CycleReviewer as the Generative Reward model on the Review-5k Dataset."
+      },
+      {
+        "step": "Train CycleResearcher on Research-14k to generate research papers.",
+        "input": "Research-14k Dataset.",
+        "output": "Generated research papers with structured outlines and main text.",
+        "evidence": "The CycleResearcher model is trained on Research-14k, and the process begins with a literature review."
+      }
+    ],
+    "tools": [
+      {
+        "name": "CycleResearcher",
+        "description": "Used for generating research papers and performing research tasks.",
+        "evidence": "CycleResearcher acts as a scientific thinker, responsible for reading literature, identifying research problems, proposing solutions, and designing experiments."
+      },
+      {
+        "name": "CycleReviewer",
+        "description": "Simulates the peer review process and provides feedback.",
+        "evidence": "The reward model, on the other hand, simulates the peer review process, evaluating the quality of the research output and providing feedback."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Review-5k",
+        "data_description": "Contains peer review and accepted papers from major ML conferences.",
+        "usage": "Used for training the CycleReviewer model.",
+        "evidence": "We train CycleReviewer as the Generative Reward model on the Review-5k Dataset."
+      },
+      {
+        "name": "Research-14k",
+        "data_description": "Contains structured outlines and detailed main text from academic papers.",
+        "usage": "Used for training the CycleResearcher model.",
+        "evidence": "The CycleResearcher model is trained on Research-14k."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Mean Absolute Error (MAE)",
+        "purpose": "Measures the accuracy of review scores compared to human reviewers.",
+        "application": "Used to assess the quality of CycleReviewer in predicting paper scores.",
+        "evidence": "Our results demonstrate that CycleReviewer achieves promising performance with a 26.89% reduction in mean absolute error (MAE) compared to individual human reviewers."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Our objective is to determine whether LLMs can actively contribute to each stage of scientific inquiry, from literature review and idea generation to experimental design, manuscript preparation, peer review and paper refinement."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "CycleResearcher acts as a scientific thinker, responsible for reading literature, identifying research problems, proposing solutions, and designing experiments."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for automating the research lifecycle using LLMs, applicable across various scientific domains.",
+        "evidence": "Our approach, built entirely on open-source models, aims to replicate the real-world dynamic of research development and peer review processes."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "CycleReviewer demonstrates a 26.89% reduction in MAE compared to individual human reviewers, indicating its potential in automated research assessment.",
+        "evidence": "Our results demonstrate that CycleReviewer achieves promising performance with a 26.89% reduction in mean absolute error (MAE) compared to individual human reviewers."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AI Scientist",
+        "description": "A fully automated, prompt-driven research pipeline.",
+        "evidence": "The AI Scientist project (Lu et al., 2024) introduced a fully automated, prompt-driven research pipeline."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Review-5k",
+        "data_description": "Contains peer review and accepted papers from major ML conferences.",
+        "usage": "Used for training the CycleReviewer model.",
+        "evidence": "We train CycleReviewer as the Generative Reward model on the Review-5k Dataset."
+      },
+      {
+        "name": "Research-14k",
+        "data_description": "Contains structured outlines and detailed main text from academic papers.",
+        "usage": "Used for training the CycleResearcher model.",
+        "evidence": "The CycleResearcher model is trained on Research-14k."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Mean Absolute Error (MAE)",
+        "purpose": "Measures the accuracy of review scores compared to human reviewers.",
+        "application": "Used to assess the quality of CycleReviewer in predicting paper scores.",
+        "evidence": "Our results demonstrate that CycleReviewer achieves promising performance with a 26.89% reduction in mean absolute error (MAE) compared to individual human reviewers."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The generalizability across research domains remains a challenge for current LLMs.",
+        "evidence": "We also acknowledge that the generalizability across research domains remains a challenge for current LLMs."
+      },
+      {
+        "name": "Fabricated Experimental Results",
+        "description": "The experimental results generated by CycleResearcher are fabricated and do not represent real experimental data.",
+        "evidence": "Notably, the experimental results generated by CycleResearcher in this work are fabricated and do not represent real experimental data."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Other Scientific Fields",
+        "description": "Future collaborations with publishers and domain experts to access larger, more cohesive training datasets from diverse fields.",
+        "evidence": "We envision future collaborations with publishers and domain experts to access larger, more cohesive training datasets from diverse fields and adapt our framework accordingly."
+      },
+      {
+        "name": "Integrate Retrieval-Augmented Generation",
+        "description": "Improve CycleReviewer's ability to assess research novelty and accuracy by integrating retrieval-augmented generation.",
+        "evidence": "In future work, we aim to integrate retrieval-augmented generation (RAG) or other knowledge-enhancement techniques to improve its ability to assess research novelty and accuracy."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://wengsyx.github.io/Researcher/",
+    "evidence": "The code, dataset and model weight are released at https://wengsyx.github.io/Researcher/."
+  }
+}

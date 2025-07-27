@@ -1,0 +1,202 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to propose a Multimodal Large Language Model (MLLM)-based approach for interpretable hypothesis inference to automate the generation, assessment, and refinement of hypotheses concerning urban form and transportation safety.",
+    "evidence": "To address these limitations, we propose a Multimodal Large Language Model (MLLM)-based approach for interpretable hypothesis inference, enabling the automated generation, assessment, and refinement of hypotheses concerning urban form and transportation safety."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in traditional urban research methodologies that rely heavily on human experts for hypothesis generation, which is time-consuming and prone to confirmation bias, and the underutilization of unstructured data like street view imagery.",
+    "evidence": "Traditional workflows face several key challenges: (1) reliance on human experts to propose hypotheses, which can be time-consuming and prone to confirmation bias; (2) limited interpretability, particularly in deep learning approaches; and (3) underutilization of unstructured data that encodes critical urban context."
+  },
+  "novelty": {
+    "answer": [
+      "The use of MLLMs as semantic engines to translate unstructured inputs, such as SVIs, into structured and interpretable variables.",
+      "The development of an interpretable, nonparametric framework for hypothesis inference that iteratively generates, evaluates, and refines hypotheses.",
+      "The application of the framework to uncover novel, interpretable visual variables that correlate with crash rates in urban road safety analysis."
+    ],
+    "evidence": [
+      "We introduce a novel use of MLLMs as semantic engines that translate unstructured inputs, such as SVIs, into structured and interpretable variables guided by natural language hypotheses.",
+      "We develop an interpretable, nonparametric framework for hypothesis inference, implemented as an iterative procedure over the hypothesis space.",
+      "We apply our framework to study road safety in the Manhattan area and demonstrate its ability to uncover novel, interpretable visual variables that significantly correlate with crash rates."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yu et al. (2024) Understanding how urban form influences outcomes such as safety, equity, and accessibility is central to transportation and urban science. (Methodological precursors)\n- Xia et al. (2025) Existing methodological pipelines face critical challenges in discovering new, interpretable factors from complex urban environments. (Papers with limitations addressed by this work)",
+    "evidence": "Understanding how urban form influences outcomes such as safety, equity, and accessibility is central to transportation and urban science Yu et al. (2024); Xia et al. (2025)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Hypothesis Generation",
+        "input": "Initial hypothesis set sampled from an LLM",
+        "output": "New hypotheses generated based on statistical significance",
+        "evidence": "Starting from an initial hypothesis set sampled from an LLM, we iteratively refine the set by evaluating each hypothesis using a linear regression model."
+      },
+      {
+        "step": "Embedding Construction",
+        "input": "Street view images and generated hypotheses",
+        "output": "Interpretable embeddings for each image",
+        "evidence": "For each SVI, we employ an MLLM to infer categorical responses to each hypothesis, based solely on the visual content of the SVI."
+      },
+      {
+        "step": "Hypothesis Assessment",
+        "input": "Hypothesis-aligned embedding matrix",
+        "output": "Statistical significance of each hypothesis",
+        "evidence": "We fit a linear model of the form: 𝑦𝑖= 𝛽0 + ∑𝑘𝑗=1 𝛽𝑗𝑒𝑡𝑖𝑗+ 𝜀𝑖, and apply a two-sided 𝑡-test to each coefficient 𝛽𝑗."
+      }
+    ],
+    "tools": [
+      {
+        "name": "MLLM",
+        "description": "Used to infer categorical responses to hypotheses based on visual content",
+        "evidence": "For each SVI, we employ an MLLM to infer categorical responses to each hypothesis."
+      },
+      {
+        "name": "Linear Regression",
+        "description": "Used to evaluate the statistical significance of hypotheses",
+        "evidence": "We fit a linear model of the form: 𝑦𝑖= 𝛽0 + ∑𝑘𝑗=1 𝛽𝑗𝑒𝑡𝑖𝑗+ 𝜀𝑖."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "NYC Open Data",
+        "data_description": "Crash records for road segments in Manhattan",
+        "usage": "Used to quantify crash risk for evaluation",
+        "evidence": "Crash records were sourced from NYC Open Data."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Root Mean Squared Error (RMSE)",
+        "purpose": "Measures the average magnitude of the error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Mean Absolute Error (MAE)",
+        "purpose": "Measures the average absolute error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Coefficient of Determination (R2)",
+        "purpose": "Measures the proportion of variance explained by the model",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "To address these limitations, we leverage LLMs as generative engines for proposing semantically rich, visually grounded hypotheses expressed in natural language."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our framework constructs an interpretable embedding space that is explicitly aligned with the semantics of the generated hypotheses."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a framework for hypothesis-driven urban scientific discovery using MLLMs.",
+        "evidence": "This approach establishes a scalable and trustworthy pathway for interpretable, data-driven scientific discovery in urban and transportation systems using foundation models such as MLLMs."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology integrates urban science, transportation safety, and machine learning.",
+        "evidence": "Our work makes the following contributions: We formalize scientific discovery in urban domains as an inference problem over a hypothesis space."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed method achieves superior performance across all evaluation metrics, outperforming deep learning baselines.",
+        "evidence": "Our approach achieves better predictive performance than pretrained deep learning baselines such as ResNet and Vision Transformer (ViT), while maintaining full transparency through interpretable variable construction and attribution."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "ResNet-50",
+        "description": "Standard deep learning baseline for image classification.",
+        "evidence": "Our approach achieves better predictive performance than pretrained deep learning baselines such as ResNet."
+      },
+      {
+        "name": "Vision Transformer (ViT)",
+        "description": "A transformer-based architecture for image classification.",
+        "evidence": "Our approach achieves better predictive performance than pretrained deep learning baselines such as ResNet and Vision Transformer (ViT)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "NYC Open Data",
+        "data_description": "Crash records for road segments in Manhattan",
+        "usage": "Used to quantify crash risk for evaluation",
+        "evidence": "Crash records were sourced from NYC Open Data."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Root Mean Squared Error (RMSE)",
+        "purpose": "Measures the average magnitude of the error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Mean Absolute Error (MAE)",
+        "purpose": "Measures the average absolute error",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      },
+      {
+        "name": "Coefficient of Determination (R2)",
+        "purpose": "Measures the proportion of variance explained by the model",
+        "application": "Used to evaluate predictive performance",
+        "evidence": "Figure 3 compares our approach with standard vision-based baselines across three widely used metrics: root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (𝑅2)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "NYC Open Data",
+    "description": "Crash records for road segments in Manhattan",
+    "usage": "Used to quantify crash risk for evaluation",
+    "evidence": "Crash records were sourced from NYC Open Data."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Resolution Limitations",
+        "description": "The panoramic images used may downsample visual detail, making it hard to detect small features.",
+        "evidence": "While panoramic images provide comprehensive spatial coverage, they often downsample visual detail, making it hard for even a capable MLLM to reliably detect small features."
+      },
+      {
+        "name": "Ambiguity in Hypotheses",
+        "description": "Certain hypotheses may be ambiguous or rarely triggered in the data, contributing little statistical signal.",
+        "evidence": "Certain questions may be ambiguous in practice or rarely triggered in the Manhattan data."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend to Other Urban Outcomes",
+        "description": "Apply the framework to other domains such as walkability, equity, and environmental quality.",
+        "evidence": "The generality of URBANX enables broad applicability to other domains such as walkability, equity, and environmental quality."
+      },
+      {
+        "name": "Integrate Causal Inference",
+        "description": "Incorporate causal inference techniques to enhance the interpretability and applicability of the findings.",
+        "evidence": "Future work may extend this approach to dynamic data, integrate causal inference, and benefit from ongoing advances in the alignment and efficiency of foundation models."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/YihongT/UrbanX.git",
+    "evidence": "§ Project: https://github.com/YihongT/UrbanX.git"
+  }
+}

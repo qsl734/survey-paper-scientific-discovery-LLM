@@ -1,0 +1,147 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present Scideator, a novel mixed-initiative ideation tool that assists in scientific idea generation and novelty evaluation by recombining facets from existing research papers.",
+    "evidence": "In this work, we present Scideator, an LLM-powered tool for facet-based scientific idea generation and novelty evaluation."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in supporting facet-based scientific ideation using large language models, which prior works have not explored.",
+    "evidence": "However, none of these human-LLM works support facet-based scientific ideation."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of Scideator, a tool that uses LLMs for facet-based scientific idea generation and novelty evaluation.",
+      "Development of three LLM-powered retrieval-augmented generation modules: Analogous Paper Facet Finder, Faceted Idea Generator, and Idea Novelty Checker.",
+      "Implementation of a human-AI workflow that allows users to recombine facets from research papers to generate new ideas and evaluate their novelty.",
+      "Conducting a within-subjects user study demonstrating increased creativity support with Scideator compared to a strong baseline."
+    ],
+    "evidence": [
+      "In this work, we present Scideator, an LLM-powered tool for facet-based scientific idea generation and novelty evaluation.",
+      "To support these tasks, Scideator introduces three LLM-powered retrieval-augmented generation (RAG) modules: Analogous Paper Facet Finder, Faceted Idea Generator, and Idea Novelty Checker.",
+      "We make the following contributions: A human-AI workflow for scientific ideation that... (1) takes a set of papers as input and finds a set of analogous papers, (2) extracts key facets from the input and analogous papers, (3) recombines those facets into new ideas, (4) evaluates those ideas for novelty, (5) iterates upon those ideas to improve their novelty, and (6) allows seamless human refinement at each step.",
+      "A within-subjects user study (N=22) demonstrating that, compared to a strong baseline, Scideator significantly increases creativity support, especially exploration, which participants consider the most important factor for idea generation."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Chan et al. (2018) Solvent: A mixed initiative system for finding analogies between research papers. (Methodological precursors)\n- Hope et al. (2017) Accelerating innovation through analogy mining. (Methodological precursors)\n- Kang et al. (2022) Augmenting scientific creativity with an analogical search engine. (Methodological precursors)",
+    "evidence": "Prior work has demonstrated the effectiveness of using a facet-based approach to find analogies between research papers for idea inspiration [8, 33, 55]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Extract key facets from input papers.",
+        "input": "User-provided set of scientific papers.",
+        "output": "Key facets such as purposes, mechanisms, and evaluations.",
+        "evidence": "Scideator extracts key facets (purpose, mechanism, and evaluation) from the input papers."
+      },
+      {
+        "step": "Retrieve analogous papers.",
+        "input": "Extracted facets from input papers.",
+        "output": "Papers with analogous purpose-mechanism pairs.",
+        "evidence": "Scideator then retrieves papers with analogous purpose-mechanism pairs similar to those from the input papers."
+      },
+      {
+        "step": "Generate new ideas by recombining facets.",
+        "input": "Selected facets from input and analogous papers.",
+        "output": "New research ideas.",
+        "evidence": "The tool generates analogies involving the candidate facets and produces ideas based on the most promising ones."
+      },
+      {
+        "step": "Evaluate idea novelty.",
+        "input": "Generated ideas and related literature.",
+        "output": "Novelty classification and rationale.",
+        "evidence": "Scideator then provides a novelty classification and reason for proposed ideas, making it easy for scientists to verify the tool’s assessment."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Scideator",
+        "description": "Used for facet-based scientific idea generation and novelty evaluation.",
+        "evidence": "In this work, we present Scideator, an LLM-powered tool for facet-based scientific idea generation and novelty evaluation."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Scideator extracts key facets — purposes, mechanisms, and evaluations — from these and related papers, allowing users to explore the idea space by interactively recombining facets to synthesize inventive ideas."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The tool generates analogies involving the candidate facets and produces ideas based on the most promising ones."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a tool for scientific ideation applicable across various research domains.",
+        "evidence": "The system is currently set up for computer science ideation topics but can be easily adjusted for other research areas."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Scideator significantly increases creativity support, especially exploration, compared to a strong baseline.",
+        "evidence": "A within-subjects user study (N=22) demonstrating that, compared to a strong baseline, Scideator significantly increases creativity support, especially exploration, which participants consider the most important factor for idea generation."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Strong baseline",
+        "description": "A baseline tool for comparison in the user study.",
+        "evidence": "In a within-subjects user study (N=22) with computer-science researchers comparing Scideator to a strong baseline, our tool provided significantly more creativity support."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Semantic Scholar API",
+        "data_description": "A comprehensive database of scientific papers.",
+        "usage": "Used for retrieving analogous papers and related literature.",
+        "evidence": "Scideator uses the Semantic Scholar API to retrieve the top four papers (with retrievable titles and abstracts) relevant to each query from the “all-cs” corpus."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Creativity Support Index (CSI)",
+        "purpose": "Measures creativity support provided by digital tools.",
+        "application": "Used to evaluate the creativity support provided by Scideator compared to a baseline.",
+        "evidence": "The well-established Creativity Support Index (CSI) questionnaire [11]."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Semantic Scholar API",
+    "description": "A comprehensive database of scientific papers.",
+    "usage": "Used for retrieving analogous papers and related literature.",
+    "evidence": "Scideator uses the Semantic Scholar API to retrieve the top four papers (with retrievable titles and abstracts) relevant to each query from the “all-cs” corpus."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Domain Setup",
+        "description": "The system is currently set up for computer science ideation topics but can be easily adjusted for other research areas.",
+        "evidence": "The system is currently set up for computer science ideation topics but can be easily adjusted for other research areas."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Other Research Areas",
+        "description": "Adjust the system to support ideation topics beyond computer science.",
+        "evidence": "The system is currently set up for computer science ideation topics but can be easily adjusted for other research areas."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

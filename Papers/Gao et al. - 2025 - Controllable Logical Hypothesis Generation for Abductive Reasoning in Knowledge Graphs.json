@@ -1,0 +1,221 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce the task of controllable hypothesis generation for abductive reasoning in knowledge graphs, addressing the challenges of hypothesis space collapse and hypothesis oversensitivity.",
+    "evidence": "To address this limitation, we introduce the task of controllable hypothesis generation to improve the practical utility of abductive reasoning."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the lack of controllability in abductive reasoning over knowledge graphs, which leads to numerous plausible but redundant or irrelevant hypotheses.",
+    "evidence": "However, due to a lack of controllability, a single observation may yield numerous plausible but redundant or irrelevant hypotheses on large-scale knowledge graphs."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of controllable abductive reasoning in knowledge graphs.",
+      "A dataset augmentation strategy based on sub-logical decomposition to address hypothesis space collapse.",
+      "Refinement of the semantic reward function by incorporating Dice and Overlap coefficients to mitigate hypothesis oversensitivity.",
+      "Introduction of a condition-adherence reward to ensure better compliance with control constraints."
+    ],
+    "evidence": [
+      "We are the first to introduce the task of controllable abductive reasoning, enabling abductive reasoning in knowledge graphs to better satisfy practical needs by controlling semantic content and structural complexity.",
+      "We propose an observation-hypothesis pair augmentation strategy via sub-logical decomposition to address the challenge of hypothesis space collapse when generating complex logical structures.",
+      "To mitigate hypothesis oversensitivity, we refine the semantic reward function by incorporating Dice and Overlap coefficients to accommodate minor discrepancies between hypotheses and targets.",
+      "While introducing a condition-adherence reward to ensure better compliance with control constraints, leading to more stable and accurate learning."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Bai et al. (2024) Advancing abductive reasoning in knowledge graphs through complex logical hypothesis generation. (Methodological precursors)",
+    "evidence": "AbductiveKGR [12] is the first work to realize abductive reasoning over knowledge graphs, training a hypothesis generation model using a supervised learning–reinforcement learning paradigm."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct observation-hypothesis pairs using predefined logical patterns.",
+        "input": "Knowledge graph data",
+        "output": "Observation-hypothesis pairs",
+        "evidence": "We randomly sample observation-hypothesis pairs from the knowledge graph by constructing hypotheses based on predefined logical patterns."
+      },
+      {
+        "step": "Augment dataset using sub-logical decomposition.",
+        "input": "Observation-hypothesis pairs",
+        "output": "Augmented dataset with sub-hypotheses",
+        "evidence": "We propose a dataset augmentation method based on sub-logic decomposition."
+      },
+      {
+        "step": "Train a conditional generative model using supervised learning.",
+        "input": "Augmented dataset, control conditions",
+        "output": "Trained generative model",
+        "evidence": "We train a conditional generative model to generate hypothesis sequences guided by a given observation and control condition."
+      },
+      {
+        "step": "Fine-tune the generative model using reinforcement learning.",
+        "input": "Trained generative model, reward functions",
+        "output": "Fine-tuned generative model",
+        "evidence": "To improve the generalization ability on unseen knowledge graphs and better adhere to the specified control conditions, we further fine-tune the generative model using reinforcement learning."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Transformer-based decoder-only architecture",
+        "description": "Used for implementing the generative model",
+        "evidence": "The generative model, which we implement using a standard Transformer-based decoder-only architecture."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DBpedia50",
+        "data_description": "A knowledge graph dataset",
+        "usage": "Used for training, validation, and testing",
+        "evidence": "We conduct experiments on three widely used knowledge graph datasets: DBpedia50."
+      },
+      {
+        "name": "WN18RR",
+        "data_description": "A knowledge graph dataset",
+        "usage": "Used for training, validation, and testing",
+        "evidence": "We conduct experiments on three widely used knowledge graph datasets: WN18RR."
+      },
+      {
+        "name": "FB15k-237",
+        "data_description": "A knowledge graph dataset",
+        "usage": "Used for training, validation, and testing",
+        "evidence": "We conduct experiments on three widely used knowledge graph datasets: FB15k-237."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Jaccard similarity coefficient",
+        "purpose": "Measures set-level agreement between generated hypothesis and observation",
+        "application": "Used as the primary reward in reinforcement learning",
+        "evidence": "We adopt the Jaccard similarity coefficient as the primary reward due to its strict evaluation of set-level agreement."
+      },
+      {
+        "name": "Dice similarity coefficient",
+        "purpose": "Provides smoother gradients and greater tolerance to slight mismatches",
+        "application": "Integrated into the semantic reward function",
+        "evidence": "We integrate two supplementary metrics: the Dice similarity coefficient and the Overlap similarity coefficient, which provide smoother gradients and greater tolerance to slight mismatches."
+      },
+      {
+        "name": "Overlap similarity coefficient",
+        "purpose": "Provides smoother gradients and greater tolerance to slight mismatches",
+        "application": "Integrated into the semantic reward function",
+        "evidence": "We integrate two supplementary metrics: the Dice similarity coefficient and the Overlap similarity coefficient, which provide smoother gradients and greater tolerance to slight mismatches."
+      },
+      {
+        "name": "Smatch score",
+        "purpose": "Quantifies the structural similarity between generated and reference hypotheses",
+        "application": "Used as a reference metric",
+        "evidence": "In addition, Smatch score is also used to quantify the structural similarity corresponding to the generated hypothesis H and the reference hypothesis Href."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Abductive reasoning in knowledge graphs aims to generate complex logical hypotheses that best explain a given set of observed entities."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Extensive experiments on three datasets demonstrate that our model not only adheres more effectively to control signals but also achieves superior semantic similarity performance compared to the baseline across multiple evaluation metrics."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for controllable abductive reasoning applicable across various domains.",
+        "evidence": "Abductive reasoning in knowledge graphs aims to generate plausible logical hypotheses from observed entities, with broad applications in areas such as clinical diagnosis and scientific discovery."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed model achieves superior semantic similarity performance compared to baselines across multiple evaluation metrics.",
+        "evidence": "Extensive experiments on three datasets demonstrate that our model not only adheres more effectively to control signals but also achieves superior semantic similarity performance compared to the baseline across multiple evaluation metrics."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AbductiveKGR",
+        "description": "A baseline model for abductive reasoning over knowledge graphs.",
+        "evidence": "AbductiveKGR [12] is the first work to realize abductive reasoning over knowledge graphs, training a hypothesis generation model using a supervised learning–reinforcement learning paradigm."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DBpedia50",
+        "data_description": "A knowledge graph dataset",
+        "usage": "Used for training, validation, and testing",
+        "evidence": "We conduct experiments on three widely used knowledge graph datasets: DBpedia50."
+      },
+      {
+        "name": "WN18RR",
+        "data_description": "A knowledge graph dataset",
+        "usage": "Used for training, validation, and testing",
+        "evidence": "We conduct experiments on three widely used knowledge graph datasets: WN18RR."
+      },
+      {
+        "name": "FB15k-237",
+        "data_description": "A knowledge graph dataset",
+        "usage": "Used for training, validation, and testing",
+        "evidence": "We conduct experiments on three widely used knowledge graph datasets: FB15k-237."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Jaccard similarity coefficient",
+        "purpose": "Measures set-level agreement between generated hypothesis and observation",
+        "application": "Used as the primary reward in reinforcement learning",
+        "evidence": "We adopt the Jaccard similarity coefficient as the primary reward due to its strict evaluation of set-level agreement."
+      },
+      {
+        "name": "Dice similarity coefficient",
+        "purpose": "Provides smoother gradients and greater tolerance to slight mismatches",
+        "application": "Integrated into the semantic reward function",
+        "evidence": "We integrate two supplementary metrics: the Dice similarity coefficient and the Overlap similarity coefficient, which provide smoother gradients and greater tolerance to slight mismatches."
+      },
+      {
+        "name": "Overlap similarity coefficient",
+        "purpose": "Provides smoother gradients and greater tolerance to slight mismatches",
+        "application": "Integrated into the semantic reward function",
+        "evidence": "We integrate two supplementary metrics: the Dice similarity coefficient and the Overlap similarity coefficient, which provide smoother gradients and greater tolerance to slight mismatches."
+      },
+      {
+        "name": "Smatch score",
+        "purpose": "Quantifies the structural similarity between generated and reference hypotheses",
+        "application": "Used as a reference metric",
+        "evidence": "In addition, Smatch score is also used to quantify the structural similarity corresponding to the generated hypothesis H and the reference hypothesis Href."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used.",
+    "usage": "The study used domain-specific knowledge graph datasets.",
+    "evidence": "We conduct experiments on three widely used knowledge graph datasets: DBpedia50, WN18RR, and FB15k-237."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The model requires retraining on each individual knowledge graph, leading to high transfer costs.",
+        "evidence": "Our method requires retraining on each individual knowledge graph. As a result, a separate model must be trained for each specific domain, leading to relatively high transfer costs."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Explore Composite Conditions",
+        "description": "Investigate the model's performance under composite condition control.",
+        "evidence": "We only explore the model’s performance under single-condition control and do not conduct experiments with composite conditions."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/HKUST-KnowComp/CtrlHGen",
+    "evidence": "The code is available at https://github.com/HKUST-KnowComp/CtrlHGen."
+  }
+}

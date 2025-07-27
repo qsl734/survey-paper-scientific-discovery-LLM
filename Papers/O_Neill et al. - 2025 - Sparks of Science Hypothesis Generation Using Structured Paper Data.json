@@ -1,0 +1,204 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce HypoGen, a dataset designed to frame Scientific Hypothesis Generation (SHG) as a Natural Language Generation (NLG) task, and to demonstrate that fine-tuning language models on this dataset improves the novelty, feasibility, and overall quality of generated hypotheses.",
+    "evidence": "In this paper, we introduce HypoGen, the first dataset of approximately 5500 structured problem-hypothesis pairs extracted from top-tier computer science conferences structured with a Bit-Flip-Spark schema... We show that by fine-tuning on our HypoGen dataset we improve the novelty, feasibility, and overall quality of the generated hypotheses."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the lack of a dedicated dataset that frames Scientific Hypothesis Generation as a Natural Language Generation task, which is crucial for improving the ability of language models to generate novel and feasible scientific ideas.",
+    "evidence": "One reason is the lack of a dedicated dataset that frames Scientific Hypothesis Generation (SHG) as a Natural Language Generation (NLG) task."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of HypoGen, the first dataset of structured problem-hypothesis pairs for scientific hypothesis generation.",
+      "Framing scientific hypothesis generation as a conditional language modeling problem enriched with an explicit reasoning chain.",
+      "Incorporation of a detailed Chain-of-Reasoning component that mirrors the intellectual process from Bit to Flip."
+    ],
+    "evidence": [
+      "In this paper, we introduce HypoGen, the first dataset of approximately 5500 structured problem-hypothesis pairs extracted from top-tier computer science conferences.",
+      "Our key contributions include the development of the HypoGen dataset and the novel framing of scientific hypothesis generation as a conditional language modeling problem enriched with an explicit reasoning chain.",
+      "HypoGen incorporates a detailed Chain-of-Reasoning narrative that mirrors the iterative and reflective process used by human scientists to transition from conventional wisdom to innovative counterproposals."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Zhou et al. (2024a) Hypothesis generation with large language models. (Methodological precursors)",
+    "evidence": "The work of Zhou et al. (2024a) with HypoGeniC expands this process with iterative reinforcement learning with human feedback."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Compile dataset from top-tier computer science conferences.",
+        "input": "Papers accepted at NeurIPS 2023 and ICLR 2024.",
+        "output": "5478 distinct samples.",
+        "evidence": "We compile our dataset from papers accepted at the two top-tier computer science conferences, NeurIPS 2023 (3218 papers) and ICLR 2024 (2260 papers), resulting in 5478 distinct samples."
+      },
+      {
+        "step": "Extract Bit, Flip, and Spark components from abstracts.",
+        "input": "Paper abstracts.",
+        "output": "Structured Bit, Flip, and Spark components.",
+        "evidence": "For each paper, we first extract the Bit, Flip, and Spark components from the abstract."
+      },
+      {
+        "step": "Extract Chain-of-Reasoning from full text.",
+        "input": "Full text of papers with available full text.",
+        "output": "Chain-of-Reasoning component.",
+        "evidence": "For papers with available full text, we extract the Chain-of-Reasoning component using a separate prompt that guides the model to recreate the intellectual progression from Bit to Flip."
+      },
+      {
+        "step": "Fine-tune LLaMA-based models on the HypoGen dataset.",
+        "input": "Curated dataset of structured problem-hypothesis pairs.",
+        "output": "Fine-tuned LLaMA-based models.",
+        "evidence": "We leverage our curated dataset of structured problem-hypothesis pairs for fine-tuning, employing the causal language modeling objective."
+      },
+      {
+        "step": "Evaluate hypotheses using automated metrics and LLM judges.",
+        "input": "Test set of 50 hypotheses.",
+        "output": "Assessment of novelty, feasibility, and overall quality.",
+        "evidence": "Our evaluation strategy relies on a test set of 50 hypotheses extracted from the recent literature from primarily 2024 and 2025."
+      }
+    ],
+    "tools": [
+      {
+        "name": "OpenAI's o1 model",
+        "description": "Used for structured extraction of Bit, Flip, and Spark components.",
+        "evidence": "We then used OpenAI’s o1 model for the structured extraction step."
+      },
+      {
+        "name": "Meta LLaMA 3.1 8B",
+        "description": "Used as a baseline model for hypothesis generation task.",
+        "evidence": "Our baseline models include Meta LLaMA 3.1 8B and R1-distilled LLaMA 3.1 8B."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "HypoGen",
+        "data_description": "Structured problem-hypothesis pairs extracted from top-tier computer science conferences.",
+        "usage": "Used for fine-tuning language models.",
+        "evidence": "We leverage our curated dataset of structured problem-hypothesis pairs for fine-tuning."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Perplexity",
+        "purpose": "Measures fluency and coherence of generated hypotheses.",
+        "application": "Used as a preliminary metric to assess the fluency and coherence of the hypotheses generated.",
+        "evidence": "Perplexity is used as a preliminary metric to assess the fluency and coherence of the hypotheses generated."
+      },
+      {
+        "name": "IAScore",
+        "purpose": "Quantifies alignment between LLM-generated hypotheses and expert-proposed research ideas.",
+        "application": "Used to measure idea alignment with the target domain.",
+        "evidence": "IAScore quantifies alignment between LLM-generated hypotheses and expert-proposed research ideas."
+      },
+      {
+        "name": "Idea Distinctiveness Index",
+        "purpose": "Evaluates semantic diversity between generated hypotheses.",
+        "application": "Used to measure the uniqueness of generated hypotheses.",
+        "evidence": "Idea Distinctiveness Index evaluates the semantic diversity between the hypotheses generated using embedding-based similarity."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We show that by fine-tuning on our HypoGen dataset we improve the novelty, feasibility, and overall quality of the generated hypotheses."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our evaluation strategy relies on a test set of 50 hypotheses extracted from the recent literature from primarily 2024 and 2025."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a dataset and methodology for scientific hypothesis generation applicable across various scientific domains.",
+        "evidence": "Hypothesis generation is the first step of the scientific process and its de facto foundation."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The dataset and models are applied to computer science conference papers.",
+        "evidence": "We compile our dataset from papers accepted at the two top-tier computer science conferences, NeurIPS 2023 and ICLR 2024."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Fine-tuning on HypoGen improves idea alignment with the target domain and increases the perplexity score of LLaMA models, indicating increased unpredictability.",
+        "evidence": "Secondly, fine-tuning improves idea alignment with the target domain, as shown by the significant improvement in IAScore for the standard LLaMA model (0.2781 →0.6746)."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "LLaMA 3.1 8B",
+        "description": "Standard model used as a baseline for hypothesis generation.",
+        "evidence": "Our baseline models include Meta LLaMA 3.1 8B and R1-distilled LLaMA 3.1 8B."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "HypoGen",
+        "data_description": "Structured problem-hypothesis pairs extracted from top-tier computer science conferences.",
+        "usage": "Used for fine-tuning language models.",
+        "evidence": "We leverage our curated dataset of structured problem-hypothesis pairs for fine-tuning."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Perplexity",
+        "purpose": "Measures fluency and coherence of generated hypotheses.",
+        "application": "Used as a preliminary metric to assess the fluency and coherence of the hypotheses generated.",
+        "evidence": "Perplexity is used as a preliminary metric to assess the fluency and coherence of the hypotheses generated."
+      },
+      {
+        "name": "IAScore",
+        "purpose": "Quantifies alignment between LLM-generated hypotheses and expert-proposed research ideas.",
+        "application": "Used to measure idea alignment with the target domain.",
+        "evidence": "IAScore quantifies alignment between LLM-generated hypotheses and expert-proposed research ideas."
+      },
+      {
+        "name": "Idea Distinctiveness Index",
+        "purpose": "Evaluates semantic diversity between generated hypotheses.",
+        "application": "Used to measure the uniqueness of generated hypotheses.",
+        "evidence": "Idea Distinctiveness Index evaluates the semantic diversity between the hypotheses generated using embedding-based similarity."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used.",
+    "usage": "The study used a newly created dataset, HypoGen, rather than an established benchmark dataset.",
+    "evidence": "We introduce HypoGen, a dataset comprising approximately 5500 structured problem-hypothesis pairs extracted from top-tier computer science conferences."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "LLM Evaluation Bias",
+        "description": "The evaluation of hypotheses relies on LLMs, which may introduce biases due to their training regimes.",
+        "evidence": "The primary limitation of HypoGen is that it uses LLMs to evaluate the hypotheses generated."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Generalize to Other Scientific Domains",
+        "description": "Examine how the approach with HypoGen generalizes to other scientific domains beyond computer science.",
+        "evidence": "Looking to the future, we want to examine how our approach with HypoGen generalizes to other scientific domains."
+      },
+      {
+        "name": "Expand Dataset to Other Fields",
+        "description": "Plan to expand the dataset to fields such as astrophysics, biology, and materials science.",
+        "evidence": "We also plan to expand our dataset to fields such as astrophysics, biology, and materials science."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/UniverseTBD/hypogen-cs",
+    "evidence": "Our code implementation is publicly available at github.com/UniverseTBD/hypogen-cs."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a methodology based on agentic workflows for economic research that leverages Large Language Models (LLMs) and multimodal AI to enhance research efficiency and reproducibility.",
+    "evidence": "This paper introduces a methodology based on agentic workflows for economic research that leverages Large Language Models (LLMs) and multimodal AI to enhance research efficiency and reproducibility."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in the application of agentic workflows in economic research, which has been relatively slow to adapt AI technologies to its specific methodological needs.",
+    "evidence": "While a growing ecosystem of AI-powered research tools exists... economics as a discipline has been relatively slow to adapt these technologies to its specific methodological needs."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of agentic workflows specifically tailored for economic research.",
+      "Integration of LLMs and multimodal AI to cover the entire research lifecycle in economics.",
+      "Development of a framework that includes autonomous and iterative processes with strategic human oversight."
+    ],
+    "evidence": [
+      "This paper introduces a methodology based on agentic workflows for economic research...",
+      "Our approach features autonomous and iterative processes covering the entire research lifecycle...",
+      "The workflow architecture comprises specialized agents with clearly defined roles..."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Korinek (2023) Generative AI for economic research: Use cases and implications for economists. (Methodological precursors)\n- Cowen and Tabarrok (2023) How to learn and teach economics with large language models, including GPT. (Methodological precursors)",
+    "evidence": "Within economics specifically, LLMs show significant promise: Korinek (2023) provides a systematic taxonomy of use cases... Complementing this, Cowen and Tabarrok (2023) offers practical guidance on integrating these unique tools into economic research and education."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Design specialized agents for economic research tasks.",
+        "input": "Research questions, literature reviews, and human-specified constraints.",
+        "output": "Theoretical frameworks, mathematical models, and calibrated parameters.",
+        "evidence": "Each agent in the system is engineered to manage a clearly defined responsibility, making the research process more effective throughout the economic research lifecycle."
+      },
+      {
+        "step": "Integrate human-in-the-loop checkpoints.",
+        "input": "Agent outputs and human expertise.",
+        "output": "Validated research questions, theoretical frameworks, and empirical analyses.",
+        "evidence": "Human experts are embedded at specific checkpoints throughout the workflow to guide and validate the autonomous processes."
+      },
+      {
+        "step": "Coordinate workflow phases from ideation to replication.",
+        "input": "Outputs from previous phases and human feedback.",
+        "output": "Finalized research outputs ready for publication.",
+        "evidence": "The entire methodology is structured as an interconnected, multi-phase workflow."
+      }
+    ],
+    "tools": [
+      {
+        "name": "AutoGen",
+        "description": "Used for implementing the agentic workflow framework.",
+        "evidence": "We demonstrate the practical implementation of our framework using Microsoft’s open-source platform, AutoGen."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "The ideation phase employs a coordinated network of agents, each responsible for distinct yet complementary tasks within the research question formulation process."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "The entire methodology is structured as an interconnected, multi-phase workflow."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Social Sciences",
+        "description": "The paper focuses on improving economic research methodologies.",
+        "evidence": "Economic research requires labor-intensive processes for literature review, data processing, and empirical validation..."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology integrates AI technologies across various stages of economic research.",
+        "evidence": "Our approach features autonomous and iterative processes covering the entire research lifecycle..."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The agentic workflows demonstrated significant improvements in research efficiency and methodological consistency.",
+        "evidence": "These demonstrations highlight how agentic systems enhance research productivity and methodological consistency, freeing researchers for higher-level analysis while maintaining rigorous quality standards guided by domain expertise."
+      }
+    ],
+    "baselines": [],
+    "benchmark_datasets": [],
+    "evaluation_metrics": []
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": []
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhanced reasoning capabilities",
+        "description": "Future research should explore enhanced reasoning capabilities for handling edge cases and methodological innovations.",
+        "evidence": "As AI capabilities continue to advance, future research should explore several promising directions: (ii) Enhanced reasoning capabilities for handling edge cases and methodological innovations..."
+      },
+      {
+        "name": "Deeper integration with domain-specific knowledge",
+        "description": "Explore deeper integration with domain-specific economic knowledge or pre-trained LLMs.",
+        "evidence": "As AI capabilities continue to advance, future research should explore several promising directions: (iii) Deeper integration with domain-specific economic knowledge or pre-trained LLMs..."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/agentic-workflows/economic-research",
+    "evidence": "To facilitate reproducibility and further development of agentic workflows for economic research, we have made all code, configuration files, and documentation available in a public GitHub repository."
+  }
+}

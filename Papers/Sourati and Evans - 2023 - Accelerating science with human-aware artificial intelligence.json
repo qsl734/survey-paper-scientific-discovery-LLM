@@ -1,0 +1,179 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to demonstrate that incorporating human expertise into AI models can significantly improve the prediction of future scientific discoveries, especially in fields with sparse literature.",
+    "evidence": "Here we show that incorporating the distribution of human expertise by training unsupervised models on simulated inferences that are cognitively accessible to experts dramatically improves (by up to 400%) AI prediction of future discoveries beyond models focused on research content alone."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in AI models that typically ignore the distribution of human scientists who alter the landscape of discovery, which limits the precision of future discovery forecasts.",
+    "evidence": "However, such efforts typically ignore the distribution of scientists and inventors—the human prediction engines who continuously alter the landscape of discovery and invention."
+  },
+  "novelty": {
+    "answer": [
+      "Incorporating human expertise into AI models to improve prediction accuracy.",
+      "Using a hypergraph to model the distribution of inferences accessible to scientists.",
+      "Generating 'alien' hypotheses that are unlikely to be imagined by human scientists."
+    ],
+    "evidence": [
+      "Incorporating knowledge of human researchers can dramatically improve predictions of future discoveries compared with AI methods that ignore them.",
+      "We model the distribution of inferences that are collectively and cognitively accessible to scientists by constructing a hypergraph over research publications.",
+      "By tuning human-aware AI to avoid the crowd, we can generate scientifically promising ‘alien’ hypotheses unlikely to be imagined or pursued without intervention until the distant future."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Tshitoyan et al. (2019) Their content-only analysis inspired our human-aware approach. (Methodological precursors)",
+    "evidence": "We contrast our human-aware approach with precise replication of a recent, prominent content-only analysis that trained a Word2Vec embedding model over millions of abstracts from materials science publications."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Construct a hypergraph over research publications.",
+        "input": "Publication metadata including authors, materials, and properties.",
+        "output": "A hypergraph representing the distribution of inferences accessible to scientists.",
+        "evidence": "We model the distribution of inferences that are collectively and cognitively accessible to scientists by constructing a hypergraph over research publications."
+      },
+      {
+        "step": "Generate random walk sequences over the hypergraph.",
+        "input": "Hypergraph structure.",
+        "output": "Random walk sequences simulating human cognitive processes.",
+        "evidence": "To generate each random walk sequence, our model initiates the walk with a valued property as the first node in the sequence."
+      },
+      {
+        "step": "Train a deepwalk embedding model on the random walk sequences.",
+        "input": "Random walk sequences.",
+        "output": "Embedding vectors representing materials and properties.",
+        "evidence": "We train the deepwalk embedding model after excluding authors from our random walk sequences."
+      },
+      {
+        "step": "Evaluate prediction quality using transition probabilities and deepwalk metrics.",
+        "input": "Embedding vectors and transition probabilities.",
+        "output": "Predictions of future discoveries.",
+        "evidence": "We use transition probability and deepwalk metrics to build two alternative discovery predictors."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Deepwalk",
+        "description": "Used to create embedding vectors from random walk sequences.",
+        "evidence": "We train the deepwalk embedding model after excluding authors from our random walk sequences."
+      },
+      {
+        "name": "Word2Vec",
+        "description": "Used as a baseline for comparison with the human-aware model.",
+        "evidence": "Our predictions are contrasted with a random baseline and predictions generated from precisely replicated prior work that used word embeddings based on the textual content of scientific literature."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MEDLINE",
+        "data_description": "A database of biomedical research publications.",
+        "usage": "Used to explore drug repurposing predictions.",
+        "evidence": "We used the MEDLINE database of biomedical research publications and set the prediction year to 2001."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Precision",
+        "purpose": "Measures the accuracy of predictions by comparing them to actual discoveries.",
+        "application": "Used to evaluate the quality of discovery predictions.",
+        "evidence": "We evaluate prediction quality on the basis of their overlap with materials discovered and published after the prediction year."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "By tuning human-aware AI to avoid the crowd, we can generate scientifically promising ‘alien’ hypotheses unlikely to be imagined or pursued without intervention until the distant future."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "description": "The approach involves extracting and structuring knowledge from scientific literature.",
+        "evidence": "We model the distribution of inferences that are collectively and cognitively accessible to scientists by constructing a hypergraph over research publications."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper integrates AI, sociology, and scientific discovery processes.",
+        "evidence": "Our work formalizes and demonstrates the critical importance of situated human expertise, communication and collaboration for unfolding scientific advance."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The study applies AI models to predict discoveries in materials science and drug development.",
+        "evidence": "Research across applied science and engineering, from materials discovery to drug and vaccine development, is hampered by enormous design spaces."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The human-aware AI model improved prediction precision by up to 400% compared to content-only models.",
+        "evidence": "These models succeed by predicting human predictions and the scientists who will make them, yielding up to 400% improvement in prediction precision."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Word2Vec",
+        "description": "A content-only model used for comparison.",
+        "evidence": "Our predictions are contrasted with a random baseline and predictions generated from precisely replicated prior work that used word embeddings based on the textual content of scientific literature."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MEDLINE",
+        "data_description": "A database of biomedical research publications.",
+        "usage": "Used to explore drug repurposing predictions.",
+        "evidence": "We used the MEDLINE database of biomedical research publications and set the prediction year to 2001."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Precision",
+        "purpose": "Measures the accuracy of predictions by comparing them to actual discoveries.",
+        "application": "Used to evaluate the quality of discovery predictions.",
+        "evidence": "We evaluate prediction quality on the basis of their overlap with materials discovered and published after the prediction year."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "MEDLINE",
+    "data_description": "A database of biomedical research publications.",
+    "usage": "Used to explore drug repurposing predictions.",
+    "evidence": "We used the MEDLINE database of biomedical research publications and set the prediction year to 2001."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scope of Scientific Relationships",
+        "description": "The study focuses on material-property relationships, which may not cover other scientifically meaningful relationships.",
+        "evidence": "Our analysis examined a limited space of scientific relationships—those involving a material possessing a valuable energy or therapeutic property."
+      },
+      {
+        "name": "Singular Consideration of Co-authorship",
+        "description": "The study only considers co-authorship as the relationship affecting the distribution of expertise.",
+        "evidence": "Another limitation involved our singular consideration of co-authorship as the relationship affecting the distribution of expertise."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend to More Complex Scientific Relationships",
+        "description": "Expand the analysis to include more complex scientific relationships beyond material-property pairs.",
+        "evidence": "Many other scientifically meaningful relationships lie beyond this syntax, such as identity, composition, or any specific physical or logical relationship."
+      },
+      {
+        "name": "Incorporate Additional Relationships",
+        "description": "Consider other relationships such as scientist collocation within an institution or conference attendance.",
+        "evidence": "One could consider other relationships, such as scientist collocation within an institution, conference attendance or geographical proximity."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/jsourati/accelerate-discoveries",
+    "evidence": "All code for our algorithms can be found in the following GitHub repository: https://github.com/jsourati/accelerate-discoveries."
+  }
+}

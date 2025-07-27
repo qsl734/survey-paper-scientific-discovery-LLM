@@ -1,0 +1,173 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce AI-Researcher, a fully autonomous research system that transforms AI-driven scientific discovery by orchestrating the complete research pipeline with minimal human intervention.",
+    "evidence": "In this paper, we introduce AI-Researcher, a fully autonomous research system that transforms how AI-driven scientific discovery is conducted and evaluated."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in developing fully autonomous scientific research systems capable of original innovation, which remains an unsolved challenge despite advances in LLMs and agentic frameworks.",
+    "evidence": "However, transitioning from isolated capabilities to fully autonomous scientific research systems capable of original innovation remains an unsolved challenge that could fundamentally transform how scientific progress occurs."
+  },
+  "novelty": {
+    "answer": [
+      "AI-Researcher orchestrates the complete scientific discovery lifecycle, unlike systems focusing on isolated capabilities.",
+      "The framework employs a comprehensive multi-agent architecture with structured knowledge exchange to maintain coherent reasoning.",
+      "AI-Researcher introduces Resource Analyst agents that decompose complex research concepts into atomic components, reducing hallucination risks.",
+      "The Implementation Framework uses an iterative refinement paradigm, mirroring the mentor-student relationship in academic research.",
+      "The Documentation Agent uses a hierarchical synthesis approach to transform research artifacts into publication-quality manuscripts."
+    ],
+    "evidence": [
+      "We introduce AI-Researcher a novel framework that addresses these limitations by seamlessly orchestrating the complete scientific discovery lifecycle—from literature analysis through implementation to scholarly documentation.",
+      "Our framework employs a comprehensive multi-agent architecture where specialized components collaborate through structured knowledge exchange to maintain coherent reasoning throughout the research process.",
+      "AI-Researcher introduces three key innovations that fundamentally advance autonomous scientific discovery. First, Resource Analyst agents decompose complex research concepts into atomic components with explicit bidirectional mappings between mathematical formulations and code implementations, dramatically reducing hallucination risks.",
+      "Second, our Implementation Framework employs a human-inspired iterative refinement paradigm where specialized agents collaborate through structured feedback cycles, mirroring the proven mentor-student relationship in academic research.",
+      "Third, our Documentation Agent overcomes LLM coherence limitations through a hierarchical synthesis approach that transforms research artifacts into publication-quality manuscripts while maintaining cross-document consistency and factual integrity throughout extensive scholarly documentation."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Wang et al. (2023) Their work on scientific discovery in the age of AI inspired our approach to autonomous research systems. (Conceptual inspiration)\n- Didolkar et al. (2024) Their exploration of LLMs' metacognitive capabilities influenced our framework's design. (Methodological precursors)",
+    "evidence": "Scientific discovery has historically been constrained by human cognitive limitations and the immense scale of potential solution spaces [1]. Recent advances in Large Language Models (LLMs) have demonstrated remarkable capabilities in mathematical reasoning, coding, and problem-solving tasks that were previously thought to require human expertise [2, 3]."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Develop AI-Researcher framework",
+        "input": "Existing LLM capabilities and agentic frameworks",
+        "output": "A multi-agent system for autonomous scientific discovery",
+        "evidence": "Our framework employs a comprehensive multi-agent architecture where specialized components collaborate through structured knowledge exchange to maintain coherent reasoning throughout the research process."
+      },
+      {
+        "step": "Implement Resource Analyst agents",
+        "input": "Complex research concepts",
+        "output": "Atomic components with bidirectional mappings",
+        "evidence": "First, Resource Analyst agents decompose complex research concepts into atomic components with explicit bidirectional mappings between mathematical formulations and code implementations, dramatically reducing hallucination risks."
+      },
+      {
+        "step": "Use Implementation Framework",
+        "input": "Research concepts and feedback cycles",
+        "output": "Refined implementations through iterative feedback",
+        "evidence": "Second, our Implementation Framework employs a human-inspired iterative refinement paradigm where specialized agents collaborate through structured feedback cycles, mirroring the proven mentor-student relationship in academic research."
+      },
+      {
+        "step": "Employ Documentation Agent",
+        "input": "Research artifacts",
+        "output": "Publication-quality manuscripts",
+        "evidence": "Third, our Documentation Agent overcomes LLM coherence limitations through a hierarchical synthesis approach that transforms research artifacts into publication-quality manuscripts while maintaining cross-document consistency and factual integrity throughout extensive scholarly documentation."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Resource Analyst agents",
+        "description": "Decompose complex research concepts into atomic components",
+        "evidence": "First, Resource Analyst agents decompose complex research concepts into atomic components with explicit bidirectional mappings between mathematical formulations and code implementations, dramatically reducing hallucination risks."
+      },
+      {
+        "name": "Implementation Framework",
+        "description": "Employs iterative refinement paradigm for research implementations",
+        "evidence": "Second, our Implementation Framework employs a human-inspired iterative refinement paradigm where specialized agents collaborate through structured feedback cycles, mirroring the proven mentor-student relationship in academic research."
+      },
+      {
+        "name": "Documentation Agent",
+        "description": "Transforms research artifacts into publication-quality manuscripts",
+        "evidence": "Third, our Documentation Agent overcomes LLM coherence limitations through a hierarchical synthesis approach that transforms research artifacts into publication-quality manuscripts while maintaining cross-document consistency and factual integrity throughout extensive scholarly documentation."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Scientist-Bench",
+        "data_description": "State-of-the-art papers across diverse AI research domains",
+        "usage": "Used for standardized assessment of autonomous research capabilities",
+        "evidence": "To rigorously assess autonomous research capabilities, we develop Scientist-Bench, a comprehensive benchmark comprising state-of-the-art papers across diverse AI research domains, featuring both guided innovation and open-ended exploration tasks."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Implementation success rate",
+        "purpose": "Measures the success of research implementations",
+        "application": "Used to evaluate the effectiveness of AI-Researcher in producing research contributions",
+        "evidence": "Through extensive experiments on 22 benchmark papers using multiple LLM evaluators, we demonstrate that AI-Researcher achieves remarkable implementation success rates while producing research contributions that frequently approach human-level quality."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Operating after comprehensive theoretical and empirical analysis, the Idea Generator employs sophisticated knowledge synthesis techniques to identify unexplored research territories."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our experimental process implements a rigorous scientific approach to code validation."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for autonomous scientific discovery across diverse AI research domains.",
+        "evidence": "To rigorously assess autonomous research capabilities, we develop Scientist-Bench, a comprehensive benchmark comprising state-of-the-art papers across diverse AI research domains."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "AI-Researcher achieves remarkable implementation success rates and produces research papers that approach human-level quality.",
+        "evidence": "Through extensive experiments, we demonstrate that AI-Researcher achieves remarkable implementation success rates and produces research papers that approach human-level quality."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Not reported in the paper",
+        "description": "The paper does not specify baseline models for comparison.",
+        "evidence": "Not reported in the paper"
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Scientist-Bench",
+        "data_description": "State-of-the-art papers across diverse AI research domains",
+        "usage": "Used for standardized assessment of autonomous research capabilities",
+        "evidence": "To rigorously assess autonomous research capabilities, we develop Scientist-Bench, a comprehensive benchmark comprising state-of-the-art papers across diverse AI research domains, featuring both guided innovation and open-ended exploration tasks."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Implementation success rate",
+        "purpose": "Measures the success of research implementations",
+        "application": "Used to evaluate the effectiveness of AI-Researcher in producing research contributions",
+        "evidence": "Through extensive experiments on 22 benchmark papers using multiple LLM evaluators, we demonstrate that AI-Researcher achieves remarkable implementation success rates while producing research contributions that frequently approach human-level quality."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used in the study.",
+    "usage": "The study used a custom benchmark, Scientist-Bench, instead of traditional datasets.",
+    "evidence": "To rigorously assess autonomous research capabilities, we develop Scientist-Bench, a comprehensive benchmark comprising state-of-the-art papers across diverse AI research domains."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The framework's performance is primarily evaluated on AI research domains, which may not generalize to other scientific fields.",
+        "evidence": "Through extensive experiments on 22 benchmark papers using multiple LLM evaluators, we demonstrate that AI-Researcher achieves remarkable implementation success rates while producing research contributions that frequently approach human-level quality."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Other Scientific Domains",
+        "description": "Extend the framework to evaluate its effectiveness in non-AI scientific fields.",
+        "evidence": "This work establishes new foundations for autonomous scientific innovation that can complement human researchers by systematically exploring solution spaces beyond cognitive limitations."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/HKUDS/AI-Researcher",
+    "evidence": "Source Code: https://github.com/HKUDS/AI-Researcher"
+  }
+}

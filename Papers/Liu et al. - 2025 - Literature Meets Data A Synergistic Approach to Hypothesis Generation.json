@@ -1,0 +1,202 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to develop a method that combines literature-based insights with data to perform LLM-powered hypothesis generation, aiming to integrate theory-driven and data-driven approaches for more effective hypothesis generation.",
+    "evidence": "To address this, we develop the first method that combines literature-based insights with data to perform LLM-powered hypothesis generation."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap of whether theory-driven and data-driven approaches to hypothesis generation can complement each other, as it remains an open question.",
+    "evidence": "While both have proven effective in generating novel and plausible hypotheses, it remains an open question whether they can complement each other."
+  },
+  "novelty": {
+    "answer": [
+      "The integration of literature-based and data-driven hypothesis generation is novel, providing a comprehensive framework.",
+      "The introduction of a literature-based hypothesis agent that interacts with a data-driven hypothesis agent is a new approach.",
+      "The paper conducts the first human evaluation to assess the utility of LLM-generated hypotheses in assisting human decision-making."
+    ],
+    "evidence": [
+      "We propose the first approach to using both literature information and data for LLM-powered hypothesis generation.",
+      "This agent interacts with the data-driven hypothesis agent (HYPOGENIC), refining and maintaining a shared pool of hypotheses through continuous collaboration.",
+      "We conduct the first human evaluation to test the utility of LLM-generated hypotheses and demonstrate consistent improvements on two challenging tasks."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Zhou et al. (2024) HYPOGENIC serves as the backbone for the data-driven component. (Methodological precursors)\n- Yang et al. (2024b) Theory-driven approaches leverage LLMs to review existing literature. (Methodological precursors)\n- Baek et al. (2024) Theory-driven methods have shown promising results in terms of hypotheses' novelty. (Methodological precursors)",
+    "evidence": "For the data-driven component, we use HYPOGENIC as the backbone (Zhou et al., 2024). Theory-driven approaches leverage LLMs to review existing literature and generate novel hypotheses/ideas (Yang et al., 2024b; Baek et al., 2024)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Literature-based hypothesis generation",
+        "input": "Set of papers from Semantic Scholar or Google Scholar",
+        "output": "Paper summaries and initial hypotheses",
+        "evidence": "For the LITERATURE-ONLY method, we start by picking a set of papers P = {p1, p2, ..., pm} for q from related papers on Semantic Scholar or Google Scholar."
+      },
+      {
+        "step": "Data-driven hypothesis generation",
+        "input": "Observational data in the form of input-label pairs",
+        "output": "Initial hypotheses and updated hypotheses",
+        "evidence": "Our data-driven hypothesis generation adopts HYPOGENIC in Zhou et al. (2024)."
+      },
+      {
+        "step": "Integration of literature-based and data-driven hypotheses",
+        "input": "Paper summaries and observational data",
+        "output": "Refined hypotheses",
+        "evidence": "HYPOREFINE integrates paper summaries S from § 2.1 with HYPOGENIC."
+      }
+    ],
+    "tools": [
+      {
+        "name": "HYPOGENIC",
+        "description": "Used as the backbone for data-driven hypothesis generation",
+        "evidence": "For the data-driven component, we use HYPOGENIC as the backbone (Zhou et al., 2024)."
+      },
+      {
+        "name": "S2ORC-doc2json",
+        "description": "Converts raw PDF versions of papers to JSON files",
+        "evidence": "We use S2ORC-doc2json to convert the raw PDF versions of the papers to a corpus of JSON files (Lo et al., 2020)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DECEPTIVE REVIEWS",
+        "data_description": "800 genuine hotel reviews and 800 fake hotel reviews",
+        "usage": "Used as IND dataset for Deception Detection",
+        "evidence": "We use the dataset introduced by Ott et al. (2013) (DECEPTIVE REVIEWS), which consists of 800 genuine hotel reviews and 800 fake hotel reviews, as our IND dataset."
+      },
+      {
+        "name": "DREADDIT",
+        "data_description": "A corpus of lengthy Reddit posts with stress status labels",
+        "usage": "Used for Mental Stress Detection",
+        "evidence": "We use DREADDIT, a corpus of lengthy Reddit posts with stress status labels developed by Turcan and McKeown (2019)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures correct classifications over total predictions",
+        "application": "Used to compare all models on held-out test data",
+        "evidence": "We report average accuracy and F1 scores on held-out OOD and IND sets for 5 different random seeds."
+      },
+      {
+        "name": "F1 Score",
+        "purpose": "Measures the balance between precision and recall",
+        "application": "Used to evaluate model performance on classification tasks",
+        "evidence": "We report average accuracy and F1 scores on held-out OOD and IND sets for 5 different random seeds."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Social Sciences",
+        "description": "The paper applies its methodology to tasks in social sciences, such as deception detection and persuasive argument prediction.",
+        "evidence": "We apply our method to address research questions in social sciences: deception detection, AI generated content detection, mental stress detection, and persuasive argument prediction."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The integration of literature and data-driven approaches is applicable across various scientific domains.",
+        "evidence": "These findings suggest that integrating literature-based and data-driven approaches provides a comprehensive and nuanced framework for hypothesis generation and could open new avenues for scientific inquiry."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed method outperformed baselines by 8.97% over few-shot, 15.75% over literature-based alone, and 3.37% over data-driven alone in accuracy on out-of-distribution datasets.",
+        "evidence": "Automatic evaluation results show that integrating literature and data outperforms other baselines: 8.97% over few-shot, 15.75% over literature-based alone, and 3.37% over data-driven alone in accuracy on out-of-distribution datasets."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Few-shot prompting",
+        "description": "Provides three demonstrating examples to LLMs for task instructions.",
+        "evidence": "Few-shot inference surpasses zero-shot generation and the best of literature-based methods on average accuracy by 7.21% and 6.78%, respectively."
+      },
+      {
+        "name": "HYPOGENIC",
+        "description": "Data-driven hypothesis generation method.",
+        "evidence": "Our data-driven hypothesis generation adopts HYPOGENIC in Zhou et al. (2024)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "DECEPTIVE REVIEWS",
+        "data_description": "800 genuine hotel reviews and 800 fake hotel reviews",
+        "usage": "Used as IND dataset for Deception Detection",
+        "evidence": "We use the dataset introduced by Ott et al. (2013) (DECEPTIVE REVIEWS), which consists of 800 genuine hotel reviews and 800 fake hotel reviews, as our IND dataset."
+      },
+      {
+        "name": "DREADDIT",
+        "data_description": "A corpus of lengthy Reddit posts with stress status labels",
+        "usage": "Used for Mental Stress Detection",
+        "evidence": "We use DREADDIT, a corpus of lengthy Reddit posts with stress status labels developed by Turcan and McKeown (2019)."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Accuracy",
+        "purpose": "Measures correct classifications over total predictions",
+        "application": "Used to compare all models on held-out test data",
+        "evidence": "We report average accuracy and F1 scores on held-out OOD and IND sets for 5 different random seeds."
+      },
+      {
+        "name": "F1 Score",
+        "purpose": "Measures the balance between precision and recall",
+        "application": "Used to evaluate model performance on classification tasks",
+        "evidence": "We report average accuracy and F1 scores on held-out OOD and IND sets for 5 different random seeds."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "DECEPTIVE REVIEWS",
+    "description": "800 genuine hotel reviews and 800 fake hotel reviews",
+    "usage": "Used as IND dataset for Deception Detection",
+    "evidence": "We use the dataset introduced by Ott et al. (2013) (DECEPTIVE REVIEWS), which consists of 800 genuine hotel reviews and 800 fake hotel reviews, as our IND dataset."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Literature Corpus",
+        "description": "The literature corpus used for hypothesis generation is limited in size and collection method.",
+        "evidence": "The literature corpus used for literature-based hypothesis generation is limited in terms of size and collection method."
+      },
+      {
+        "name": "Human Evaluation Scale",
+        "description": "The number of participants in human evaluation is relatively small, limiting statistical power.",
+        "evidence": "The number of participants in our human evaluation is relatively small. As a result, we do not believe that we have the statistical power to distinguish, for example, the difference between HYPOGENIC and HYPOREFINE."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Enhance Literature Component",
+        "description": "Enhance the literature component with automatic and scalable retrieval.",
+        "evidence": "A natural future direction is to enhance the literature component with automatic and scalable retrieval."
+      },
+      {
+        "name": "Hyperparameter Optimization",
+        "description": "Perform an exhaustive hyperparameter search for further enhancements.",
+        "evidence": "We did not perform an exhaustive hyperparameter search, which may have yielded further enhancements to the performance of our methods."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/ChicagoHAI/hypothesis-generation",
+    "evidence": "The code and data are available at https://github.com/ChicagoHAI/hypothesis-generation."
+  }
+}

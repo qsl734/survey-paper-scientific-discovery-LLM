@@ -1,0 +1,179 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce a novel approach to mutation control within LLM-driven evolutionary frameworks, specifically by proposing dynamic mutation prompts that adaptively regulate mutation rates to improve the convergence speed and adaptability of the Large Language Model Evolutionary Algorithm (LLaMEA).",
+    "evidence": "This paper introduces a novel approach to mutation control within LLM-driven evolutionary frameworks, inspired by theory of genetic algorithms. Specifically, we propose dynamic mutation prompts that adaptively regulate mutation rates, leveraging a heavy-tailed power-law distribution to balance exploration and exploitation."
+  },
+  "knowledge_gap": {
+    "answer": "Existing frameworks lack precise control over mutation mechanisms during algorithm evolution, leading to inefficiencies in exploring the solution space and potentially suboptimal convergence.",
+    "evidence": "Despite these advancements, existing frameworks often exhibit inefficiencies in exploring the solution space. A key limitation lies in the lack of precise control over mutation mechanisms during algorithm evolution, which can lead to redundant evaluations and suboptimal convergence."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of dynamic mutation prompts that adaptively regulate mutation rates using a heavy-tailed power-law distribution.",
+      "Demonstration that GPT-4o can adapt its mutation based on engineered dynamic prompts, unlike GPT-3.5-turbo.",
+      "Improvement in convergence speed and adaptability of LLaMEA using dynamic mutation rates."
+    ],
+    "evidence": [
+      "Specifically, we propose dynamic mutation prompts that adaptively regulate mutation rates, leveraging a heavy-tailed power-law distribution to balance exploration and exploitation.",
+      "Experiments using GPT-3.5-turbo and GPT-4o models demonstrate that GPT-3.5-turbo fails to adhere to the specific mutation instructions, while GPT-4o is able to adapt its mutation based on the prompt engineered dynamic prompts.",
+      "Further experiments show that the introduction of these dynamic rates can improve the convergence speed and adaptability of LLaMEA, when using GPT-4o."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- van Stein et al. (2024) LLaMEA is the basis of our work as it provides an open-source modular framework that we can easily expend on. (Methodological precursors)\n- Doerr et al. (2017) We refer to the fast mutation operator fmutβ from B. Doerr et al. to help improve the convergence speed of LLaMEA. (Methodological precursors)",
+    "evidence": "LLaMEA is the basis of our work as it provides an open-source modular framework that we can easily expend on. It is designed to utilize LLMs to automatically generate and improve optimization algorithms.\nWe refer to the fast mutation operator fmutβ from B. Doerr et al., to help improve the convergence speed of LLaMEA."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Introduce dynamic mutation rates into LLaMEA.",
+        "input": "Existing LLaMEA framework and mutation prompts.",
+        "output": "Enhanced LLaMEA with dynamic mutation rates.",
+        "evidence": "By integrating dynamic mutation rates from discrete power-law distributions into the LLaMEA framework, we can simulate the mutation process in genetic algorithms with a view to improving the performance and adaptability of the algorithms to complex and multimodal optimization problems."
+      },
+      {
+        "step": "Refine mutation prompts to include mutation rate information.",
+        "input": "Existing mutation prompts.",
+        "output": "Refined mutation prompts with specific mutation rate instructions.",
+        "evidence": "To make this prompt more specific, we modified it to include the information about the mutation rate we want."
+      },
+      {
+        "step": "Conduct experiments to test LLMs' adherence to mutation prompts.",
+        "input": "Mutation prompts and LLMs (GPT-3.5-turbo and GPT-4o).",
+        "output": "Evaluation of LLMs' ability to follow mutation prompts.",
+        "evidence": "We start with experiments to establish whether LLMs can achieve a fixed mutation rate when given a mutation prompt."
+      },
+      {
+        "step": "Evaluate performance using BBOB test set and IOHexperimenter platform.",
+        "input": "Generated metaheuristic algorithms.",
+        "output": "Performance metrics (AOCC) for algorithm effectiveness.",
+        "evidence": "The parent and child will be tested for their effectiveness with the widely used Black-Box Optimization Benchmarking (BBOB) test set [8], as well as with the IOHexperimenter platform [15], with mean AOCC as the measure of algorithm performance."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4o",
+        "description": "Used for generating and mutating metaheuristic algorithms.",
+        "evidence": "This study uses two different large language models, GPT-4o and GPT-3.5-turbo, which have advanced capabilities and performance in generating meta-heuristic optimization algorithms."
+      },
+      {
+        "name": "GPT-3.5-turbo",
+        "description": "Used for generating and mutating metaheuristic algorithms.",
+        "evidence": "This study uses two different large language models, GPT-4o and GPT-3.5-turbo, which have advanced capabilities and performance in generating meta-heuristic optimization algorithms."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "BBOB test set",
+        "data_description": "A set of benchmark functions for testing optimization algorithms.",
+        "usage": "Used to evaluate the effectiveness of generated metaheuristic algorithms.",
+        "evidence": "The parent and child will be tested for their effectiveness with the widely used Black-Box Optimization Benchmarking (BBOB) test set."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Area Over the Convergence Curve (AOCC)",
+        "purpose": "Measures the performance of optimization algorithms.",
+        "application": "Used to evaluate the effectiveness of generated metaheuristic algorithms.",
+        "evidence": "We use the same performance metric as LLaMEA [18], Area Over the Convergence Curve (AOCC), as introduced in [20]."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "We prompt the LLM to generate testable hypotheses using domain-specific concepts derived from structured data."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "Our model proposes complete experimental setups including dataset split, evaluation metrics, and variables."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper focuses on improving algorithmic frameworks for optimization tasks.",
+        "evidence": "The development of metaheuristic algorithms has been foundational for tackling complex optimization problems across domains such as engineering."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The integration of LLMs with evolutionary computation represents a transformative shift in algorithm design.",
+        "evidence": "The synergy between LLMs and evolutionary computation represents a transformative shift, leveraging LLMs for generating and enhancing code, while EC methods provide global search and iterative improvement capabilities."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The introduction of dynamic mutation rates improved the convergence speed and adaptability of LLaMEA when using GPT-4o.",
+        "evidence": "Further experiments show that the introduction of these dynamic rates can improve the convergence speed and adaptability of LLaMEA, when using GPT-4o."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "LLaMEA without dynamic mutation rate",
+        "description": "The default setting of LLaMEA without dynamic mutation rate.",
+        "evidence": "Baselines are raw data directly from [18], which represent the default setting of LLaMEA without dynamic mutation rate."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "BBOB test set",
+        "data_description": "A set of benchmark functions for testing optimization algorithms.",
+        "usage": "Used to evaluate the effectiveness of generated metaheuristic algorithms.",
+        "evidence": "The parent and child will be tested for their effectiveness with the widely used Black-Box Optimization Benchmarking (BBOB) test set."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Area Over the Convergence Curve (AOCC)",
+        "purpose": "Measures the performance of optimization algorithms.",
+        "application": "Used to evaluate the effectiveness of generated metaheuristic algorithms.",
+        "evidence": "We use the same performance metric as LLaMEA [18], Area Over the Convergence Curve (AOCC), as introduced in [20]."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "BBOB test set",
+    "data_description": "A set of benchmark functions for testing optimization algorithms.",
+    "usage": "Used to evaluate the effectiveness of generated metaheuristic algorithms.",
+    "evidence": "The parent and child will be tested for their effectiveness with the widely used Black-Box Optimization Benchmarking (BBOB) test set."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Model Understanding",
+        "description": "GPT-3.5-turbo does not understand the mutation rate variation well, leading to less effective mutations.",
+        "evidence": "Moreover, it seems that GPT-3.5-turbo does not understand the mutation rate variation well. The code difference of the code generated by GPT-3.5-turbo always stays high regardless of whether the requested mutation rate is high or low, and the distribution is not concentrated."
+      },
+      {
+        "name": "Challenge in Precise Mutation Control",
+        "description": "There are challenges in precisely controlling the mutation rate, affecting the optimization performance.",
+        "evidence": "Despite the experimental success, there are still challenges in precisely controlling the mutation rate."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Advanced Automated Prompt Engineering",
+        "description": "Develop more advanced automated cue engineering techniques to optimize algorithm performance.",
+        "evidence": "Future research should consider developing more advanced automated cue engineering techniques."
+      },
+      {
+        "name": "Extend to Newer LLM Versions",
+        "description": "Research should be extended to a wider variety and newer versions of local LLMs to assess scalability and adaptability.",
+        "evidence": "Research should also be extended to a wider variety and newer versions of local LLMs to assess the scalability and adaptability of mutation strategies and reduce funding consumption."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

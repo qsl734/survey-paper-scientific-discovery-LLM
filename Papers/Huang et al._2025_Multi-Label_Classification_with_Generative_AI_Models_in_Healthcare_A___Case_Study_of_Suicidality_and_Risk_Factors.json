@@ -1,0 +1,181 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to explore the use of generative large language models (LLMs), specifically GPT-3.5 and GPT-4.5, for multi-label classification of suicidality-related factors (SrFs) from psychiatric electronic health records (EHRs).",
+    "evidence": "This study explores the use of generative large language models (LLMs), specifically GPT-3.5 and GPT-4.5, for multi-label classification (MLC) of SrFs from psychiatric electronic health records (EHRs)."
+  },
+  "knowledge_gap": {
+    "answer": "The knowledge gap addressed by the paper is the limited exploration of using GPT models for detecting suicidality-related factors through multi-label classification, as well as the limited study of multi-label classification for clinical information extraction.",
+    "evidence": "Given the dominance of generative AI models, in particular, generative pre-trained transformer (GPT) models, here we explore the use of GPT models for identifying SrFs through multi-label classification (MLC) not only because the use of GPT for detecting SrFs is underexplored but also because the application and evaluation of MLC for clinical information extraction is limited studied."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of an end-to-end generative MLC pipeline using LLMs.",
+      "Development of label-set–level evaluation metrics for clinically meaningful label combinations.",
+      "Creation of a multi-label confusion-matrix for error analysis in MLC tasks.",
+      "Blueprint for structuring narrative EHR data into structured tables for large-scale research."
+    ],
+    "evidence": [
+      "We present a novel end-to-end generative MLC pipeline and introduce advanced evaluation methods, including label-set–level metrics and a multi-label confusion matrix for error analysis.",
+      "Beyond conventional micro/macro metrics, we introduce exact- and partial-match label-set metrics that quantify performance on clinically meaningful label combinations.",
+      "We extend the classical confusion matrix to the power-set setting, enabling granular inspection of hallucination (false-positive) versus omission (false-negative) patterns.",
+      "Our workflow enables the conversion of unstructured clinical text into structured tables, facilitating large-scale observational studies and downstream causal analyses in healthcare research."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Li et al. (2025) Suicide Phenotyping from Clinical Notes in Safety-Net Psychiatric Hospital Using Multi-Label Classification with Pre-Trained Language Models. (Methodological precursors)",
+    "evidence": "A study previously investigated the use of bidirectional encoder representations from transformer (BERT) models for identifying SrFs in clinical notes through multi-label classification (MLC) with RoBERTa superior than other BERT models."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Annotate 500 IPE notes with binary codes for SrFs.",
+        "input": "500 IPE notes from EHR database.",
+        "output": "Annotated corpus with binary codes for SI, SA, ES, and NSSI.",
+        "evidence": "An annotated corpus of 500 IPE notes was used to develop and validate MLC algorithms for SrF detection."
+      },
+      {
+        "step": "Design prompts for GPT models for zero-shot learning.",
+        "input": "Annotated IPE notes and designed prompts.",
+        "output": "Generated binary codes for SrFs using GPT models.",
+        "evidence": "We designed prompts with and without a guideline for zero-shot learning to instruct them to generate a set of four binary codes (0 or 1) for MLC of the four SrFs."
+      },
+      {
+        "step": "Fine-tune GPT-3.5 model using cross-validation.",
+        "input": "Pairs of IPE notes and sets of four labels.",
+        "output": "Fine-tuned GPT-3.5 model.",
+        "evidence": "GPT-3.5 was further fine-tuned by feeding pairs of IPE notes as input and sets of four labels as output through 5-fold cross-validation."
+      },
+      {
+        "step": "Evaluate model performance using multiple metrics.",
+        "input": "Predicted and true label sets.",
+        "output": "Performance metrics including label-level, label-set-level, and model-level metrics.",
+        "evidence": "We evaluate the model performance using multiple metrics across different dimensions: label level, label-set level, and model level."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-3.5",
+        "description": "Used for multi-label classification of SrFs through fine-tuning and zero-shot learning.",
+        "evidence": "We demonstrate that fine-tuned GPT-3.5 and guideline prompted GPT-4.5 can achieve top accuracy."
+      },
+      {
+        "name": "GPT-4.5",
+        "description": "Used for multi-label classification of SrFs with guided prompting.",
+        "evidence": "GPT-4.5 with guided prompting showed superior performance across label sets."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Partial-match accuracy",
+        "purpose": "Measures the degree of match between predicted and true label sets.",
+        "application": "Used to evaluate model performance on label sets.",
+        "evidence": "Fine-tuned GPT-3.5 achieved top performance with 0.94 partial-match accuracy."
+      },
+      {
+        "name": "F1 score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate model performance across different metrics.",
+        "evidence": "Fine-tuned GPT-3.5 achieved top performance with a 0.91 F1 score."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "evidence": "We explore the use of GPT models for identifying SrFs through multi-label classification (MLC) not only because the use of GPT for detecting SrFs is underexplored."
+      },
+      {
+        "name": "Experimental design generation",
+        "evidence": "We designed prompts with and without a guideline for zero-shot learning to instruct them to generate a set of four binary codes (0 or 1) for MLC of the four SrFs."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper focuses on identifying suicidality-related factors from psychiatric electronic health records.",
+        "evidence": "This study explores the use of generative large language models (LLMs), specifically GPT-3.5 and GPT-4.5, for multi-label classification (MLC) of SrFs from psychiatric electronic health records (EHRs)."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The study applies advanced AI models for clinical data processing.",
+        "evidence": "This work not only demonstrates the feasibility of using generative AI for complex clinical classification tasks but also provides a blueprint for structuring unstructured EHR data."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Fine-tuned GPT-3.5 achieved top performance with 0.94 partial-match accuracy and 0.91 F1 score.",
+        "evidence": "Fine-tuned GPT-3.5 achieved top performance with 0.94 partial-match accuracy and 0.91 F1 score."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "GPT-3.5-Zero",
+        "description": "Zero-shot learning baseline for comparison.",
+        "evidence": "GPT-3.5-Zero (0.55±0.00 in exact match and 0.85±0.00 in partial match)."
+      },
+      {
+        "name": "GPT-3.5-Guide",
+        "description": "Guided prompting baseline for comparison.",
+        "evidence": "GPT-3.5-Guide (0.59±0.00 in exact match and 0.87±0.00 in partial match)."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "500 IPE notes",
+        "data_description": "Annotated corpus of initial psychiatric evaluation notes.",
+        "usage": "Used for developing and validating MLC algorithms.",
+        "evidence": "An annotated corpus of 500 IPE notes was used to develop and validate MLC algorithms for SrF detection."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Partial-match accuracy",
+        "purpose": "Measures the degree of match between predicted and true label sets.",
+        "application": "Used to evaluate model performance on label sets.",
+        "evidence": "Fine-tuned GPT-3.5 achieved top performance with 0.94 partial-match accuracy."
+      },
+      {
+        "name": "F1 score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate model performance across different metrics.",
+        "evidence": "Fine-tuned GPT-3.5 achieved top performance with a 0.91 F1 score."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Dataset Size",
+        "description": "The study uses a relatively small dataset of 500 IPE notes, which may limit the generalizability of the findings.",
+        "evidence": "The study dataset includes 500 IPE notes from the Electronic Health Record (EHR) database of a safety-net hospital for inpatient psychiatric care."
+      },
+      {
+        "name": "Class Imbalance",
+        "description": "The dataset has severe class imbalance, which can affect model performance.",
+        "evidence": "Fine-tuned GPT-3.5 and guideline prompted GPT-4.5 can achieve top accuracy of 0.93-0.94 and F1 scores of 0.88–0.91 on a MLC task with four labels despite severe class imbalance."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Extend MLC to More Labels",
+        "description": "The work could be easily extended to detect more labels and identify other health information from various texts.",
+        "evidence": "Although we experimented MLC for identifying four SrFs in IPE notes, the work could be easily extended to detect more labels and identify other health information from various texts, even beyond the healthcare domain."
+      },
+      {
+        "name": "Adapt MLC for Text-to-Table Tasks",
+        "description": "MLC can be naturally adapted for text-to-table tasks, enabling researchers and clinicians to perform observational studies.",
+        "evidence": "MLC can be naturally adapted for text-to-table tasks which convert unstructured clinical notes into structured formats, ready for data integration, statistical analysis, and observational studies."
+      }
+    ]
+  },
+  "resource_link": ""
+}

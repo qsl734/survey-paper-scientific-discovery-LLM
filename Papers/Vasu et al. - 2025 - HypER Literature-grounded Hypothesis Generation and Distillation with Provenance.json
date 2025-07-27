@@ -1,0 +1,197 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to develop HypER, a small language model trained for literature-guided reasoning and evidence-based hypothesis generation, focusing on fine-grained logical connections between arguments in scientific abstracts.",
+    "evidence": "We present HypER (Hypothesis Generation with Explanation and Reasoning), a small language model (SLM) trained for literature-guided reasoning and evidence-based hypothesis generation."
+  },
+  "knowledge_gap": {
+    "answer": "Existing approaches to hypothesis generation often lack a structured approach to literature organization and fail to capture the underlying reasoning process behind ideation.",
+    "evidence": "Existing approaches trivially deploy retrieval augmentation and focus only on the quality of the final output ignoring the underlying reasoning process behind ideation."
+  },
+  "novelty": {
+    "answer": [
+      "HypER introduces a multitask framework that explicitly supervises the scientific reasoning process via classification tasks.",
+      "The paper constructs a novel dataset of temporal chains reflecting evidence-driven scientific discovery.",
+      "HypER is trained to discriminate between valid and invalid reasoning chains, integrating reasoning with hypothesis generation."
+    ],
+    "evidence": [
+      "We propose a multitask framework that explicitly supervises the scientific reasoning process via two classification tasks.",
+      "We contribute a novel dataset of temporal chains (sequences of article abstracts) where each node is inspired by or dependent on its predecessor.",
+      "HypER is trained to discriminate between valid and invalid chains and to integrate this reasoning with the ideation of evidence-based hypotheses."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Swanson (1986) Traditional LBD methods provide structured pathways for discovery. (Methodological precursors)\n- Wang et al. (2023a) LLMs enable the generation of creative, open-ended ideas by synthesizing diverse information. (Experimental baselines)",
+    "evidence": "Techniques in LBD include structured causality investigations, including association rules, graph theoretics, and explicitly curated semantic relationships between concepts (Swanson, 1986; Xun et al., 2017)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Data Preparation",
+        "input": "Dataset of randomized controlled trial (RCT) summaries",
+        "output": "Sampled set of papers",
+        "evidence": "The process begins with sampling a set of papers from a dataset (Wallace et al., 2021) of randomized controlled trial (RCT) summaries."
+      },
+      {
+        "step": "Citation Graph Retrieval",
+        "input": "Sampled source paper",
+        "output": "Papers citing the source paper",
+        "evidence": "Using the Semantic Scholar API, we retrieve papers citing pk within a two-year window."
+      },
+      {
+        "step": "Relevancy Scoring for a Paper",
+        "input": "Citing papers",
+        "output": "Relevancy score for each paper",
+        "evidence": "Each paper is scored using a Llama-3.1-70B model with a relevance label: 0 (irrelevant), 1 (inspired), or 2 (dependent)."
+      },
+      {
+        "step": "Top paper selection",
+        "input": "Relevancy scores",
+        "output": "Top 3 relevant papers",
+        "evidence": "For each paper chunk, the top 3 relevant papers are identified based on their relevancy score."
+      },
+      {
+        "step": "Iterative Reasoning Chain Construction",
+        "input": "Top relevant papers",
+        "output": "Reasoning chain",
+        "evidence": "The pipeline iteratively selects the top paper from the relevant papers. This paper becomes the new source paper pk+1, and the process is repeated."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Semantic Scholar API",
+        "description": "Used for retrieving papers citing the source paper",
+        "evidence": "Using the Semantic Scholar API, we retrieve papers citing pk within a two-year window."
+      },
+      {
+        "name": "Llama-3.1-70B model",
+        "description": "Used for scoring the relevancy of papers",
+        "evidence": "Each paper is scored using a Llama-3.1-70B model with a relevance label."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "RCT summaries dataset",
+        "data_description": "Summaries of randomized controlled trials",
+        "usage": "Used for sampling source papers",
+        "evidence": "The process begins with sampling a set of papers from a dataset (Wallace et al., 2021) of randomized controlled trial (RCT) summaries."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "F1-score",
+        "purpose": "Measures the model's ability to capture fine-grained scientific dependencies",
+        "application": "Used to evaluate classification performance",
+        "evidence": "HypER improves F1-score from 17% to 77%, indicating its strong ability to capture fine-grained scientific dependencies."
+      },
+      {
+        "name": "Jaccard similarity",
+        "purpose": "Measures the overlap of invalid node identification",
+        "application": "Used to evaluate the model's ability to identify incorrect papers in invalid chains",
+        "evidence": "HypER is also much better at identifying incorrect papers in invalid chains, with a Jaccard similarity (overlapping lists) of 0.65 vs. 0.48 by Phi3."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "HypER is trained to validate reasoning chains, its ultimate goal is to generate well-grounded scientific hypotheses."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "HypER is fine-tuned on the following tasks: One-hop relevance classification, Multi-hop agnostic chain validation, Multi-hop contextual chain validation."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Health Sciences",
+        "description": "The paper focuses on hypothesis generation in the medical domain, emphasizing evidence-based reasoning.",
+        "evidence": "In the medical domain, where evidence-based reasoning is the norm, researchers require a clear provenance of ideas before committing to costly hypothesis development and validation."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The framework is generalizable to other scientific fields beyond the medical domain.",
+        "evidence": "Although we focus on the medical domain for its strong emphasis on evidence-based reasoning, the framework is generalizable to other scientific fields."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "HypER significantly improves the Phi3 base-model across all tasks, achieving 85% and 86% over the Phi3 base model on both multi-hop chain validation tasks.",
+        "evidence": "HypER achieves 85% (↑8) and 86% (↑36) over the Phi3 base model on both multi-hop chain validation tasks, respectively."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Phi3 base-model",
+        "description": "Baseline model for comparison in multi-task learning",
+        "evidence": "HypER_Phi3 (as HypER) significantly improves the Phi3 base-model (baseline) across all tasks."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "RCT summaries dataset",
+        "data_description": "Summaries of randomized controlled trials",
+        "usage": "Used for sampling source papers",
+        "evidence": "The process begins with sampling a set of papers from a dataset (Wallace et al., 2021) of randomized controlled trial (RCT) summaries."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "F1-score",
+        "purpose": "Measures the model's ability to capture fine-grained scientific dependencies",
+        "application": "Used to evaluate classification performance",
+        "evidence": "HypER improves F1-score from 17% to 77%, indicating its strong ability to capture fine-grained scientific dependencies."
+      },
+      {
+        "name": "Jaccard similarity",
+        "purpose": "Measures the overlap of invalid node identification",
+        "application": "Used to evaluate the model's ability to identify incorrect papers in invalid chains",
+        "evidence": "HypER is also much better at identifying incorrect papers in invalid chains, with a Jaccard similarity (overlapping lists) of 0.65 vs. 0.48 by Phi3."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": null,
+    "description": "No traditional benchmark dataset was used.",
+    "usage": "The study used a dataset of randomized controlled trial summaries, which is not a traditional benchmark dataset.",
+    "evidence": "The process begins with sampling a set of papers from a dataset (Wallace et al., 2021) of randomized controlled trial (RCT) summaries."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Abstract-based Method",
+        "description": "The approach uses abstracts to fit within model context limits, which may not fully capture the real-world scientific discovery process.",
+        "evidence": "Our approach construct chains using abstracts to fit within model context limits and to circumvent the scarcity of open-access full-text medical literature."
+      },
+      {
+        "name": "Limited Human Evaluation",
+        "description": "The complexity of assessing reasoning chains limited the human evaluation process to a small sample size.",
+        "evidence": "Due to the complexity of assessing reasoning chains, we conducted evaluations on a limited sample size."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Optimize for Novelty",
+        "description": "Future work could focus on fine-tuning HypER to better balance plausibility and novelty in hypothesis generation.",
+        "evidence": "A future extension of this work could focus on fine-tuning HypER to better balance plausibility and novelty in hypothesis generation."
+      },
+      {
+        "name": "Comprehensive Human Evaluation",
+        "description": "Conduct a comprehensive human evaluation for a fair and rigorous comparison with proprietary models.",
+        "evidence": "A comprehensive human evaluation would be necessary for a fair and rigorous comparison, we leave that to future work."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": "No human-facing resource URL was found in the paper."
+  }
+}

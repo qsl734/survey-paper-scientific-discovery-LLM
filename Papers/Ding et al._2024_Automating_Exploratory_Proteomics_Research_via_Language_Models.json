@@ -1,0 +1,249 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to develop PROTEUS, a fully automated system for scientific discovery from raw proteomics data using large language models (LLMs). The authors aim to automate complex proteomics analysis workflows and hypothesis generation to accelerate scientific discovery in proteomics research.",
+    "evidence": "In this paper, we present PROTEUS, a fully automated system for scientific discovery from raw proteomics data. PROTEUS uses large language models (LLMs) to perform hierarchical planning, execute specialized bioinformatics tools, and iteratively refine analysis workflows to generate high-quality scientific hypotheses."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in automating entire omics research procedures, which are currently limited by human intervention and lack flexibility and comprehensiveness.",
+    "evidence": "Previous research on using LLMs to enhance omics research has largely been confined to isolated steps within the complex research process... they lack the flexibility and comprehensiveness required for automating entire omics research procedures."
+  },
+  "novelty": {
+    "answer": [
+      "PROTEUS automates the entire proteomics research process from raw data to hypothesis generation without human intervention.",
+      "The system integrates large language models with specialized bioinformatics tools to perform hierarchical planning and iterative refinement.",
+      "PROTEUS is capable of generating novel, evaluable hypotheses that align with existing literature while proposing new insights.",
+      "The system's flexible architecture allows seamless integration of diverse analysis tools and adaptation to different proteomics data types."
+    ],
+    "evidence": [
+      "PROTEUS uses large language models (LLMs) to perform hierarchical planning, execute specialized bioinformatics tools, and iteratively refine analysis workflows to generate high-quality scientific hypotheses.",
+      "The system’s flexible architecture facilitates seamless integration of diverse analysis tools and adaptation to different proteomics data types.",
+      "Results demonstrate that PROTEUS consistently produces reliable, logically coherent results that align well with existing literature while also proposing novel, evaluable hypotheses."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Deng et al. (2024) DREAM: a biomedical data-driven self-evolving autonomous research system. (Methodological precursors)",
+    "evidence": "DREAM [21], while eliminating human inputs, evaluates the system’s outputs solely by judging whether the initial research question was resolved, lacking verification of the reliability and depth of the results."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Receive raw omics data and basic dataset information.",
+        "input": "Proteomics dataset consisting of protein expression data and cell or sample metadata.",
+        "output": "Description of the proteomics dataset.",
+        "evidence": "PROTEUS first receives raw omics data and basic dataset information, based on which it plans data-dependent analysis procedures."
+      },
+      {
+        "step": "Plan data-dependent analysis procedures across three hierarchies.",
+        "input": "Description of the proteomics dataset.",
+        "output": "Research objectives, analysis workflows, and analysis tools.",
+        "evidence": "PROTEUS first receives raw omics data and basic dataset information, based on which it plans data-dependent analysis procedures across three hierarchies: research objectives, analysis workflows, and analysis tools."
+      },
+      {
+        "step": "Execute a sequence of analysis steps using bioinformatics tools.",
+        "input": "Planned analysis workflows and tools.",
+        "output": "Analysis results.",
+        "evidence": "Guided by these plans, the system automatically executes a sequence of analysis steps using bioinformatics tools, then interprets the results."
+      },
+      {
+        "step": "Perform iterative refinement after completing each workflow or objective.",
+        "input": "Latest analysis results.",
+        "output": "Updated subsequent plans.",
+        "evidence": "Furthermore, PROTEUS performs iterative refinement after completing each workflow or objective, updating subsequent plans based on the latest results."
+      },
+      {
+        "step": "Generate scientific hypotheses from the completed analysis.",
+        "input": "Research objectives, executed workflows, and result interpretations.",
+        "output": "Scientific hypotheses.",
+        "evidence": "Finally, PROTEUS proposes hypotheses from the completed analysis through integrating information on research objectives, executed workflows, and result interpretations."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Llama 3.1",
+        "description": "Used as the backbone architecture for orchestrating the analysis process.",
+        "evidence": "We predominantly adopt the state-of-the-art open-source LLM, Llama 3.1 [7], as our backbone architecture."
+      },
+      {
+        "name": "CATALYST",
+        "description": "Used for FlowSOM clustering and cell type annotation.",
+        "evidence": "We use the CATALYST [74] package to execute the FlowSOM [75] algorithm, a self-organizing map-based method designed for flow or mass cytometry data."
+      },
+      {
+        "name": "diffcyt",
+        "description": "Used for differential abundance and expression analysis.",
+        "evidence": "We use the edgeR [78] algorithm in the diffcyt [79] package to perform differential analysis of cell type abundances over different sample characteristics."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Single-cell Proteomic DataBase (SPDB)",
+        "data_description": "Contains single-cell datasets using cytometry by time-of-flight (CyTOF) sequencing technology.",
+        "usage": "Used for experiments and quantitative evaluation.",
+        "evidence": "First, we used the Single-cell Proteomic DataBase (SPDB) [36] to obtain 10 single-cell datasets which used cytometry by time-of-flight (CyTOF) [37] sequencing technology."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Paper-Based Alignment",
+        "purpose": "Measures the degree of concordance with the original research paper.",
+        "application": "Used to evaluate the alignment of hypotheses with published research.",
+        "evidence": "We evaluated each hypothesis separately according to 5 distinct metrics by prompting the LLM with the full hypothesis and optional reference information."
+      },
+      {
+        "name": "Literature-Based Alignment",
+        "purpose": "Assesses the degree of alignment between generated results and existing research.",
+        "application": "Used to compare hypotheses against general biological literature.",
+        "evidence": "We next introduce two evaluation metrics that compare PROTEUS ’s outputs against general biological literature."
+      },
+      {
+        "name": "Literature-Based Novelty",
+        "purpose": "Evaluates the originality of hypotheses within the context of current biological literature.",
+        "application": "Used to assess the novelty of generated hypotheses.",
+        "evidence": "Literature-Based Novelty, which evaluates their originality within the context of current biological literature."
+      },
+      {
+        "name": "Logical Coherence",
+        "purpose": "Assesses whether the output is logically plausible considering general biological principles.",
+        "application": "Used to evaluate the logical coherence of hypotheses.",
+        "evidence": "Logical Coherence, which assesses whether the output is logically plausible considering general biological principles."
+      },
+      {
+        "name": "Evaluability",
+        "purpose": "Determines whether the hypothesis can be further evaluated and verified through existing methods.",
+        "application": "Used to assess the evaluability of hypotheses.",
+        "evidence": "Evaluability, which determines whether the hypothesis can be further evaluated and verified through existing statistical methods or experimental procedures in the field."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Finally, PROTEUS proposes hypotheses from the completed analysis through integrating information on research objectives, executed workflows, and result interpretations."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We demonstrate the capabilities of PROTEUS through both automatic and human evaluation."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "description": "The system iteratively refines its analysis plans based on newly obtained results.",
+        "evidence": "Furthermore, PROTEUS performs iterative refinement after completing each workflow or objective, updating subsequent plans based on the latest results."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Biological Sciences",
+        "description": "The paper focuses on proteomics research, which involves the large-scale analysis of protein expression, functions, and interactions.",
+        "evidence": "Proteomics research [1], which focuses on the large-scale analysis of protein expression, functions, and interactions, is a crucial avenue for understanding biological processes and their underlying mechanisms."
+      },
+      {
+        "name": "Health Sciences",
+        "description": "The paper's objective and methodology are directly related to understanding disease mechanisms and identifying therapeutic targets.",
+        "evidence": "They have the potential to reveal valuable biological insights, including novel biomarkers [3], disease mechanisms [4], and therapeutic targets [5]."
+      },
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops an automated system using large language models and bioinformatics tools, which is an engineering approach.",
+        "evidence": "In this paper, we present PROTEUS, a fully automated system for scientific discovery from raw proteomics data."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "PROTEUS consistently produces reliable, logically coherent results that align well with existing literature while also proposing novel, evaluable hypotheses.",
+        "evidence": "Results demonstrate that PROTEUS consistently produces reliable, logically coherent results that align well with existing literature while also proposing novel, evaluable hypotheses."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "DREAM",
+        "description": "A biomedical data-driven self-evolving autonomous research system.",
+        "evidence": "DREAM [21], while eliminating human inputs, evaluates the system’s outputs solely by judging whether the initial research question was resolved."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "Single-cell Proteomic DataBase (SPDB)",
+        "data_description": "Contains single-cell datasets using cytometry by time-of-flight (CyTOF) sequencing technology.",
+        "usage": "Used for experiments and quantitative evaluation.",
+        "evidence": "First, we used the Single-cell Proteomic DataBase (SPDB) [36] to obtain 10 single-cell datasets which used cytometry by time-of-flight (CyTOF) [37] sequencing technology."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Paper-Based Alignment",
+        "purpose": "Measures the degree of concordance with the original research paper.",
+        "application": "Used to evaluate the alignment of hypotheses with published research.",
+        "evidence": "We evaluated each hypothesis separately according to 5 distinct metrics by prompting the LLM with the full hypothesis and optional reference information."
+      },
+      {
+        "name": "Literature-Based Alignment",
+        "purpose": "Assesses the degree of alignment between generated results and existing research.",
+        "application": "Used to compare hypotheses against general biological literature.",
+        "evidence": "We next introduce two evaluation metrics that compare PROTEUS ’s outputs against general biological literature."
+      },
+      {
+        "name": "Literature-Based Novelty",
+        "purpose": "Evaluates the originality of hypotheses within the context of current biological literature.",
+        "application": "Used to assess the novelty of generated hypotheses.",
+        "evidence": "Literature-Based Novelty, which evaluates their originality within the context of current biological literature."
+      },
+      {
+        "name": "Logical Coherence",
+        "purpose": "Assesses whether the output is logically plausible considering general biological principles.",
+        "application": "Used to evaluate the logical coherence of hypotheses.",
+        "evidence": "Logical Coherence, which assesses whether the output is logically plausible considering general biological principles."
+      },
+      {
+        "name": "Evaluability",
+        "purpose": "Determines whether the hypothesis can be further evaluated and verified through existing methods.",
+        "application": "Used to assess the evaluability of hypotheses.",
+        "evidence": "Evaluability, which determines whether the hypothesis can be further evaluated and verified through existing statistical methods or experimental procedures in the field."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "Single-cell Proteomic DataBase (SPDB)",
+    "data_description": "Contains single-cell datasets using cytometry by time-of-flight (CyTOF) sequencing technology.",
+    "usage": "Used for experiments and quantitative evaluation.",
+    "evidence": "First, we used the Single-cell Proteomic DataBase (SPDB) [36] to obtain 10 single-cell datasets which used cytometry by time-of-flight (CyTOF) [37] sequencing technology."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Elicitation of LLM Knowledge",
+        "description": "PROTEUS has yet to fully elicit the base language model’s knowledge to provide necessary explanations and qualifications.",
+        "evidence": "PROTEUS has yet to fully elicit the base language model’s knowledge to provide necessary explanations and qualifications."
+      },
+      {
+        "name": "Context Length Limitation",
+        "description": "The number of workflows or tools called is limited by the context length of the language model.",
+        "evidence": "Since we provide the LLM with direct access to all previous analysis records, the number of workflows or tools called is limited by the context length of the language model."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Refine Prompting Instructions",
+        "description": "Refining prompting instructions within the system and augmenting it with LLM self-reflection mechanisms are potential methods for addressing current limitations.",
+        "evidence": "Refining prompting instructions within the system and augmenting it with LLM self-reflection mechanisms are potential methods for addressing this shortcoming."
+      },
+      {
+        "name": "Develop Sophisticated Memory Management",
+        "description": "Develop more sophisticated memory management methods to concisely and dynamically provide the system with the most relevant analysis records at each given stage.",
+        "evidence": "A potential improvement is to develop more sophisticated memory management methods to concisely and dynamically provide the system with the most relevant analysis records at each given stage."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

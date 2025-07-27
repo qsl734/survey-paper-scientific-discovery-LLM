@@ -1,0 +1,161 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present a modular architecture for the Virtual Scientific Companion (VISION) to enable natural language-based scientific experimentation and facilitate human-instrument interaction at scientific user facilities.",
+    "evidence": "Here we present a modular architecture for the Virtual Scientific Companion (VISION) by assembling multiple AI-enabled cognitive blocks that each scaffolds large language models (LLMs) for a specialized task."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap in integrating AI models into real-world scientific workflows, which require robust scaffolding for domain-specific customizations and user-friendly interfaces.",
+    "evidence": "Real-world scientific workflows require more than the integration of AI models; they demand robust scaffolding that supports domain-specific customizations, multimodal input interfaces, user-friendly UIs, efficient server-side processing, seamless communication between components, and reliable database management."
+  },
+  "novelty": {
+    "answer": [
+      "Introduction of cognitive blocks (cogs) as an abstraction for modular AI functionalities.",
+      "Development of a modular and scalable architecture composed of an ensemble of cogs tailored for specific tasks.",
+      "Demonstration of the first voice-controlled experiment at an X-ray scattering beamline."
+    ],
+    "evidence": [
+      "We address the ambiguity in the literature regarding the definitions of AI agents by introducing the concept of cognitive blocks (cogs) as an abstraction for modular AI functionalities.",
+      "We present a modular and scalable architecture composed of an ensemble of cogs tailored for specific tasks.",
+      "With VISION, we performed LLM-based operation on the beamline workstation with low latency and demonstrated the first voice-controlled experiment at an X-ray scattering beamline."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Yager et al. (2023) Previously showed the feasibility of utilizing LLMs for data collection at a synchrotron beamline. (Methodological precursors)",
+    "evidence": "Previously, we have showed the feasibility of utilizing LLMs for data collection at a synchrotron beamline by introducing the prototype of VISION (Virtual Scientific Companion)."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Develop a modular infrastructure for building an end-to-end LLM-driven system for scientific experimentation.",
+        "input": "State-of-the-art LLM models and domain-specific tasks.",
+        "output": "A modular and scalable architecture composed of cognitive blocks (cogs).",
+        "evidence": "Here we present a modular infrastructure for building a practical end-to-end LLM-driven system for scientific experimentation."
+      },
+      {
+        "step": "Implement cognitive blocks (cogs) for specific tasks such as transcription, classification, and code generation.",
+        "input": "LLM scaffolded with domain-specific prompts or tools.",
+        "output": "Individual cogs designed to perform specific tasks.",
+        "evidence": "A cog is an individual unit comprising an LLM scaffolded with domain-specific prompts or tools."
+      },
+      {
+        "step": "Deploy VISION at a beamline to demonstrate its application in real-world tasks.",
+        "input": "Beamline GUI, Backend Server HAL, and integration with beamline control.",
+        "output": "Demonstration of VISION's application with multi-modal NL-inputs in real-world beamline tasks.",
+        "evidence": "We have deployed VISION at the 11-BM Complex Materials Scattering (CMS) beamline at the National Synchrotron Light Source II (NSLS-II) at the Brookhaven National Laboratory."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Whisper-Large-V3",
+        "description": "Used for speech-to-text functionality in the Transcriber cog.",
+        "evidence": "The Transcriber cog of VISION provides speech-to-text functionality built upon OpenAI’s Whisper Large-V3 model."
+      },
+      {
+        "name": "Qwen2",
+        "description": "Used in the Classifier cog to interpret user input and determine the next action or cog to call.",
+        "evidence": "The Classifier cog was evaluated using multiple large language models (LLMs) and dynamically generated system prompts."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Word Error Rate (WER)",
+        "purpose": "Measures the accuracy of the Transcriber cog in recognizing beamline-specific jargon.",
+        "application": "Used to evaluate the performance of fine-tuned Whisper models.",
+        "evidence": "The Word Error Rate (WER) decreases as the number of fine-tuning examples increases, with a sharp drop observed after approximately 30 examples."
+      },
+      {
+        "name": "F1 Score",
+        "purpose": "Balances precision and recall for the Classifier cog.",
+        "application": "Used to evaluate the performance of various LLMs across different prompt types.",
+        "evidence": "The evaluation metrics included F1 score and execution time."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "description": "The system transforms natural language input into structured commands for beamline operation.",
+        "evidence": "The Operator cog is tasked with converting natural language inputs into functional Python code that interfaces with the beamline instruments."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "VISION operates as a scientific assistant by invoking cogs in a predefined deterministic order, referred to as workflows here."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a modular AI assistant for natural human-instrument interaction at scientific user facilities.",
+        "evidence": "VISION aims to lead the NL-controlled scientific expedition with joint human-AI force for accelerated scientific discovery at user facilities."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The methodology targets domain-specific problems in scientific experimentation and instrumentation.",
+        "evidence": "The modular and scalable architecture allows for easy adaptation to new instrument and capabilities."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The Transcriber cog achieved a Word Error Rate (WER) of zero on the test sets for the individual words after fine-tuning.",
+        "evidence": "The final fine-tuned model achieves a WER of zero on the test sets for the individual words, confirming that the model successfully learned all seven terms."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Whisper-Large-V3",
+        "description": "Baseline model for speech-to-text functionality.",
+        "evidence": "The Transcriber cog of VISION provides speech-to-text functionality built upon OpenAI’s Whisper Large-V3 model."
+      }
+    ],
+    "benchmark_datasets": [],
+    "evaluation_metrics": [
+      {
+        "name": "Word Error Rate (WER)",
+        "purpose": "Measures the accuracy of the Transcriber cog in recognizing beamline-specific jargon.",
+        "application": "Used to evaluate the performance of fine-tuned Whisper models.",
+        "evidence": "The Word Error Rate (WER) decreases as the number of fine-tuning examples increases, with a sharp drop observed after approximately 30 examples."
+      },
+      {
+        "name": "F1 Score",
+        "purpose": "Balances precision and recall for the Classifier cog.",
+        "application": "Used to evaluate the performance of various LLMs across different prompt types.",
+        "evidence": "The evaluation metrics included F1 score and execution time."
+      }
+    ]
+  },
+  "benchmark_dataset": null,
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Generalizability",
+        "description": "The system is tailored to specific beamline operations and may not generalize to other scientific domains without adaptation.",
+        "evidence": "In this work, VISION has been tailored to address the specific needs of particular beamline operations, specifically standard X-ray scattering experiments for characterizing nanomaterials and soft matters."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand VISION to Other Beamlines",
+        "description": "Adapt VISION to support a broader range of beamline applications or other complex instrumentation.",
+        "evidence": "This modularity and scalability support VISION to be readily adapted and expanded to support a broader range of beamline applications or other complex instrumentation."
+      },
+      {
+        "name": "Develop a Mock Environment",
+        "description": "Create a mock environment for the beamline data collection framework to allow VISION to write complex Python scripts and improve them with reflection.",
+        "evidence": "To go beyond basic sequential and structured control flows (e.g. for or while loops), code verification under a mock environment for the beamline data collection framework Bluesky has to be developed."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://www.youtube.com/watch?v=NiMLmYVKiQA",
+    "evidence": "VISION_v1 demonstration video available online at https://www.youtube.com/watch?v=NiMLmYVKiQA"
+  }
+}

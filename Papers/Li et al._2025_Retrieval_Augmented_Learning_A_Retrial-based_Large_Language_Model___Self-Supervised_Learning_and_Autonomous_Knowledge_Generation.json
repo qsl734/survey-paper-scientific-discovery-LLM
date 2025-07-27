@@ -1,0 +1,187 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to present Retrial-Augmented Learning (RAL), a reward-free self-supervised learning framework for Large Language Models (LLMs) that operates without model training, aiming to improve decision-making performance and autonomous knowledge generation.",
+    "evidence": "In this paper, we present Retrial-Augmented Learning (RAL), a reward-free self-supervised learning framework for LLMs that operates without model training."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap of LLMs lacking domain-specific data in pre-training, which limits their decision-making capabilities in specialized applications.",
+    "evidence": "The lack of domain-specific data in the pre-training of Large Language Models (LLMs) severely limits LLM-based decision systems in specialized applications."
+  },
+  "novelty": {
+    "answer": [
+      "The development of RAL as a train-free and reward-free learning framework for LLMs.",
+      "The adaptation of Retrieval-Augmented Generation (RAG) into a dynamic module for organizing intermediate learning data.",
+      "The evaluation of the method in the LLM-PySC2 platform, demonstrating improvements in decision-making ability and robustness."
+    ],
+    "evidence": [
+      "We propose RAL, a train-free and reward-free learning framework that adapts RAG for organizing intermediate data.",
+      "We develop RAG into a dynamic module to generate and organize intermediate learning data, breaking the traditional way of using fixed databases in the RAG process.",
+      "We evaluate our method in the LLM-PySC2 platform, with experiments on OOD tasks, robustness, transferability of generated data, and calculated statistics such as prompt length and waiting time."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Li et al. (2024) LLM-PySC2: Starcraft II learning environment for Large Language Models. (Experimental baselines)",
+    "evidence": "In the experiments, we evaluated our method in the LLM-PySC2 environment and analyzed the performance during the training process."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Generate hypotheses about better policies.",
+        "input": "State transitions and existing hypothetical policies.",
+        "output": "Observation-hypothesis pairs stored in the database.",
+        "evidence": "To generate observation-hypothesis pairs (bo|bh), a model analyzes the state transition (bot, bat, bot+1) and proposes a better policy for its goal."
+      },
+      {
+        "step": "Validate the hypotheses in the environment.",
+        "input": "Hypothetical policies and state transitions.",
+        "output": "Validated policy data stored in the database.",
+        "evidence": "During validation, the agent executes policy-aligned actions and evaluates their causal impact on subsequent state transitions."
+      },
+      {
+        "step": "Generate experience from validated hypotheses.",
+        "input": "Hypothetical policies and their validations.",
+        "output": "Experience data stored in the database.",
+        "evidence": "The agent generates an experience for the retrieved hypothetical policy bht use its validations [bvt]."
+      }
+    ],
+    "tools": [
+      {
+        "name": "Retrieval-Augmented Generation (RAG)",
+        "description": "Used for organizing intermediate learning data and retrieving relevant text.",
+        "evidence": "We develop RAG into a dynamic module to generate and organize intermediate learning data."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "LLM-PySC2",
+        "data_description": "A decision-making platform combining complexity with domain-specific knowledge requirements.",
+        "usage": "Used for evaluating the proposed method.",
+        "evidence": "The method is evaluated in the LLM-PySC2 environment, a representative decision-making platform."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Winning Rate (WR)",
+        "purpose": "Measures the percentage of games won.",
+        "application": "Used to evaluate decision-making ability.",
+        "evidence": "Winning Rate(WR), Value of Killed Units (Vkilled) and Kill/Death ratio(KD)."
+      },
+      {
+        "name": "Value of Killed Units (Vkilled)",
+        "purpose": "Measures the value of enemy units killed.",
+        "application": "Used to assess combat effectiveness.",
+        "evidence": "Value of Killed Units (Vkilled) and Kill/Death ratio(KD)."
+      },
+      {
+        "name": "Kill/Death ratio (KD)",
+        "purpose": "Measures the ratio of enemy units killed to own units lost.",
+        "application": "Used to evaluate combat efficiency.",
+        "evidence": "Kill/Death ratio(KD)."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Hypothesis or Idea Generation",
+        "description": "The system produces candidate hypotheses or new research ideas from prior knowledge or external input.",
+        "evidence": "Hypothesis proposal enables LLMs explore the policy space."
+      },
+      {
+        "name": "Experimental design generation",
+        "description": "The approach includes producing experimental protocols, configurations, or evaluation strategies.",
+        "evidence": "We formulate the learning process in MDP problems as a strategy optimization paradigm comprising: (1) strategy exploration (2) empirical validation, and (3) experience consolidation."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Applied Sciences & Engineering",
+        "description": "The paper develops a framework for improving decision-making in complex environments using LLMs.",
+        "evidence": "The method is evaluated in the LLM-PySC2 environment, a representative decision-making platform."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "The proposed method effectively reduces hallucination and increases decision-making performance at an extremely low cost.",
+        "evidence": "Experiments demonstrate that the proposed method effectively reduces hallucination by generating and utilizing validated knowledge, and increases decision-making performance at an extremely low cost."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "LLM Reflection",
+        "description": "A method for optimizing policy using reflection.",
+        "evidence": "We tested our method and LLM reflection methods."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "LLM-PySC2",
+        "data_description": "A decision-making platform combining complexity with domain-specific knowledge requirements.",
+        "usage": "Used for evaluating the proposed method.",
+        "evidence": "The method is evaluated in the LLM-PySC2 environment, a representative decision-making platform."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "Winning Rate (WR)",
+        "purpose": "Measures the percentage of games won.",
+        "application": "Used to evaluate decision-making ability.",
+        "evidence": "Winning Rate(WR), Value of Killed Units (Vkilled) and Kill/Death ratio(KD)."
+      },
+      {
+        "name": "Value of Killed Units (Vkilled)",
+        "purpose": "Measures the value of enemy units killed.",
+        "application": "Used to assess combat effectiveness.",
+        "evidence": "Value of Killed Units (Vkilled) and Kill/Death ratio(KD)."
+      },
+      {
+        "name": "Kill/Death ratio (KD)",
+        "purpose": "Measures the ratio of enemy units killed to own units lost.",
+        "application": "Used to evaluate combat efficiency.",
+        "evidence": "Kill/Death ratio(KD)."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "LLM-PySC2",
+    "data_description": "A decision-making platform combining complexity with domain-specific knowledge requirements.",
+    "usage": "Used for evaluating the proposed method.",
+    "evidence": "The method is evaluated in the LLM-PySC2 environment, a representative decision-making platform."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Insufficient Exploration",
+        "description": "The exploration ability of LLMs may not be imaginative enough to find the optimal policy.",
+        "evidence": "The exploration ability of LLMs will directly affect the effectiveness of our framework."
+      },
+      {
+        "name": "Insufficient Validation for Long-Horizon Policy",
+        "description": "The lack of long-term data limits the accuracy of evaluating the long-term performance of a policy.",
+        "evidence": "The lack of long-term data, such as episode reward and multi-step state transition, limits the accuracy of evaluating the long-term performance of a policy."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Improve Exploration",
+        "description": "Explore methods to enhance the exploration ability of LLMs to find optimal policies.",
+        "evidence": "How to promote LLM exploration remains an unsolved problem."
+      },
+      {
+        "name": "Enhance Long-Horizon Validation",
+        "description": "Develop techniques to incorporate long-term data for more accurate policy evaluation.",
+        "evidence": "Long-term data will greatly increase the length of input prompt and introduce the confidence allocation problem into the learning process."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "",
+    "evidence": ""
+  }
+}

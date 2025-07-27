@@ -1,0 +1,196 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to investigate the efficacy of Large Language Models (LLMs) in understanding and extracting scientific knowledge across specific domains and to create a deep learning framework called Knowledge AI. The authors aim to fine-tune pre-trained models on scientific datasets for four key NLP tasks: summarization, text generation, question answering, and named entity recognition.",
+    "evidence": "This project investigates the efficacy of Large Language Models (LLMs) in understanding and extracting scientific knowledge across specific domains and to create a deep learning framework: Knowledge AI."
+  },
+  "knowledge_gap": {
+    "answer": "The paper addresses the gap of a lack of accessible tools that effectively bridge the communication divide between researchers and the broader public, which hinders the dissemination of scientific ideas and discoveries.",
+    "evidence": "However, within the realm of scientific research, a critical gap exists – a lack of accessible tools that effectively bridge the communication divide between researchers and the broader public."
+  },
+  "novelty": {
+    "answer": [
+      "The development of a unified AI framework specifically designed for scientific tasks using fine-tuned LLMs.",
+      "The adaptation of pre-trained models for four key NLP tasks: summarization, text generation, question answering, and named entity recognition.",
+      "The use of an Adaptive Tokenization Strategy for summarization to manage long documents and enhance accuracy.",
+      "The exploration of Low Rank adaptations in training causal language models for text generation."
+    ],
+    "evidence": [
+      "To address this challenge, there is an urgent need for a unified AI framework specifically designed for scientific tasks.",
+      "The models are adapted for four key Natural Language Processing (NLP) tasks: summarization, text generation, question answering, and named entity recognition.",
+      "In the summarization task, advanced models are fine-tuned using an Adaptive Tokenization Strategy to address challenges in scientific text summarization.",
+      "Text generation explores additional techniques such as Low Rank adaptations in training causal language models."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Taylor et al. (2022) Galactica: A large language model for science. (Methodological precursors)",
+    "evidence": "We discovered only recently that Meta AI also released an LLM, Galactica in 2022 specifically designed for scientific tasks."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Fine-tune pre-trained models on scientific datasets for summarization.",
+        "input": "Scientific papers dataset from Hugging Face.",
+        "output": "Fine-tuned BART and LED models.",
+        "evidence": "Summarization examines fine-tuned BART and LED models."
+      },
+      {
+        "step": "Fine-tune pre-trained models on scientific datasets for text generation.",
+        "input": "ArXIV dataset, distilgpt2 model.",
+        "output": "Fine-tuned distilgpt2 model with LoRA adapters.",
+        "evidence": "Text generation uses distilgpt2. We modified the original code to include LoRA adapters."
+      },
+      {
+        "step": "Fine-tune pre-trained models on scientific datasets for question answering.",
+        "input": "SQUAD for Extractive, PubMedQA for Abstractive.",
+        "output": "Fine-tuned BERT and SciBERT models.",
+        "evidence": "Question answering fine-tunes two sets of models, BERT and SciBERT are fine-tuned on SQUAD for Extractive, and PubMedQA for Abstractive."
+      },
+      {
+        "step": "Fine-tune pre-trained models on scientific datasets for named entity recognition.",
+        "input": "CoNLL2003, SciERC, and GENIA datasets.",
+        "output": "Fine-tuned BERT, SciBERT, and SciDeBERTa models.",
+        "evidence": "NER fine-tunes BERT, SciBERT, and SciDeBERTa against a set of increasing science-focused NER datasets, CoNLL2003, SciERC and GENIA."
+      }
+    ],
+    "tools": [
+      {
+        "name": "BART",
+        "description": "Used for summarization tasks.",
+        "evidence": "Summarization examines fine-tuned BART and LED models."
+      },
+      {
+        "name": "distilgpt2",
+        "description": "Used for text generation tasks.",
+        "evidence": "Text generation uses distilgpt2."
+      },
+      {
+        "name": "BERT",
+        "description": "Used for question answering and NER tasks.",
+        "evidence": "Question answering fine-tunes two sets of models, BERT and SciBERT are fine-tuned on SQUAD for Extractive."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "SQUAD",
+        "data_description": "A dataset for question answering tasks.",
+        "usage": "Used for fine-tuning models for extractive question answering.",
+        "evidence": "Question answering fine-tunes two sets of models, BERT and SciBERT are fine-tuned on SQUAD for Extractive."
+      },
+      {
+        "name": "PubMedQA",
+        "data_description": "A dataset for question answering tasks in the medical domain.",
+        "usage": "Used for fine-tuning models for abstractive question answering.",
+        "evidence": "Question answering fine-tunes two sets of models, BERT and SciBERT are fine-tuned on PubMedQA for Abstractive."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "ROUGE",
+        "purpose": "Measures the overlap between generated and reference texts.",
+        "application": "Used to assess the performance of summarization and text generation tasks.",
+        "evidence": "For text generation, summarization, and Q & A, we measure the various ROUGE scores."
+      },
+      {
+        "name": "F1 Score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate the performance of NER tasks.",
+        "evidence": "For the NER task, we employ the standard F1, recall, and precision metrics."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Transformation/structurization of user input",
+        "evidence": "In the summarization task, advanced models are fine-tuned using an Adaptive Tokenization Strategy."
+      },
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "evidence": "Our project focuses on developing a deep learning-based framework designed to make scientific text accessible."
+      },
+      {
+        "name": "Iterative refinement of Ideas, Hypothesis and Experiment design",
+        "evidence": "We modified the original code to include LoRA adapters."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper develops a framework for extracting and understanding scientific knowledge across various domains.",
+        "evidence": "This project investigates the efficacy of Large Language Models (LLMs) in understanding and extracting scientific knowledge across specific domains."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "Fine-tuning BART and LED models significantly improved summarization performance, with BART achieving a precision of 65.23% for ROUGE-1.",
+        "evidence": "Fine-tuning BART leads to significant improvements across all metrics, with precision notably increasing to 65.23% for ROUGE-1."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "Baseline",
+        "description": "Initial model performance before fine-tuning.",
+        "evidence": "Baseline ROUGE-1 F1 score for text generation was 0.222319."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "ArXIV",
+        "data_description": "A large dataset of scientific articles.",
+        "usage": "Used for training and evaluating summarization and text generation models.",
+        "evidence": "In addressing the challenge of training with limited computational resources on the extensive Arxiv dataset, comprising 1.7 million articles."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "ROUGE",
+        "purpose": "Measures the overlap between generated and reference texts.",
+        "application": "Used to assess the performance of summarization and text generation tasks.",
+        "evidence": "For text generation, summarization, and Q & A, we measure the various ROUGE scores."
+      },
+      {
+        "name": "F1 Score",
+        "purpose": "Measures the balance between precision and recall.",
+        "application": "Used to evaluate the performance of NER tasks.",
+        "evidence": "For the NER task, we employ the standard F1, recall, and precision metrics."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "SQUAD",
+    "data_description": "A dataset for question answering tasks.",
+    "usage": "Used for fine-tuning models for extractive question answering.",
+    "evidence": "Question answering fine-tunes two sets of models, BERT and SciBERT are fine-tuned on SQUAD for Extractive."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Computational Resources",
+        "description": "The study faced challenges in training with limited computational resources on large datasets.",
+        "evidence": "In addressing the challenge of training with limited computational resources on the extensive Arxiv dataset."
+      },
+      {
+        "name": "Model Input Constraints",
+        "description": "BART's maximum input token constraint limited its ability to process longer documents effectively.",
+        "evidence": "We encountered significant limitations related to BART’s maximum input token constraint, which hindered its ability to process longer documents effectively."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Optimize Model Efficiency",
+        "description": "Future efforts could enhance efficiency by optimizing data handling and computational pathways.",
+        "evidence": "Future efforts could enhance efficiency by optimizing data handling, computational pathways in adapted layers, and improving hardware utilization."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.gatech.edu/cs7643Team1/cs7643_project",
+    "evidence": "The code used to deploy these models and fine-tune them are stored in the Georgia Tech Github organization here: [1]."
+  }
+}

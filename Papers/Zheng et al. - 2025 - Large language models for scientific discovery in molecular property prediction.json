@@ -1,0 +1,201 @@
+{
+  "objective": {
+    "answer": "The primary objective of the paper is to introduce LLM4SD, a framework designed to harness large language models (LLMs) for driving scientific discovery in molecular property prediction by synthesizing knowledge from literature and inferring knowledge from scientific data.",
+    "evidence": "In this work, we introduce LLM4SD, a framework designed to harness LLMs for driving scientific discovery in molecular property prediction by synthesizing knowledge from literature and inferring knowledge from scientific data."
+  },
+  "knowledge_gap": {
+    "answer": "The potential of large language models (LLMs) for driving scientific discovery in molecular property prediction remains largely unexplored.",
+    "evidence": "Although LLMs have seen initial applications in natural sciences, their potential for driving scientific discovery remains largely unexplored."
+  },
+  "novelty": {
+    "answer": [
+      "LLM4SD synthesizes knowledge from existing literature and infers knowledge by observing experimental data.",
+      "The framework transforms molecules into feature vectors using interpretable models such as random forest.",
+      "LLM4SD outperforms the current state of the art across a range of benchmark tasks for predicting molecular properties."
+    ],
+    "evidence": [
+      "LLM4SD functions by performing two main tasks: synthesizing knowledge from existing literature and inferring knowledge by observing experimental data.",
+      "These rules are then used to create interpretable feature vectors for each molecule.",
+      "By using these features with interpretable models such as random forest, LLM4SD can outperform the current state of the art across a range of benchmark tasks for predicting molecular properties."
+    ]
+  },
+  "inspirational_papers": {
+    "answer": "- Wu et al. (2018) MoleculeNet: a benchmark for molecular machine learning. (Experimental baselines)",
+    "evidence": "These tasks, encompassing both classification and regression, span four domains: physiology, biophysics, physical chemistry and quantum mechanics from the MoleculeNet dataset curated by the Stanford PANDE group."
+  },
+  "method": {
+    "steps": [
+      {
+        "step": "Knowledge synthesis from literature",
+        "input": "Pretrained understanding from extensive scientific literature",
+        "output": "Synthesized rules for predicting molecular properties",
+        "evidence": "In the knowledge synthesis from literature phase, LLMs use their pretrained understanding from extensive scientific literature to synthesize rules for predicting molecular properties."
+      },
+      {
+        "step": "Knowledge inference from data",
+        "input": "SMILES strings and their corresponding labels",
+        "output": "Identified patterns and rules from scientific data",
+        "evidence": "In the knowledge inference from data phase, LLMs can utilize their inferential and analytical abilities to identify patterns in scientific data: for example, SMILES strings and their corresponding labels."
+      },
+      {
+        "step": "Model training",
+        "input": "Vectorized representations of molecules",
+        "output": "Trained interpretable models",
+        "evidence": "With synthesized and inferred rules, a molecule can be converted to vector representations based on its corresponding rule value. The vectorized representations can then be used to train interpretable models."
+      },
+      {
+        "step": "Interpretable insights",
+        "input": "Trained models",
+        "output": "Insights that explain model predictions",
+        "evidence": "Once the model is trained, it provides insights that explain how it makes its predictions."
+      }
+    ],
+    "tools": [
+      {
+        "name": "GPT-4",
+        "description": "Used to generate Python code for converting rules into executable code functions",
+        "evidence": "To convert these rules into corresponding executable code functions, we utilize GPT-4 to generate Python code using cheminformatics software such as RDKit."
+      },
+      {
+        "name": "RDKit",
+        "description": "Used for cheminformatics tasks such as calculating molecular weight",
+        "evidence": "rdMolDescriptors is a module in the RDKit library."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MoleculeNet",
+        "data_description": "A benchmark dataset for molecular machine learning",
+        "usage": "Used for evaluating molecular property prediction tasks",
+        "evidence": "These tasks, encompassing both classification and regression, span four domains: physiology, biophysics, physical chemistry and quantum mechanics from the MoleculeNet dataset curated by the Stanford PANDE group."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "AUC-ROC",
+        "purpose": "Measures the ability of the model to distinguish between classes",
+        "application": "Used in physiology and biophysics domains",
+        "evidence": "For the domains of physiology and biophysics, the AUC-ROC metric was employed."
+      },
+      {
+        "name": "RMSE",
+        "purpose": "Quantifies the difference between predicted and observed values",
+        "application": "Used in the domain of physical chemistry",
+        "evidence": "In the domain of physical chemistry, the RMSE was used."
+      },
+      {
+        "name": "MAE",
+        "purpose": "Measures the average magnitude of errors between predicted and true values",
+        "application": "Used in quantum mechanics",
+        "evidence": "For quantum mechanics, we utilized the MAE metric."
+      }
+    ]
+  },
+  "method_type": {
+    "methods": [
+      {
+        "name": "Knowledge Extraction and Structurization",
+        "evidence": "LLM4SD functions by performing two main tasks: synthesizing knowledge from existing literature and inferring knowledge by observing experimental data."
+      },
+      {
+        "name": "Hypothesis or Idea Generation",
+        "evidence": "We propose LLM4SD (LLMs for Scientific Discovery). LLM4SD functions by performing two main tasks: synthesizing knowledge from existing literature and inferring knowledge by observing experimental data."
+      }
+    ]
+  },
+  "subject_area": {
+    "areas": [
+      {
+        "name": "Chemical Sciences",
+        "description": "The paper focuses on molecular property prediction, which is crucial for advancing drug design and materials discovery.",
+        "evidence": "Molecular property prediction is crucial for advancing drug design and materials discovery."
+      },
+      {
+        "name": "Interdisciplinary Sciences",
+        "description": "The paper integrates large language models with molecular property prediction, bridging AI and chemistry.",
+        "evidence": "Large language models (LLMs) are a form of artificial intelligence system encapsulating vast knowledge in the form of natural language."
+      }
+    ]
+  },
+  "performance_summary": {
+    "performance_summary": [
+      {
+        "summary": "LLM4SD demonstrated superior efficacy and performance across 58 diverse tasks, outperforming nine specialized, state-of-the-art supervised machine learning models.",
+        "evidence": "Benchmarking LLM4SD against the baseline, LLM4SD demonstrated its superior efficacy and performance."
+      }
+    ],
+    "baselines": [
+      {
+        "name": "AttrMask",
+        "description": "A state-of-the-art supervised machine learning model for molecular prediction.",
+        "evidence": "These are advanced graph or geometric neural networks (GNNs): AttrMask, GraphCL, MolCLR, 3DInfomax, GraphMVP, MoleBERT, Grover and UniMol."
+      },
+      {
+        "name": "GraphCL",
+        "description": "A state-of-the-art supervised machine learning model for molecular prediction.",
+        "evidence": "These are advanced graph or geometric neural networks (GNNs): AttrMask, GraphCL, MolCLR, 3DInfomax, GraphMVP, MoleBERT, Grover and UniMol."
+      }
+    ],
+    "benchmark_datasets": [
+      {
+        "name": "MoleculeNet",
+        "data_description": "A benchmark dataset for molecular machine learning",
+        "usage": "Used for evaluating molecular property prediction tasks",
+        "evidence": "These tasks, encompassing both classification and regression, span four domains: physiology, biophysics, physical chemistry and quantum mechanics from the MoleculeNet dataset curated by the Stanford PANDE group."
+      }
+    ],
+    "evaluation_metrics": [
+      {
+        "name": "AUC-ROC",
+        "purpose": "Measures the ability of the model to distinguish between classes",
+        "application": "Used in physiology and biophysics domains",
+        "evidence": "For the domains of physiology and biophysics, the AUC-ROC metric was employed."
+      },
+      {
+        "name": "RMSE",
+        "purpose": "Quantifies the difference between predicted and observed values",
+        "application": "Used in the domain of physical chemistry",
+        "evidence": "In the domain of physical chemistry, the RMSE was used."
+      },
+      {
+        "name": "MAE",
+        "purpose": "Measures the average magnitude of errors between predicted and true values",
+        "application": "Used in quantum mechanics",
+        "evidence": "For quantum mechanics, we utilized the MAE metric."
+      }
+    ]
+  },
+  "benchmark_dataset": {
+    "name": "MoleculeNet",
+    "data_description": "A benchmark dataset for molecular machine learning",
+    "usage": "Used for evaluating molecular property prediction tasks",
+    "evidence": "These tasks, encompassing both classification and regression, span four domains: physiology, biophysics, physical chemistry and quantum mechanics from the MoleculeNet dataset curated by the Stanford PANDE group."
+  },
+  "limitations": {
+    "limitations": [
+      {
+        "name": "Limited Scope",
+        "description": "The study only focused on molecular property prediction, which represents a small corner of the breadth of scientific endeavour.",
+        "evidence": "Although these molecular property predictions address complex challenges, such as predicting a molecule’s BBB permeability, they represent only a small corner of the breadth of scientific endeavour."
+      }
+    ]
+  },
+  "future_directions": {
+    "future_directions": [
+      {
+        "name": "Expand to Protein and Gene Sequence Analysis",
+        "description": "The authors plan to apply LLM4SD to more advanced applications, such as protein sequence or gene sequence analysis.",
+        "evidence": "However, LLM4SD’s promising results in molecular property prediction hold promise for the direct application of LLMs in more advanced applications, such as protein sequence or gene sequence analysis."
+      },
+      {
+        "name": "Enhance LLMs for Biological Data",
+        "description": "Pretraining LLMs on vast, diverse datasets of protein or gene sequences may help the models understand complex patterns more effectively.",
+        "evidence": "To enhance LLMs’ ability to handle intricate biological data, pretraining them on vast, diverse datasets of protein or gene sequences may help the models understand the complex patterns more effectively."
+      }
+    ]
+  },
+  "resource_link": {
+    "answer": "https://github.com/zyzisastudyreallyhardguy/LLM4SD",
+    "evidence": "The GitHub link of the model is https://github.com/zyzisastudyreallyhardguy/LLM4SD (https://doi.org/10.5281/zenodo.13986921)."
+  }
+}
