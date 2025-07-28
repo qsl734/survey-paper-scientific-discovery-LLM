@@ -12,12 +12,25 @@ json_files = sorted(f for f in os.listdir(json_dir) if f.endswith(".json"))
 st.set_page_config(page_title="Paper Summary Viewer", layout="wide")
 st.title("📄 Scientific Paper Summarizer")
 
-# 📜 Layout: Sidebar for files
+# ─────────────────────────────
+# 📜 Sidebar: Search & Select
+# ─────────────────────────────
 with st.sidebar:
-    st.header("📂 Papers")
-    for filename in json_files:
-        if st.button(filename):
-            st.session_state["selected_file"] = filename
+    st.header("🔎 Search Papers")
+
+    # Search input box
+    search_query = st.text_input("Search by filename")
+
+    # Filter files based on query
+    if search_query:
+        filtered_files = [f for f in json_files if search_query.lower() in f.lower()]
+    else:
+        filtered_files = json_files
+
+    st.markdown("### 📂 Matching Papers")
+    for file in filtered_files:
+        if st.button(file):
+            st.session_state["selected_file"] = file
 
 # 📦 Main Content Area
 st.header("📑 Summary")
