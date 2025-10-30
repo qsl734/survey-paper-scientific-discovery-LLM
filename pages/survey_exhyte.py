@@ -8,7 +8,7 @@ from dateutil import parser
 # --------------------------
 # Configuration
 # --------------------------
-JSON_FOLDER = "/home/mdh121/i_created_scripts/paper_summary_pipeline/paper_survey_app/exhyte_data"
+JSON_FOLDER = "exhyte_data"
 st.set_page_config(page_title="Scientific Survey Generator", layout="wide")
 
 # Sidebar: OpenAI API key input
