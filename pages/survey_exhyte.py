@@ -30,7 +30,7 @@ client = OpenAI(api_key=openai_api_key)
 # --------------------------
 
 st.title("Scientific Survey Generator")
-st.write("Generate a structured, scientific-style survey from selected  papers.")
+st.write("Generate a structured, scientific-style survey from selected JSON paper files.")
 
 # Sidebar header
 st.sidebar.header("📂 Select Papers for Survey")

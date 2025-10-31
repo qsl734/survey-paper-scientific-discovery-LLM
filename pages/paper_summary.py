@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 # 📁 Path to your JSON folder
-json_dir = json_dir = "Papers"
+json_dir = "Papers"
 
 # 🔍 Get all JSON files in the folder
 json_files = sorted(f for f in os.listdir(json_dir) if f.endswith(".json"))
@@ -17,8 +17,6 @@ st.title("📄 Scientific Paper Summarizer")
 # ─────────────────────────────
 with st.sidebar:
     st.header("🔎 Search Papers")
-
-    # Search input box
     search_query = st.text_input("Search by filename")
 
     # Filter files based on query
@@ -39,15 +37,41 @@ if "selected_file" in st.session_state:
     selected_file = st.session_state["selected_file"]
     file_path = os.path.join(json_dir, selected_file)
 
-    with open(file_path) as f:
+    with open(file_path, encoding="utf-8") as f:
         data = json.load(f)
 
+    # ─────────────
+    # Display paper metadata
+    # ─────────────
+    paper_title = data.get("paper_title", "Untitled Paper")
+    st.subheader(f"📝 {paper_title}")
+
+    authors = data.get("authors", "")
+    if authors:
+        st.markdown(f"👩‍🔬 **Authors**: {authors}")
+
+    published = data.get("published", "")
+    if published:
+        st.markdown(f"📅 **Published**: {published}")
+
+    link = data.get("link", "")
+    if link:
+        st.markdown(f"🔗 [Paper Link]({link})")
+
+    st.markdown("---")
+
+    # ─────────────
+    # Loop through all other sections
+    # ─────────────
     for section, content in data.items():
+        if section in ["paper_title", "authors", "published", "link"]:
+            continue  # Skip metadata
+
         st.markdown(f"## 🔹 {section.replace('_', ' ').title()}")
 
-        # Handle dictionary sections with "answer"
+        # Handle sections with "answer" and "evidence"
         if isinstance(content, dict) and "answer" in content:
-            answer = content["answer"]
+            answer = content.get("answer", "")
             evidence = content.get("evidence", "")
 
             st.markdown("**✅ Answer**")
@@ -67,125 +91,83 @@ if "selected_file" in st.session_state:
             st.markdown("---")
 
         # ─────────────
-        # 🔍 METHOD Section
+        # METHOD section
         # ─────────────
         elif section == "method":
             st.subheader("🔄 Steps")
             for step in content.get("steps", []):
-                st.markdown(f"- **{step['step']}**")
-                st.markdown(f"  - 📥 Input: {step['input']}")
-                st.markdown(f"  - 📤 Output: {step['output']}")
-                st.markdown(f"  - 📌 Evidence: {step['evidence']}")
+                st.markdown(f"- **{step.get('step','')}**")
+                st.markdown(f"  - 📥 Input: {step.get('input','')}")
+                st.markdown(f"  - 📤 Output: {step.get('output','')}")
+                st.markdown(f"  - 📌 Evidence: {step.get('evidence','')}")
                 st.markdown("---")
 
-            if content.get("tools"):
+            # 🛠️ Tools
+            tools = content.get("tools", [])
+            if isinstance(tools, str):
+                tools = [tools]
+            if tools:
                 st.subheader("🛠️ Tools")
-                for tool in content["tools"]:
-                    st.markdown(f"- **{tool['name']}**: {tool['description']}")
-                    st.markdown(f"  - 📌 Evidence: {tool['evidence']}")
+                for tool in tools:
+                    if isinstance(tool, dict):
+                        name = tool.get("name", "Unnamed Tool")
+                        desc = tool.get("description", "")
+                        evidence = tool.get("evidence", "")
+                        st.markdown(f"- **{name}**: {desc}")
+                        if evidence:
+                            st.markdown(f"  - 📌 Evidence: {evidence}")
+                    else:
+                        st.markdown(f"- {tool}")
 
-            if content.get("benchmark_datasets"):
+            # 📚 Benchmark Datasets
+            datasets = content.get("benchmark_datasets", [])
+            if isinstance(datasets, dict):
+                datasets = [datasets]
+            if datasets:
                 st.subheader("📚 Benchmark Datasets")
-                for d in content["benchmark_datasets"]:
-                    st.markdown(f"- **{d['name']}**")
-                    st.markdown(f"  - 📊 Description: {d['data_description']}")
-                    st.markdown(f"  - 🔧 Usage: {d['usage']}")
-                    st.markdown(f"  - 📌 Evidence: {d['evidence']}")
+                for d in datasets:
+                    if isinstance(d, dict):
+                        st.markdown(f"- **{d.get('name','')}**")
+                        if "data_description" in d:
+                            st.markdown(f"  - 📊 Description: {d.get('data_description','')}")
+                        if "usage" in d:
+                            st.markdown(f"  - 🔧 Usage: {d.get('usage','')}")
+                        if "evidence" in d:
+                            st.markdown(f"  - 📌 Evidence: {d.get('evidence','')}")
+                    else:
+                        st.markdown(f"- {d}")
 
-            if content.get("evaluation_metrics"):
+            # 📏 Evaluation Metrics
+            metrics = content.get("evaluation_metrics", [])
+            if isinstance(metrics, dict):
+                metrics = [metrics]
+            if metrics:
                 st.subheader("📏 Evaluation Metrics")
-                for m in content["evaluation_metrics"]:
-                    st.markdown(f"- **{m['name']}**")
-                    st.markdown(f"  - 🎯 Purpose: {m['purpose']}")
-                    st.markdown(f"  - ⚙️ Application: {m['application']}")
-                    st.markdown(f"  - 📌 Evidence: {m['evidence']}")
+                for m in metrics:
+                    if isinstance(m, dict):
+                        st.markdown(f"- **{m.get('name','')}**: {m.get('description','')}")
+                        if "purpose" in m:
+                            st.markdown(f"  - 🎯 Purpose: {m.get('purpose','')}")
+                        if "application" in m:
+                            st.markdown(f"  - ⚙️ Application: {m.get('application','')}")
+                        if "evidence" in m:
+                            st.markdown(f"  - 📌 Evidence: {m.get('evidence','')}")
+                    else:
+                        st.markdown(f"- {m}")
 
         # ─────────────
-        # 🧠 METHOD TYPE Section
+        # Other sections: handle dict, list, string
         # ─────────────
-        elif section == "method_type":
-            st.subheader("🧠 Method Types")
-            for m in content.get("methods", []):
-                st.markdown(f"- **{m['name']}**: {m['description']}")
-                st.markdown(f"  - 📌 Evidence: {m['evidence']}")
+        elif isinstance(content, dict):
+            for key, value in content.items():
+                st.markdown(f"- **{key}**: {value}")
 
-        # ─────────────
-        # 🧪 SUBJECT AREA Section
-        # ─────────────
-        elif section == "subject_area":
-            st.subheader("🧪 Subject Areas")
-            for s in content.get("areas", []):
-                st.markdown(f"- **{s['name']}**: {s['description']}")
-                st.markdown(f"  - 📌 Evidence: {s['evidence']}")
+        elif isinstance(content, list):
+            for i, item in enumerate(content, 1):
+                st.markdown(f"{i}. {item}")
 
-        # ─────────────
-        # 🧪 PERFORMANCE SUMMARY Section
-        # ─────────────
-        elif section == "performance_summary":
-            if content.get("performance_summary"):
-                st.subheader("📈 Performance Summary")
-                for p in content["performance_summary"]:
-                    st.markdown(f"- {p['summary']}")
-                    st.markdown(f"  - 📌 Evidence: {p['evidence']}")
-
-            if content.get("baselines"):
-                st.subheader("📊 Baselines")
-                for b in content["baselines"]:
-                    st.markdown(f"- {b['name']}: {b['description']}")
-                    st.markdown(f"  - 📌 Evidence: {b['evidence']}")
-
-
-            if content.get("benchmark_datasets"):
-                st.subheader("🧪 Benchmark Datasets")
-                for d in content["benchmark_datasets"]:
-                    st.markdown(f"- **{d['name']}**")
-                    st.markdown(f"  - 📊 Description: {d['data_description']}")
-                    st.markdown(f"  - 🔧 Usage: {d['usage']}")
-                    st.markdown(f"  - 📌 Evidence: {d['evidence']}")
-                    
-            if content.get("evaluation_metrics"):
-                st.subheader("📏 Evaluation Metrics")
-                for m in content["evaluation_metrics"]:
-                    st.markdown(f"- **{m['name']}**")
-                    st.markdown(f"  - Purpose: {m['purpose']}")
-                    st.markdown(f"  - Application: {m['application']}")
-                    st.markdown(f"  - 📌 Evidence: {m['evidence']}")
-
-        # ─────────────
-        # 🧪 benchmark_dataset Section
-        # ─────────────
-        elif section == "benchmark_dataset":
-            if content is None:
-                st.warning("No benchmark dataset was used.")
-            else:
-                st.markdown(content)
-
-        # ─────────────
-        # 🧪 limitations
-        # ─────────────
-        elif section == "limitations":
-            for item in content.get("limitations", []):
-                st.markdown(f"- **{item['name']}**: {item['description']}")
-                st.markdown(f"  - 📌 Evidence: {item['evidence']}")
-
-        # ─────────────
-        # 🧪 future_directions Section
-        # ─────────────
-        elif section == "future_directions":
-            for i, item in enumerate(content.get("future_directions", []), 1):
-                st.markdown(f"### {i}. {item['name']}")
-                st.markdown(f"{item['description']}")
-                st.markdown(f"📌 **Evidence**: {item['evidence']}")
-                st.markdown("---")
-
-        # ─────────────
-        # 🧪 resource_link Section
-        # ─────────────
-        elif section == "resource_link":
-            st.markdown("### 🔗 Resource Link")
-            st.markdown(f"[{content['answer']}]({content['answer']})")
-            st.markdown(f"📌 **Evidence**: {content.get('evidence', 'No evidence provided.')}")
-            st.markdown("---")
+        elif isinstance(content, str):
+            st.markdown(content)
 
         else:
             st.markdown("ℹ️ Unrecognized format. Raw content below:")
